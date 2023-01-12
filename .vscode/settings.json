@@ -1,0 +1,112 @@
+{
+  "git.ignoreLimitWarning": true,
+
+  // "dart.flutterSdkPath": ".fvm/flutter_sdk",
+  // Remove .fvm files from search
+  "search.exclude": {
+    "**/.fvm": true,
+    "**/.history": true,
+    "**/*.ast.gql.dart": true,
+    "**/*.req.gql.dart": true,
+    "**/*.data.gql.dart": true,
+    "**/*.var.gql.dart": true,
+    "**/*.gql.g.dart": true
+  },
+  // Remove from file watching
+  "files.watcherExclude": {
+    "**/.fvm": true,
+    "**/.history": true
+  },
+
+  // @see https://dartcode.org/docs/settings/#dartlinelength
+  "dart.lineLength": 80,
+
+  // @see https://dartcode.org/docs/recommended-settings/
+  "[dart]": {
+    // Automatically format code on save and during typing of certain characters
+    // (like `;` and `}`).
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true,
+    },
+
+    // Draw a guide line at 80 characters, where Dart's formatting will wrap code.
+    "editor.rulers": [80],
+
+    // Disables built-in highlighting of words that match your selection. Without
+    // this, all instances of the selected text will be highlighted, interfering
+    // with Dart's ability to highlight only exact references to the selected variable.
+    "editor.selectionHighlight": false,
+
+    // By default, VS Code prevents code completion from popping open when in
+    // "snippet mode" (editing placeholders in inserted code). Setting this option
+    // to `false` stops that and allows completion to open as normal, as if you
+    // weren't in a snippet placeholder.
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+
+    // By default, VS Code will pre-select the most recently used item from code
+    // completion. This is usually not the most relevant item.
+    //
+    // "first" will always select top item
+    // "recentlyUsedByPrefix" will filter the recently used items based on the
+    //     text immediately preceding where completion was invoked.
+    "editor.suggestSelection": "first",
+
+    // Allows pressing <TAB> to complete snippets such as `for` even when the
+    // completion list is not visible.
+    "editor.tabCompletion": "onlySnippets",
+
+    // By default, VS Code will populate code completion with words found in the
+    // current file when a language service does not provide its own completions.
+    // This results in code completion suggesting words when editing comments and
+    // strings. This setting will prevent that.
+    "editor.wordBasedSuggestions": false,
+
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.suggest.insertMode": "replace",
+
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 80
+  },
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+  "cSpell.words": [
+    "confwebsite",
+    "flutterkaigi",
+    "Fortee",
+    "Handson",
+    "Kaigi",
+    "mockito",
+    "riverpod",
+    "ultrawide"
+  ],
+
+  "peacock.color": "#03a9f4",
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#027DFD",
+    "activityBar.activeBorder": "#422c74",
+    "activityBar.background": "#027DFD",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e7",
+    "activityBarBadge.background": "#F25D50",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "editorGroup.border": "#027DFD",
+    "panel.border": "#027DFD",
+    "sash.hoverBorder": "#027DFD",
+    "sideBar.border": "#027DFD",
+    "statusBar.background": "#0553B1",
+    "statusBar.foreground": "#b2b2b2",
+    "statusBarItem.hoverBackground": "#027DFD",
+    "statusBarItem.remoteBackground": "#0553B1",
+    "statusBarItem.remoteForeground": "#b2b2b2",
+    "titleBar.activeBackground": "#042B59",
+    "titleBar.activeForeground": "#b2b2b2",
+    "titleBar.inactiveBackground": "#042B59",
+    "titleBar.inactiveForeground": "#b2b2b2"
+  }
+}
