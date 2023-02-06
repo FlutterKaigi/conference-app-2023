@@ -20,7 +20,7 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 # Checklist:
 
 - [ ] My code follows the style guidelines of this project
-- [ ] My code has been formatted with `flutter format lib`
+- [ ] My code has been formatted with `flutter format lib` and `flutter pub run import_sorter:main`
 - [ ] My code has been fixed with `dart fix --apply lib`
 - [ ] I have performed a self-review of my own code
 - [ ] I have commented my code, particularly in hard-to-understand areas
