@@ -24,6 +24,35 @@ For Japanese, please see [CONTRIBUTING.ja.md](./CONTRIBUTING.ja.md).
 The application design is based on [riverpod pub example](https://github.com/rrousselGit/riverpod/tree/riverpod-v2.3.2/examples/pub).
 Create [Provider](https://docs-v2.riverpod.dev/docs/providers/provider), [FutureProvider](https://docs-v2.riverpod.dev/docs/providers/future_provider), [Notifier and AsyncNotifier](https://docs-v2.riverpod.dev/docs/providers/notifier_provider) to create a lightweight model layer. 
 
+### Project structure
+
+Since this will be a small application, a layer-first project structure will be used.
+
+```
+- lib
+  - data
+    - model
+    - repository
+  - ui
+    - screen
+    - theme
+  - util
+    - extension
+```
+
+### Coding style
+
+Introduce [flutter_lints](https://pub.dev/packages/flutter_lints) and adopt flutter's standard style.
+
+https://docs.flutter.dev/release/breaking-changes/flutter-lints-package
+
+The rules to be specially added are as follows.
+
+* prefer_single_quotes
+  * https://dart.dev/tools/linter-rules#prefer_single_quotes
+* always_use_package_imports
+  * https://dart.dev/tools/linter-rules#always_use_package_imports
+
 ## Thanks
 
 Thank you for contributing!
