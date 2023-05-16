@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Label when approved
-        uses: pullreminders/label-when-approved-action@1
+        uses: pullreminders/label-when-approved-action@master
         env:
           APPROVALS: "1"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
