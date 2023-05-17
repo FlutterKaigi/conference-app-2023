@@ -4,6 +4,30 @@
 
 We will deliver sessions related to FlutterKaigi in accordance with [Figma](https://www.figma.com/file/3jxi4kkyBLUNw1lHfFGHzs/FlutterKaigi?node-id=0%3A1&t=KM41o0ChF1pMsw5u-0).
 
+### Set up
+
+This project uses [Flutter beta channel](https://github.com/flutter/flutter/wiki/Roadmap#releases).
+Therefore, please install Flutter beta channel. There is 2 way to use flutter beta channel.
+
+1. Switch [flutter channel(https://docs.flutter.dev/release/upgrade#switching-flutter-channels).
+2. Install Flutter beta channel with [fvm](https://fvm.app/).
+
+#### Switch flutter channel
+
+```bash
+flutter channel beta
+flutter upgrade
+```
+
+#### Install Flutter beta channel with fvm
+
+1. [Install fvm](https://fvm.app/docs/getting_started/installation).
+2. Move to project root directory, and run `fvm install` command.
+3. Run `fvm flutter pub get` command.
+4. Set up IDE to use fvm.
+   a. If you use [VSCode](https://code.visualstudio.com/), already set up.
+   b. If you use [Android Studio](https://developer.android.com/studio), please see [fvm document](https://fvm.app/docs/using).
+
 ### Contributing
 
 We always welcome all contributions! See [CONTRIBUTING.md](./CONTRIBUTING.md) for more information.
