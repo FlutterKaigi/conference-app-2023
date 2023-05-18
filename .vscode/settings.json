@@ -7,5 +7,10 @@
   // Remove from file watching
   "files.watcherExclude": {
     "**/.fvm": true
+  },
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "*.dart": "$(capture).freezed.dart, $(capture).g.dart"
   }
 }
