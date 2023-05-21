@@ -64,6 +64,19 @@ Since this will be a small application, a layer-first project structure will be 
     - extension
 ```
 
+### Add library versions to dependencies
+
+The default is to list only major versions. For this reason, minor versions and patch versions are listed as 0, except in cases where problems have occurred.
+https://dart.dev/tools/pub/dependencies
+
+Example.
+
+```yaml
+go_router: ^7.0.0
+```
+
+PRs that modify only the pubspec.lock file without code modification will not be merged. The maintainer will take care of this.
+
 ### Coding style
 
 Introduce [flutter_lints](https://pub.dev/packages/flutter_lints) and adopt flutter's standard style.
@@ -76,6 +89,12 @@ The rules to be specially added are as follows.
   * https://dart.dev/tools/linter-rules#prefer_single_quotes
 * always_use_package_imports
   * https://dart.dev/tools/linter-rules#always_use_package_imports
+* require_trailing_commas
+  * https://dart.dev/tools/linter-rules#require_trailing_commas
+* avoid_void_async
+  * https://dart.dev/tools/linter-rules#avoid_void_async
+* unawaited_futures
+  * https://dart.dev/tools/linter-rules#unawaited_futures
 
 ## Thanks
 
