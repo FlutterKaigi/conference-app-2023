@@ -20,6 +20,8 @@ dependencies:
 
   flutter_riverpod: ^2.0.0
 
+  flutter_svg: ^2.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -32,6 +34,13 @@ dev_dependencies:
   freezed: ^2.0.0
   json_serializable: ^6.0.0
   riverpod_generator: ^2.0.0
+  flutter_gen_runner: ^5.0.0
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/image/
+
+flutter_gen:
+  integrations:
+    flutter_svg: true
