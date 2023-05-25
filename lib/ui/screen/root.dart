@@ -42,6 +42,7 @@ class _RootScreenState extends State<RootScreen> {
     final currentTab = _getCurrentTab(context);
 
     return Scaffold(
+      /// TODO: Fix appbar
       appBar: AppBar(
         title: Text('Tab: $currentTab'),
       ),
@@ -70,12 +71,14 @@ class _RootScreenState extends State<RootScreen> {
           }
         },
         children: const [
+          /// TODO: Fix header
           Padding(
             padding: EdgeInsets.all(24),
             child: Text(
               'Header',
             ),
           ),
+          /// TODO: Fix icon
           NavigationDrawerDestination(
             icon: Icon(Icons.home),
             label: Text('Home'),
