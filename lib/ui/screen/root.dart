@@ -1,6 +1,9 @@
 import 'package:conference_2023/ui/router/router_app.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+import '../router/router_debug.dart';
 
 enum RootTab {
   home(HomeRoute.path),
@@ -52,6 +55,12 @@ class _RootScreenState extends State<RootScreen> {
           /// close drawer
           Navigator.of(context).pop();
 
+          /// go to debug menu
+          if (kDebugMode && value == RootTab.values.length) {
+            const DebugRoute().push(context);
+            return;
+          }
+
           final nextTab = RootTab.values[value];
           switch (nextTab) {
             case RootTab.home:
@@ -78,6 +87,7 @@ class _RootScreenState extends State<RootScreen> {
               'Header',
             ),
           ),
+
           /// TODO: Fix icon
           NavigationDrawerDestination(
             icon: Icon(Icons.home),
@@ -109,6 +119,13 @@ class _RootScreenState extends State<RootScreen> {
             icon: Icon(Icons.home),
             label: Text('Licenses'),
           ),
+          if (kDebugMode) ...[
+            Divider(),
+            NavigationDrawerDestination(
+              icon: Icon(Icons.home),
+              label: Text('Debug'),
+            ),
+          ],
         ],
       ),
       body: widget.navigator,
