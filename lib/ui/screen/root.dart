@@ -1,9 +1,8 @@
 import 'package:conference_2023/ui/router/router_app.dart';
+import 'package:conference_2023/ui/router/router_debug.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../router/router_debug.dart';
 
 enum RootTab {
   home(HomeRoute.path),
