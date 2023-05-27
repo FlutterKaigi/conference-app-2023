@@ -1,4 +1,3 @@
-import 'package:conference_2023/gen/assets.gen.dart';
 import 'package:conference_2023/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -6,25 +5,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final (lightScheme, darkScheme) = await (
-    ColorScheme.fromImageProvider(
-      provider: Assets.image.flutterkaigiLogo.provider(),
-      brightness: Brightness.light,
-    ),
-    ColorScheme.fromImageProvider(
-      provider: Assets.image.flutterkaigiLogo.provider(),
-      brightness: Brightness.dark,
-    ),
-  )
-      .wait;
-
   runApp(
-    ProviderScope(
-      overrides: [
-        logoColorSchemeProvider.overrideWithValue(lightScheme),
-        logoDarkColorSchemeProvider.overrideWithValue(darkScheme),
-      ],
-      child: const MyApp(),
+    const ProviderScope(
+      child: MyApp(),
     ),
   );
 }
