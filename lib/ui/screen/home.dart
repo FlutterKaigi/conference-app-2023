@@ -26,6 +26,11 @@ class HomePage extends StatelessWidget {
               BlendMode.dst,
             ),
           ),
+          const Gap(8),
+          Text(
+            'FlutterKaigi 2023',
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
         ],
       ),
     );
