@@ -1,4 +1,6 @@
 import 'package:conference_2023/ui/router/router_app.dart';
+import 'package:conference_2023/ui/router/router_debug.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,7 +18,7 @@ enum RootTab {
   final String path;
 }
 
-class RootScreen extends StatelessWidget {
+class RootScreen extends StatefulWidget {
   const RootScreen({
     super.key,
     required this.navigator,
@@ -24,6 +26,11 @@ class RootScreen extends StatelessWidget {
 
   final Widget navigator;
 
+  @override
+  State<RootScreen> createState() => _RootScreenState();
+}
+
+class _RootScreenState extends State<RootScreen> {
   RootTab _getCurrentTab(BuildContext context) {
     final location = GoRouter.of(context).location;
     return RootTab.values.reversed.firstWhere(
@@ -37,10 +44,90 @@ class RootScreen extends StatelessWidget {
     final currentTab = _getCurrentTab(context);
 
     return Scaffold(
+      /// TODO: Fix appbar
       appBar: AppBar(
         title: Text('Tab: $currentTab'),
       ),
-      body: navigator,
+      drawer: NavigationDrawer(
+        selectedIndex: currentTab.index,
+        onDestinationSelected: (value) {
+          /// close drawer
+          Navigator.of(context).pop();
+
+          /// go to debug menu
+          if (kDebugMode && value == RootTab.values.length) {
+            const DebugRoute().push(context);
+            return;
+          }
+
+          final nextTab = RootTab.values[value];
+          switch (nextTab) {
+            case RootTab.home:
+              const HomeRoute().go(context);
+            case RootTab.sessions:
+              const SessionsRoute().go(context);
+            case RootTab.sponsors:
+              const SponsorsRoute().go(context);
+            case RootTab.venue:
+              const VenueRoute().go(context);
+            case RootTab.contributors:
+              const ContributorsRoute().go(context);
+            case RootTab.settings:
+              const SettingsRoute().go(context);
+            case RootTab.license:
+              const LicenseRoute().go(context);
+          }
+        },
+        children: const [
+          /// TODO: Fix header
+          Padding(
+            padding: EdgeInsets.all(24),
+            child: Text(
+              'Header',
+            ),
+          ),
+
+          /// TODO: Fix icon
+          NavigationDrawerDestination(
+            icon: Icon(Icons.home),
+            label: Text('Home'),
+          ),
+          NavigationDrawerDestination(
+            icon: Icon(Icons.home),
+            label: Text('Sessions'),
+          ),
+          NavigationDrawerDestination(
+            icon: Icon(Icons.home),
+            label: Text('Sponsors'),
+          ),
+          NavigationDrawerDestination(
+            icon: Icon(Icons.home),
+            label: Text('Venue'),
+          ),
+          Divider(),
+          NavigationDrawerDestination(
+            icon: Icon(Icons.home),
+            label: Text('Contributors'),
+          ),
+          Divider(),
+          NavigationDrawerDestination(
+            icon: Icon(Icons.home),
+            label: Text('Settings'),
+          ),
+          NavigationDrawerDestination(
+            icon: Icon(Icons.home),
+            label: Text('Licenses'),
+          ),
+          if (kDebugMode) ...[
+            Divider(),
+            NavigationDrawerDestination(
+              icon: Icon(Icons.home),
+              label: Text('Debug'),
+            ),
+          ],
+        ],
+      ),
+      body: widget.navigator,
     );
   }
 }
