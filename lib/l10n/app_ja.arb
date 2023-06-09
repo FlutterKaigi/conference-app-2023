@@ -3,5 +3,9 @@
   "event": "イベント",
   "event_date": "日時",
   "event_place": "場所",
-  "event_place_detail": "オフライン&オンライン"
+  "event_place_detail": "オフライン&オンライン",
+  "link": "リンク",
+  "twitter": "Twitter",
+  "github": "GitHub",
+  "medium": "Medium"
 }

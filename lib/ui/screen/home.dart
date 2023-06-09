@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -84,6 +85,41 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ],
+          ),
+          const Gap(16),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              AppLocalizations.of(context).event,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+          ),
+          const Gap(8),
+          SizedBox(
+            width: double.infinity,
+            child: Wrap(
+              spacing: 16,
+              children: [
+                OutlinedButton(
+                  onPressed: () {
+                    launchUrlString('https://twitter.com/flutterkaigi');
+                  },
+                  child: Text(AppLocalizations.of(context).twitter),
+                ),
+                OutlinedButton(
+                  onPressed: () {
+                    launchUrlString('https://github.com/FlutterKaigi');
+                  },
+                  child: Text(AppLocalizations.of(context).github),
+                ),
+                OutlinedButton(
+                  onPressed: () {
+                    launchUrlString('https://medium.com/flutterkaigi');
+                  },
+                  child: Text(AppLocalizations.of(context).medium),
+                ),
+              ],
+            ),
           ),
         ],
       ),

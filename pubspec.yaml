@@ -26,6 +26,7 @@ dependencies:
 
   gap: ^3.0.0
   flutter_svg: ^2.0.0
+  url_launcher: ^6.0.0
 
   accessibility_tools: ^0.2.0
 
