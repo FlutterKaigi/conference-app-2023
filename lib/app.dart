@@ -2,6 +2,7 @@ import 'package:accessibility_tools/accessibility_tools.dart';
 import 'package:conference_2023/ui/router/router_provider.dart';
 import 'package:conference_2023/ui/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class App extends ConsumerWidget {
@@ -17,6 +18,8 @@ class App extends ConsumerWidget {
       title: 'Flutter Demo',
       theme: theme,
       darkTheme: darkTheme,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,
       routeInformationProvider: router.routeInformationProvider,
