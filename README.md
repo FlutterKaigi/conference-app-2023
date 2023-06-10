@@ -2,7 +2,7 @@
 
 ## Development
 
-We will deliver sessions related to FlutterKaigi in accordance with [Figma](https://www.figma.com/file/3jxi4kkyBLUNw1lHfFGHzs/FlutterKaigi?node-id=0%3A1&t=KM41o0ChF1pMsw5u-0).
+We will deliver sessions related to FlutterKaigi in accordance with [Figma](https://www.figma.com/file/x71sECvdnsw8RTfKG0E4fB/FlutterKaigi-2023-App?type=design&node-id=11%3A1833&t=Dpxy1yUZMefElIjg-1).
 
 ### Set up
 
