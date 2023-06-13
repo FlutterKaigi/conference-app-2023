@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
           ),
           const Gap(8),
           Text(
-            AppLocalizations.of(context).flutter_kaigi_title,
+            AppLocalizations.of(context).flutterKaigiTitle,
             style: Theme.of(context).textTheme.headlineMedium,
           ),
           const Gap(56),
@@ -56,7 +56,7 @@ class HomePage extends StatelessWidget {
                 children: [
                   TableCell(
                     child: Text(
-                      AppLocalizations.of(context).event_date,
+                      AppLocalizations.of(context).eventDate,
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ),
@@ -72,13 +72,13 @@ class HomePage extends StatelessWidget {
                 children: [
                   TableCell(
                     child: Text(
-                      AppLocalizations.of(context).event_place,
+                      AppLocalizations.of(context).eventPlace,
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ),
                   TableCell(
                     child: Text(
-                      AppLocalizations.of(context).event_place_detail,
+                      AppLocalizations.of(context).eventPlaceDetail,
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ),

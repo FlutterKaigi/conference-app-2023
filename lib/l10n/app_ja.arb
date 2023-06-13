@@ -1,9 +1,9 @@
 {
-  "flutter_kaigi_title": "FlutterKaigi 2023",
+  "flutterKaigiTitle": "FlutterKaigi 2023",
   "event": "イベント",
-  "event_date": "日時",
-  "event_place": "場所",
-  "event_place_detail": "オフライン&オンライン",
+  "eventDate": "日時",
+  "eventPlace": "場所",
+  "eventPlaceDetail": "オフライン&オンライン",
   "link": "リンク",
   "twitter": "Twitter",
   "github": "GitHub",
