@@ -34,14 +34,14 @@ class HomePage extends StatelessWidget {
           ),
           const Gap(8),
           Text(
-            AppLocalizations.of(context).flutterKaigiTitle,
+            Res.of(context).flutterKaigiTitle,
             style: Theme.of(context).textTheme.headlineMedium,
           ),
           const Gap(56),
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              AppLocalizations.of(context).event,
+              Res.of(context).event,
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
@@ -56,7 +56,7 @@ class HomePage extends StatelessWidget {
                 children: [
                   TableCell(
                     child: Text(
-                      AppLocalizations.of(context).eventDate,
+                      Res.of(context).eventDate,
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ),
@@ -72,13 +72,13 @@ class HomePage extends StatelessWidget {
                 children: [
                   TableCell(
                     child: Text(
-                      AppLocalizations.of(context).eventPlace,
+                      Res.of(context).eventPlace,
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ),
                   TableCell(
                     child: Text(
-                      AppLocalizations.of(context).eventPlaceDetail,
+                      Res.of(context).eventPlaceDetail,
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ),
@@ -90,7 +90,7 @@ class HomePage extends StatelessWidget {
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              AppLocalizations.of(context).event,
+              Res.of(context).event,
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
@@ -104,19 +104,19 @@ class HomePage extends StatelessWidget {
                   onPressed: () {
                     launchUrlString('https://twitter.com/flutterkaigi');
                   },
-                  child: Text(AppLocalizations.of(context).twitter),
+                  child: Text(Res.of(context).twitter),
                 ),
                 OutlinedButton(
                   onPressed: () {
                     launchUrlString('https://github.com/FlutterKaigi');
                   },
-                  child: Text(AppLocalizations.of(context).github),
+                  child: Text(Res.of(context).github),
                 ),
                 OutlinedButton(
                   onPressed: () {
                     launchUrlString('https://medium.com/flutterkaigi');
                   },
-                  child: Text(AppLocalizations.of(context).medium),
+                  child: Text(Res.of(context).medium),
                 ),
               ],
             ),
