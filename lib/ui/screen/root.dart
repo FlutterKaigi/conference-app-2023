@@ -87,41 +87,40 @@ class _RootScreenState extends State<RootScreen> {
             ),
           ),
 
-          /// TODO: Fix icon
           NavigationDrawerDestination(
             icon: Icon(Icons.home),
             label: Text('Home'),
           ),
           NavigationDrawerDestination(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.list),
             label: Text('Sessions'),
           ),
           NavigationDrawerDestination(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.groups),
             label: Text('Sponsors'),
           ),
           NavigationDrawerDestination(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.meeting_room),
             label: Text('Venue'),
           ),
           Divider(),
           NavigationDrawerDestination(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.engineering),
             label: Text('Contributors'),
           ),
           Divider(),
           NavigationDrawerDestination(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.settings),
             label: Text('Settings'),
           ),
           NavigationDrawerDestination(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.description),
             label: Text('Licenses'),
           ),
           if (kDebugMode) ...[
             Divider(),
             NavigationDrawerDestination(
-              icon: Icon(Icons.home),
+              icon: Icon(Icons.bug_report),
               label: Text('Debug'),
             ),
           ],
