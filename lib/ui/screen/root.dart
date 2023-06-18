@@ -2,6 +2,7 @@ import 'package:conference_2023/ui/router/router_app.dart';
 import 'package:conference_2023/ui/router/router_debug.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 
 enum RootTab {
@@ -78,9 +79,9 @@ class _RootScreenState extends State<RootScreen> {
               const LicenseRoute().go(context);
           }
         },
-        children: const [
+        children: [
           /// TODO: Fix header
-          Padding(
+          const Padding(
             padding: EdgeInsets.all(24),
             child: Text(
               'Header',
@@ -88,38 +89,38 @@ class _RootScreenState extends State<RootScreen> {
           ),
 
           NavigationDrawerDestination(
-            icon: Icon(Icons.home),
-            label: Text('Home'),
+            icon: RootTab.home.icon,
+            label: Text(RootTab.home.title(context)),
           ),
           NavigationDrawerDestination(
-            icon: Icon(Icons.list),
-            label: Text('Sessions'),
+            icon: RootTab.sessions.icon,
+            label: Text(RootTab.sessions.title(context)),
           ),
           NavigationDrawerDestination(
-            icon: Icon(Icons.groups),
-            label: Text('Sponsors'),
+            icon: RootTab.sponsors.icon,
+            label: Text(RootTab.sponsors.title(context)),
           ),
           NavigationDrawerDestination(
-            icon: Icon(Icons.meeting_room),
-            label: Text('Venue'),
+            icon: RootTab.venue.icon,
+            label: Text(RootTab.venue.title(context)),
           ),
-          Divider(),
+          const Divider(),
           NavigationDrawerDestination(
-            icon: Icon(Icons.engineering),
-            label: Text('Contributors'),
+            icon: RootTab.contributors.icon,
+            label: Text(RootTab.contributors.title(context)),
           ),
-          Divider(),
+          const Divider(),
           NavigationDrawerDestination(
-            icon: Icon(Icons.settings),
-            label: Text('Settings'),
+            icon: RootTab.settings.icon,
+            label: Text(RootTab.settings.title(context)),
           ),
           NavigationDrawerDestination(
-            icon: Icon(Icons.description),
-            label: Text('Licenses'),
+            icon: RootTab.license.icon,
+            label: Text(RootTab.license.title(context)),
           ),
           if (kDebugMode) ...[
-            Divider(),
-            NavigationDrawerDestination(
+            const Divider(),
+            const NavigationDrawerDestination(
               icon: Icon(Icons.bug_report),
               label: Text('Debug'),
             ),
@@ -129,4 +130,28 @@ class _RootScreenState extends State<RootScreen> {
       body: widget.navigator,
     );
   }
+}
+
+extension on RootTab {
+  Icon get icon => Icon(iconData);
+
+  IconData get iconData => switch (this) {
+        RootTab.home => Icons.home,
+        RootTab.sessions => Icons.list,
+        RootTab.sponsors => Icons.groups,
+        RootTab.venue => Icons.meeting_room,
+        RootTab.contributors => Icons.engineering,
+        RootTab.settings => Icons.settings,
+        RootTab.license => Icons.description,
+      };
+
+  String title(BuildContext context) => switch (this) {
+        RootTab.home => Res.of(context).drawerHome,
+        RootTab.sessions => Res.of(context).drawerSessions,
+        RootTab.sponsors => Res.of(context).drawerSponsors,
+        RootTab.venue => Res.of(context).drawerVenue,
+        RootTab.contributors => Res.of(context).drawerContributors,
+        RootTab.settings => Res.of(context).drawerSettings,
+        RootTab.license => Res.of(context).drawerLicense,
+      };
 }

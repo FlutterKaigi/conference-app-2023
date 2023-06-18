@@ -7,5 +7,12 @@
   "link": "リンク",
   "twitter": "Twitter",
   "github": "GitHub",
-  "medium": "Medium"
+  "medium": "Medium",
+  "drawerHome": "ホーム",
+  "drawerSessions": "セッション",
+  "drawerSponsors": "スポンサー",
+  "drawerVenue": "会場",
+  "drawerContributors": "コントリビューター",
+  "drawerSettings": "設定",
+  "drawerLicense": "ライセンス"
 }
