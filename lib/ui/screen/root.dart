@@ -45,9 +45,8 @@ class _RootScreenState extends State<RootScreen> {
     final currentTab = _getCurrentTab(context);
 
     return Scaffold(
-      /// TODO: Fix appbar
       appBar: AppBar(
-        title: Text('Tab: $currentTab'),
+        title: Text(currentTab.title(context)),
       ),
       drawer: NavigationDrawer(
         selectedIndex: currentTab.index,
@@ -145,12 +144,12 @@ extension on RootTab {
       };
 
   String title(BuildContext context) => switch (this) {
-        RootTab.home => Res.of(context).drawerHome,
-        RootTab.sessions => Res.of(context).drawerSessions,
-        RootTab.sponsors => Res.of(context).drawerSponsors,
-        RootTab.venue => Res.of(context).drawerVenue,
-        RootTab.contributors => Res.of(context).drawerContributors,
-        RootTab.settings => Res.of(context).drawerSettings,
-        RootTab.license => Res.of(context).drawerLicense,
+        RootTab.home => Res.of(context).pageTitleHome,
+        RootTab.sessions => Res.of(context).pageTitleSessions,
+        RootTab.sponsors => Res.of(context).pageTitleSponsors,
+        RootTab.venue => Res.of(context).pageTitleVenue,
+        RootTab.contributors => Res.of(context).pageTitleContributors,
+        RootTab.settings => Res.of(context).pageTitleSettings,
+        RootTab.license => Res.of(context).pageTitleLicense,
       };
 }
