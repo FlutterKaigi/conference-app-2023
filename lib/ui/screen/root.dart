@@ -80,14 +80,13 @@ class _RootScreenState extends State<RootScreen> {
           }
         },
         children: [
-          /// TODO: Fix header
-          const Padding(
-            padding: EdgeInsets.all(24),
+          Padding(
+            padding: const EdgeInsets.all(24),
             child: Text(
-              'Header',
+              Res.of(context).flutterKaigiTitle,
+              style: Theme.of(context).textTheme.titleSmall,
             ),
           ),
-
           NavigationDrawerDestination(
             icon: RootTab.home.icon,
             label: Text(RootTab.home.title(context)),
