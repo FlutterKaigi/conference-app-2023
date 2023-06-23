@@ -4,16 +4,16 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'locale_provider.g.dart';
+part 'locales_provider.g.dart';
 
 @riverpod
-Stream<Locale> locale(LocaleRef ref) {
-  final controller = StreamController<Locale>();
+Stream<List<Locale>> locales(LocalesRef ref) {
+  final controller = StreamController<List<Locale>>();
 
   /// set initial locale
-  controller.sink.add(PlatformDispatcher.instance.locale);
+  controller.sink.add(PlatformDispatcher.instance.locales);
   PlatformDispatcher.instance.onLocaleChanged = () {
-    controller.sink.add(PlatformDispatcher.instance.locale);
+    controller.sink.add(PlatformDispatcher.instance.locales);
   };
 
   ref.onDispose(
