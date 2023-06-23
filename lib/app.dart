@@ -25,6 +25,7 @@ class App extends ConsumerWidget {
       ],
       supportedLocales: const [
         Locale('ja'),
+        Locale('en'),
       ],
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,
