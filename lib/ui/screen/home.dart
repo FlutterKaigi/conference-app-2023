@@ -60,7 +60,7 @@ class HomePage extends ConsumerWidget {
                   ),
                   TableCell(
                     child: Text(
-                      localization.yMMEdFormatter
+                      localization.dateFormatter.yMMEd
                           .format(DateTime(2023, 11, 10)),
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),

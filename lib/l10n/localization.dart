@@ -29,7 +29,9 @@ abstract base class Localization {
 
   final String languageCode;
 
-  DateFormat get yMMEdFormatter => DateFormat.yMMMEd(languageCode);
+  DateFormatter get dateFormatter => DateFormatter(
+        languageCode: languageCode,
+      );
 
   String get flutterKaigiTitle;
 
@@ -62,4 +64,15 @@ abstract base class Localization {
   String get pageTitleSettings;
 
   String get pageTitleLicense;
+}
+
+/// A wrapper class of [DateFormat] for localization.
+class DateFormatter {
+  const DateFormatter({
+    required this.languageCode,
+  });
+
+  final String languageCode;
+
+  DateFormat get yMMEd => DateFormat.yMMMEd(languageCode);
 }
