@@ -21,7 +21,7 @@ final class LocalizationEn extends Localization {
   String get eventPlaceDetail => 'Online & Offline';
 
   @override
-  String get link => 'Twitter';
+  String get link => 'Link';
 
   @override
   String get twitter => 'Twitter';
