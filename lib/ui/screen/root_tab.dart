@@ -1,6 +1,6 @@
+import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/ui/router/router_app.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 enum RootTab {
   home(HomeRoute.path),
@@ -29,13 +29,13 @@ extension RootTabExt on RootTab {
         RootTab.license => Icons.description,
       };
 
-  String title(BuildContext context) => switch (this) {
-        RootTab.home => Res.of(context).pageTitleHome,
-        RootTab.sessions => Res.of(context).pageTitleSessions,
-        RootTab.sponsors => Res.of(context).pageTitleSponsors,
-        RootTab.venue => Res.of(context).pageTitleVenue,
-        RootTab.contributors => Res.of(context).pageTitleContributors,
-        RootTab.settings => Res.of(context).pageTitleSettings,
-        RootTab.license => Res.of(context).pageTitleLicense,
+  String title(Localization localization) => switch (this) {
+        RootTab.home => localization.pageTitleHome,
+        RootTab.sessions => localization.pageTitleSessions,
+        RootTab.sponsors => localization.pageTitleSponsors,
+        RootTab.venue => localization.pageTitleVenue,
+        RootTab.contributors => localization.pageTitleContributors,
+        RootTab.settings => localization.pageTitleSettings,
+        RootTab.license => localization.pageTitleLicense,
       };
 }

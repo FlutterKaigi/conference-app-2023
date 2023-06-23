@@ -1,11 +1,12 @@
+import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/ui/router/router_app.dart';
 import 'package:conference_2023/ui/router/router_debug.dart';
 import 'package:conference_2023/ui/screen/root_tab.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class RootDrawer extends StatelessWidget {
+class RootDrawer extends ConsumerWidget {
   const RootDrawer({
     super.key,
     required this.currentTab,
@@ -14,7 +15,9 @@ class RootDrawer extends StatelessWidget {
   final RootTab currentTab;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final localization = ref.watch(localizationProvider);
+
     return NavigationDrawer(
       selectedIndex: currentTab.index,
       onDestinationSelected: (value) {
@@ -49,39 +52,39 @@ class RootDrawer extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(24),
           child: Text(
-            Res.of(context).flutterKaigiTitle,
+            localization.flutterKaigiTitle,
             style: Theme.of(context).textTheme.titleSmall,
           ),
         ),
         NavigationDrawerDestination(
           icon: RootTab.home.icon,
-          label: Text(RootTab.home.title(context)),
+          label: Text(RootTab.home.title(localization)),
         ),
         NavigationDrawerDestination(
           icon: RootTab.sessions.icon,
-          label: Text(RootTab.sessions.title(context)),
+          label: Text(RootTab.sessions.title(localization)),
         ),
         NavigationDrawerDestination(
           icon: RootTab.sponsors.icon,
-          label: Text(RootTab.sponsors.title(context)),
+          label: Text(RootTab.sponsors.title(localization)),
         ),
         NavigationDrawerDestination(
           icon: RootTab.venue.icon,
-          label: Text(RootTab.venue.title(context)),
+          label: Text(RootTab.venue.title(localization)),
         ),
         const Divider(),
         NavigationDrawerDestination(
           icon: RootTab.contributors.icon,
-          label: Text(RootTab.contributors.title(context)),
+          label: Text(RootTab.contributors.title(localization)),
         ),
         const Divider(),
         NavigationDrawerDestination(
           icon: RootTab.settings.icon,
-          label: Text(RootTab.settings.title(context)),
+          label: Text(RootTab.settings.title(localization)),
         ),
         NavigationDrawerDestination(
           icon: RootTab.license.icon,
-          label: Text(RootTab.license.title(context)),
+          label: Text(RootTab.license.title(localization)),
         ),
         if (kDebugMode) ...[
           const Divider(),
