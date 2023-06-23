@@ -25,7 +25,7 @@ class LocalizationJa implements Localization {
   String get eventPlaceDetail => 'オフライン&オンライン';
 
   @override
-  String get link => 'Twitter';
+  String get link => 'リンク';
 
   @override
   String get twitter => 'Twitter';

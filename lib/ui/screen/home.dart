@@ -88,7 +88,7 @@ class HomePage extends ConsumerWidget {
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              localization.event,
+              localization.link,
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
