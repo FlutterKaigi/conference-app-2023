@@ -4,8 +4,8 @@ import 'package:conference_2023/ui/screen/root_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class RootNavigation extends ConsumerWidget {
-  const RootNavigation({
+class RootNavigationBar extends ConsumerWidget {
+  const RootNavigationBar({
     super.key,
     required this.currentTab,
   });
@@ -35,8 +35,8 @@ class RootNavigation extends ConsumerWidget {
     }
 
     return NavigationBar(
-      selectedIndex: selectedIndex,
       indicatorColor: indicatorColor,
+      selectedIndex: selectedIndex,
       destinations: [
         NavigationDestination(
           icon: RootTab.home.icon,
