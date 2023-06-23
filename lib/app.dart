@@ -15,7 +15,7 @@ class App extends ConsumerWidget {
     final darkTheme = ref.watch(darkThemeProvider);
 
     return MaterialApp.router(
-      title: 'Flutter Demo',
+      title: 'FlutterKaigi 2023 Official App',
       theme: theme,
       darkTheme: darkTheme,
       localizationsDelegates: const [
