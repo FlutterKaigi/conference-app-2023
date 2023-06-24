@@ -46,9 +46,20 @@ class RootScreen extends ConsumerWidget {
         ScreenSize.compact => navigator,
         ScreenSize.medium => Row(
             children: [
-              RootNavigationRail(
-                currentTab: currentTab,
-                extended: false,
+              LayoutBuilder(
+                builder: (context, constraints) => SingleChildScrollView(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: constraints.maxHeight,
+                    ),
+                    child: IntrinsicHeight(
+                      child: RootNavigationRail(
+                        currentTab: currentTab,
+                        extended: false,
+                      ),
+                    ),
+                  ),
+                ),
               ),
               Expanded(
                 child: navigator,
@@ -59,9 +70,20 @@ class RootScreen extends ConsumerWidget {
         /// TODO: wait for [https://github.com/flutter/flutter/issues/123113]
         ScreenSize.expanded => Row(
             children: [
-              RootNavigationRail(
-                currentTab: currentTab,
-                extended: true,
+              LayoutBuilder(
+                builder: (context, constraints) => SingleChildScrollView(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: constraints.maxHeight,
+                    ),
+                    child: IntrinsicHeight(
+                      child: RootNavigationRail(
+                        currentTab: currentTab,
+                        extended: true,
+                      ),
+                    ),
+                  ),
+                ),
               ),
               Expanded(
                 child: navigator,
