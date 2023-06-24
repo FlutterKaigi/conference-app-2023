@@ -1,20 +1,18 @@
 import 'package:conference_2023/gen/assets.gen.dart';
+import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/util/extension/media_query_data_ext.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final margin = MediaQuery.of(context).spacing;
-    final locale = Localizations.localeOf(context);
-    final eventFormatter = DateFormat.yMMMd(locale.languageCode);
-    final eventDate = eventFormatter.format(DateTime(2023, 11, 10));
+    final localization = ref.watch(localizationProvider);
 
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(
@@ -34,14 +32,14 @@ class HomePage extends StatelessWidget {
           ),
           const Gap(8),
           Text(
-            Res.of(context).flutterKaigiTitle,
+            localization.flutterKaigiTitle,
             style: Theme.of(context).textTheme.headlineMedium,
           ),
           const Gap(56),
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              Res.of(context).event,
+              localization.event,
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
@@ -56,13 +54,13 @@ class HomePage extends StatelessWidget {
                 children: [
                   TableCell(
                     child: Text(
-                      Res.of(context).eventDate,
+                      localization.eventDate,
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ),
                   TableCell(
                     child: Text(
-                      eventDate,
+                      localization.eventDateDetail,
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ),
@@ -72,13 +70,13 @@ class HomePage extends StatelessWidget {
                 children: [
                   TableCell(
                     child: Text(
-                      Res.of(context).eventPlace,
+                      localization.eventPlace,
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ),
                   TableCell(
                     child: Text(
-                      Res.of(context).eventPlaceDetail,
+                      localization.eventPlaceDetail,
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ),
@@ -90,7 +88,7 @@ class HomePage extends StatelessWidget {
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              Res.of(context).event,
+              localization.link,
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
@@ -104,19 +102,19 @@ class HomePage extends StatelessWidget {
                   onPressed: () {
                     launchUrlString('https://twitter.com/flutterkaigi');
                   },
-                  child: Text(Res.of(context).twitter),
+                  child: Text(localization.twitter),
                 ),
                 OutlinedButton(
                   onPressed: () {
                     launchUrlString('https://github.com/FlutterKaigi');
                   },
-                  child: Text(Res.of(context).github),
+                  child: Text(localization.github),
                 ),
                 OutlinedButton(
                   onPressed: () {
                     launchUrlString('https://medium.com/flutterkaigi');
                   },
-                  child: Text(Res.of(context).medium),
+                  child: Text(localization.medium),
                 ),
               ],
             ),

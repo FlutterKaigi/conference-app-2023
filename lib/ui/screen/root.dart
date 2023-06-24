@@ -1,9 +1,11 @@
+import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/ui/screen/root_drawer.dart';
 import 'package:conference_2023/ui/screen/root_tab.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class RootScreen extends StatelessWidget {
+class RootScreen extends ConsumerWidget {
   const RootScreen({
     super.key,
     required this.navigator,
@@ -20,12 +22,13 @@ class RootScreen extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final localization = ref.watch(localizationProvider);
     final currentTab = _getCurrentTab(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(currentTab.title(context)),
+        title: Text(currentTab.title(localization)),
       ),
       drawer: RootDrawer(
         currentTab: currentTab,
