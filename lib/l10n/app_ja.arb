@@ -7,5 +7,12 @@
   "link": "リンク",
   "twitter": "Twitter",
   "github": "GitHub",
-  "medium": "Medium"
+  "medium": "Medium",
+  "pageTitleHome": "ホーム",
+  "pageTitleSessions": "セッション",
+  "pageTitleSponsors": "スポンサー",
+  "pageTitleVenue": "会場",
+  "pageTitleContributors": "コントリビューター",
+  "pageTitleSettings": "設定",
+  "pageTitleLicense": "ライセンス"
 }
