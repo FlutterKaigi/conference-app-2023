@@ -1,4 +1,6 @@
 import 'package:accessibility_tools/accessibility_tools.dart';
+import 'package:conference_2023/l10n/locales_provider.dart';
+import 'package:conference_2023/model/provider/theme_mode_notifier.dart';
 import 'package:conference_2023/ui/router/router_provider.dart';
 import 'package:conference_2023/ui/theme.dart';
 import 'package:flutter/material.dart';
@@ -13,10 +15,13 @@ class App extends ConsumerWidget {
     final router = ref.watch(routerProvider);
     final theme = ref.watch(themeProvider);
     final darkTheme = ref.watch(darkThemeProvider);
+    final themeMode = ref.watch(themeModeNotifierProvider);
+    final appLocale = ref.watch(appLocaleProvider);
 
     return MaterialApp.router(
       title: 'FlutterKaigi 2023 Official App',
       theme: theme,
+      themeMode: themeMode,
       darkTheme: darkTheme,
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
@@ -31,7 +36,11 @@ class App extends ConsumerWidget {
       routerDelegate: router.routerDelegate,
       routeInformationProvider: router.routeInformationProvider,
       builder: (context, child) => AccessibilityTools(
-        child: child,
+        child: Localizations.override(
+          context: context,
+          locale: appLocale,
+          child: child,
+        ),
       ),
     );
   }

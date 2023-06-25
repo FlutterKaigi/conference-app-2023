@@ -6,9 +6,11 @@ part of 'localization.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$localizationHash() => r'0e562e38e23be360af0c288d89eb99c4ca4b38f1';
+String _$localizationHash() => r'dc3a575eba9e26b5caef4dab3580de3a509cb8e7';
 
-/// See also [localization].
+/// A provider that returns the current [Localization].
+///
+/// Copied from [localization].
 @ProviderFor(localization)
 final localizationProvider = AutoDisposeProvider<Localization>.internal(
   localization,

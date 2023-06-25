@@ -6,20 +6,15 @@ part 'localization.g.dart';
 part 'localization_en.dart';
 part 'localization_ja.dart';
 
+/// A provider that returns the current [Localization].
 @riverpod
 Localization localization(LocalizationRef ref) {
-  final locales = ref.watch(localesProvider).valueOrNull ?? const [];
-
-  for (final locale in locales) {
-    switch (locale.languageCode) {
-      case 'en':
-        return _en;
-      case 'ja':
-        return _ja;
-    }
-  }
-
-  return _ja;
+  final appLocale = ref.watch(appLocaleProvider);
+  return switch (appLocale.languageCode) {
+    'en' => _en,
+    'ja' => _ja,
+    _ => _ja,
+  };
 }
 
 abstract base class Localization {
@@ -64,6 +59,24 @@ abstract base class Localization {
   String get pageTitleSettings;
 
   String get pageTitleLicense;
+
+  String get settingsThemeMode;
+
+  String get settingsThemeModeSystem;
+
+  String get settingsThemeModeLight;
+
+  String get settingsThemeModeDark;
+
+  String get settingsLocalizationMode;
+
+  String get settingsLocalizationModeSystem;
+
+  String get settingsLocalizationModeJa;
+
+  String get settingsLocalizationModeEn;
+
+  String get settingsResetPreferences;
 }
 
 /// A wrapper class of [DateFormat] for localization.
