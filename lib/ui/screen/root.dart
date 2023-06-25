@@ -1,6 +1,7 @@
 import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/ui/screen/root_drawer.dart';
-import 'package:conference_2023/ui/screen/root_navigation.dart';
+import 'package:conference_2023/ui/screen/root_navigation_bar.dart';
+import 'package:conference_2023/ui/screen/root_navigation_rail.dart';
 import 'package:conference_2023/ui/screen/root_tab.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:conference_2023/util/screen_size.dart';
@@ -35,12 +36,63 @@ class RootScreen extends ConsumerWidget {
       appBar: AppBar(
         title: Text(currentTab.title(localization)),
       ),
-      drawer: RootDrawer(
-        currentTab: currentTab,
-      ),
-      body: navigator,
+      drawer: switch (screenSize) {
+        ScreenSize.compact => RootDrawer(
+            currentTab: currentTab,
+          ),
+        _ => null,
+      },
+      body: switch (screenSize) {
+        ScreenSize.compact => navigator,
+        ScreenSize.medium => Row(
+            children: [
+              LayoutBuilder(
+                builder: (context, constraints) => SingleChildScrollView(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: constraints.maxHeight,
+                    ),
+                    child: IntrinsicHeight(
+                      child: RootNavigationRail(
+                        currentTab: currentTab,
+                        extended: false,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: navigator,
+              ),
+            ],
+          ),
+
+        /// TODO: wait for [https://github.com/flutter/flutter/issues/123113]
+        ScreenSize.expanded => Row(
+            children: [
+              LayoutBuilder(
+                builder: (context, constraints) => SingleChildScrollView(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: constraints.maxHeight,
+                    ),
+                    child: IntrinsicHeight(
+                      child: RootNavigationRail(
+                        currentTab: currentTab,
+                        extended: true,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: navigator,
+              ),
+            ],
+          ),
+      },
       bottomNavigationBar: switch (screenSize) {
-        ScreenSize.compact => RootNavigation(
+        ScreenSize.compact => RootNavigationBar(
             currentTab: currentTab,
           ),
         _ => null,

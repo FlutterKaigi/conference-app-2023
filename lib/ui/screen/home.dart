@@ -34,19 +34,16 @@ class HomePage extends ConsumerWidget {
             localization.flutterKaigiTitle,
             style: Theme.of(context).textTheme.headlineMedium,
           ),
-          const Gap(56),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              localization.event,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
+          const Gap(48),
+          Text(
+            localization.event,
+            style: Theme.of(context).textTheme.titleLarge,
           ),
-          const Gap(8),
+          const Gap(16),
           Table(
             columnWidths: const {
-              0: FixedColumnWidth(64),
-              1: FlexColumnWidth(),
+              0: FixedColumnWidth(56),
+              1: FixedColumnWidth(200),
             },
             children: [
               TableRow(
@@ -84,40 +81,34 @@ class HomePage extends ConsumerWidget {
               ),
             ],
           ),
-          const Gap(16),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              localization.link,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
+          const Gap(32),
+          Text(
+            localization.link,
+            style: Theme.of(context).textTheme.titleLarge,
           ),
-          const Gap(8),
-          SizedBox(
-            width: double.infinity,
-            child: Wrap(
-              spacing: 16,
-              children: [
-                OutlinedButton(
-                  onPressed: () {
-                    launchUrlString('https://twitter.com/flutterkaigi');
-                  },
-                  child: Text(localization.twitter),
-                ),
-                OutlinedButton(
-                  onPressed: () {
-                    launchUrlString('https://github.com/FlutterKaigi');
-                  },
-                  child: Text(localization.github),
-                ),
-                OutlinedButton(
-                  onPressed: () {
-                    launchUrlString('https://medium.com/flutterkaigi');
-                  },
-                  child: Text(localization.medium),
-                ),
-              ],
-            ),
+          const Gap(16),
+          Wrap(
+            spacing: 16,
+            children: [
+              OutlinedButton(
+                onPressed: () {
+                  launchUrlString('https://twitter.com/flutterkaigi');
+                },
+                child: Text(localization.twitter),
+              ),
+              OutlinedButton(
+                onPressed: () {
+                  launchUrlString('https://github.com/FlutterKaigi');
+                },
+                child: Text(localization.github),
+              ),
+              OutlinedButton(
+                onPressed: () {
+                  launchUrlString('https://medium.com/flutterkaigi');
+                },
+                child: Text(localization.medium),
+              ),
+            ],
           ),
         ],
       ),
