@@ -1,10 +1,9 @@
 part of 'localization.dart';
 
-const _ja = LocalizationJa();
+final _ja = LocalizationJa();
 
-@immutable
-class LocalizationJa implements Localization {
-  const LocalizationJa();
+final class LocalizationJa extends Localization {
+  LocalizationJa() : super(languageCode: 'ja');
 
   @override
   String get flutterKaigiTitle => 'FlutterKaigi 2023';
@@ -14,9 +13,6 @@ class LocalizationJa implements Localization {
 
   @override
   String get eventDate => '日時';
-
-  @override
-  String get eventDateDetail => '2023年11月10日(金)';
 
   @override
   String get eventPlace => '場所';

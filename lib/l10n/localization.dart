@@ -1,56 +1,78 @@
-import 'package:conference_2023/l10n/locale_provider.dart';
-import 'package:flutter/foundation.dart';
+import 'package:conference_2023/l10n/locales_provider.dart';
+import 'package:intl/intl.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'localization.g.dart';
+part 'localization_en.dart';
 part 'localization_ja.dart';
 
 @riverpod
 Localization localization(LocalizationRef ref) {
-  final locale = ref.watch(localeProvider);
+  final locales = ref.watch(localesProvider).valueOrNull ?? const [];
 
-  return switch (locale.valueOrNull?.languageCode) {
-    'ja' => _ja,
-    _ => _ja,
-  };
+  for (final locale in locales) {
+    switch (locale.languageCode) {
+      case 'en':
+        return _en;
+      case 'ja':
+        return _ja;
+    }
+  }
+
+  return _ja;
 }
 
-interface class Localization {
-  const Localization({
-    required this.flutterKaigiTitle,
-    required this.event,
-    required this.eventDate,
-    required this.eventDateDetail,
-    required this.eventPlace,
-    required this.eventPlaceDetail,
-    required this.link,
-    required this.twitter,
-    required this.github,
-    required this.medium,
-    required this.pageTitleHome,
-    required this.pageTitleSessions,
-    required this.pageTitleSponsors,
-    required this.pageTitleVenue,
-    required this.pageTitleContributors,
-    required this.pageTitleSettings,
-    required this.pageTitleLicense,
+abstract base class Localization {
+  Localization({
+    required this.languageCode,
   });
 
-  final String flutterKaigiTitle;
-  final String event;
-  final String eventDate;
-  final String eventDateDetail;
-  final String eventPlace;
-  final String eventPlaceDetail;
-  final String link;
-  final String twitter;
-  final String github;
-  final String medium;
-  final String pageTitleHome;
-  final String pageTitleSessions;
-  final String pageTitleSponsors;
-  final String pageTitleVenue;
-  final String pageTitleContributors;
-  final String pageTitleSettings;
-  final String pageTitleLicense;
+  final String languageCode;
+
+  late final dateFormatter = DateFormatter(
+    languageCode: languageCode,
+  );
+
+  String get flutterKaigiTitle;
+
+  String get event;
+
+  String get eventDate;
+
+  String get eventPlace;
+
+  String get eventPlaceDetail;
+
+  String get link;
+
+  String get twitter;
+
+  String get github;
+
+  String get medium;
+
+  String get pageTitleHome;
+
+  String get pageTitleSessions;
+
+  String get pageTitleSponsors;
+
+  String get pageTitleVenue;
+
+  String get pageTitleContributors;
+
+  String get pageTitleSettings;
+
+  String get pageTitleLicense;
+}
+
+/// A wrapper class of [DateFormat] for localization.
+class DateFormatter {
+  DateFormatter({
+    required this.languageCode,
+  });
+
+  final String languageCode;
+
+  late final yMMEd = DateFormat.yMMMEd(languageCode);
 }
