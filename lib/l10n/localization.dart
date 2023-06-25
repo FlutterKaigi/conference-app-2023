@@ -23,15 +23,15 @@ Localization localization(LocalizationRef ref) {
 }
 
 abstract base class Localization {
-  const Localization({
+  Localization({
     required this.languageCode,
   });
 
   final String languageCode;
 
-  DateFormatter get dateFormatter => DateFormatter(
-        languageCode: languageCode,
-      );
+  late final dateFormatter = DateFormatter(
+    languageCode: languageCode,
+  );
 
   String get flutterKaigiTitle;
 
@@ -68,11 +68,11 @@ abstract base class Localization {
 
 /// A wrapper class of [DateFormat] for localization.
 class DateFormatter {
-  const DateFormatter({
+  DateFormatter({
     required this.languageCode,
   });
 
   final String languageCode;
 
-  DateFormat get yMMEd => DateFormat.yMMMEd(languageCode);
+  late final yMMEd = DateFormat.yMMMEd(languageCode);
 }

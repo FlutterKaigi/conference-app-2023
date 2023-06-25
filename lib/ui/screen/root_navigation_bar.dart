@@ -16,23 +16,12 @@ class RootNavigationBar extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = ref.watch(localizationProvider);
 
-    final int selectedIndex;
-    final Color? indicatorColor;
-
-    switch (currentTab) {
-      case RootTab.home:
-        selectedIndex = 0;
-        indicatorColor = null;
-      case RootTab.sessions:
-        selectedIndex = 1;
-        indicatorColor = null;
-      case RootTab.venue:
-        selectedIndex = 2;
-        indicatorColor = null;
-      default:
-        selectedIndex = 0;
-        indicatorColor = Colors.transparent;
-    }
+    final (selectedIndex, indicatorColor) = switch (currentTab) {
+      RootTab.home => (0, null),
+      RootTab.sessions => (1, null),
+      RootTab.venue => (2, null),
+      _ => (0, Colors.transparent),
+    };
 
     return NavigationBar(
       indicatorColor: indicatorColor,
