@@ -1,6 +1,6 @@
 import 'package:conference_2023/gen/assets.gen.dart';
 import 'package:conference_2023/l10n/localization.dart';
-import 'package:conference_2023/util/extension/media_query_data_ext.dart';
+import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
@@ -11,13 +11,12 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final margin = MediaQuery.of(context).spacing;
     final localization = ref.watch(localizationProvider);
 
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(
         vertical: 16,
-        horizontal: margin,
+        horizontal: context.spacing,
       ),
       child: Column(
         children: [
