@@ -1,6 +1,7 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/model/preference/shared_preference_provider.dart';
+import 'package:conference_2023/model/provider/font_family_notifier.dart';
 import 'package:conference_2023/model/provider/localization_mode_notifier.dart';
 import 'package:conference_2023/model/provider/theme_mode_notifier.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
@@ -93,6 +94,45 @@ class SettingsPage extends ConsumerWidget {
           contentPadding: EdgeInsets.symmetric(
             horizontal: context.spacing,
           ),
+          title: Text(localization.settingsFontFamily),
+          onTap: () async {
+            final fontFamily = ref.read(fontFamilyNotifierProvider);
+
+            final result = await showConfirmationDialog<FontFamily>(
+              context: context,
+              title: localization.settingsFontFamily,
+              initialSelectedActionKey: fontFamily,
+              actions: [
+                ...FontFamily.values.map(
+                  (family) => AlertDialogAction(
+                    key: family,
+                    label: switch (family) {
+                      FontFamily.system => 'System',
+                      FontFamily.bizUdGothic => 'BIZ UDGothic',
+                      FontFamily.sawarabiGothic => 'Sawarabi Gothic',
+                      FontFamily.mPlus1p => 'M PLUS 1p',
+                      FontFamily.kaiseiOpti => 'Kaisei Opti',
+                      FontFamily.yuseiMagic => 'Yusei Magic',
+                      FontFamily.dotGothic16 => 'DotGothic16',
+                      FontFamily.hachiMaruPop => 'Hachi Maru Pop',
+                    },
+                  ),
+                ),
+              ],
+            );
+
+            if (result == null) {
+              /// cancel
+              return;
+            }
+
+            await ref.read(fontFamilyNotifierProvider.notifier).update(result);
+          },
+        ),
+        ListTile(
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: context.spacing,
+          ),
           title: Text(localization.settingsResetPreferences),
           onTap: () async {
             final result = await showOkCancelAlertDialog(
@@ -113,7 +153,8 @@ class SettingsPage extends ConsumerWidget {
             /// invalidate all providers which depend on [sharedPreferencesProvider]
             ref
               ..invalidate(themeModeNotifierProvider)
-              ..invalidate(localizationModeNotifierProvider);
+              ..invalidate(localizationModeNotifierProvider)
+              ..invalidate(fontFamilyNotifierProvider);
           },
         ),
       ],

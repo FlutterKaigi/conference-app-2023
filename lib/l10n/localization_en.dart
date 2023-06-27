@@ -78,5 +78,11 @@ final class LocalizationEn extends Localization {
   String get settingsLocalizationModeEn => 'English';
 
   @override
+  String get settingsFontFamily => 'Font Family';
+
+  @override
   String get settingsResetPreferences => 'Reset settings';
+
+  @override
+  String get licensesLicenses => 'License';
 }
