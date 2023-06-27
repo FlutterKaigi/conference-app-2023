@@ -21,8 +21,8 @@ class App extends ConsumerWidget {
     return MaterialApp.router(
       title: 'FlutterKaigi 2023 Official App',
       theme: theme,
-      themeMode: themeMode,
       darkTheme: darkTheme,
+      themeMode: themeMode,
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
