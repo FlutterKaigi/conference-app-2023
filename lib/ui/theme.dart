@@ -4,18 +4,18 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'theme.g.dart';
 
 @riverpod
-ThemeData theme(ThemeRef ref) => ThemeData(
-      colorScheme: lightColorScheme,
+ThemeData theme(ThemeRef ref, ColorScheme? colorScheme) => ThemeData(
+      colorScheme: colorScheme ?? lightDefaultColorScheme,
       useMaterial3: true,
     );
 
 @riverpod
-ThemeData darkTheme(DarkThemeRef ref) => ThemeData(
-      colorScheme: darkColorScheme,
+ThemeData darkTheme(DarkThemeRef ref, ColorScheme? colorScheme) => ThemeData(
+      colorScheme: colorScheme ?? darkDefaultColorScheme,
       useMaterial3: true,
     );
 
-const lightColorScheme = ColorScheme(
+const lightDefaultColorScheme = ColorScheme(
   brightness: Brightness.light,
   primary: Color(0xFF005AC1),
   onPrimary: Color(0xFFFFFFFF),
@@ -49,7 +49,7 @@ const lightColorScheme = ColorScheme(
   onSurfaceVariant: Color(0xFF44474F),
 );
 
-const darkColorScheme = ColorScheme(
+const darkDefaultColorScheme = ColorScheme(
   brightness: Brightness.dark,
   primary: Color(0xFFADC6FF),
   onPrimary: Color(0xFF002E69),

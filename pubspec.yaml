@@ -25,6 +25,7 @@ dependencies:
   go_router: ^9.0.0
 
   adaptive_dialog: ^1.9.0-0
+  dynamic_color: ^1.0.0
   gap: ^3.0.0
   flutter_svg: ^2.0.0
   shared_preferences: ^2.0.0
