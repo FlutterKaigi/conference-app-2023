@@ -29,4 +29,6 @@ extension $DebugRouteExtension on DebugRoute {
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
 }
