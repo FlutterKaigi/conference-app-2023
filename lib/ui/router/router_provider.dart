@@ -8,7 +8,6 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'router_provider.g.dart';
 
 @riverpod
-// ignore: unsupported_provider_value
 GoRouter router(RouterRef ref) => GoRouter(
       debugLogDiagnostics: kDebugMode,
       navigatorKey: rootNavigatorKey,

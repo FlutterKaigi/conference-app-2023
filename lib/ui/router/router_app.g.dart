@@ -62,6 +62,8 @@ extension $HomeRouteExtension on HomeRoute {
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
 }
 
 extension $SessionsRouteExtension on SessionsRoute {
@@ -77,6 +79,8 @@ extension $SessionsRouteExtension on SessionsRoute {
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
 }
 
 extension $SponsorsRouteExtension on SponsorsRoute {
@@ -92,6 +96,8 @@ extension $SponsorsRouteExtension on SponsorsRoute {
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
 }
 
 extension $VenueRouteExtension on VenueRoute {
@@ -107,6 +113,8 @@ extension $VenueRouteExtension on VenueRoute {
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
 }
 
 extension $ContributorsRouteExtension on ContributorsRoute {
@@ -123,6 +131,8 @@ extension $ContributorsRouteExtension on ContributorsRoute {
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
 }
 
 extension $SettingsRouteExtension on SettingsRoute {
@@ -138,6 +148,8 @@ extension $SettingsRouteExtension on SettingsRoute {
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
 }
 
 extension $LicenseRouteExtension on LicenseRoute {
@@ -153,4 +165,6 @@ extension $LicenseRouteExtension on LicenseRoute {
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
 }
