@@ -52,4 +52,31 @@ final class LocalizationJa extends Localization {
 
   @override
   String get pageTitleLicense => 'ライセンス';
+
+  @override
+  String get settingsThemeMode => '外観モード設定';
+
+  @override
+  String get settingsThemeModeSystem => 'システム';
+
+  @override
+  String get settingsThemeModeLight => 'ライトモード';
+
+  @override
+  String get settingsThemeModeDark => 'ダークモード';
+
+  @override
+  String get settingsLocalizationMode => '言語設定';
+
+  @override
+  String get settingsLocalizationModeSystem => 'システム';
+
+  @override
+  String get settingsLocalizationModeJa => '日本語';
+
+  @override
+  String get settingsLocalizationModeEn => 'English';
+
+  @override
+  String get settingsResetPreferences => '設定のリセット';
 }
