@@ -27,6 +27,7 @@ dependencies:
   adaptive_dialog: ^1.9.0-0
   dynamic_color: ^1.0.0
   gap: ^3.0.0
+  google_fonts: ^5.0.0
   flutter_svg: ^2.0.0
   shared_preferences: ^2.0.0
   url_launcher: ^6.0.0

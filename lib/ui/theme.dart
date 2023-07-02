@@ -1,19 +1,80 @@
+import 'package:conference_2023/model/provider/font_family_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 part 'theme.g.dart';
 
 @riverpod
-ThemeData theme(ThemeRef ref, ColorScheme? colorScheme) => ThemeData(
-      colorScheme: colorScheme ?? lightDefaultColorScheme,
-      useMaterial3: true,
-    );
+ThemeData theme(ThemeRef ref, ColorScheme? colorScheme) {
+  final baseTheme = ThemeData(
+    colorScheme: colorScheme ?? lightDefaultColorScheme,
+    useMaterial3: true,
+  );
+
+  final fontFamily = ref.watch(fontFamilyNotifierProvider);
+  return _setFontFamily(
+    baseTheme: baseTheme,
+    fontFamily: fontFamily,
+  );
+}
 
 @riverpod
-ThemeData darkTheme(DarkThemeRef ref, ColorScheme? colorScheme) => ThemeData(
-      colorScheme: colorScheme ?? darkDefaultColorScheme,
-      useMaterial3: true,
-    );
+ThemeData darkTheme(DarkThemeRef ref, ColorScheme? colorScheme) {
+  final baseTheme = ThemeData(
+    colorScheme: colorScheme ?? darkDefaultColorScheme,
+    useMaterial3: true,
+  );
+
+  final fontFamily = ref.watch(fontFamilyNotifierProvider);
+  return _setFontFamily(
+    baseTheme: baseTheme,
+    fontFamily: fontFamily,
+  );
+}
+
+ThemeData _setFontFamily({
+  required ThemeData baseTheme,
+  required FontFamily fontFamily,
+}) =>
+    switch (fontFamily) {
+      FontFamily.system => baseTheme,
+      FontFamily.bizUdGothic => baseTheme.copyWith(
+          textTheme: GoogleFonts.bizUDGothicTextTheme(
+            baseTheme.textTheme,
+          ),
+        ),
+      FontFamily.sawarabiGothic => baseTheme.copyWith(
+          textTheme: GoogleFonts.sawarabiGothicTextTheme(
+            baseTheme.textTheme,
+          ),
+        ),
+      FontFamily.mPlus1p => baseTheme.copyWith(
+          textTheme: GoogleFonts.mPlus1pTextTheme(
+            baseTheme.textTheme,
+          ),
+        ),
+      FontFamily.kaiseiOpti => baseTheme.copyWith(
+          textTheme: GoogleFonts.kaiseiOptiTextTheme(
+            baseTheme.textTheme,
+          ),
+        ),
+      FontFamily.yuseiMagic => baseTheme.copyWith(
+          textTheme: GoogleFonts.yuseiMagicTextTheme(
+            baseTheme.textTheme,
+          ),
+        ),
+      FontFamily.dotGothic16 => baseTheme.copyWith(
+          textTheme: GoogleFonts.dotGothic16TextTheme(
+            baseTheme.textTheme,
+          ),
+        ),
+      FontFamily.hachiMaruPop => baseTheme.copyWith(
+          textTheme: GoogleFonts.hachiMaruPopTextTheme(
+            baseTheme.textTheme,
+          ),
+        ),
+    };
 
 const lightDefaultColorScheme = ColorScheme(
   brightness: Brightness.light,

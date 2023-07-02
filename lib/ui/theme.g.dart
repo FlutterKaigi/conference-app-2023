@@ -6,7 +6,7 @@ part of 'theme.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$themeHash() => r'9e728513d8885091a9a0cb0ff30147a8dd394431';
+String _$themeHash() => r'110acf19fd44ceed6493c7ea004be7d8afd88eba';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -109,7 +109,7 @@ class ThemeProvider extends AutoDisposeProvider<ThemeData> {
   }
 }
 
-String _$darkThemeHash() => r'57a65bc1f5ef45e985c255122e36f40bd00acd66';
+String _$darkThemeHash() => r'de7b42139c3cd83213b8642741da01704150dccb';
 typedef DarkThemeRef = AutoDisposeProviderRef<ThemeData>;
 
 /// See also [darkTheme].

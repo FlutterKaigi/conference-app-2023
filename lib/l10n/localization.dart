@@ -76,7 +76,11 @@ abstract base class Localization {
 
   String get settingsLocalizationModeEn;
 
+  String get settingsFontFamily;
+
   String get settingsResetPreferences;
+
+  String get licensesLicenses;
 }
 
 /// A wrapper class of [DateFormat] for localization.
