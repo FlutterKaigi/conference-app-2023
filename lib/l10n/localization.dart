@@ -81,6 +81,22 @@ abstract base class Localization {
   String get settingsResetPreferences;
 
   String get licensesLicenses;
+
+  String get licensesAboutUs;
+
+  String get licensesPrivacyPolicy;
+
+  String get licensesPrivacyPolicyUrl;
+
+  String get licensesCodeOfConduct;
+
+  String get licensesCodeOfConductUrl;
+
+  String get licensesContactUs;
+
+  String get licensesContactUsUrl;
+
+  String get licensesLegalNotices;
 }
 
 /// A wrapper class of [DateFormat] for localization.

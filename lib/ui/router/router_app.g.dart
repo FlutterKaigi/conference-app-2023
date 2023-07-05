@@ -41,6 +41,18 @@ RouteBase get $rootRoute => ShellRouteData.$route(
         GoRouteData.$route(
           path: '/license',
           factory: $LicenseRouteExtension._fromState,
+          routes: [
+            GoRouteData.$route(
+              path: 'about-us',
+              factory: $AboutUsRouteExtension._fromState,
+              parentNavigatorKey: AboutUsRoute.$parentNavigatorKey,
+            ),
+            GoRouteData.$route(
+              path: 'legal-notices',
+              factory: $LegalNoticesRouteExtension._fromState,
+              parentNavigatorKey: LegalNoticesRoute.$parentNavigatorKey,
+            ),
+          ],
         ),
       ],
     );
@@ -157,6 +169,41 @@ extension $LicenseRouteExtension on LicenseRoute {
 
   String get location => GoRouteData.$location(
         '/license',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $AboutUsRouteExtension on AboutUsRoute {
+  static AboutUsRoute _fromState(GoRouterState state) => const AboutUsRoute();
+
+  String get location => GoRouteData.$location(
+        '/license/about-us',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $LegalNoticesRouteExtension on LegalNoticesRoute {
+  static LegalNoticesRoute _fromState(GoRouterState state) =>
+      const LegalNoticesRoute();
+
+  String get location => GoRouteData.$location(
+        '/license/legal-notices',
       );
 
   void go(BuildContext context) => context.go(location);
