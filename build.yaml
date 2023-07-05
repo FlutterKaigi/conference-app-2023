@@ -1,7 +1,18 @@
 targets:
   $default:
     builders:
+      flutter_gen_runner:
+        generate_for:
+          include:
+            - pubspec.yaml
+      freezed:
+        generate_for:
+          include:
+            - lib/**.dart
       json_serializable:
+        generate_for:
+          include:
+            - lib/**.dart
         options:
           # Options configure how source code is generated for every
           # `@JsonSerializable`-annotated class in the package.
@@ -17,3 +28,12 @@ targets:
           generic_argument_factories: false
           ignore_unannotated: false
           include_if_null: true
+      riverpod_generator:
+        generate_for:
+          include:
+            - lib/**.dart
+      go_router_builder:
+        generate_for:
+          include:
+            - lib/ui/router/router_app.dart
+            - lib/ui/router/router_debug.dart
