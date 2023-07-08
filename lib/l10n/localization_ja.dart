@@ -54,6 +54,12 @@ final class LocalizationJa extends Localization {
   String get pageTitleLicense => 'ライセンス';
 
   @override
+  String get contributorsDeveloper => '開発者';
+
+  @override
+  String get contributorsStaff => 'スタッフ';
+
+  @override
   String get settingsThemeMode => '外観モード設定';
 
   @override

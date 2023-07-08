@@ -130,11 +130,16 @@ extension $VenueRouteExtension on VenueRoute {
 }
 
 extension $ContributorsRouteExtension on ContributorsRoute {
-  static ContributorsRoute _fromState(GoRouterState state) =>
-      const ContributorsRoute();
+  static ContributorsRoute _fromState(GoRouterState state) => ContributorsRoute(
+        tab: _$convertMapValue(
+            'tab', state.queryParameters, _$ContributorsTabEnumMap._$fromName),
+      );
 
   String get location => GoRouteData.$location(
         '/contributors',
+        queryParams: {
+          if (tab != null) 'tab': _$ContributorsTabEnumMap[tab!],
+        },
       );
 
   void go(BuildContext context) => context.go(location);
@@ -214,4 +219,23 @@ extension $LegalNoticesRouteExtension on LegalNoticesRoute {
       context.pushReplacement(location);
 
   void replace(BuildContext context) => context.replace(location);
+}
+
+const _$ContributorsTabEnumMap = {
+  ContributorsTab.developer: 'developer',
+  ContributorsTab.staff: 'staff',
+};
+
+T? _$convertMapValue<T>(
+  String key,
+  Map<String, String> map,
+  T Function(String) converter,
+) {
+  final value = map[key];
+  return value == null ? null : converter(value);
+}
+
+extension<T extends Enum> on Map<T, String> {
+  T _$fromName(String value) =>
+      entries.singleWhere((element) => element.value == value).key;
 }

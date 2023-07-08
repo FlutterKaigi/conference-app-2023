@@ -60,6 +60,10 @@ abstract base class Localization {
 
   String get pageTitleLicense;
 
+  String get contributorsDeveloper;
+
+  String get contributorsStaff;
+
   String get settingsThemeMode;
 
   String get settingsThemeModeSystem;
