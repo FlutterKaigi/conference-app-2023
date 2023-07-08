@@ -48,6 +48,7 @@ dev_dependencies:
   riverpod_generator: ^2.0.0
   flutter_gen_runner: ^5.0.0
   go_router_builder: ^2.0.0
+  flutter_launcher_icons: ^0.13.0
 
 flutter_gen:
   integrations:
