@@ -58,8 +58,8 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        applicationIdSuffix appIdSuffix
-        resValue "string", "app_name", appName
+        applicationIdSuffix app_id_suffix
+        resValue "string", "app_name", app_name
     }
 
     buildTypes {
