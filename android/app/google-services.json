@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1034811787358",
+    "project_id": "flutterkakgi-2023-conf-app-dev",
+    "storage_bucket": "flutterkakgi-2023-conf-app-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034811787358:android:5cbfc46af99a9c9387cccf",
+        "android_client_info": {
+          "package_name": "jp.flutterkaigi.conf2023.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1034811787358-hjjudjudef28qs2soc9r0tgkn4qe6iq0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKALRQBbAeQBVUduiT_wY_sn5mtfp7jzo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1034811787358-hjjudjudef28qs2soc9r0tgkn4qe6iq0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1034811787358-1divp4mha0s582s1mbgfp2vbmb09f008.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "jp.flutterkaigi.conf2023.dev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
