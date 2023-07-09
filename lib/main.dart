@@ -1,6 +1,7 @@
 import 'package:conference_2023/app.dart';
 import 'package:conference_2023/model/preference/shared_preference_provider.dart';
 import 'package:conference_2023/util/font_lisence.dart';
+import 'package:conference_2023/util/web/firebase_options_web.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -11,15 +12,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (kIsWeb) {
     await Firebase.initializeApp(
-      /// FIXME: This is a temporary workaround for Firebase initialization
-      options: const FirebaseOptions(
-        apiKey: 'AIzaSyDCvtCUcu35-hK8AQF6GOkrmUuPQHAakHM',
-        appId: '1:1034811787358:web:6e39ea76ac0e44bd87cccf',
-        messagingSenderId: '1034811787358',
-        projectId: 'flutterkakgi-2023-conf-app-dev',
-        authDomain: 'flutterkakgi-2023-conf-app-dev.firebaseapp.com',
-        storageBucket: 'flutterkakgi-2023-conf-app-dev.appspot.com',
-      ),
+      options: firebaseOptionsWeb,
     );
   } else {
     /// Android, iOS
