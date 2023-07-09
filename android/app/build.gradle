@@ -33,7 +33,7 @@ tasks.whenTaskAdded { task ->
 }
 
 android {
-    namespace "jp.flutterkaigi.conference_2023"
+    namespace "jp.flutterkaigi.conf2023"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
