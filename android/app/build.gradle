@@ -2,6 +2,7 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services"
 }
 
 def localProperties = new Properties()
@@ -20,6 +21,15 @@ if (flutterVersionCode == null) {
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
     flutterVersionName = '1.0'
+}
+
+task selectGoogleServicesJson(type: Copy) {
+    from "src/$flavor/google-services.json"
+    into './'
+}
+
+tasks.whenTaskAdded { task ->
+    task.dependsOn selectGoogleServicesJson
 }
 
 android {
@@ -41,14 +51,15 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "jp.flutterkaigi.conference_2023"
+        applicationId "jp.flutterkaigi.conf2023"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        applicationIdSuffix appIdSuffix
+        resValue "string", "app_name", appName
     }
 
     buildTypes {
