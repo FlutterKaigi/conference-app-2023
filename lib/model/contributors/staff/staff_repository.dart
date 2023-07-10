@@ -1,3 +1,27 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:conference_2023/model/contributors/staff/staff.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'staff_repository.g.dart';
+
+@riverpod
+StaffRepository staffRepository(StaffRepositoryRef ref) => StaffRepository();
+
+class StaffRepository {
+  Future<List<Staff>> fetchStaffItemsByMockData() async {
+    await Future<void>.delayed(const Duration(milliseconds: 500));
+    final jsonResult = json.decode(mockStafDataBody) as Map<String, dynamic>;
+    final itemsJson = jsonResult['items'] as List<dynamic>;
+    return itemsJson
+        .map(
+          (e) => Staff.fromJson(e as Map<String, dynamic>),
+        )
+        .toList();
+  }
+}
+
 const mockStafDataBody = '''
 {
     "skip": 0,
@@ -68,7 +92,7 @@ const mockStafDataBody = '''
                 "createdAt": "2023-05-24T14:06:59.211Z",
                 "updatedAt": "2023-05-25T10:30:44.635Z"
             },
-            "displayName": "Aaaaa Bbbbb",
+            "displayName": "AaaaaBbbbb",
             "image": {
                 "_id": "646e0985beb9b686e8806757",
                 "altText": "",
@@ -115,7 +139,7 @@ const mockStafDataBody = '''
                 "createdAt": "2023-05-24T14:06:59.211Z",
                 "updatedAt": "2023-05-25T10:30:44.635Z"
             },
-            "displayName": "Ccccc Ddddd",
+            "displayName": "CccccDdddd",
             "image": {
                 "_id": "646e0985beb9b686e8806757",
                 "altText": "",
@@ -154,7 +178,7 @@ const mockStafDataBody = '''
                 "createdAt": "2023-05-24T14:06:59.211Z",
                 "updatedAt": "2023-05-25T10:30:44.635Z"
             },
-            "displayName": "Xxxxx Yyyyy",
+            "displayName": "XxxxxYyyyy",
             "image": {
                 "_id": "646e0985beb9b686e8806757",
                 "altText": "",

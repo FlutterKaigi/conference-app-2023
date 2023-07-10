@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'staff.freezed.dart';
@@ -6,8 +8,8 @@ part 'staff.g.dart';
 @freezed
 class Staff with _$Staff {
   const factory Staff({
-    required String id,
-    required String displayName,
+    @JsonKey(name: '_id') required String id,
+    @JsonKey(name: 'displayName') required String displayName,
     required StaffImage image,
     required List<Sns> sns,
   }) = _Staff;
@@ -18,7 +20,7 @@ class Staff with _$Staff {
 @freezed
 class StaffImage with _$StaffImage {
   const factory StaffImage({
-    required String altText,
+    required String? altText,
     required int height,
     required int width,
     required String src,

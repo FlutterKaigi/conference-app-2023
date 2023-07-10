@@ -20,7 +20,9 @@ Staff _$StaffFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Staff {
+  @JsonKey(name: '_id')
   String get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'displayName')
   String get displayName => throw _privateConstructorUsedError;
   StaffImage get image => throw _privateConstructorUsedError;
   List<Sns> get sns => throw _privateConstructorUsedError;
@@ -35,7 +37,11 @@ abstract class $StaffCopyWith<$Res> {
   factory $StaffCopyWith(Staff value, $Res Function(Staff) then) =
       _$StaffCopyWithImpl<$Res, Staff>;
   @useResult
-  $Res call({String id, String displayName, StaffImage image, List<Sns> sns});
+  $Res call(
+      {@JsonKey(name: '_id') String id,
+      @JsonKey(name: 'displayName') String displayName,
+      StaffImage image,
+      List<Sns> sns});
 
   $StaffImageCopyWith<$Res> get image;
 }
@@ -93,7 +99,11 @@ abstract class _$$_StaffCopyWith<$Res> implements $StaffCopyWith<$Res> {
       __$$_StaffCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String displayName, StaffImage image, List<Sns> sns});
+  $Res call(
+      {@JsonKey(name: '_id') String id,
+      @JsonKey(name: 'displayName') String displayName,
+      StaffImage image,
+      List<Sns> sns});
 
   @override
   $StaffImageCopyWith<$Res> get image;
@@ -138,8 +148,8 @@ class __$$_StaffCopyWithImpl<$Res> extends _$StaffCopyWithImpl<$Res, _$_Staff>
 @JsonSerializable()
 class _$_Staff implements _Staff {
   const _$_Staff(
-      {required this.id,
-      required this.displayName,
+      {@JsonKey(name: '_id') required this.id,
+      @JsonKey(name: 'displayName') required this.displayName,
       required this.image,
       required final List<Sns> sns})
       : _sns = sns;
@@ -148,8 +158,10 @@ class _$_Staff implements _Staff {
       _$$_StaffFromJson(json);
 
   @override
+  @JsonKey(name: '_id')
   final String id;
   @override
+  @JsonKey(name: 'displayName')
   final String displayName;
   @override
   final StaffImage image;
@@ -199,16 +211,18 @@ class _$_Staff implements _Staff {
 
 abstract class _Staff implements Staff {
   const factory _Staff(
-      {required final String id,
-      required final String displayName,
+      {@JsonKey(name: '_id') required final String id,
+      @JsonKey(name: 'displayName') required final String displayName,
       required final StaffImage image,
       required final List<Sns> sns}) = _$_Staff;
 
   factory _Staff.fromJson(Map<String, dynamic> json) = _$_Staff.fromJson;
 
   @override
+  @JsonKey(name: '_id')
   String get id;
   @override
+  @JsonKey(name: 'displayName')
   String get displayName;
   @override
   StaffImage get image;
@@ -226,7 +240,7 @@ StaffImage _$StaffImageFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StaffImage {
-  String get altText => throw _privateConstructorUsedError;
+  String? get altText => throw _privateConstructorUsedError;
   int get height => throw _privateConstructorUsedError;
   int get width => throw _privateConstructorUsedError;
   String get src => throw _privateConstructorUsedError;
@@ -243,7 +257,7 @@ abstract class $StaffImageCopyWith<$Res> {
           StaffImage value, $Res Function(StaffImage) then) =
       _$StaffImageCopyWithImpl<$Res, StaffImage>;
   @useResult
-  $Res call({String altText, int height, int width, String src});
+  $Res call({String? altText, int height, int width, String src});
 }
 
 /// @nodoc
@@ -259,16 +273,16 @@ class _$StaffImageCopyWithImpl<$Res, $Val extends StaffImage>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? altText = null,
+    Object? altText = freezed,
     Object? height = null,
     Object? width = null,
     Object? src = null,
   }) {
     return _then(_value.copyWith(
-      altText: null == altText
+      altText: freezed == altText
           ? _value.altText
           : altText // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       height: null == height
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
@@ -293,7 +307,7 @@ abstract class _$$_StaffImageCopyWith<$Res>
       __$$_StaffImageCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String altText, int height, int width, String src});
+  $Res call({String? altText, int height, int width, String src});
 }
 
 /// @nodoc
@@ -307,16 +321,16 @@ class __$$_StaffImageCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? altText = null,
+    Object? altText = freezed,
     Object? height = null,
     Object? width = null,
     Object? src = null,
   }) {
     return _then(_$_StaffImage(
-      altText: null == altText
+      altText: freezed == altText
           ? _value.altText
           : altText // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       height: null == height
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
@@ -346,7 +360,7 @@ class _$_StaffImage implements _StaffImage {
       _$$_StaffImageFromJson(json);
 
   @override
-  final String altText;
+  final String? altText;
   @override
   final int height;
   @override
@@ -390,7 +404,7 @@ class _$_StaffImage implements _StaffImage {
 
 abstract class _StaffImage implements StaffImage {
   const factory _StaffImage(
-      {required final String altText,
+      {required final String? altText,
       required final int height,
       required final int width,
       required final String src}) = _$_StaffImage;
@@ -399,7 +413,7 @@ abstract class _StaffImage implements StaffImage {
       _$_StaffImage.fromJson;
 
   @override
-  String get altText;
+  String? get altText;
   @override
   int get height;
   @override

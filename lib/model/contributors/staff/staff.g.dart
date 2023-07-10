@@ -11,8 +11,8 @@ _$_Staff _$$_StaffFromJson(Map<String, dynamic> json) => $checkedCreate(
       json,
       ($checkedConvert) {
         final val = _$_Staff(
-          id: $checkedConvert('id', (v) => v as String),
-          displayName: $checkedConvert('display_name', (v) => v as String),
+          id: $checkedConvert('_id', (v) => v as String),
+          displayName: $checkedConvert('displayName', (v) => v as String),
           image: $checkedConvert(
               'image', (v) => StaffImage.fromJson(v as Map<String, dynamic>)),
           sns: $checkedConvert(
@@ -23,12 +23,12 @@ _$_Staff _$$_StaffFromJson(Map<String, dynamic> json) => $checkedCreate(
         );
         return val;
       },
-      fieldKeyMap: const {'displayName': 'display_name'},
+      fieldKeyMap: const {'id': '_id'},
     );
 
 Map<String, dynamic> _$$_StaffToJson(_$_Staff instance) => <String, dynamic>{
-      'id': instance.id,
-      'display_name': instance.displayName,
+      '_id': instance.id,
+      'displayName': instance.displayName,
       'image': instance.image.toJson(),
       'sns': instance.sns.map((e) => e.toJson()).toList(),
     };
@@ -39,7 +39,7 @@ _$_StaffImage _$$_StaffImageFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = _$_StaffImage(
-          altText: $checkedConvert('alt_text', (v) => v as String),
+          altText: $checkedConvert('alt_text', (v) => v as String?),
           height: $checkedConvert('height', (v) => v as int),
           width: $checkedConvert('width', (v) => v as int),
           src: $checkedConvert('src', (v) => v as String),
