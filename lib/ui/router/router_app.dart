@@ -1,7 +1,9 @@
 import 'package:conference_2023/ui/router/navigator_key.dart';
 import 'package:conference_2023/ui/screen/contributors/contributors.dart';
 import 'package:conference_2023/ui/screen/home.dart';
-import 'package:conference_2023/ui/screen/licenses/license.dart';
+import 'package:conference_2023/ui/screen/licenses/about_us/about_us.dart';
+import 'package:conference_2023/ui/screen/licenses/legal_notices/legal_notices.dart';
+import 'package:conference_2023/ui/screen/licenses/licenses.dart';
 import 'package:conference_2023/ui/screen/root.dart';
 import 'package:conference_2023/ui/screen/sessions/sessions.dart';
 import 'package:conference_2023/ui/screen/settings/settings.dart';
@@ -34,6 +36,14 @@ part 'router_app.g.dart';
     ),
     TypedGoRoute<LicenseRoute>(
       path: LicenseRoute.path,
+      routes: [
+        TypedGoRoute<AboutUsRoute>(
+          path: 'about-us',
+        ),
+        TypedGoRoute<LegalNoticesRoute>(
+          path: 'legal-notices',
+        ),
+      ],
     ),
   ],
 )
@@ -111,16 +121,22 @@ class VenueRoute extends GoRouteData {
 }
 
 class ContributorsRoute extends GoRouteData {
-  const ContributorsRoute();
+  const ContributorsRoute({
+    this.tab,
+  });
 
   static final $navigatorKey = shellNavigatorKey;
   static const path = '/contributors';
+
+  final ContributorsTab? tab;
 
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) {
     return NoTransitionPage(
       key: state.pageKey,
-      child: const ContributorsPage(),
+      child: ContributorsPage(
+        tab: tab ?? ContributorsTab.developer,
+      ),
     );
   }
 }
@@ -151,6 +167,34 @@ class LicenseRoute extends GoRouteData {
     return NoTransitionPage(
       key: state.pageKey,
       child: const LicensesPage(),
+    );
+  }
+}
+
+class AboutUsRoute extends GoRouteData {
+  const AboutUsRoute();
+
+  static final $parentNavigatorKey = rootNavigatorKey;
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return MaterialPage(
+      key: state.pageKey,
+      child: const AboutUsPage(),
+    );
+  }
+}
+
+class LegalNoticesRoute extends GoRouteData {
+  const LegalNoticesRoute();
+
+  static final $parentNavigatorKey = rootNavigatorKey;
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return MaterialPage(
+      key: state.pageKey,
+      child: const LegalNoticesPage(),
     );
   }
 }

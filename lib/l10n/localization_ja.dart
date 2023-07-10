@@ -54,6 +54,12 @@ final class LocalizationJa extends Localization {
   String get pageTitleLicense => 'ライセンス';
 
   @override
+  String get contributorsDeveloper => '開発者';
+
+  @override
+  String get contributorsStaff => 'スタッフ';
+
+  @override
   String get settingsThemeMode => '外観モード設定';
 
   @override
@@ -85,4 +91,31 @@ final class LocalizationJa extends Localization {
 
   @override
   String get licensesLicenses => 'ライセンス';
+
+  @override
+  String get licensesAboutUs => '私たちについて';
+
+  @override
+  String get licensesPrivacyPolicy => 'プライバシーポリシー';
+
+  @override
+  String get licensesPrivacyPolicyUrl =>
+      'http://flutterkaigi.jp/flutterkaigi/Privacy-Policy.ja.html';
+
+  @override
+  String get licensesCodeOfConduct => '行動規範';
+
+  @override
+  String get licensesCodeOfConductUrl =>
+      'http://flutterkaigi.jp/flutterkaigi/Code-of-Conduct.ja.html';
+
+  @override
+  String get licensesContactUs => 'お問い合わせ';
+
+  @override
+  String get licensesContactUsUrl =>
+      'https://docs.google.com/forms/d/e/1FAIpQLSemYPFEWpP8594MWI4k3Nz45RJzMS7pz1ufwtnX4t3V7z2TOw/viewform';
+
+  @override
+  String get licensesLegalNotices => '法的事項';
 }

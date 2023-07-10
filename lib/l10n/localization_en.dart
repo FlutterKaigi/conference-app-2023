@@ -54,6 +54,12 @@ final class LocalizationEn extends Localization {
   String get pageTitleLicense => 'License';
 
   @override
+  String get contributorsDeveloper => 'Developer';
+
+  @override
+  String get contributorsStaff => 'Staff';
+
+  @override
   String get settingsThemeMode => 'Appearance';
 
   @override
@@ -85,4 +91,31 @@ final class LocalizationEn extends Localization {
 
   @override
   String get licensesLicenses => 'License';
+
+  @override
+  String get licensesAboutUs => 'About us';
+
+  @override
+  String get licensesPrivacyPolicy => 'Privacy Policy';
+
+  @override
+  String get licensesPrivacyPolicyUrl =>
+      'https://flutterkaigi.jp/flutterkaigi/Privacy-Policy.html';
+
+  @override
+  String get licensesCodeOfConduct => 'Code of Conduct';
+
+  @override
+  String get licensesCodeOfConductUrl =>
+      'https://flutterkaigi.jp/flutterkaigi/Code-of-Conduct.html';
+
+  @override
+  String get licensesContactUs => 'Contact us';
+
+  @override
+  String get licensesContactUsUrl =>
+      'https://docs.google.com/forms/d/e/1FAIpQLSemYPFEWpP8594MWI4k3Nz45RJzMS7pz1ufwtnX4t3V7z2TOw/viewform';
+
+  @override
+  String get licensesLegalNotices => 'Legal Notices';
 }
