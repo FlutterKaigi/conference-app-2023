@@ -91,7 +91,7 @@ const mockStafDataBody = '''
                 "createdAt": "2023-05-24T14:06:59.211Z",
                 "updatedAt": "2023-05-25T10:30:44.635Z"
             },
-            "displayName": "AaaaaBbbbb",
+            "displayName": "Aaaaa Bbbbb",
             "image": {
                 "_id": "646e0985beb9b686e8806757",
                 "altText": "",
@@ -138,7 +138,7 @@ const mockStafDataBody = '''
                 "createdAt": "2023-05-24T14:06:59.211Z",
                 "updatedAt": "2023-05-25T10:30:44.635Z"
             },
-            "displayName": "CccccDdddd",
+            "displayName": "Ccccc Ddddd",
             "image": {
                 "_id": "646e0985beb9b686e8806757",
                 "altText": "",
@@ -177,7 +177,7 @@ const mockStafDataBody = '''
                 "createdAt": "2023-05-24T14:06:59.211Z",
                 "updatedAt": "2023-05-25T10:30:44.635Z"
             },
-            "displayName": "XxxxxYyyyy",
+            "displayName": "Xxxxx Yyyyy",
             "image": {
                 "_id": "646e0985beb9b686e8806757",
                 "altText": "",
