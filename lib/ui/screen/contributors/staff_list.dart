@@ -1,4 +1,3 @@
-import 'package:conference_2023/model/contributors/staff/staff.dart';
 import 'package:conference_2023/model/contributors/staff/staff_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
