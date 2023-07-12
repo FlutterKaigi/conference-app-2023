@@ -19,10 +19,10 @@ class StaffListPage extends ConsumerWidget {
           '$error',
         ),
       ),
-      data: (staffItems) => ListView.builder(
-        itemCount: staffItems.length,
+      data: (items) => ListView.builder(
+        itemCount: items.length,
         itemBuilder: (context, index) {
-          final Staff staffItem = staffItems[index];
+          final Staff staffItem = items[index];
           return ListTile(
             leading: const Icon(Icons.account_circle),
             title: Text(
