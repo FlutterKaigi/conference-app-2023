@@ -9,6 +9,9 @@ targets:
         generate_for:
           include:
             - lib/**.dart
+        options:
+          map: false
+          when: false
       json_serializable:
         generate_for:
           include:
