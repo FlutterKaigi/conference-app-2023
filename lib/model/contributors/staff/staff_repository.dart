@@ -6,9 +6,11 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'staff_repository.g.dart';
 
 @riverpod
-StaffRepository staffRepository(StaffRepositoryRef ref) => StaffRepository();
+StaffRepository staffRepository(StaffRepositoryRef ref) =>
+    const StaffRepository();
 
 class StaffRepository {
+  const StaffRepository();
   Future<List<Staff>> fetchStaffItemsByMockData() async {
     await Future<void>.delayed(const Duration(milliseconds: 500));
     final jsonResult = json.decode(mockStafDataBody) as Map<String, dynamic>;
