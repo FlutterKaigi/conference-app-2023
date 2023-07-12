@@ -22,7 +22,7 @@ class StaffListPage extends ConsumerWidget {
       data: (items) => ListView.builder(
         itemCount: items.length,
         itemBuilder: (context, index) {
-          final Staff staffItem = items[index];
+          final staffItem = items[index];
           return ListTile(
             leading: const Icon(Icons.account_circle),
             title: Text(
