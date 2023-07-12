@@ -1,5 +1,6 @@
 import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/ui/router/router_app.dart';
+import 'package:conference_2023/ui/screen/contributors/developers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
@@ -48,7 +49,7 @@ class ContributorsPage extends ConsumerWidget {
         const Gap(16),
         Expanded(
           child: switch (tab) {
-            ContributorsTab.developer => const Placeholder(),
+            ContributorsTab.developer => const Developers(),
             ContributorsTab.staff => const Placeholder(),
           },
         ),
