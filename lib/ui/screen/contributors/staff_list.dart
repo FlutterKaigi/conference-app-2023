@@ -12,7 +12,7 @@ class StaffListPage extends ConsumerWidget {
 
     return state.when(
       loading: () => const Center(
-        child: CircularProgressIndicator(),
+        child: CircularProgressIndicator.adaptive(),
       ),
       error: (error, stackTrace) => Center(
         child: Text(
