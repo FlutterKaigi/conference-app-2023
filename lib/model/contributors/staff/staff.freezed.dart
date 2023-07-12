@@ -145,7 +145,7 @@ class __$$_StaffCopyWithImpl<$Res> extends _$StaffCopyWithImpl<$Res, _$_Staff>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Staff implements _Staff {
+class _$_Staff with DiagnosticableTreeMixin implements _Staff {
   const _$_Staff(
       {@JsonKey(name: '_id') required this.id,
       required this.displayName,
@@ -172,8 +172,19 @@ class _$_Staff implements _Staff {
   }
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'Staff(id: $id, displayName: $displayName, image: $image, sns: $sns)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'Staff'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('displayName', displayName))
+      ..add(DiagnosticsProperty('image', image))
+      ..add(DiagnosticsProperty('sns', sns));
   }
 
   @override
@@ -346,7 +357,7 @@ class __$$_StaffImageCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_StaffImage implements _StaffImage {
+class _$_StaffImage with DiagnosticableTreeMixin implements _StaffImage {
   const _$_StaffImage(
       {required this.altText,
       required this.height,
@@ -366,8 +377,19 @@ class _$_StaffImage implements _StaffImage {
   final String src;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'StaffImage(altText: $altText, height: $height, width: $width, src: $src)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'StaffImage'))
+      ..add(DiagnosticsProperty('altText', altText))
+      ..add(DiagnosticsProperty('height', height))
+      ..add(DiagnosticsProperty('width', width))
+      ..add(DiagnosticsProperty('src', src));
   }
 
   @override
@@ -509,7 +531,7 @@ class __$$_SnsCopyWithImpl<$Res> extends _$SnsCopyWithImpl<$Res, _$_Sns>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Sns implements _Sns {
+class _$_Sns with DiagnosticableTreeMixin implements _Sns {
   const _$_Sns({required this.type, required this.value});
 
   factory _$_Sns.fromJson(Map<String, dynamic> json) => _$$_SnsFromJson(json);
@@ -520,8 +542,17 @@ class _$_Sns implements _Sns {
   final String value;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'Sns(type: $type, value: $value)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'Sns'))
+      ..add(DiagnosticsProperty('type', type))
+      ..add(DiagnosticsProperty('value', value));
   }
 
   @override
