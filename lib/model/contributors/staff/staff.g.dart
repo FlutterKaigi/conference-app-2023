@@ -39,19 +39,18 @@ _$_StaffImage _$$_StaffImageFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = _$_StaffImage(
-          altText: $checkedConvert('alt_text', (v) => v as String?),
+          altText: $checkedConvert('altText', (v) => v as String),
           height: $checkedConvert('height', (v) => v as int),
           width: $checkedConvert('width', (v) => v as int),
           src: $checkedConvert('src', (v) => v as String),
         );
         return val;
       },
-      fieldKeyMap: const {'altText': 'alt_text'},
     );
 
 Map<String, dynamic> _$$_StaffImageToJson(_$_StaffImage instance) =>
     <String, dynamic>{
-      'alt_text': instance.altText,
+      'altText': instance.altText,
       'height': instance.height,
       'width': instance.width,
       'src': instance.src,
