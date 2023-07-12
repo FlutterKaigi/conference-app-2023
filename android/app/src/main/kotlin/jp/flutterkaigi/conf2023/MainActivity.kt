@@ -1,4 +1,4 @@
-package jp.flutterkaigi.conference_2023
+package jp.flutterkaigi.conf2023
 
 import io.flutter.embedding.android.FlutterActivity
 

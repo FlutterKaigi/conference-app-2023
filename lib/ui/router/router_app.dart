@@ -121,16 +121,22 @@ class VenueRoute extends GoRouteData {
 }
 
 class ContributorsRoute extends GoRouteData {
-  const ContributorsRoute();
+  const ContributorsRoute({
+    this.tab,
+  });
 
   static final $navigatorKey = shellNavigatorKey;
   static const path = '/contributors';
+
+  final ContributorsTab? tab;
 
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) {
     return NoTransitionPage(
       key: state.pageKey,
-      child: const ContributorsPage(),
+      child: ContributorsPage(
+        tab: tab ?? ContributorsTab.developer,
+      ),
     );
   }
 }
