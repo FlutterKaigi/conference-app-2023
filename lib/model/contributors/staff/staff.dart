@@ -7,7 +7,6 @@ part 'staff.g.dart';
 @freezed
 class Staff with _$Staff {
   const factory Staff({
-    @JsonKey(name: '_id') required String id,
     required String displayName,
     required StaffImage image,
     required List<Sns> sns,

@@ -20,8 +20,6 @@ Staff _$StaffFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Staff {
-  @JsonKey(name: '_id')
-  String get id => throw _privateConstructorUsedError;
   String get displayName => throw _privateConstructorUsedError;
   StaffImage get image => throw _privateConstructorUsedError;
   List<Sns> get sns => throw _privateConstructorUsedError;
@@ -36,11 +34,7 @@ abstract class $StaffCopyWith<$Res> {
   factory $StaffCopyWith(Staff value, $Res Function(Staff) then) =
       _$StaffCopyWithImpl<$Res, Staff>;
   @useResult
-  $Res call(
-      {@JsonKey(name: '_id') String id,
-      String displayName,
-      StaffImage image,
-      List<Sns> sns});
+  $Res call({String displayName, StaffImage image, List<Sns> sns});
 
   $StaffImageCopyWith<$Res> get image;
 }
@@ -58,16 +52,11 @@ class _$StaffCopyWithImpl<$Res, $Val extends Staff>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? displayName = null,
     Object? image = null,
     Object? sns = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       displayName: null == displayName
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
@@ -98,11 +87,7 @@ abstract class _$$_StaffCopyWith<$Res> implements $StaffCopyWith<$Res> {
       __$$_StaffCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(name: '_id') String id,
-      String displayName,
-      StaffImage image,
-      List<Sns> sns});
+  $Res call({String displayName, StaffImage image, List<Sns> sns});
 
   @override
   $StaffImageCopyWith<$Res> get image;
@@ -117,16 +102,11 @@ class __$$_StaffCopyWithImpl<$Res> extends _$StaffCopyWithImpl<$Res, _$_Staff>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? displayName = null,
     Object? image = null,
     Object? sns = null,
   }) {
     return _then(_$_Staff(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       displayName: null == displayName
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
@@ -147,8 +127,7 @@ class __$$_StaffCopyWithImpl<$Res> extends _$StaffCopyWithImpl<$Res, _$_Staff>
 @JsonSerializable()
 class _$_Staff with DiagnosticableTreeMixin implements _Staff {
   const _$_Staff(
-      {@JsonKey(name: '_id') required this.id,
-      required this.displayName,
+      {required this.displayName,
       required this.image,
       required final List<Sns> sns})
       : _sns = sns;
@@ -156,9 +135,6 @@ class _$_Staff with DiagnosticableTreeMixin implements _Staff {
   factory _$_Staff.fromJson(Map<String, dynamic> json) =>
       _$$_StaffFromJson(json);
 
-  @override
-  @JsonKey(name: '_id')
-  final String id;
   @override
   final String displayName;
   @override
@@ -173,7 +149,7 @@ class _$_Staff with DiagnosticableTreeMixin implements _Staff {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Staff(id: $id, displayName: $displayName, image: $image, sns: $sns)';
+    return 'Staff(displayName: $displayName, image: $image, sns: $sns)';
   }
 
   @override
@@ -181,7 +157,6 @@ class _$_Staff with DiagnosticableTreeMixin implements _Staff {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Staff'))
-      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('displayName', displayName))
       ..add(DiagnosticsProperty('image', image))
       ..add(DiagnosticsProperty('sns', sns));
@@ -192,7 +167,6 @@ class _$_Staff with DiagnosticableTreeMixin implements _Staff {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Staff &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.displayName, displayName) ||
                 other.displayName == displayName) &&
             (identical(other.image, image) || other.image == image) &&
@@ -201,7 +175,7 @@ class _$_Staff with DiagnosticableTreeMixin implements _Staff {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, displayName, image,
+  int get hashCode => Object.hash(runtimeType, displayName, image,
       const DeepCollectionEquality().hash(_sns));
 
   @JsonKey(ignore: true)
@@ -220,16 +194,12 @@ class _$_Staff with DiagnosticableTreeMixin implements _Staff {
 
 abstract class _Staff implements Staff {
   const factory _Staff(
-      {@JsonKey(name: '_id') required final String id,
-      required final String displayName,
+      {required final String displayName,
       required final StaffImage image,
       required final List<Sns> sns}) = _$_Staff;
 
   factory _Staff.fromJson(Map<String, dynamic> json) = _$_Staff.fromJson;
 
-  @override
-  @JsonKey(name: '_id')
-  String get id;
   @override
   String get displayName;
   @override

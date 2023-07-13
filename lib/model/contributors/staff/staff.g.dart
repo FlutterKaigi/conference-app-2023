@@ -11,7 +11,6 @@ _$_Staff _$$_StaffFromJson(Map<String, dynamic> json) => $checkedCreate(
       json,
       ($checkedConvert) {
         final val = _$_Staff(
-          id: $checkedConvert('_id', (v) => v as String),
           displayName: $checkedConvert('displayName', (v) => v as String),
           image: $checkedConvert(
               'image', (v) => StaffImage.fromJson(v as Map<String, dynamic>)),
@@ -23,11 +22,9 @@ _$_Staff _$$_StaffFromJson(Map<String, dynamic> json) => $checkedCreate(
         );
         return val;
       },
-      fieldKeyMap: const {'id': '_id'},
     );
 
 Map<String, dynamic> _$$_StaffToJson(_$_Staff instance) => <String, dynamic>{
-      '_id': instance.id,
       'displayName': instance.displayName,
       'image': instance.image.toJson(),
       'sns': instance.sns.map((e) => e.toJson()).toList(),
