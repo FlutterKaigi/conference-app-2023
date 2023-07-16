@@ -23,7 +23,14 @@ class StaffListPage extends ConsumerWidget {
         itemBuilder: (context, index) {
           final staffItem = items[index];
           return ListTile(
-            leading: const Icon(Icons.account_circle),
+            leading: SizedBox(
+              width: 48,
+              height: 48,
+              child: Image.network(
+                staffItem.userIcon,
+                fit: BoxFit.cover,
+              ),
+            ),
             title: Text(
               staffItem.displayName,
             ),
