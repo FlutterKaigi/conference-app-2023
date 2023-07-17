@@ -10,11 +10,22 @@ FirebaseRemoteConfig remoteConfig(
 ) =>
     FirebaseRemoteConfig.instance;
 
+enum RemoteConfigKey {
+  staff('staff'),
+  developers('developer')
+  ;
+
+  const RemoteConfigKey(this.key);
+
+  final String key;
+}
+
 Future<void> initFirebaseRemoteConfig() async {
   final remoteConfig = FirebaseRemoteConfig.instance;
   await remoteConfig.setDefaults(
     const {
       'staff': '{"items": []}',
+      'developer': '{"items": []}',
     },
   );
 

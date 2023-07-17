@@ -11,8 +11,8 @@ List<RouteBase> get $appRoutes => [
     ];
 
 RouteBase get $rootRoute => ShellRouteData.$route(
-      factory: $RootRouteExtension._fromState,
       navigatorKey: RootRoute.$navigatorKey,
+      factory: $RootRouteExtension._fromState,
       routes: [
         GoRouteData.$route(
           path: '/',
@@ -152,6 +152,11 @@ extension $ContributorsRouteExtension on ContributorsRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
+const _$ContributorsTabEnumMap = {
+  ContributorsTab.developer: 'developer',
+  ContributorsTab.staff: 'staff',
+};
+
 extension $SettingsRouteExtension on SettingsRoute {
   static SettingsRoute _fromState(GoRouterState state) => const SettingsRoute();
 
@@ -220,11 +225,6 @@ extension $LegalNoticesRouteExtension on LegalNoticesRoute {
 
   void replace(BuildContext context) => context.replace(location);
 }
-
-const _$ContributorsTabEnumMap = {
-  ContributorsTab.developer: 'developer',
-  ContributorsTab.staff: 'staff',
-};
 
 T? _$convertMapValue<T>(
   String key,
