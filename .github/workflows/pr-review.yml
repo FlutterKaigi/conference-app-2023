@@ -27,6 +27,6 @@ jobs:
         with:
           channel: 'beta'
           cache: true
-      - run: dart pub get
+      - run: flutter pub get
       - run: dart format --output=none --set-exit-if-changed .
       - run: flutter test
