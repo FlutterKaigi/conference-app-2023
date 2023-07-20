@@ -4,8 +4,8 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.1.0-163.1.beta <4.0.0'
-  flutter: '>=3.12.0-1.1.pre'
+  sdk: '>=3.1.0-262.1.beta <4.0.0'
+  flutter: '>=3.13.0-0.1.pre'
 
 dependencies:
   flutter:
@@ -18,11 +18,12 @@ dependencies:
 
   # annotation
   freezed_annotation: ^2.0.0
-  json_annotation: ^4.0.0
+  json_annotation: ^4.8.1
   riverpod_annotation: ^2.0.0
 
   # firebase
   firebase_core: ^2.0.0
+  firebase_remote_config: ^4.0.0
 
   flutter_riverpod: ^2.0.0
   go_router: ^9.0.0
@@ -51,6 +52,7 @@ dev_dependencies:
   riverpod_generator: ^2.0.0
   flutter_gen_runner: ^5.0.0
   go_router_builder: ^2.0.0
+  flutter_launcher_icons: ^0.13.0
 
 flutter_gen:
   integrations:

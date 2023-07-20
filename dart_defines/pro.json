@@ -1,5 +1,6 @@
 {
   "flavor": "pro",
   "app_name": "FlutterKaigi 2023",
-  "app_id_suffix": ""
+  "app_id_suffix": "",
+  "app_icon_suffix": "-pro"
 }

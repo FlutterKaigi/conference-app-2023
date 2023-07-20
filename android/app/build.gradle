@@ -28,8 +28,22 @@ task selectGoogleServicesJson(type: Copy) {
     into './'
 }
 
+task copyMipmaps(type: Copy) {
+    from "src/$flavor/res"
+    include 'mipmap-*/'
+    into 'src/main/res'
+}
+
+task copyDrawables(type: Copy) {
+    from "src/$flavor/res"
+    include 'drawable-*/'
+    into 'src/main/res'
+}
+
 tasks.whenTaskAdded { task ->
     task.dependsOn selectGoogleServicesJson
+    task.dependsOn copyMipmaps
+    task.dependsOn copyDrawables
 }
 
 android {
