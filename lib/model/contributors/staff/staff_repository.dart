@@ -11,6 +11,7 @@ StaffRepository staffRepository(StaffRepositoryRef ref) =>
 
 class StaffRepository {
   const StaffRepository();
+
   Future<List<Staff>> fetchStaffItemsByMockData() async {
     await Future<void>.delayed(const Duration(milliseconds: 500));
     final jsonResult = json.decode(mockStafDataBody) as Map<String, dynamic>;
