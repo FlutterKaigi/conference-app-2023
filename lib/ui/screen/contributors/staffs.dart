@@ -24,15 +24,18 @@ class Staffs extends ConsumerWidget {
         itemBuilder: (context, index) {
           final staffItem = items[index];
           return ListTile(
-            leading: CircleAvatar(
-              foregroundImage: staffItem.userIcon != ''
-                  ? NetworkImage(
+            leading: staffItem.userIcon != ''
+                ? CircleAvatar(
+                    foregroundImage: NetworkImage(
                       staffItem.userIcon!,
-                    )
-                  : const NetworkImage(
+                    ),
+                  )
+                : const CircleAvatar(
+                    backgroundColor: Colors.white,
+                    foregroundImage: NetworkImage(
                       'https://avatars.githubusercontent.com/u/79250595?v=4',
                     ),
-            ),
+                  ),
             title: Text(
               staffItem.displayName,
             ),
