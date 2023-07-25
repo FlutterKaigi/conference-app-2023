@@ -1,6 +1,7 @@
 import 'package:conference_2023/model/contributors/staff/staff_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Staffs extends ConsumerWidget {
   const Staffs({super.key});
@@ -35,6 +36,12 @@ class Staffs extends ConsumerWidget {
             title: Text(
               staffItem.displayName,
             ),
+            onTap: () async {
+              final url = Uri.parse(staffItem.github);
+              if (await canLaunchUrl(url)) {
+                await launchUrl(url);
+              }
+            },
           );
         },
       ),
