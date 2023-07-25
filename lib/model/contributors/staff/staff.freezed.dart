@@ -169,7 +169,7 @@ Staff _$StaffFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Staff {
   String get displayName => throw _privateConstructorUsedError;
-  String? get userIcon => throw _privateConstructorUsedError;
+  String get userIcon => throw _privateConstructorUsedError;
   String get github => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -182,7 +182,7 @@ abstract class $StaffCopyWith<$Res> {
   factory $StaffCopyWith(Staff value, $Res Function(Staff) then) =
       _$StaffCopyWithImpl<$Res, Staff>;
   @useResult
-  $Res call({String displayName, String? userIcon, String github});
+  $Res call({String displayName, String userIcon, String github});
 }
 
 /// @nodoc
@@ -199,7 +199,7 @@ class _$StaffCopyWithImpl<$Res, $Val extends Staff>
   @override
   $Res call({
     Object? displayName = null,
-    Object? userIcon = freezed,
+    Object? userIcon = null,
     Object? github = null,
   }) {
     return _then(_value.copyWith(
@@ -207,10 +207,10 @@ class _$StaffCopyWithImpl<$Res, $Val extends Staff>
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
               as String,
-      userIcon: freezed == userIcon
+      userIcon: null == userIcon
           ? _value.userIcon
           : userIcon // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       github: null == github
           ? _value.github
           : github // ignore: cast_nullable_to_non_nullable
@@ -225,7 +225,7 @@ abstract class _$$_StaffCopyWith<$Res> implements $StaffCopyWith<$Res> {
       __$$_StaffCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String displayName, String? userIcon, String github});
+  $Res call({String displayName, String userIcon, String github});
 }
 
 /// @nodoc
@@ -238,7 +238,7 @@ class __$$_StaffCopyWithImpl<$Res> extends _$StaffCopyWithImpl<$Res, _$_Staff>
   @override
   $Res call({
     Object? displayName = null,
-    Object? userIcon = freezed,
+    Object? userIcon = null,
     Object? github = null,
   }) {
     return _then(_$_Staff(
@@ -246,10 +246,10 @@ class __$$_StaffCopyWithImpl<$Res> extends _$StaffCopyWithImpl<$Res, _$_Staff>
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
               as String,
-      userIcon: freezed == userIcon
+      userIcon: null == userIcon
           ? _value.userIcon
           : userIcon // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       github: null == github
           ? _value.github
           : github // ignore: cast_nullable_to_non_nullable
@@ -262,9 +262,7 @@ class __$$_StaffCopyWithImpl<$Res> extends _$StaffCopyWithImpl<$Res, _$_Staff>
 @JsonSerializable()
 class _$_Staff with DiagnosticableTreeMixin implements _Staff {
   const _$_Staff(
-      {required this.displayName,
-      required this.userIcon,
-      required this.github});
+      {required this.displayName, this.userIcon = '', required this.github});
 
   factory _$_Staff.fromJson(Map<String, dynamic> json) =>
       _$$_StaffFromJson(json);
@@ -272,7 +270,8 @@ class _$_Staff with DiagnosticableTreeMixin implements _Staff {
   @override
   final String displayName;
   @override
-  final String? userIcon;
+  @JsonKey()
+  final String userIcon;
   @override
   final String github;
 
@@ -324,7 +323,7 @@ class _$_Staff with DiagnosticableTreeMixin implements _Staff {
 abstract class _Staff implements Staff {
   const factory _Staff(
       {required final String displayName,
-      required final String? userIcon,
+      final String userIcon,
       required final String github}) = _$_Staff;
 
   factory _Staff.fromJson(Map<String, dynamic> json) = _$_Staff.fromJson;
@@ -332,7 +331,7 @@ abstract class _Staff implements Staff {
   @override
   String get displayName;
   @override
-  String? get userIcon;
+  String get userIcon;
   @override
   String get github;
   @override

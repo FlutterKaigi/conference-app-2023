@@ -18,7 +18,7 @@ class StaffList with _$StaffList {
 class Staff with _$Staff {
   const factory Staff({
     required String displayName,
-    required String? userIcon,
+    @Default('') String userIcon,
     required String github,
   }) = _Staff;
 
