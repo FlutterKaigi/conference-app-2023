@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+// FlutterKaigi Icon
+const defaultIconImage = 'https://avatars.githubusercontent.com/u/79250595?v=4';
+
 class Staffs extends ConsumerWidget {
   const Staffs({super.key});
 
@@ -24,18 +27,14 @@ class Staffs extends ConsumerWidget {
         itemBuilder: (context, index) {
           final staffItem = items[index];
           return ListTile(
-            leading: staffItem.userIcon != ''
-                ? CircleAvatar(
-                    foregroundImage: NetworkImage(
-                      staffItem.userIcon!,
-                    ),
-                  )
-                : const CircleAvatar(
-                    backgroundColor: Colors.white,
-                    foregroundImage: NetworkImage(
-                      'https://avatars.githubusercontent.com/u/79250595?v=4',
-                    ),
-                  ),
+            leading: CircleAvatar(
+              backgroundColor: Colors.transparent,
+              foregroundImage: NetworkImage(
+                staffItem.userIcon.isEmpty
+                    ? defaultIconImage
+                    : staffItem.userIcon,
+              ),
+            ),
             title: Text(
               staffItem.displayName,
             ),
