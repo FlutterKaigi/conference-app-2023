@@ -14,6 +14,154 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+StaffList _$StaffListFromJson(Map<String, dynamic> json) {
+  return _StaffList.fromJson(json);
+}
+
+/// @nodoc
+mixin _$StaffList {
+  List<Staff> get items => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $StaffListCopyWith<StaffList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $StaffListCopyWith<$Res> {
+  factory $StaffListCopyWith(StaffList value, $Res Function(StaffList) then) =
+      _$StaffListCopyWithImpl<$Res, StaffList>;
+  @useResult
+  $Res call({List<Staff> items});
+}
+
+/// @nodoc
+class _$StaffListCopyWithImpl<$Res, $Val extends StaffList>
+    implements $StaffListCopyWith<$Res> {
+  _$StaffListCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? items = null,
+  }) {
+    return _then(_value.copyWith(
+      items: null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<Staff>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_StaffListCopyWith<$Res> implements $StaffListCopyWith<$Res> {
+  factory _$$_StaffListCopyWith(
+          _$_StaffList value, $Res Function(_$_StaffList) then) =
+      __$$_StaffListCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<Staff> items});
+}
+
+/// @nodoc
+class __$$_StaffListCopyWithImpl<$Res>
+    extends _$StaffListCopyWithImpl<$Res, _$_StaffList>
+    implements _$$_StaffListCopyWith<$Res> {
+  __$$_StaffListCopyWithImpl(
+      _$_StaffList _value, $Res Function(_$_StaffList) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? items = null,
+  }) {
+    return _then(_$_StaffList(
+      items: null == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<Staff>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_StaffList with DiagnosticableTreeMixin implements _StaffList {
+  const _$_StaffList({required final List<Staff> items}) : _items = items;
+
+  factory _$_StaffList.fromJson(Map<String, dynamic> json) =>
+      _$$_StaffListFromJson(json);
+
+  final List<Staff> _items;
+  @override
+  List<Staff> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_items);
+  }
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'StaffList(items: $items)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'StaffList'))
+      ..add(DiagnosticsProperty('items', items));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_StaffList &&
+            const DeepCollectionEquality().equals(other._items, _items));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_items));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_StaffListCopyWith<_$_StaffList> get copyWith =>
+      __$$_StaffListCopyWithImpl<_$_StaffList>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_StaffListToJson(
+      this,
+    );
+  }
+}
+
+abstract class _StaffList implements StaffList {
+  const factory _StaffList({required final List<Staff> items}) = _$_StaffList;
+
+  factory _StaffList.fromJson(Map<String, dynamic> json) =
+      _$_StaffList.fromJson;
+
+  @override
+  List<Staff> get items;
+  @override
+  @JsonKey(ignore: true)
+  _$$_StaffListCopyWith<_$_StaffList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 Staff _$StaffFromJson(Map<String, dynamic> json) {
   return _Staff.fromJson(json);
 }
@@ -114,9 +262,7 @@ class __$$_StaffCopyWithImpl<$Res> extends _$StaffCopyWithImpl<$Res, _$_Staff>
 @JsonSerializable()
 class _$_Staff with DiagnosticableTreeMixin implements _Staff {
   const _$_Staff(
-      {required this.displayName,
-      required this.userIcon,
-      required this.github});
+      {required this.displayName, this.userIcon = '', required this.github});
 
   factory _$_Staff.fromJson(Map<String, dynamic> json) =>
       _$$_StaffFromJson(json);
@@ -124,6 +270,7 @@ class _$_Staff with DiagnosticableTreeMixin implements _Staff {
   @override
   final String displayName;
   @override
+  @JsonKey()
   final String userIcon;
   @override
   final String github;
@@ -176,7 +323,7 @@ class _$_Staff with DiagnosticableTreeMixin implements _Staff {
 abstract class _Staff implements Staff {
   const factory _Staff(
       {required final String displayName,
-      required final String userIcon,
+      final String userIcon,
       required final String github}) = _$_Staff;
 
   factory _Staff.fromJson(Map<String, dynamic> json) = _$_Staff.fromJson;
