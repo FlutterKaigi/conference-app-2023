@@ -131,8 +131,8 @@ extension $VenueRouteExtension on VenueRoute {
 
 extension $ContributorsRouteExtension on ContributorsRoute {
   static ContributorsRoute _fromState(GoRouterState state) => ContributorsRoute(
-        tab: _$convertMapValue(
-            'tab', state.queryParameters, _$ContributorsTabEnumMap._$fromName),
+        tab: _$convertMapValue('tab', state.uri.queryParameters,
+            _$ContributorsTabEnumMap._$fromName),
       );
 
   String get location => GoRouteData.$location(
