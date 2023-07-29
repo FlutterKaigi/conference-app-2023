@@ -18,7 +18,7 @@ class RootScreen extends ConsumerWidget {
   final Widget navigator;
 
   RootTab _getCurrentTab(BuildContext context) {
-    final location = GoRouterState.of(context).location;
+    final location = GoRouterState.of(context).uri.toString();
     return RootTab.values.reversed.firstWhere(
       (element) => location.startsWith(element.path),
       orElse: () => RootTab.home,
