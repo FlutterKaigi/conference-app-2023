@@ -19,7 +19,7 @@ class Staff with _$Staff {
   const factory Staff({
     required String displayName,
     @Default('') String userIcon,
-    required String github,
+    required String link,
   }) = _Staff;
 
   factory Staff.fromJson(Map<String, dynamic> json) => _$StaffFromJson(json);
