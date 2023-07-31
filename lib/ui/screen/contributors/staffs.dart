@@ -39,7 +39,7 @@ class Staffs extends ConsumerWidget {
               staffItem.displayName,
             ),
             onTap: () async {
-              final url = Uri.parse(staffItem.github);
+              final url = Uri.parse(staffItem.link);
               if (await canLaunchUrl(url)) {
                 await launchUrl(url);
               }

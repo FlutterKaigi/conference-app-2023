@@ -33,7 +33,7 @@ _$_Staff _$$_StaffFromJson(Map<String, dynamic> json) => $checkedCreate(
         final val = _$_Staff(
           displayName: $checkedConvert('display_name', (v) => v as String),
           userIcon: $checkedConvert('user_icon', (v) => v as String? ?? ''),
-          github: $checkedConvert('github', (v) => v as String),
+          link: $checkedConvert('link', (v) => v as String),
         );
         return val;
       },
@@ -46,5 +46,5 @@ _$_Staff _$$_StaffFromJson(Map<String, dynamic> json) => $checkedCreate(
 Map<String, dynamic> _$$_StaffToJson(_$_Staff instance) => <String, dynamic>{
       'display_name': instance.displayName,
       'user_icon': instance.userIcon,
-      'github': instance.github,
+      'link': instance.link,
     };

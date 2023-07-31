@@ -170,7 +170,7 @@ Staff _$StaffFromJson(Map<String, dynamic> json) {
 mixin _$Staff {
   String get displayName => throw _privateConstructorUsedError;
   String get userIcon => throw _privateConstructorUsedError;
-  String get github => throw _privateConstructorUsedError;
+  String get link => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -182,7 +182,7 @@ abstract class $StaffCopyWith<$Res> {
   factory $StaffCopyWith(Staff value, $Res Function(Staff) then) =
       _$StaffCopyWithImpl<$Res, Staff>;
   @useResult
-  $Res call({String displayName, String userIcon, String github});
+  $Res call({String displayName, String userIcon, String link});
 }
 
 /// @nodoc
@@ -200,7 +200,7 @@ class _$StaffCopyWithImpl<$Res, $Val extends Staff>
   $Res call({
     Object? displayName = null,
     Object? userIcon = null,
-    Object? github = null,
+    Object? link = null,
   }) {
     return _then(_value.copyWith(
       displayName: null == displayName
@@ -211,9 +211,9 @@ class _$StaffCopyWithImpl<$Res, $Val extends Staff>
           ? _value.userIcon
           : userIcon // ignore: cast_nullable_to_non_nullable
               as String,
-      github: null == github
-          ? _value.github
-          : github // ignore: cast_nullable_to_non_nullable
+      link: null == link
+          ? _value.link
+          : link // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -225,7 +225,7 @@ abstract class _$$_StaffCopyWith<$Res> implements $StaffCopyWith<$Res> {
       __$$_StaffCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String displayName, String userIcon, String github});
+  $Res call({String displayName, String userIcon, String link});
 }
 
 /// @nodoc
@@ -239,7 +239,7 @@ class __$$_StaffCopyWithImpl<$Res> extends _$StaffCopyWithImpl<$Res, _$_Staff>
   $Res call({
     Object? displayName = null,
     Object? userIcon = null,
-    Object? github = null,
+    Object? link = null,
   }) {
     return _then(_$_Staff(
       displayName: null == displayName
@@ -250,9 +250,9 @@ class __$$_StaffCopyWithImpl<$Res> extends _$StaffCopyWithImpl<$Res, _$_Staff>
           ? _value.userIcon
           : userIcon // ignore: cast_nullable_to_non_nullable
               as String,
-      github: null == github
-          ? _value.github
-          : github // ignore: cast_nullable_to_non_nullable
+      link: null == link
+          ? _value.link
+          : link // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -262,7 +262,7 @@ class __$$_StaffCopyWithImpl<$Res> extends _$StaffCopyWithImpl<$Res, _$_Staff>
 @JsonSerializable()
 class _$_Staff with DiagnosticableTreeMixin implements _Staff {
   const _$_Staff(
-      {required this.displayName, this.userIcon = '', required this.github});
+      {required this.displayName, this.userIcon = '', required this.link});
 
   factory _$_Staff.fromJson(Map<String, dynamic> json) =>
       _$$_StaffFromJson(json);
@@ -273,11 +273,11 @@ class _$_Staff with DiagnosticableTreeMixin implements _Staff {
   @JsonKey()
   final String userIcon;
   @override
-  final String github;
+  final String link;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Staff(displayName: $displayName, userIcon: $userIcon, github: $github)';
+    return 'Staff(displayName: $displayName, userIcon: $userIcon, link: $link)';
   }
 
   @override
@@ -287,7 +287,7 @@ class _$_Staff with DiagnosticableTreeMixin implements _Staff {
       ..add(DiagnosticsProperty('type', 'Staff'))
       ..add(DiagnosticsProperty('displayName', displayName))
       ..add(DiagnosticsProperty('userIcon', userIcon))
-      ..add(DiagnosticsProperty('github', github));
+      ..add(DiagnosticsProperty('link', link));
   }
 
   @override
@@ -299,12 +299,12 @@ class _$_Staff with DiagnosticableTreeMixin implements _Staff {
                 other.displayName == displayName) &&
             (identical(other.userIcon, userIcon) ||
                 other.userIcon == userIcon) &&
-            (identical(other.github, github) || other.github == github));
+            (identical(other.link, link) || other.link == link));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, displayName, userIcon, github);
+  int get hashCode => Object.hash(runtimeType, displayName, userIcon, link);
 
   @JsonKey(ignore: true)
   @override
@@ -324,7 +324,7 @@ abstract class _Staff implements Staff {
   const factory _Staff(
       {required final String displayName,
       final String userIcon,
-      required final String github}) = _$_Staff;
+      required final String link}) = _$_Staff;
 
   factory _Staff.fromJson(Map<String, dynamic> json) = _$_Staff.fromJson;
 
@@ -333,7 +333,7 @@ abstract class _Staff implements Staff {
   @override
   String get userIcon;
   @override
-  String get github;
+  String get link;
   @override
   @JsonKey(ignore: true)
   _$$_StaffCopyWith<_$_Staff> get copyWith =>
