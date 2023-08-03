@@ -1,8 +1,8 @@
 import 'package:conference_2023/model/contributors/developer.dart';
 import 'package:conference_2023/model/contributors/developer_provider.dart';
+import 'package:conference_2023/util/launch_in_external_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class Developers extends ConsumerWidget {
   const Developers({super.key});
@@ -25,9 +25,7 @@ class Developers extends ConsumerWidget {
               title: Text(developer.name),
               onTap: () async {
                 final url = Uri.parse(developer.url);
-                if (await canLaunchUrl(url)) {
-                  await launchUrl(url);
-                }
+                await launchInExternalApp(url);
               },
             );
           },

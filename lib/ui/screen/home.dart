@@ -1,10 +1,10 @@
 import 'package:conference_2023/gen/assets.gen.dart';
 import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
+import 'package:conference_2023/util/launch_in_external_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -91,20 +91,23 @@ class HomePage extends ConsumerWidget {
             spacing: 16,
             children: [
               OutlinedButton(
-                onPressed: () {
-                  launchUrlString('https://twitter.com/flutterkaigi');
+                onPressed: () async {
+                  final uri = Uri.parse('https://twitter.com/flutterkaigi');
+                  await launchInExternalApp(uri);
                 },
                 child: Text(localization.twitter),
               ),
               OutlinedButton(
-                onPressed: () {
-                  launchUrlString('https://github.com/FlutterKaigi');
+                onPressed: () async {
+                  final uri = Uri.parse('https://github.com/FlutterKaigi');
+                  await launchInExternalApp(uri);
                 },
                 child: Text(localization.github),
               ),
               OutlinedButton(
-                onPressed: () {
-                  launchUrlString('https://medium.com/flutterkaigi');
+                onPressed: () async {
+                  final uri = Uri.parse('https://medium.com/flutterkaigi');
+                  await launchInExternalApp(uri);
                 },
                 child: Text(localization.medium),
               ),

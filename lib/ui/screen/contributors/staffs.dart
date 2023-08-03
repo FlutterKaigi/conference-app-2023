@@ -1,7 +1,7 @@
 import 'package:conference_2023/model/contributors/staff/staff_provider.dart';
+import 'package:conference_2023/util/launch_in_external_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 // FlutterKaigi Icon
 const defaultIconImage = 'https://avatars.githubusercontent.com/u/79250595?v=4';
@@ -40,9 +40,7 @@ class Staffs extends ConsumerWidget {
             ),
             onTap: () async {
               final url = Uri.parse(staffItem.link);
-              if (await canLaunchUrl(url)) {
-                await launchUrl(url);
-              }
+              await launchInExternalApp(url);
             },
           );
         },
