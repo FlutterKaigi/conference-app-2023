@@ -6,5 +6,8 @@ Future<bool> launchInExternalApp(Uri url) async {
     return false;
   }
 
-  return await launchUrl(url, mode: LaunchMode.externalApplication);
+  return await launchUrl(
+    url, 
+    mode: LaunchMode.externalApplication,
+  );
 }
