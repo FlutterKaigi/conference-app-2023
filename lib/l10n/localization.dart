@@ -1,4 +1,4 @@
-import 'package:conference_2023/l10n/locales_provider.dart';
+import 'package:conference_2023/model/app_locale.dart';
 import 'package:intl/intl.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:conference_2023/model/provider/localization_mode_notifier.dart';
+import 'package:conference_2023/model/settings/localization_mode.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'locales_provider.g.dart';
+part 'app_locale.g.dart';
 
 /// A provider that returns the current [Locale].
 ///

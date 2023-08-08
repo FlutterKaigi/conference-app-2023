@@ -1,8 +1,7 @@
-import 'package:conference_2023/model/preference/shared_preference_enum.dart';
-import 'package:conference_2023/model/preference/shared_preference_provider.dart';
+import 'package:conference_2023/model/shared_preferences.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'font_family_notifier.g.dart';
+part 'font_family.g.dart';
 
 enum FontFamily {
   system,
@@ -17,7 +16,7 @@ enum FontFamily {
 
 @riverpod
 class FontFamilyNotifier extends _$FontFamilyNotifier {
-  String get _key => PreferenceKey.fontFamily.value;
+  String get _key => SharedPreferenceKey.fontFamily.value;
 
   @override
   FontFamily build() {

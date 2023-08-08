@@ -1,4 +1,4 @@
-import 'package:conference_2023/model/provider/font_family_notifier.dart';
+import 'package:conference_2023/model/settings/font_family.dart';
 import 'package:flutter/foundation.dart';
 
 void fontLicenses() {

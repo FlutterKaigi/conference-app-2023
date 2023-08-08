@@ -1,8 +1,7 @@
-import 'package:conference_2023/model/preference/shared_preference_enum.dart';
-import 'package:conference_2023/model/preference/shared_preference_provider.dart';
+import 'package:conference_2023/model/shared_preferences.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'localization_mode_notifier.g.dart';
+part 'localization_mode.g.dart';
 
 enum LocalizationMode {
   system,
@@ -12,7 +11,7 @@ enum LocalizationMode {
 
 @riverpod
 class LocalizationModeNotifier extends _$LocalizationModeNotifier {
-  String get _key => PreferenceKey.localizationMode.value;
+  String get _key => SharedPreferenceKey.localizationMode.value;
 
   @override
   LocalizationMode build() {

@@ -2,7 +2,7 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'remote_config_provider.g.dart';
+part 'remote_config.g.dart';
 
 @riverpod
 FirebaseRemoteConfig remoteConfig(
@@ -12,7 +12,8 @@ FirebaseRemoteConfig remoteConfig(
 
 enum RemoteConfigKey {
   staff('staff'),
-  developers('developer');
+  developers('developer'),
+  ;
 
   const RemoteConfigKey(this.key);
 

@@ -1,6 +1,6 @@
 import 'package:accessibility_tools/accessibility_tools.dart';
-import 'package:conference_2023/l10n/locales_provider.dart';
-import 'package:conference_2023/model/provider/theme_mode_notifier.dart';
+import 'package:conference_2023/model/app_locale.dart';
+import 'package:conference_2023/model/settings/theme_mode.dart';
 import 'package:conference_2023/ui/router/router_provider.dart';
 import 'package:conference_2023/ui/theme.dart';
 import 'package:dynamic_color/dynamic_color.dart';

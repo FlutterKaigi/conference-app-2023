@@ -1,9 +1,9 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:conference_2023/l10n/localization.dart';
-import 'package:conference_2023/model/preference/shared_preference_provider.dart';
-import 'package:conference_2023/model/provider/font_family_notifier.dart';
-import 'package:conference_2023/model/provider/localization_mode_notifier.dart';
-import 'package:conference_2023/model/provider/theme_mode_notifier.dart';
+import 'package:conference_2023/model/settings/font_family.dart';
+import 'package:conference_2023/model/settings/localization_mode.dart';
+import 'package:conference_2023/model/settings/theme_mode.dart';
+import 'package:conference_2023/model/shared_preferences.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
