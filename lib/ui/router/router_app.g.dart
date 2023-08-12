@@ -44,13 +44,13 @@ RouteBase get $rootRoute => ShellRouteData.$route(
           routes: [
             GoRouteData.$route(
               path: 'about-us',
-              factory: $AboutUsRouteExtension._fromState,
               parentNavigatorKey: AboutUsRoute.$parentNavigatorKey,
+              factory: $AboutUsRouteExtension._fromState,
             ),
             GoRouteData.$route(
               path: 'legal-notices',
-              factory: $LegalNoticesRouteExtension._fromState,
               parentNavigatorKey: LegalNoticesRoute.$parentNavigatorKey,
+              factory: $LegalNoticesRouteExtension._fromState,
             ),
           ],
         ),
