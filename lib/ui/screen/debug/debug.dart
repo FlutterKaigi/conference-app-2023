@@ -1,4 +1,4 @@
-import 'package:conference_2023/model/remote_config/remote_config_provider.dart';
+import 'package:conference_2023/model/remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

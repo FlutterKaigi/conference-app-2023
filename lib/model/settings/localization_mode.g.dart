@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'localization_mode_notifier.dart';
+part of 'localization_mode.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
 String _$localizationModeNotifierHash() =>
-    r'4e9c13595a445581ea425bdf83e5628b55b0e016';
+    r'9953205c4653ed2032181e35ffb912b82155647e';
 
 /// See also [LocalizationModeNotifier].
 @ProviderFor(LocalizationModeNotifier)

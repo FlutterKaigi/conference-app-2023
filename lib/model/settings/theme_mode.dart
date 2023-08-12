@@ -1,13 +1,12 @@
-import 'package:conference_2023/model/preference/shared_preference_enum.dart';
-import 'package:conference_2023/model/preference/shared_preference_provider.dart';
+import 'package:conference_2023/model/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'theme_mode_notifier.g.dart';
+part 'theme_mode.g.dart';
 
 @riverpod
 class ThemeModeNotifier extends _$ThemeModeNotifier {
-  String get _key => PreferenceKey.themeMode.value;
+  String get _key => SharedPreferenceKey.themeMode.value;
 
   @override
   ThemeMode build() {

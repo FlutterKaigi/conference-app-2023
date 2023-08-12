@@ -1,4 +1,4 @@
-import 'package:conference_2023/model/contributors/staff/staff_provider.dart';
+import 'package:conference_2023/model/contributors/staff_provider.dart';
 import 'package:conference_2023/util/launch_in_external_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

@@ -1,26 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'shared_preference_provider.dart';
+part of 'theme_mode.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sharedPreferencesHash() => r'e6f4d39542a6ab94c755f0dc5f02e08f1478a631';
+String _$themeModeNotifierHash() => r'd117fec8142b6c3c45f57870261e13c459a41646';
 
-/// See also [sharedPreferences].
-@ProviderFor(sharedPreferences)
-final sharedPreferencesProvider =
-    AutoDisposeProvider<SharedPreferences>.internal(
-  sharedPreferences,
-  name: r'sharedPreferencesProvider',
+/// See also [ThemeModeNotifier].
+@ProviderFor(ThemeModeNotifier)
+final themeModeNotifierProvider =
+    AutoDisposeNotifierProvider<ThemeModeNotifier, ThemeMode>.internal(
+  ThemeModeNotifier.new,
+  name: r'themeModeNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$sharedPreferencesHash,
+      : _$themeModeNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef SharedPreferencesRef = AutoDisposeProviderRef<SharedPreferences>;
+typedef _$ThemeModeNotifier = AutoDisposeNotifier<ThemeMode>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member

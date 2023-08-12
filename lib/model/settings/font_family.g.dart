@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'font_family_notifier.dart';
+part of 'font_family.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
 String _$fontFamilyNotifierHash() =>
-    r'ab72536523289cab27152236f9226721ef606c76';
+    r'babd6c06f4bd113f31666cab58f4fa48a4d753bf';
 
 /// See also [FontFamilyNotifier].
 @ProviderFor(FontFamilyNotifier)

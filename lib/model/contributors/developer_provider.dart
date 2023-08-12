@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:conference_2023/model/contributors/developer.dart';
-import 'package:conference_2023/model/remote_config/remote_config_provider.dart';
+import 'package:conference_2023/model/remote_config.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'developer_provider.g.dart';
