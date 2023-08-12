@@ -12,8 +12,8 @@ List<RouteBase> get $appRoutes => [
 
 RouteBase get $debugRoute => GoRouteData.$route(
       path: '/debug',
-      factory: $DebugRouteExtension._fromState,
       parentNavigatorKey: DebugRoute.$parentNavigatorKey,
+      factory: $DebugRouteExtension._fromState,
     );
 
 extension $DebugRouteExtension on DebugRoute {
