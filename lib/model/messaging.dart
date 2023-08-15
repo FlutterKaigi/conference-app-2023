@@ -48,4 +48,12 @@ Future<void> initFirebaseMessaging() async {
       );
     },
   );
+
+  /// read topics
+  const topics = [
+    'general',
+  ];
+  for (final topic in topics) {
+    await FirebaseMessaging.instance.subscribeToTopic(topic);
+  }
 }
