@@ -60,6 +60,47 @@ final class LocalizationEn extends Localization {
   String get contributorsStaff => 'Staff';
 
   @override
+  String get settingsPushNotification => 'Push Notification';
+
+  @override
+  String get settingsPushNotificationPrompt =>
+      'By allowing push notifications, you can receive notifications about FlutterKaigi.';
+
+  @override
+  String get settingsPushNotificationAuthorized => 'Authorized';
+
+  @override
+  String get settingsPushNotificationDenied => 'Denied';
+
+  @override
+  String get settingsPushNotificationProvisional => 'Provisional';
+
+  @override
+  String get settingsPushNotificationRestricted => 'Restricted';
+
+  @override
+  String get settingsPushNotificationLimited => 'Limited';
+
+  @override
+  String get settingsPushNotificationPermanentlyDenied => 'PermanentlyDenied';
+
+  @override
+  String get settingsPushNotificationMessageAuthorized =>
+      'OK! Push notification is enabled.';
+
+  @override
+  String get settingsPushNotificationMessageDenied =>
+      'Sorry, do not send push notifications';
+
+  @override
+  String get settingsPushNotificationMessageNotDetermined =>
+      'Permission is not set. Please set it from the settings screen.';
+
+  @override
+  String get settingsPushNotificationMessageSettings =>
+      'Permission is partially set. Please set it from the settings screen.';
+
+  @override
   String get settingsThemeMode => 'Appearance';
 
   @override

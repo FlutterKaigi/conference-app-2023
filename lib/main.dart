@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:conference_2023/app.dart';
+import 'package:conference_2023/model/messaging.dart';
 import 'package:conference_2023/model/remote_config.dart';
 import 'package:conference_2023/model/shared_preferences.dart';
 import 'package:conference_2023/util/font_lisence.dart';
@@ -22,10 +23,11 @@ void main() async {
     await Firebase.initializeApp();
   }
 
-  /// initialize remote config
-  unawaited(
+  /// initialize firebase apps
+  await (
     initFirebaseRemoteConfig(),
-  );
+    initFirebaseMessaging(),
+  ).wait;
 
   fontLicenses();
 

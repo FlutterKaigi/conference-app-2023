@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:conference_2023/model/remote_config.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -38,6 +41,34 @@ class DebugScreen extends ConsumerWidget {
                             )
                             .values,
                       ],
+                    ),
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text('Close'),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('FCM Token'),
+            onTap: () async {
+              final fcmToken = await FirebaseMessaging.instance.getToken();
+              log('fcmToken: $fcmToken');
+
+              if (!context.mounted) {
+                return;
+              }
+              await showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: const Text('FCM Token'),
+                  content: SingleChildScrollView(
+                    child: SelectableText(
+                      fcmToken ?? 'null(error)',
                     ),
                   ),
                   actions: [
