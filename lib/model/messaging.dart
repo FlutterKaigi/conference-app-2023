@@ -17,6 +17,11 @@ Future<void> initFirebaseMessaging() async {
   await instance.initialize(
     const InitializationSettings(
       android: AndroidInitializationSettings('@drawable/ic_notification'),
+      iOS: DarwinInitializationSettings(
+        requestAlertPermission: false,
+        requestSoundPermission: false,
+        requestBadgePermission: false,
+      ),
     ),
   );
 
