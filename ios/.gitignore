@@ -34,5 +34,5 @@ Runner/GeneratedPluginRegistrant.*
 !default.perspectivev3
 
 # copied files
-GoogleService-Info.plist
-firebase_app_id_file.json
+/GoogleService-Info.plist
+/firebase_app_id_file.json

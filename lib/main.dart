@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:conference_2023/app.dart';
 import 'package:conference_2023/model/messaging.dart';
 import 'package:conference_2023/model/remote_config.dart';
@@ -24,10 +22,8 @@ void main() async {
   }
 
   /// initialize firebase apps
-  await (
-    initFirebaseRemoteConfig(),
-    initFirebaseMessaging(),
-  ).wait;
+  await initFirebaseRemoteConfig();
+  await initFirebaseMessaging();
 
   fontLicenses();
 
