@@ -23,6 +23,7 @@ dependencies:
 
   # firebase
   firebase_core: ^2.0.0
+  firebase_crashlytics: ^3.0.0
   firebase_messaging: ^14.0.0
   firebase_remote_config: ^4.0.0
 
