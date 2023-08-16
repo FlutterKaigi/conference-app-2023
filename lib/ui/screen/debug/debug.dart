@@ -81,6 +81,10 @@ class DebugScreen extends ConsumerWidget {
               );
             },
           ),
+          ListTile(
+            title: const Text('Test firebase crashlytics'),
+            onTap: () => throw Exception('Test Exception'),
+          )
         ],
       ),
     );
