@@ -64,6 +64,30 @@ abstract base class Localization {
 
   String get contributorsStaff;
 
+  String get settingsPushNotification;
+
+  String get settingsPushNotificationPrompt;
+
+  String get settingsPushNotificationAuthorized;
+
+  String get settingsPushNotificationDenied;
+
+  String get settingsPushNotificationProvisional;
+
+  String get settingsPushNotificationRestricted;
+
+  String get settingsPushNotificationLimited;
+
+  String get settingsPushNotificationPermanentlyDenied;
+
+  String get settingsPushNotificationMessageAuthorized;
+
+  String get settingsPushNotificationMessageDenied;
+
+  String get settingsPushNotificationMessageNotDetermined;
+
+  String get settingsPushNotificationMessageSettings;
+
   String get settingsThemeMode;
 
   String get settingsThemeModeSystem;

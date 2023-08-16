@@ -23,6 +23,7 @@ dependencies:
 
   # firebase
   firebase_core: ^2.0.0
+  firebase_messaging: ^14.0.0
   firebase_remote_config: ^4.0.0
 
   flutter_riverpod: ^2.0.0
@@ -33,6 +34,8 @@ dependencies:
   gap: ^3.0.0
   google_fonts: ^5.0.0
   flutter_svg: ^2.0.0
+  flutter_local_notifications: ^15.0.0
+  permission_handler: ^10.0.0
   shared_preferences: ^2.0.0
   url_launcher: ^6.0.0
 

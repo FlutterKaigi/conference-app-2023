@@ -60,6 +60,43 @@ final class LocalizationJa extends Localization {
   String get contributorsStaff => 'スタッフ';
 
   @override
+  String get settingsPushNotification => 'プッシュ通知設定';
+
+  @override
+  String get settingsPushNotificationPrompt =>
+      'プッシュ通知を許可することで、FlutterKaigiに関するお知らせを受け取れます';
+
+  @override
+  String get settingsPushNotificationAuthorized => '許可';
+
+  @override
+  String get settingsPushNotificationDenied => '不許可';
+
+  @override
+  String get settingsPushNotificationProvisional => '仮設定';
+
+  @override
+  String get settingsPushNotificationRestricted => '制限中';
+
+  @override
+  String get settingsPushNotificationLimited => '制限中';
+
+  @override
+  String get settingsPushNotificationPermanentlyDenied => '永久に拒否';
+
+  @override
+  String get settingsPushNotificationMessageAuthorized => 'プッシュ通知がの受信が許可されました！';
+
+  @override
+  String get settingsPushNotificationMessageDenied => 'プッシュ通知が拒否されました。';
+
+  @override
+  String get settingsPushNotificationMessageNotDetermined => 'プッシュ通知の設定は未設定です。';
+
+  @override
+  String get settingsPushNotificationMessageSettings => 'プッシュ通知は一部許可されています';
+
+  @override
   String get settingsThemeMode => '外観モード設定';
 
   @override
