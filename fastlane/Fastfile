@@ -1,0 +1,61 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+platform :android do
+  desc "Build apk (development build)"
+  lane :build_dev do
+    sh("fvm flutter clean")
+    sh("fvm flutter pub get")
+    sh("fvm flutter build apk --dart-define-from-file=dart_defines/dev.json")
+  end
+
+  desc "Build and deploy apk (development build)"
+  lane :deploy_dev do
+    build_dev
+
+    commit = last_git_commit
+    hash = commit[:abbreviated_commit_hash]
+    commitMessage = commit[:message]
+    firebase_app_distribution(
+      app: "1:1034811787358:android:5cbfc46af99a9c9387cccf",
+      android_artifact_type: "APK",
+      android_artifact_path: "build/app/outputs/flutter-apk/app-release.apk",
+      release_notes: "Commit: #{hash}\n#{commitMessage}",
+    )
+  end
+
+  desc "Build aab (production build)"
+  lane :build_pro do
+    sh("fvm flutter clean")
+    sh("fvm flutter pub get")
+    sh("fvm flutter build appbundle --dart-define-from-file=dart_defines/pro.json")
+  end
+
+  desc "Build aab (production build)"
+  lane :deploy_pro do
+    build_pro
+
+    upload_to_play_store(
+      track: "alpha",
+      aab: "build/app/outputs/bundle/release/app-release.aab",
+      skip_upload_apk: true,
+      skip_upload_aab: false,
+      skip_upload_metadata: true,
+      skip_upload_changelogs: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+    )
+  end
+end

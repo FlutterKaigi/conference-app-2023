@@ -45,3 +45,8 @@ app.*.map.json
 
 # fvm
 .fvm/flutter_sdk
+
+# Bundler
+/vendor
+/fastlane/*
+
