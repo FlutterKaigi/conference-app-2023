@@ -59,3 +59,44 @@ platform :android do
     )
   end
 end
+
+platform :ios do
+  desc "Build app (development build)"
+  lane :build_dev do
+    Dir.chdir("..") do
+      sh("fvm flutter clean")
+      sh("fvm flutter pub get")
+      sh("fvm flutter build ipa --export-options-plist=ios/ExportOptions.plist --dart-define-from-file=dart_defines/dev.json")
+    end
+  end
+
+  desc "Build and deploy app (development build)"
+  lane :deploy_dev do
+    build_dev
+
+    commit = last_git_commit
+    hash = commit[:abbreviated_commit_hash]
+    commitMessage = commit[:message]
+    firebase_app_distribution(
+      app: "1:1034811787358:ios:b25f1bbb882b34f887cccf",
+      ipa_path: "build/ios/ipa/(dev)FlutterKaigi 2023.ipa",
+      release_notes: "Commit: #{hash}\n#{commitMessage}",
+    )
+  end
+
+  desc "Build app (production build)"
+  lane :build_pro do
+    Dir.chdir("..") do
+      sh("fvm flutter clean")
+      sh("fvm flutter pub get")
+      sh("fvm flutter build ipa --export-options-plist=ios/ExportOptions.plist --dart-define-from-file=dart_defines/pro.json")
+    end
+  end
+
+  desc "Build and deploy app (production build)"
+  lane :deploy_pro do
+    build_pro
+
+    upload_to_app_store
+  end
+end

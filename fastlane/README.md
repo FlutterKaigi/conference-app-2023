@@ -49,6 +49,43 @@ Build aab (production build)
 
 ----
 
+
+## iOS
+
+### ios build_dev
+
+```sh
+[bundle exec] fastlane ios build_dev
+```
+
+Build app (development build)
+
+### ios deploy_dev
+
+```sh
+[bundle exec] fastlane ios deploy_dev
+```
+
+Build and deploy app (development build)
+
+### ios build_pro
+
+```sh
+[bundle exec] fastlane ios build_pro
+```
+
+Build app (production build)
+
+### ios deploy_pro
+
+```sh
+[bundle exec] fastlane ios deploy_pro
+```
+
+Build and deploy app (production build)
+
+----
+
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
 
 More information about _fastlane_ can be found on [fastlane.tools](https://fastlane.tools).
