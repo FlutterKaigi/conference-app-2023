@@ -11,6 +11,7 @@ GeneratedPluginRegistrant.java
 key.properties
 **/*.keystore
 **/*.jks
+!debug.keystore
 
 # copied files
 app/google-services.json
