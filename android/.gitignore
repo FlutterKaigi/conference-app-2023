@@ -11,8 +11,11 @@ GeneratedPluginRegistrant.java
 key.properties
 **/*.keystore
 **/*.jks
+!debug.keystore
 
 # copied files
 app/google-services.json
 app/src/main/res/drawable-*
 app/src/main/res/mipmap-*
+
+app/src/pro/google-services.json
