@@ -17,3 +17,5 @@ key.properties
 app/google-services.json
 app/src/main/res/drawable-*
 app/src/main/res/mipmap-*
+
+app/src/pro/google-services.json
