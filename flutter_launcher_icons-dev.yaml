@@ -6,8 +6,11 @@ flutter_launcher_icons:
   adaptive_icon_foreground: "icon/app_icon_foreground_dev.png"
   ios: true
   image_path_ios: "icon/app_icon_ios_dev.png"
+  remove_alpha_ios: true
   web:
     generate: true
+    background_color: "#ffffff"
+    theme_color: "#005ac1"
   windows:
     generate: false
   macos:
