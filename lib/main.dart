@@ -4,6 +4,7 @@ import 'package:conference_2023/model/remote_config.dart';
 import 'package:conference_2023/model/shared_preferences.dart';
 import 'package:conference_2023/util/font_lisence.dart';
 import 'package:conference_2023/util/web/firebase_options_web.dart';
+import 'package:conference_2023/util/web/path_strategy.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
@@ -13,14 +14,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  if (kIsWeb) {
-    await Firebase.initializeApp(
-      options: firebaseOptionsWeb,
-    );
-  } else {
-    /// Android, iOS
-    await Firebase.initializeApp();
-  }
+
+  updatePathStrategy();
+  await Firebase.initializeApp(
+    options: firebaseOptionsWeb,
+  );
 
   // Non-async exceptions
   FlutterError.onError = (errorDetails) {
