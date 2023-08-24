@@ -137,7 +137,8 @@ final class LocalizationEn extends Localization {
   String get licensesAboutUs => 'About us';
 
   @override
-  String get licensesAboutUsContents => 'FlutterKaigi is a gathering place for Flutter/Dart lovers from around the world. To provide a place to share knowledge and passion, the committee is organized by volunteers who are fascinated by Flutter/Dart. Beginners and advanced users alike gather to learn, discuss, and enjoy Flutter/Dart. Although the event will be held in Japan, we are using Internet distribution to transmit the information to the entire world.';
+  String get licensesAboutUsContents =>
+      'FlutterKaigi is a gathering place for Flutter/Dart lovers from around the world. To provide a place to share knowledge and passion, the committee is organized by volunteers who are fascinated by Flutter/Dart. Beginners and advanced users alike gather to learn, discuss, and enjoy Flutter/Dart. Although the event will be held in Japan, we are using Internet distribution to transmit the information to the entire world.';
 
   @override
   String get licensesPrivacyPolicy => 'Privacy Policy';
