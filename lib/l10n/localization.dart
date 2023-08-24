@@ -112,6 +112,8 @@ abstract base class Localization {
 
   String get licensesAboutUs;
 
+  String get licensesAboutUsContents;
+
   String get licensesPrivacyPolicy;
 
   String get licensesPrivacyPolicyUrl;
