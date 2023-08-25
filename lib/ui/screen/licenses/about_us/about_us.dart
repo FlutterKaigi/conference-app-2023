@@ -18,7 +18,9 @@ class AboutUsPage extends ConsumerWidget {
         title: Text(localization.licensesAboutUs),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: context.spacing),
+        padding: EdgeInsets.symmetric(
+          horizontal: context.spacing,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
