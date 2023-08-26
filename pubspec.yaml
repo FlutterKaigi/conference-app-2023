@@ -49,8 +49,8 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^2.0.0
-  custom_lint: ^0.4.0
-  riverpod_lint: ^1.0.0
+  custom_lint: ^0.5.0
+  riverpod_lint: ^2.0.0
 
   build_runner: ^2.0.0
   freezed: ^2.0.0
@@ -59,6 +59,10 @@ dev_dependencies:
   flutter_gen_runner: ^5.0.0
   go_router_builder: ^2.0.0
   flutter_launcher_icons: ^0.13.0
+
+dependency_overrides:
+  # workaround for https://github.com/FlutterGen/flutter_gen/pull/414
+  analyzer: ^6.0.0
 
 flutter_gen:
   integrations:
