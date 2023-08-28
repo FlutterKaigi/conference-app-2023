@@ -5,8 +5,10 @@ class SponsorsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /// TODO: [https://github.com/FlutterKaigi/conference-app-2023/issues/19]
+    /// TODO: [https://github.com/FlutterKaigi/conference-app-2023/issues/87]
     return const Center(
-      child: Text('Sponsors'),
+      child: Text('Coming soon'),
     );
   }
 }
