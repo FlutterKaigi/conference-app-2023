@@ -1,8 +1,11 @@
 # FlutterKaigi 2023 official application
 
+Welcome FlutterKaigi 2023 official application repository!
+
 ## Development
 
-We will deliver sessions related to FlutterKaigi in accordance with [Figma](https://www.figma.com/file/x71sECvdnsw8RTfKG0E4fB/FlutterKaigi-2023-App?type=design&node-id=11%3A1833&t=Dpxy1yUZMefElIjg-1).
+See [Figma](https://www.figma.com/file/x71sECvdnsw8RTfKG0E4fB/FlutterKaigi-2023-App?type=design&node-id=11%3A1833&t=Dpxy1yUZMefElIjg-1) for the design of the FlutterKaigi 2023 official application.
+We use GitHub Issues for task management. Please do not contact core members indivisually, but use Issues and Discussions.
 
 ### Set up
 
@@ -37,12 +40,14 @@ For Japanese, please see [CONTRIBUTING.ja.md](./CONTRIBUTING.ja.md).
 ### Tech Stacks
 
 - [Flutter](https://flutter.dev/)
-- State Management
+- State management
   - [flutter_riverpod](https://pub.dev/packages/flutter_riverpod)
   - [riverpod_generator](https://pub.dev/packages/riverpod_generator)
-- Data class
+- Data object
   - [freezed](https://pub.dev/packages/freezed)
   - [json_serializable](https://pub.dev/packages/json_serializable)
+- Navigation
+  - [go_router](https://pub.dev/packages/go_router)
 - [M3 (Material Design 3)](https://m3.material.io/)
 
 The application design is based on [riverpod pub example](https://github.com/rrousselGit/riverpod/tree/riverpod-v2.3.2/examples/pub).
@@ -54,28 +59,29 @@ Since this will be a small application, a layer-first project structure will be 
 
 ```
 - lib
-  - data
-    - model
-    - repository
+  - gen
+  - l10n
+  - model
   - ui
+    - router
     - screen
-    - theme
   - util
     - extension
+    - web
 ```
 
-### Add library versions to dependencies
+### About specifying the library version
 
-The default is to list only major versions. For this reason, minor versions and patch versions are listed as 0, except in cases where problems have occurred.
 https://dart.dev/tools/pub/dependencies
 
-Example.
+As a policy, only major versions are set. Minor and patch version are specified as 0, unless a problem occurs.
+As an example, the version specification for google_fonts is as follows.
 
 ```yaml
-go_router: ^7.0.0
+google_fonts: ^5.0.0
 ```
 
-PRs that modify only the pubspec.lock file without code modification will not be merged. The maintainer will take care of this.
+PRs that modify only the pubspec.lock file without code modification will not be merged. The core members will take care of this.
 
 ### Coding style
 
@@ -102,4 +108,8 @@ Thank you for contributing!
 
 ### Contributors
 
-GitHub: [Contributors](https://github.com/FlutterKaigi/conference-app-2023/graphs/contributors)
+[Contributors](https://github.com/FlutterKaigi/conference-app-2023/graphs/contributors)
+
+### Core members
+
+[conference-app-2023](https://github.com/orgs/FlutterKaigi/teams/conference-app-2023)
