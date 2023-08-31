@@ -1,25 +1,26 @@
 # Contribution
 
-We look forward to your contribution!
+We are looking forward to your contribution!
 
 ## How to contribute
 
 ### How to find a task
 
-We are using GitHub Issue for task management. Please find the Issue you want to contribute here. You can also make Pull Requests without relation to any issues. In this case, please provide details such as the reason, cause, and solution in the Pull Request.
+We use GitHub Issue for task management. Please find the issue you want to contribute to here. You can also submit a pull request that is not related to an issue. In this case, please provide details such as the reason, cause, and solution in the pull request.
 
 ### How to get started with a contribution
 
-If you find a task you want to work on, comment on the Issue, such as "🙋", to avoid duplicating work with others. We will react to the comments you received as soon as possible, but you can start the task after writing a comment on the Issue.
+If you find a issue you'd like to work on, please comment like "🙋" on that to avoid conflicting work. We will respond to your comments as soon as possible. Tickets marked as `Core member' are generally handled by core members. For other tickets, anyone can work on them!
 
-## Contribute to improving the website FlutterKaigi.jp
+## Contribute to the improvement of the official FlutterKaigi 2023 application
 
-We will explain how to help improve the website FlutterKaigi.jp (referred to as "this website" below).
+Here's how you can help us improve the FlutterKaigi 2023 official application.
 
 ### Report a bug
 
 One of the easiest and most effective ways to help improve this website is to report a bug.
+Please use the `Bug report` template on create issue.
 
-### Contribute to coding
+### Contribute to the coding
 
-The FlutterKaigi Executive Committee welcomes submissions of proposed code amendments and is vigorously reviewing them. Please check out the source code and post any code fixes that target specific bugs or features.
+The official FlutterKaigi 2023 application welcomes submissions of proposed code changes. Please review the source code and submit any code fixes that target specific bugs or features.
