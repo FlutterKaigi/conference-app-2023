@@ -4,14 +4,13 @@ import 'package:conference_2023/ui/screen/contributors/developers.dart';
 import 'package:conference_2023/ui/screen/contributors/staffs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gap/gap.dart';
 
 enum ContributorsTab {
   developer,
   staff,
 }
 
-class ContributorsPage extends ConsumerWidget {
+class ContributorsPage extends ConsumerStatefulWidget {
   const ContributorsPage({
     super.key,
     required this.tab,
@@ -20,39 +19,66 @@ class ContributorsPage extends ConsumerWidget {
   final ContributorsTab tab;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ContributorsPage> createState() => _ContributorsPageState();
+}
+
+class _ContributorsPageState extends ConsumerState<ContributorsPage>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  VoidCallback get _onChangeTab => () {
+        if (_tabController.indexIsChanging) {
+          /// Do nothing if the tab is animating.
+          return;
+        }
+
+        final tab = ContributorsTab.values[_tabController.index];
+        ContributorsRoute(
+          tab: tab,
+        ).go(context);
+      };
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(
+      vsync: this,
+      length: ContributorsTab.values.length,
+    )..addListener(_onChangeTab);
+  }
+
+  @override
+  void dispose() {
+    _tabController.removeListener(_onChangeTab);
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final localizations = ref.watch(localizationProvider);
 
     return Column(
       children: [
-        const Gap(16),
-        SegmentedButton<ContributorsTab>(
-          showSelectedIcon: false,
-          segments: [
-            ButtonSegment(
-              label: Text(localizations.contributorsDeveloper),
-              value: ContributorsTab.developer,
+        TabBar(
+          controller: _tabController,
+          tabs: [
+            Tab(
+              text: localizations.contributorsDeveloper,
             ),
-            ButtonSegment(
-              label: Text(localizations.contributorsStaff),
-              value: ContributorsTab.staff,
+            Tab(
+              text: localizations.contributorsStaff,
             ),
           ],
-          selected: {
-            tab,
-          },
-          onSelectionChanged: (tab) {
-            ContributorsRoute(
-              tab: tab.first,
-            ).go(context);
-          },
         ),
-        const Gap(16),
         Expanded(
-          child: switch (tab) {
-            ContributorsTab.developer => const Developers(),
-            ContributorsTab.staff => const Staffs(),
-          },
+          child: TabBarView(
+            controller: _tabController,
+            children: const [
+              Developers(),
+              Staffs(),
+            ],
+          ),
         ),
       ],
     );
