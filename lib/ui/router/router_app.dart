@@ -160,7 +160,7 @@ class LicenseRoute extends GoRouteData {
   const LicenseRoute();
 
   static final $navigatorKey = shellNavigatorKey;
-  static const path = '/license';
+  static const path = '/licenses';
 
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) {

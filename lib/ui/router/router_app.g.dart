@@ -39,7 +39,7 @@ RouteBase get $rootRoute => ShellRouteData.$route(
           factory: $SettingsRouteExtension._fromState,
         ),
         GoRouteData.$route(
-          path: '/license',
+          path: '/licenses',
           factory: $LicenseRouteExtension._fromState,
           routes: [
             GoRouteData.$route(
@@ -178,7 +178,7 @@ extension $LicenseRouteExtension on LicenseRoute {
   static LicenseRoute _fromState(GoRouterState state) => const LicenseRoute();
 
   String get location => GoRouteData.$location(
-        '/license',
+        '/licenses',
       );
 
   void go(BuildContext context) => context.go(location);
@@ -195,7 +195,7 @@ extension $AboutUsRouteExtension on AboutUsRoute {
   static AboutUsRoute _fromState(GoRouterState state) => const AboutUsRoute();
 
   String get location => GoRouteData.$location(
-        '/license/about-us',
+        '/licenses/about-us',
       );
 
   void go(BuildContext context) => context.go(location);
@@ -213,7 +213,7 @@ extension $LegalNoticesRouteExtension on LegalNoticesRoute {
       const LegalNoticesRoute();
 
   String get location => GoRouteData.$location(
-        '/license/legal-notices',
+        '/licenses/legal-notices',
       );
 
   void go(BuildContext context) => context.go(location);
