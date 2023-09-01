@@ -29,8 +29,6 @@ class _SystemHash {
   }
 }
 
-typedef ThemeRef = AutoDisposeProviderRef<ThemeData>;
-
 /// See also [theme].
 @ProviderFor(theme)
 const themeProvider = ThemeFamily();
@@ -77,10 +75,10 @@ class ThemeFamily extends Family<ThemeData> {
 class ThemeProvider extends AutoDisposeProvider<ThemeData> {
   /// See also [theme].
   ThemeProvider(
-    this.colorScheme,
-  ) : super.internal(
+    ColorScheme? colorScheme,
+  ) : this._internal(
           (ref) => theme(
-            ref,
+            ref as ThemeRef,
             colorScheme,
           ),
           from: themeProvider,
@@ -91,9 +89,43 @@ class ThemeProvider extends AutoDisposeProvider<ThemeData> {
                   : _$themeHash,
           dependencies: ThemeFamily._dependencies,
           allTransitiveDependencies: ThemeFamily._allTransitiveDependencies,
+          colorScheme: colorScheme,
         );
 
+  ThemeProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.colorScheme,
+  }) : super.internal();
+
   final ColorScheme? colorScheme;
+
+  @override
+  Override overrideWith(
+    ThemeData Function(ThemeRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: ThemeProvider._internal(
+        (ref) => create(ref as ThemeRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        colorScheme: colorScheme,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeProviderElement<ThemeData> createElement() {
+    return _ThemeProviderElement(this);
+  }
 
   @override
   bool operator ==(Object other) {
@@ -109,8 +141,20 @@ class ThemeProvider extends AutoDisposeProvider<ThemeData> {
   }
 }
 
+mixin ThemeRef on AutoDisposeProviderRef<ThemeData> {
+  /// The parameter `colorScheme` of this provider.
+  ColorScheme? get colorScheme;
+}
+
+class _ThemeProviderElement extends AutoDisposeProviderElement<ThemeData>
+    with ThemeRef {
+  _ThemeProviderElement(super.provider);
+
+  @override
+  ColorScheme? get colorScheme => (origin as ThemeProvider).colorScheme;
+}
+
 String _$darkThemeHash() => r'de7b42139c3cd83213b8642741da01704150dccb';
-typedef DarkThemeRef = AutoDisposeProviderRef<ThemeData>;
 
 /// See also [darkTheme].
 @ProviderFor(darkTheme)
@@ -158,10 +202,10 @@ class DarkThemeFamily extends Family<ThemeData> {
 class DarkThemeProvider extends AutoDisposeProvider<ThemeData> {
   /// See also [darkTheme].
   DarkThemeProvider(
-    this.colorScheme,
-  ) : super.internal(
+    ColorScheme? colorScheme,
+  ) : this._internal(
           (ref) => darkTheme(
-            ref,
+            ref as DarkThemeRef,
             colorScheme,
           ),
           from: darkThemeProvider,
@@ -172,9 +216,43 @@ class DarkThemeProvider extends AutoDisposeProvider<ThemeData> {
                   : _$darkThemeHash,
           dependencies: DarkThemeFamily._dependencies,
           allTransitiveDependencies: DarkThemeFamily._allTransitiveDependencies,
+          colorScheme: colorScheme,
         );
 
+  DarkThemeProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.colorScheme,
+  }) : super.internal();
+
   final ColorScheme? colorScheme;
+
+  @override
+  Override overrideWith(
+    ThemeData Function(DarkThemeRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: DarkThemeProvider._internal(
+        (ref) => create(ref as DarkThemeRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        colorScheme: colorScheme,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeProviderElement<ThemeData> createElement() {
+    return _DarkThemeProviderElement(this);
+  }
 
   @override
   bool operator ==(Object other) {
@@ -188,6 +266,19 @@ class DarkThemeProvider extends AutoDisposeProvider<ThemeData> {
 
     return _SystemHash.finish(hash);
   }
+}
+
+mixin DarkThemeRef on AutoDisposeProviderRef<ThemeData> {
+  /// The parameter `colorScheme` of this provider.
+  ColorScheme? get colorScheme;
+}
+
+class _DarkThemeProviderElement extends AutoDisposeProviderElement<ThemeData>
+    with DarkThemeRef {
+  _DarkThemeProviderElement(super.provider);
+
+  @override
+  ColorScheme? get colorScheme => (origin as DarkThemeProvider).colorScheme;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
