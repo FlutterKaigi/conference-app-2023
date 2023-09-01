@@ -2,6 +2,7 @@ import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/ui/router/router_app.dart';
 import 'package:conference_2023/ui/screen/contributors/developers.dart';
 import 'package:conference_2023/ui/screen/contributors/staffs.dart';
+import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -57,30 +58,41 @@ class _ContributorsPageState extends ConsumerState<ContributorsPage>
   @override
   Widget build(BuildContext context) {
     final localizations = ref.watch(localizationProvider);
-
-    return Column(
-      children: [
-        TabBar(
-          controller: _tabController,
-          tabs: [
-            Tab(
-              text: localizations.contributorsDeveloper,
-            ),
-            Tab(
-              text: localizations.contributorsStaff,
-            ),
-          ],
+    final currentTheme = Theme.of(context);
+    final contributorsPageTheme = currentTheme.copyWith(
+      listTileTheme: currentTheme.listTileTheme.copyWith(
+        contentPadding: EdgeInsets.symmetric(
+          horizontal: context.spacing,
         ),
-        Expanded(
-          child: TabBarView(
+      ),
+    );
+
+    return Theme(
+      data: contributorsPageTheme,
+      child: Column(
+        children: [
+          TabBar(
             controller: _tabController,
-            children: const [
-              Developers(),
-              Staffs(),
+            tabs: [
+              Tab(
+                text: localizations.contributorsDeveloper,
+              ),
+              Tab(
+                text: localizations.contributorsStaff,
+              ),
             ],
           ),
-        ),
-      ],
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children: const [
+                Developers(),
+                Staffs(),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
