@@ -71,16 +71,19 @@ class _ContributorsPageState extends ConsumerState<ContributorsPage>
       data: contributorsPageTheme,
       child: Column(
         children: [
-          TabBar(
-            controller: _tabController,
-            tabs: [
-              Tab(
-                text: localizations.contributorsDeveloper,
-              ),
-              Tab(
-                text: localizations.contributorsStaff,
-              ),
-            ],
+          Material(
+            color: currentTheme.colorScheme.surface,
+            child: TabBar(
+              controller: _tabController,
+              tabs: [
+                Tab(
+                  text: localizations.contributorsDeveloper,
+                ),
+                Tab(
+                  text: localizations.contributorsStaff,
+                ),
+              ],
+            ),
           ),
           Expanded(
             child: TabBarView(
