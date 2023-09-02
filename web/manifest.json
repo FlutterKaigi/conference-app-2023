@@ -1,11 +1,11 @@
 {
-    "name": "conference_2023",
-    "short_name": "conference_2023",
+    "name": "FlutterKaigi 2023 Official Application",
+    "short_name": "FlutterKaigi 2023",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#005ac1",
-    "description": "A new Flutter project.",
+    "description": "This application is designed to help you enjoy FlutterKaigi 2023 more.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
