@@ -13,6 +13,9 @@ class Developers extends ConsumerWidget {
 
     return switch (state) {
       AsyncData<List<Developer>>(value: final list) => ListView.builder(
+          padding: const EdgeInsets.symmetric(
+            vertical: 8,
+          ),
           itemCount: list.length,
           itemBuilder: (context, index) {
             final developer = list[index];

@@ -16,6 +16,9 @@ class Staffs extends ConsumerWidget {
 
     return switch (state) {
       AsyncData<List<Staff>>(value: final list) => ListView.builder(
+          padding: const EdgeInsets.symmetric(
+            vertical: 8,
+          ),
           itemCount: list.length,
           itemBuilder: (context, index) {
             final staffItem = list[index];
