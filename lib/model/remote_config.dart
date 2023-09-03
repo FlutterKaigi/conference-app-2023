@@ -12,7 +12,7 @@ FirebaseRemoteConfig remoteConfig(
 
 enum RemoteConfigKey {
   staff('staff'),
-  developers('developer'),
+  developer('developer'),
   ;
 
   const RemoteConfigKey(this.key);

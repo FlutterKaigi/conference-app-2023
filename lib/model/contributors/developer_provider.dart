@@ -1,7 +1,6 @@
-import 'dart:convert';
-
 import 'package:conference_2023/model/contributors/developer.dart';
 import 'package:conference_2023/model/remote_config.dart';
+import 'package:conference_2023/util/extension/remove_config_ext.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'developer_provider.g.dart';
@@ -12,9 +11,7 @@ Future<List<Developer>> developerList(
 ) async {
   final remoteConfig = ref.watch(remoteConfigProvider);
   final developerList = DeveloperList.fromJson(
-    json.decode(
-      remoteConfig.getString(RemoteConfigKey.developers.key),
-    ),
+    remoteConfig.getJsonMapFromKey(RemoteConfigKey.developer),
   );
 
   return developerList.items;
