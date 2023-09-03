@@ -13,6 +13,7 @@ FirebaseRemoteConfig remoteConfig(
 enum RemoteConfigKey {
   staff('staff'),
   developer('developer'),
+  sponsor('sponsor'),
   ;
 
   const RemoteConfigKey(this.key);
@@ -26,6 +27,7 @@ Future<void> initFirebaseRemoteConfig() async {
     const {
       'staff': '{"items": []}',
       'developer': '{"items": []}',
+      'sponsor': '{"gold": [], "silver": [], "bronze": []}',
     },
   );
 
