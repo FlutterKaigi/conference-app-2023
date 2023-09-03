@@ -15,14 +15,17 @@
 
 platform :android do
   desc "Build apk (development build)"
-  lane :build_dev do
+  lane :build_dev do |options|
+    build_name = options[:build_name] || "1.0.0"
+    build_number = options[:build_number] || "1"
+
     sh("fvm flutter clean")
     sh("fvm flutter pub get")
-    sh("fvm flutter build apk --dart-define-from-file=dart_defines/dev.json")
+    sh("fvm flutter build apk --dart-define-from-file=dart_defines/dev.json --build-name=#{build_name} --build-number=#{build_number}")
   end
 
   desc "Build and deploy apk (development build)"
-  lane :deploy_dev do
+  lane :deploy_dev do |options|
     build_dev
 
     commit = last_git_commit
@@ -37,10 +40,13 @@ platform :android do
   end
 
   desc "Build aab (production build)"
-  lane :build_pro do
+  lane :build_pro do |options|
+    build_name = options[:build_name] || "1.0.0"
+    build_number = options[:build_number] || "1"
+
     sh("fvm flutter clean")
     sh("fvm flutter pub get")
-    sh("fvm flutter build appbundle --dart-define-from-file=dart_defines/pro.json")
+    sh("fvm flutter build appbundle --dart-define-from-file=dart_defines/pro.json --build-name=#{build_name} --build-number=#{build_number}")
   end
 
   desc "Build aab (production build)"
@@ -63,10 +69,13 @@ end
 platform :ios do
   desc "Build app (development build)"
   lane :build_dev do
+    build_name = options[:build_name] || "1.0.0"
+    build_number = options[:build_number] || "1"
+
     Dir.chdir("..") do
       sh("fvm flutter clean")
       sh("fvm flutter pub get")
-      sh("fvm flutter build ipa --export-options-plist=ios/ExportOptions.plist --dart-define-from-file=dart_defines/dev.json")
+      sh("fvm flutter build ipa --export-options-plist=ios/ExportOptions.plist --dart-define-from-file=dart_defines/dev.json --build-name=#{build_name} --build-number=#{build_number}")
     end
   end
 
@@ -86,10 +95,13 @@ platform :ios do
 
   desc "Build app (production build)"
   lane :build_pro do
+    build_name = options[:build_name] || "1.0.0"
+    build_number = options[:build_number] || "1"
+
     Dir.chdir("..") do
       sh("fvm flutter clean")
       sh("fvm flutter pub get")
-      sh("fvm flutter build ipa --export-options-plist=ios/ExportOptions.plist --dart-define-from-file=dart_defines/pro.json")
+      sh("fvm flutter build ipa --export-options-plist=ios/ExportOptions.plist --dart-define-from-file=dart_defines/pro.json --build-name=#{build_name} --build-number=#{build_number}")
     end
   end
 
