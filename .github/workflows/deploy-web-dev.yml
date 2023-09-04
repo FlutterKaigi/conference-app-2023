@@ -1,0 +1,27 @@
+name: Deploy flutter web application for review
+
+on:
+  workflow_run:
+    workflows: ["PR review"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: >
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success'
+
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: pr
+
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEV }}"
+          expires: 7d
+          projectId: flutterkakgi-2023-conf-app-dev
