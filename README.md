@@ -1,5 +1,7 @@
 # FlutterKaigi 2023 official application
 
+[日本語](./README.ja.md)
+
 Welcome FlutterKaigi 2023 official application repository!
 
 ## Development

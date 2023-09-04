@@ -10,7 +10,7 @@ We use GitHub Issue for task management. Please find the issue you want to contr
 
 ### How to get started with a contribution
 
-If you find a issue you'd like to work on, please comment like "🙋" on that to avoid conflicting work. We will respond to your comments as soon as possible. Tickets marked as `Core member' are generally handled by core members. For other tickets, anyone can work on them!
+If you find a issue you'd like to work on, please comment like "🙋" on that to avoid conflicting work. We will respond to your comments as soon as possible. Tickets marked as `core member' are generally handled by core members. For other tickets, anyone can work on them!
 
 ## Contribute to the improvement of the official FlutterKaigi 2023 application
 
