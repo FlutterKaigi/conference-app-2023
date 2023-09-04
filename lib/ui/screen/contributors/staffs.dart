@@ -26,9 +26,10 @@ class Staffs extends ConsumerWidget {
               leading: CircleAvatar(
                 backgroundColor: Colors.transparent,
                 foregroundImage: NetworkImage(
-                  staffItem.userIcon.isEmpty
-                      ? _defaultIconUrl
-                      : staffItem.userIcon,
+                  switch (staffItem.userIcon.isEmpty) {
+                    true => _defaultIconUrl,
+                    false => staffItem.userIcon,
+                  },
                 ),
               ),
               title: Text(staffItem.displayName),
