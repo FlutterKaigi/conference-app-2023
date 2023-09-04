@@ -53,7 +53,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             let fs = require('fs');
-            let issue_number = Number(fs.readFileSync('./NR'));
+            let issue_number = Number(fs.readFileSync('./pr/NR'));
             let comments = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,

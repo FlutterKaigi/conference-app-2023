@@ -1,6 +1,6 @@
 import 'package:conference_2023/model/contributors/staff.dart';
 import 'package:conference_2023/model/remote_config.dart';
-import 'package:conference_2023/util/extension/remove_config_ext.dart';
+import 'package:conference_2023/util/extension/remote_config_ext.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'staff_provider.g.dart';
