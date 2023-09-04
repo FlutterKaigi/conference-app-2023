@@ -30,7 +30,7 @@ Locale appLocale(AppLocaleRef ref) {
         }
       }
 
-      return const Locale('ja');
+      return const Locale('en');
   }
 }
 
