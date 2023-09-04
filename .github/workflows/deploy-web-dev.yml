@@ -58,14 +58,13 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issue_number,
-            }).data;
+            });
 
             let commentId;
             try {
-              for (let i = comments.length; i--; ) {
-                const c = comments[i];
-                if (c.user.type === "Bot") {
-                  commentId = c.id;
+              for (const comment in comments) {
+                if (comment.user.type === "Bot") {
+                  commentId = comment.id;
                   break;
                 }
               }
