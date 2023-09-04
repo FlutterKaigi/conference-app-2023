@@ -101,6 +101,13 @@ class HomePage extends ConsumerWidget {
               ),
               OutlinedButton(
                 onPressed: () async {
+                  final uri = Uri.parse('https://medium.com/flutterkaigi');
+                  await launchInExternalApp(uri);
+                },
+                child: Text(localization.medium),
+              ),
+              OutlinedButton(
+                onPressed: () async {
                   final uri = Uri.parse('https://github.com/FlutterKaigi');
                   await launchInExternalApp(uri);
                 },
@@ -108,14 +115,8 @@ class HomePage extends ConsumerWidget {
               ),
               OutlinedButton(
                 onPressed: () async {
-                  final uri = Uri.parse('https://medium.com/flutterkaigi');
-                  await launchInExternalApp(uri);
-                },
-                child: Text(localization.medium),
-              ),
-               OutlinedButton(
-                onPressed: () async {
-                  final uri = Uri.parse('https://discord.com/invite/Nr7H8JTJSF');
+                  final uri =
+                      Uri.parse('https://discord.com/invite/Nr7H8JTJSF');
                   await launchInExternalApp(uri);
                 },
                 child: Text(localization.discord),
