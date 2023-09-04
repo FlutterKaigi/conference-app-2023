@@ -13,7 +13,7 @@ Localization localization(LocalizationRef ref) {
   return switch (appLocale.languageCode) {
     'en' => _en,
     'ja' => _ja,
-    _ => _ja,
+    _ => _en,
   };
 }
 
