@@ -45,3 +45,4 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEV }}"
           expires: 7d
           projectId: flutterkakgi-2023-conf-app-dev
+          channelId: preview
