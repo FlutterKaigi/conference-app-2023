@@ -144,14 +144,14 @@ final class LocalizationJa extends Localization {
 
   @override
   String get licensesPrivacyPolicyUrl =>
-      'http://flutterkaigi.jp/flutterkaigi/Privacy-Policy.ja.html';
+      'https://flutterkaigi.jp/flutterkaigi/Privacy-Policy.ja.html';
 
   @override
   String get licensesCodeOfConduct => '行動規範';
 
   @override
   String get licensesCodeOfConductUrl =>
-      'http://flutterkaigi.jp/flutterkaigi/Code-of-Conduct.ja.html';
+      'https://flutterkaigi.jp/flutterkaigi/Code-of-Conduct.ja.html';
 
   @override
   String get licensesContactUs => 'お問い合わせ';
