@@ -31,7 +31,7 @@ jobs:
       - run: dart format --output=none --set-exit-if-changed .
       - run: flutter test
 
-  web_preview:
+  build_web_preview:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -43,9 +43,15 @@ jobs:
           cache: true
       - run: flutter pub get
       - run: flutter build web --dart-define-from-file=dart_defines/dev.json
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+
+      - name: Save PR number
+        run: |
+          mkdir -p ./pr
+          echo ${{ github.event.number }} > ./pr/NR
+      - uses: actions/upload-artifact@v3
         with:
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEV }}"
-          expires: 7d
-          projectId: flutterkakgi-2023-conf-app-dev
+          name: pr
+          path: |
+            pr/
+            build/
+            firebase.json

@@ -29,7 +29,7 @@ flutter upgrade
 3. `fvm flutter pub get`コマンドを実行する。
 4. IDEをfvmを利用するように設定する。
    a. [VSCode](https://code.visualstudio.com/)を利用する場合は、すでに設定済みです。
-   b. [Android Studio](https://developer.android.com/studio)を利用する場合は、[fvmのドキュメント](https://fvm.app/docs/using)を参照してください。
+   b. [Android Studio](https://developer.android.com/studio)を利用する場合は、[fvmのドキュメント](https://fvm.app/docs/getting_started/configuration/#android-studio)を参照してください。
 
 ### コントリビュート
 

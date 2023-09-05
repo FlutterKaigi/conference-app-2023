@@ -13,7 +13,7 @@ Localization localization(LocalizationRef ref) {
   return switch (appLocale.languageCode) {
     'en' => _en,
     'ja' => _ja,
-    _ => _ja,
+    _ => _en,
   };
 }
 
@@ -45,6 +45,8 @@ abstract base class Localization {
   String get github;
 
   String get medium;
+
+  String get discord;
 
   String get pageTitleHome;
 
