@@ -34,7 +34,7 @@ final class LocalizationEn extends Localization {
 
   @override
   String get discord => 'Discord';
-  
+
   @override
   String get pageTitleHome => 'Home';
 
