@@ -37,9 +37,7 @@ class App extends ConsumerWidget {
             Locale('ja'),
             Locale('en'),
           ],
-          routeInformationParser: router.routeInformationParser,
-          routerDelegate: router.routerDelegate,
-          routeInformationProvider: router.routeInformationProvider,
+          routerConfig: router,
           builder: (context, child) => AccessibilityTools(
             child: Localizations.override(
               context: context,

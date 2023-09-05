@@ -6,7 +6,7 @@ part of 'app_locale.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appLocaleHash() => r'd685c1d881cc33fd215caac3978c1dfff8bab8d4';
+String _$appLocaleHash() => r'a0cc4f11480433ed7a1380263a8dd756e11694a4';
 
 /// A provider that returns the current [Locale].
 ///
@@ -42,4 +42,4 @@ final localesProvider = AutoDisposeStreamProvider<List<Locale>>.internal(
 
 typedef LocalesRef = AutoDisposeStreamProviderRef<List<Locale>>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

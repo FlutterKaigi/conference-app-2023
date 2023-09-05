@@ -46,6 +46,8 @@ abstract base class Localization {
 
   String get medium;
 
+  String get discord;
+
   String get pageTitleHome;
 
   String get pageTitleSessions;

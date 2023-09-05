@@ -33,6 +33,9 @@ final class LocalizationEn extends Localization {
   String get medium => 'Medium';
 
   @override
+  String get discord => 'Discord';
+
+  @override
   String get pageTitleHome => 'Home';
 
   @override
