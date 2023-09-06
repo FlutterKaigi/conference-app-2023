@@ -9,9 +9,6 @@ part 'theme.g.dart';
 ThemeData theme(ThemeRef ref, ColorScheme? colorScheme) {
   final baseTheme = ThemeData(
     colorScheme: colorScheme ?? lightDefaultColorScheme,
-    appBarTheme: const AppBarTheme(
-      centerTitle: true,
-    ),
     useMaterial3: true,
   );
 
@@ -26,9 +23,6 @@ ThemeData theme(ThemeRef ref, ColorScheme? colorScheme) {
 ThemeData darkTheme(DarkThemeRef ref, ColorScheme? colorScheme) {
   final baseTheme = ThemeData(
     colorScheme: colorScheme ?? darkDefaultColorScheme,
-    appBarTheme: const AppBarTheme(
-      centerTitle: true,
-    ),
     useMaterial3: true,
   );
 
