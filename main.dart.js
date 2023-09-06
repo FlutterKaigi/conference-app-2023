@@ -55011,7 +55011,7 @@ if(!(s instanceof A.dw))A.V(A.an0("The parent route must be a page route to have
 r=a.ak(t.cl)
 if(r==null)A.V(A.an0("There is no GoRouterStateRegistryScope above the current context."))
 return new A.c2(B.mj,t.JF).tw(0,new A.avk(r.f.acM(s,q).b.k(0)),new A.avl())},
-f9(a,b){var s,r,q,p=this,o=null,n=b.dq($.ki(),t.o),m=A.bdR(A.be(a,B.aG,t.l).w.a),l=p.aeD(a),k=A.w2(o,o,!0,o,o,1,o,o,o,!1,o,!1,o,o,o,o,!0,o,o,o,o,o,A.b_(A.h0(l,n),o,o,o,o,o),o,o,o,1,o)
+f9(a,b){var s,r,q,p=this,o=null,n=b.dq($.ki(),t.o),m=A.bdR(A.be(a,B.aG,t.l).w.a),l=p.aeD(a),k=A.w2(o,o,!0,o,o,1,!0,o,o,!1,o,!1,o,o,o,o,!0,o,o,o,o,o,A.b_(A.h0(l,n),o,o,o,o,o),o,o,o,1,o)
 $label0$0:{s=B.Hg===m
 if(s){r=new A.Zp(l,o)
 break $label0$0}r=o
@@ -61523,8 +61523,9 @@ yF(a,b){return new A.k(0,a.b-b.b)},
 no(a){return this.b!==a.b}}
 A.a8H.prototype={}
 A.C_.prototype={
-aeI(a){var s=new A.aft(this,a).$0()
-return s},
+aeI(a){var s=this.cy
+if(s==null)s=a.RG.y
+return s==null?new A.aft(this,a).$0():s},
 aj(){return new A.Jb(B.j)},
 ou(a){return A.Og().$1(a)}}
 A.aft.prototype={
