@@ -35,6 +35,7 @@ class RootScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(currentTab.title(localization)),
+        centerTitle: true,
       ),
       drawer: switch (screenSize) {
         ScreenSize.compact => RootDrawer(
