@@ -60,22 +60,21 @@ jobs:
               repo: context.repo.repo,
               issue_number: issue_number,
             });
-            const bot_comment = comments.find(comment => comment.user.id === 41898282);
-            const comment_body = `PR: ${issue_number}\n[preview link](${{ steps.hosting.outputs.details_url }})`;
 
+            const bot_comment = comments.find(comment => comment.user.id === 41898282);
             if (bot_comment) {
-              await github.rest.issues.updateComment({
+              await github.rest.issues.deleteComment({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: issue_number,
                 comment_id: bot_comment.id,
-                body: comment_body
-              });
-            } else {
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: issue_number,
-                body: comment_body
               });
             }
+
+            const comment_body = `Commented by GitHub Bot\n\nPR: #${issue_number}\n[preview link](${{ steps.hosting.outputs.details_url }})`;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue_number,
+              body: comment_body
+            });
