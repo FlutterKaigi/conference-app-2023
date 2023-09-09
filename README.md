@@ -30,8 +30,8 @@ flutter upgrade
 2. Move to project root directory, and run `fvm install` command.
 3. Run `fvm flutter pub get` command.
 4. Set up IDE to use fvm.
-   a. If you use [VSCode](https://code.visualstudio.com/), already set up.
-   b. If you use [Android Studio](https://developer.android.com/studio), please see [fvm document](https://fvm.app/docs/getting_started/configuration/#android-studio).
+   - If you use [VSCode](https://code.visualstudio.com/), already set up.
+   - If you use [Android Studio](https://developer.android.com/studio), please see [fvm document](https://fvm.app/docs/getting_started/configuration/#android-studio).
 
 ### Contributing
 
