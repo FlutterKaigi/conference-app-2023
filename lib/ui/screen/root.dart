@@ -12,10 +12,10 @@ import 'package:go_router/go_router.dart';
 class RootScreen extends ConsumerWidget {
   const RootScreen({
     super.key,
-    required this.navigator,
+    required this.navigationShell,
   });
 
-  final Widget navigator;
+  final StatefulNavigationShell navigationShell;
 
   RootTab _getCurrentTab(BuildContext context) {
     final location = GoRouterState.of(context).uri.toString();
@@ -39,12 +39,13 @@ class RootScreen extends ConsumerWidget {
       ),
       drawer: switch (screenSize) {
         ScreenSize.compact => RootDrawer(
+            navigationShell: navigationShell,
             currentTab: currentTab,
           ),
         _ => null,
       },
       body: switch (screenSize) {
-        ScreenSize.compact => navigator,
+        ScreenSize.compact => navigationShell,
         ScreenSize.medium => Row(
             children: [
               LayoutBuilder(
@@ -55,6 +56,7 @@ class RootScreen extends ConsumerWidget {
                     ),
                     child: IntrinsicHeight(
                       child: RootNavigationRail(
+                        navigationShell: navigationShell,
                         currentTab: currentTab,
                         extended: false,
                       ),
@@ -63,7 +65,7 @@ class RootScreen extends ConsumerWidget {
                 ),
               ),
               Expanded(
-                child: navigator,
+                child: navigationShell,
               ),
             ],
           ),
@@ -79,6 +81,7 @@ class RootScreen extends ConsumerWidget {
                     ),
                     child: IntrinsicHeight(
                       child: RootNavigationRail(
+                        navigationShell: navigationShell,
                         currentTab: currentTab,
                         extended: true,
                       ),
@@ -87,13 +90,14 @@ class RootScreen extends ConsumerWidget {
                 ),
               ),
               Expanded(
-                child: navigator,
+                child: navigationShell,
               ),
             ],
           ),
       },
       bottomNavigationBar: switch (screenSize) {
         ScreenSize.compact => RootNavigationBar(
+            navigationShell: navigationShell,
             currentTab: currentTab,
           ),
         _ => null,
