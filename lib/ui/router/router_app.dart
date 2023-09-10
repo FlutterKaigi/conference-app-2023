@@ -73,7 +73,6 @@ part 'router_app.g.dart';
     ),
   ],
 )
-
 class RootRoute extends StatefulShellRouteData {
   const RootRoute();
 
@@ -104,31 +103,31 @@ class HomeRoute extends GoRouteData {
 }
 
 class HomeBranch extends StatefulShellBranchData {
-    static final $navigatorKey = homeNavigatorKey;
+  static final $navigatorKey = homeNavigatorKey;
 }
 
 class SessionsBranch extends StatefulShellBranchData {
-    static final $navigatorKey = sessionNavigatorKey;
+  static final $navigatorKey = sessionNavigatorKey;
 }
 
 class SponsorsBranch extends StatefulShellBranchData {
-    static final $navigatorKey = sponsorsNavigatorKey;
+  static final $navigatorKey = sponsorsNavigatorKey;
 }
 
 class VenueBranch extends StatefulShellBranchData {
-    static final $navigatorKey = venueNavigatorKey;
+  static final $navigatorKey = venueNavigatorKey;
 }
 
 class ContributorsBranch extends StatefulShellBranchData {
-    static final $navigatorKey = contributorsNavigatorKey;
+  static final $navigatorKey = contributorsNavigatorKey;
 }
 
 class SettingsBranch extends StatefulShellBranchData {
-    static final $navigatorKey = settingsNavigatorKey;
+  static final $navigatorKey = settingsNavigatorKey;
 }
 
 class LicenseBranch extends StatefulShellBranchData {
-    static final $navigatorKey = licenseNavigatorKey;
+  static final $navigatorKey = licenseNavigatorKey;
 }
 
 class SessionsRoute extends GoRouteData {
