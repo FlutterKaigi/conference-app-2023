@@ -1,5 +1,4 @@
 import 'package:conference_2023/l10n/localization.dart';
-import 'package:conference_2023/ui/router/router_app.dart';
 import 'package:conference_2023/ui/router/router_debug.dart';
 import 'package:conference_2023/ui/screen/root_tab.dart';
 import 'package:flutter/foundation.dart';
@@ -70,22 +69,7 @@ class RootNavigationRail extends ConsumerWidget {
         }
 
         final nextTab = RootTab.values[value];
-        switch (nextTab) {
-          case RootTab.home:
-            navigationShell.goBranch(HomeBranch.index);
-          case RootTab.sessions:
-            navigationShell.goBranch(SessionsBranch.index);
-          case RootTab.sponsors:
-            const SponsorsRoute().go(context);
-          case RootTab.venue:
-            navigationShell.goBranch(VenueBranch.index);
-          case RootTab.contributors:
-            const ContributorsRoute().go(context);
-          case RootTab.settings:
-            const SettingsRoute().go(context);
-          case RootTab.license:
-            const LicenseRoute().go(context);
-        }
+        navigationShell.goBranch(nextTab.branchIndex);
       },
     );
   }
