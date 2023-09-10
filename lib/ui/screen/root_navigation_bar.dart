@@ -8,22 +8,17 @@ class RootNavigationBar extends ConsumerWidget {
   const RootNavigationBar({
     super.key,
     required this.navigationShell,
-    required this.currentTab,
   });
 
   final StatefulNavigationShell navigationShell;
-  final RootTab currentTab;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = ref.watch(localizationProvider);
 
-    final (selectedIndex, indicatorColor) = switch (currentTab) {
-      RootTab.home => (0, null),
-      RootTab.sessions => (1, null),
-      RootTab.venue => (2, null),
-      _ => (0, Colors.transparent),
-    };
+    final (selectedIndex, indicatorColor) = navigationShell.currentIndex > 2
+        ? (0, Colors.transparent)
+        : (navigationShell.currentIndex, null);
 
     return NavigationBar(
       indicatorColor: indicatorColor,

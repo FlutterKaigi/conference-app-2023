@@ -98,7 +98,6 @@ class RootScreen extends ConsumerWidget {
       bottomNavigationBar: switch (screenSize) {
         ScreenSize.compact => RootNavigationBar(
             navigationShell: navigationShell,
-            currentTab: currentTab,
           ),
         _ => null,
       },
