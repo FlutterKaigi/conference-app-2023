@@ -33,7 +33,9 @@ part 'router_app.g.dart';
     ),
     TypedStatefulShellBranch<VenueBranch>(
       routes: [
-        TypedGoRoute<VenueRoute>(path: VenueRoute.path),
+        TypedGoRoute<VenueRoute>(
+          path: VenueRoute.path,
+        ),
       ],
     ),
     // Only Appears in Drawer and NavigationRail
