@@ -1,15 +1,17 @@
 import 'package:conference_2023/l10n/localization.dart';
-import 'package:conference_2023/ui/router/router_app.dart';
 import 'package:conference_2023/ui/screen/root_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class RootNavigationBar extends ConsumerWidget {
   const RootNavigationBar({
     super.key,
+    required this.navigationShell,
     required this.currentTab,
   });
 
+  final StatefulNavigationShell navigationShell;
   final RootTab currentTab;
 
   @override
@@ -40,12 +42,7 @@ class RootNavigationBar extends ConsumerWidget {
           label: RootTab.venue.title(localization),
         ),
       ],
-      onDestinationSelected: (value) => switch (value) {
-        0 => const HomeRoute().go(context),
-        1 => const SessionsRoute().go(context),
-        2 => const VenueRoute().go(context),
-        _ => throw UnimplementedError(),
-      },
+      onDestinationSelected: (value) => navigationShell.goBranch(value),
     );
   }
 }
