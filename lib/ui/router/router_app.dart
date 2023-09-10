@@ -16,6 +16,7 @@ part 'router_app.g.dart';
 
 @TypedStatefulShellRoute<RootRoute>(
   branches: [
+    // BottomNavigationBar Tabs
     TypedStatefulShellBranch<HomeBranch>(
       routes: [
         TypedGoRoute<HomeRoute>(
@@ -35,6 +36,7 @@ part 'router_app.g.dart';
         TypedGoRoute<VenueRoute>(path: VenueRoute.path),
       ],
     ),
+    // Only Appears in Drawer and NavigationRail
     TypedStatefulShellBranch<SponsorsBranch>(
       routes: [
         TypedGoRoute<SponsorsRoute>(
