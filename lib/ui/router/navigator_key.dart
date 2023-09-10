@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 final rootNavigatorKey = GlobalKey<NavigatorState>();
-final shellNavigatorKey = GlobalKey<NavigatorState>();
 
 final homeNavigatorKey = GlobalKey<NavigatorState>();
 final sessionNavigatorKey = GlobalKey<NavigatorState>();
