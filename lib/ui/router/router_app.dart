@@ -106,10 +106,12 @@ class HomeRoute extends GoRouteData {
 
 class HomeBranch extends StatefulShellBranchData {
   static final $navigatorKey = homeNavigatorKey;
+  static const index = 0;
 }
 
 class SessionsBranch extends StatefulShellBranchData {
   static final $navigatorKey = sessionNavigatorKey;
+  static const index = 1;
 }
 
 class SponsorsBranch extends StatefulShellBranchData {
@@ -118,6 +120,7 @@ class SponsorsBranch extends StatefulShellBranchData {
 
 class VenueBranch extends StatefulShellBranchData {
   static final $navigatorKey = venueNavigatorKey;
+  static const index = 2;
 }
 
 class ContributorsBranch extends StatefulShellBranchData {

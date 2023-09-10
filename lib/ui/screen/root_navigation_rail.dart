@@ -72,13 +72,13 @@ class RootNavigationRail extends ConsumerWidget {
         final nextTab = RootTab.values[value];
         switch (nextTab) {
           case RootTab.home:
-            navigationShell.goBranch(0);
+            navigationShell.goBranch(HomeBranch.index);
           case RootTab.sessions:
-            navigationShell.goBranch(1);
+            navigationShell.goBranch(SessionsBranch.index);
           case RootTab.sponsors:
             const SponsorsRoute().go(context);
           case RootTab.venue:
-            navigationShell.goBranch(2);
+            navigationShell.goBranch(VenueBranch.index);
           case RootTab.contributors:
             const ContributorsRoute().go(context);
           case RootTab.settings:
