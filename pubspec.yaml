@@ -43,6 +43,7 @@ dependencies:
   url_launcher: ^6.0.0
 
   accessibility_tools: ^1.0.0
+  collection: ^1.0.0
 
 dev_dependencies:
   flutter_test:
