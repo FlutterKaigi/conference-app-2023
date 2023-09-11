@@ -16,9 +16,9 @@ class RootNavigationBar extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = ref.watch(localizationProvider);
 
-    final (selectedIndex, indicatorColor) = navigationShell.currentIndex > 2
-        ? (0, Colors.transparent)
-        : (navigationShell.currentIndex, null);
+    final (selectedIndex, indicatorColor) = navigationShell.currentIndex <= 2
+        ? (navigationShell.currentIndex, null)
+        : (0, Colors.transparent);
 
     return NavigationBar(
       indicatorColor: indicatorColor,
