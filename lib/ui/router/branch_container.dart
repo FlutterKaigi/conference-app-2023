@@ -18,7 +18,7 @@ class BranchContainer extends StatelessWidget {
       children: [
         ...children.mapIndexed(
           (index, navigator) => Opacity(
-            // TODO: Animation
+            // TODO: [https://github.com/FlutterKaigi/conference-app-2023/issues/145]
             opacity: index == currentIndex ? 1 : 0,
 
             // Avoid detecting tap event in non selected screen

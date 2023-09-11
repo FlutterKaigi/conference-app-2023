@@ -9,7 +9,8 @@ enum RootTab {
   venue(VenueRoute.path),
   contributors(ContributorsRoute.path),
   settings(SettingsRoute.path),
-  license(LicenseRoute.path);
+  license(LicensesRoute.path),
+  ;
 
   const RootTab(this.path);
 
@@ -39,7 +40,7 @@ extension RootTabExt on RootTab {
         RootTab.license => localization.pageTitleLicense,
       };
 
-  // These values are prescribed by sort order defined in TypedStatefulShellRoute
+  /// These values are prescribed by sort order defined in [RootRoute]
   int get branchIndex => switch (this) {
         RootTab.home => 0,
         RootTab.sessions => 1,
