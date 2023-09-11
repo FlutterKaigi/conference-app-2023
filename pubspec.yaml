@@ -33,6 +33,7 @@ dependencies:
   go_router: ^10.0.0
 
   adaptive_dialog: ^1.9.0-0
+  collection: ^1.0.0
   dynamic_color: ^1.0.0
   gap: ^3.0.0
   google_fonts: ^5.0.0
@@ -43,7 +44,6 @@ dependencies:
   url_launcher: ^6.0.0
 
   accessibility_tools: ^1.0.0
-  collection: ^1.0.0
 
 dev_dependencies:
   flutter_test:
