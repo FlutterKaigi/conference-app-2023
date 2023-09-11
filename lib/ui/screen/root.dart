@@ -1,4 +1,5 @@
 import 'package:conference_2023/l10n/localization.dart';
+import 'package:conference_2023/ui/router/branch_container.dart';
 import 'package:conference_2023/ui/screen/root_drawer.dart';
 import 'package:conference_2023/ui/screen/root_navigation_bar.dart';
 import 'package:conference_2023/ui/screen/root_navigation_rail.dart';
@@ -13,9 +14,11 @@ class RootScreen extends ConsumerWidget {
   const RootScreen({
     super.key,
     required this.navigationShell,
+    required this.children,
   });
 
   final StatefulNavigationShell navigationShell;
+  final List<Widget> children;
 
   RootTab _getCurrentTab(BuildContext context) {
     final location = GoRouterState.of(context).uri.toString();
@@ -45,7 +48,10 @@ class RootScreen extends ConsumerWidget {
         _ => null,
       },
       body: switch (screenSize) {
-        ScreenSize.compact => navigationShell,
+        ScreenSize.compact => BranchContainer(
+            currentIndex: navigationShell.currentIndex,
+            children: children,
+          ),
         ScreenSize.medium => Row(
             children: [
               LayoutBuilder(
@@ -65,7 +71,10 @@ class RootScreen extends ConsumerWidget {
                 ),
               ),
               Expanded(
-                child: navigationShell,
+                child: BranchContainer(
+                  currentIndex: navigationShell.currentIndex,
+                  children: children,
+                ),
               ),
             ],
           ),
@@ -90,7 +99,10 @@ class RootScreen extends ConsumerWidget {
                 ),
               ),
               Expanded(
-                child: navigationShell,
+                child: BranchContainer(
+                  currentIndex: navigationShell.currentIndex,
+                  children: children,
+                ),
               ),
             ],
           ),

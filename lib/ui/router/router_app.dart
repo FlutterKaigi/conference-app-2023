@@ -86,8 +86,17 @@ class RootRoute extends StatefulShellRouteData {
     GoRouterState state,
     StatefulNavigationShell navigationShell,
   ) {
+    return navigationShell;
+  }
+
+  static Widget $navigatorContainerBuilder(
+    BuildContext context,
+    StatefulNavigationShell navigationShell,
+    List<Widget> children,
+  ) {
     return RootScreen(
       navigationShell: navigationShell,
+      children: children,
     );
   }
 }

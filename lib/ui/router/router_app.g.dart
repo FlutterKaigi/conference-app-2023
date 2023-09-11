@@ -11,6 +11,7 @@ List<RouteBase> get $appRoutes => [
     ];
 
 RouteBase get $rootRoute => StatefulShellRouteData.$route(
+      navigatorContainerBuilder: RootRoute.$navigatorContainerBuilder,
       factory: $RootRouteExtension._fromState,
       branches: [
         StatefulShellBranchData.$branch(
