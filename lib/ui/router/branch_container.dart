@@ -15,29 +15,25 @@ class BranchContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: children.mapIndexed(
-        (
-          int index,
-          Widget navigator,
-        ) {
-          return Opacity(
+      children: [
+        ...children.mapIndexed(
+          (index, navigator) => Opacity(
+            // TODO: Animation
             opacity: index == currentIndex ? 1 : 0,
-            child: _branchNavigatorWrapper(index, navigator),
-          );
-        },
-      ).toList(),
+
+            // Avoid detecting tap event in non selected screen
+            child: IgnorePointer(
+              ignoring: index != currentIndex,
+
+              // Avoid detecting scroll event in non selected screen
+              child: TickerMode(
+                enabled: index == currentIndex,
+                child: navigator,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
-
-  Widget _branchNavigatorWrapper(
-    int index,
-    Widget navigator,
-  ) =>
-      IgnorePointer(
-        ignoring: index != currentIndex,
-        child: TickerMode(
-          enabled: index == currentIndex,
-          child: navigator,
-        ),
-      );
 }
