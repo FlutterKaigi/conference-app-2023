@@ -1,4 +1,5 @@
 import 'package:conference_2023/l10n/localization.dart';
+import 'package:conference_2023/ui/router/branch_container.dart';
 import 'package:conference_2023/ui/screen/root_drawer.dart';
 import 'package:conference_2023/ui/screen/root_navigation_bar.dart';
 import 'package:conference_2023/ui/screen/root_navigation_rail.dart';
@@ -12,10 +13,12 @@ import 'package:go_router/go_router.dart';
 class RootScreen extends ConsumerWidget {
   const RootScreen({
     super.key,
-    required this.navigator,
+    required this.navigationShell,
+    required this.children,
   });
 
-  final Widget navigator;
+  final StatefulNavigationShell navigationShell;
+  final List<Widget> children;
 
   RootTab _getCurrentTab(BuildContext context) {
     final location = GoRouterState.of(context).uri.toString();
@@ -39,12 +42,16 @@ class RootScreen extends ConsumerWidget {
       ),
       drawer: switch (screenSize) {
         ScreenSize.compact => RootDrawer(
+            navigationShell: navigationShell,
             currentTab: currentTab,
           ),
         _ => null,
       },
       body: switch (screenSize) {
-        ScreenSize.compact => navigator,
+        ScreenSize.compact => BranchContainer(
+            currentIndex: navigationShell.currentIndex,
+            children: children,
+          ),
         ScreenSize.medium => Row(
             children: [
               LayoutBuilder(
@@ -55,6 +62,7 @@ class RootScreen extends ConsumerWidget {
                     ),
                     child: IntrinsicHeight(
                       child: RootNavigationRail(
+                        navigationShell: navigationShell,
                         currentTab: currentTab,
                         extended: false,
                       ),
@@ -63,7 +71,10 @@ class RootScreen extends ConsumerWidget {
                 ),
               ),
               Expanded(
-                child: navigator,
+                child: BranchContainer(
+                  currentIndex: navigationShell.currentIndex,
+                  children: children,
+                ),
               ),
             ],
           ),
@@ -79,6 +90,7 @@ class RootScreen extends ConsumerWidget {
                     ),
                     child: IntrinsicHeight(
                       child: RootNavigationRail(
+                        navigationShell: navigationShell,
                         currentTab: currentTab,
                         extended: true,
                       ),
@@ -87,14 +99,17 @@ class RootScreen extends ConsumerWidget {
                 ),
               ),
               Expanded(
-                child: navigator,
+                child: BranchContainer(
+                  currentIndex: navigationShell.currentIndex,
+                  children: children,
+                ),
               ),
             ],
           ),
       },
       bottomNavigationBar: switch (screenSize) {
         ScreenSize.compact => RootNavigationBar(
-            currentTab: currentTab,
+            navigationShell: navigationShell,
           ),
         _ => null,
       },
