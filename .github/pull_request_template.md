@@ -8,6 +8,8 @@ Fixes #issue_number
 
 ## Type of change
 
+Please delete options that are not relevant.
+
 - [ ] New feature
 - [ ] Bug fix
 - [ ] Refactor
@@ -21,7 +23,7 @@ Fixes #issue_number
 * Please describe the tests that you ran to verify your changes.
 * Provide instructions so we can reproduce.
 
-## Checklist:
+## Checklist
 
 - [ ] My code follows the style guidelines of this project.
 - [ ] My code has been formatted with `flutter format lib`.
