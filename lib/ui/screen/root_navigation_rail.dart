@@ -1,18 +1,20 @@
 import 'package:conference_2023/l10n/localization.dart';
-import 'package:conference_2023/ui/router/router_app.dart';
 import 'package:conference_2023/ui/router/router_debug.dart';
 import 'package:conference_2023/ui/screen/root_tab.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class RootNavigationRail extends ConsumerWidget {
   const RootNavigationRail({
     super.key,
+    required this.navigationShell,
     required this.currentTab,
     required this.extended,
   });
 
+  final StatefulNavigationShell navigationShell;
   final RootTab currentTab;
   final bool extended;
 
@@ -67,22 +69,7 @@ class RootNavigationRail extends ConsumerWidget {
         }
 
         final nextTab = RootTab.values[value];
-        switch (nextTab) {
-          case RootTab.home:
-            const HomeRoute().go(context);
-          case RootTab.sessions:
-            const SessionsRoute().go(context);
-          case RootTab.sponsors:
-            const SponsorsRoute().go(context);
-          case RootTab.venue:
-            const VenueRoute().go(context);
-          case RootTab.contributors:
-            const ContributorsRoute().go(context);
-          case RootTab.settings:
-            const SettingsRoute().go(context);
-          case RootTab.license:
-            const LicenseRoute().go(context);
-        }
+        navigationShell.goBranch(nextTab.branchIndex);
       },
     );
   }

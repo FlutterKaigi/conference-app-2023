@@ -10,47 +10,81 @@ List<RouteBase> get $appRoutes => [
       $rootRoute,
     ];
 
-RouteBase get $rootRoute => ShellRouteData.$route(
-      navigatorKey: RootRoute.$navigatorKey,
+RouteBase get $rootRoute => StatefulShellRouteData.$route(
+      navigatorContainerBuilder: RootRoute.$navigatorContainerBuilder,
       factory: $RootRouteExtension._fromState,
-      routes: [
-        GoRouteData.$route(
-          path: '/',
-          factory: $HomeRouteExtension._fromState,
-        ),
-        GoRouteData.$route(
-          path: '/sessions',
-          factory: $SessionsRouteExtension._fromState,
-        ),
-        GoRouteData.$route(
-          path: '/sponsors',
-          factory: $SponsorsRouteExtension._fromState,
-        ),
-        GoRouteData.$route(
-          path: '/venue',
-          factory: $VenueRouteExtension._fromState,
-        ),
-        GoRouteData.$route(
-          path: '/contributors',
-          factory: $ContributorsRouteExtension._fromState,
-        ),
-        GoRouteData.$route(
-          path: '/settings',
-          factory: $SettingsRouteExtension._fromState,
-        ),
-        GoRouteData.$route(
-          path: '/licenses',
-          factory: $LicenseRouteExtension._fromState,
+      branches: [
+        StatefulShellBranchData.$branch(
+          navigatorKey: HomeBranch.$navigatorKey,
           routes: [
             GoRouteData.$route(
-              path: 'about-us',
-              parentNavigatorKey: AboutUsRoute.$parentNavigatorKey,
-              factory: $AboutUsRouteExtension._fromState,
+              path: '/',
+              factory: $HomeRouteExtension._fromState,
             ),
+          ],
+        ),
+        StatefulShellBranchData.$branch(
+          navigatorKey: SessionsBranch.$navigatorKey,
+          routes: [
             GoRouteData.$route(
-              path: 'legal-notices',
-              parentNavigatorKey: LegalNoticesRoute.$parentNavigatorKey,
-              factory: $LegalNoticesRouteExtension._fromState,
+              path: '/sessions',
+              factory: $SessionsRouteExtension._fromState,
+            ),
+          ],
+        ),
+        StatefulShellBranchData.$branch(
+          navigatorKey: VenueBranch.$navigatorKey,
+          routes: [
+            GoRouteData.$route(
+              path: '/venue',
+              factory: $VenueRouteExtension._fromState,
+            ),
+          ],
+        ),
+        StatefulShellBranchData.$branch(
+          navigatorKey: SponsorsBranch.$navigatorKey,
+          routes: [
+            GoRouteData.$route(
+              path: '/sponsors',
+              factory: $SponsorsRouteExtension._fromState,
+            ),
+          ],
+        ),
+        StatefulShellBranchData.$branch(
+          navigatorKey: ContributorsBranch.$navigatorKey,
+          routes: [
+            GoRouteData.$route(
+              path: '/contributors',
+              factory: $ContributorsRouteExtension._fromState,
+            ),
+          ],
+        ),
+        StatefulShellBranchData.$branch(
+          navigatorKey: SettingsBranch.$navigatorKey,
+          routes: [
+            GoRouteData.$route(
+              path: '/settings',
+              factory: $SettingsRouteExtension._fromState,
+            ),
+          ],
+        ),
+        StatefulShellBranchData.$branch(
+          routes: [
+            GoRouteData.$route(
+              path: '/licenses',
+              factory: $LicenseRouteExtension._fromState,
+              routes: [
+                GoRouteData.$route(
+                  path: 'about-us',
+                  parentNavigatorKey: AboutUsRoute.$parentNavigatorKey,
+                  factory: $AboutUsRouteExtension._fromState,
+                ),
+                GoRouteData.$route(
+                  path: 'legal-notices',
+                  parentNavigatorKey: LegalNoticesRoute.$parentNavigatorKey,
+                  factory: $LegalNoticesRouteExtension._fromState,
+                ),
+              ],
             ),
           ],
         ),
@@ -95,11 +129,11 @@ extension $SessionsRouteExtension on SessionsRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $SponsorsRouteExtension on SponsorsRoute {
-  static SponsorsRoute _fromState(GoRouterState state) => const SponsorsRoute();
+extension $VenueRouteExtension on VenueRoute {
+  static VenueRoute _fromState(GoRouterState state) => const VenueRoute();
 
   String get location => GoRouteData.$location(
-        '/sponsors',
+        '/venue',
       );
 
   void go(BuildContext context) => context.go(location);
@@ -112,11 +146,11 @@ extension $SponsorsRouteExtension on SponsorsRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $VenueRouteExtension on VenueRoute {
-  static VenueRoute _fromState(GoRouterState state) => const VenueRoute();
+extension $SponsorsRouteExtension on SponsorsRoute {
+  static SponsorsRoute _fromState(GoRouterState state) => const SponsorsRoute();
 
   String get location => GoRouteData.$location(
-        '/venue',
+        '/sponsors',
       );
 
   void go(BuildContext context) => context.go(location);

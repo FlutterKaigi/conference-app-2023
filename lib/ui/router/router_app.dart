@@ -14,48 +14,89 @@ import 'package:go_router/go_router.dart';
 
 part 'router_app.g.dart';
 
-@TypedShellRoute<RootRoute>(
-  routes: [
-    TypedGoRoute<HomeRoute>(
-      path: HomeRoute.path,
-    ),
-    TypedGoRoute<SessionsRoute>(
-      path: SessionsRoute.path,
-    ),
-    TypedGoRoute<SponsorsRoute>(
-      path: SponsorsRoute.path,
-    ),
-    TypedGoRoute<VenueRoute>(
-      path: VenueRoute.path,
-    ),
-    TypedGoRoute<ContributorsRoute>(
-      path: ContributorsRoute.path,
-    ),
-    TypedGoRoute<SettingsRoute>(
-      path: SettingsRoute.path,
-    ),
-    TypedGoRoute<LicenseRoute>(
-      path: LicenseRoute.path,
+@TypedStatefulShellRoute<RootRoute>(
+  branches: [
+    // BottomNavigationBar Tabs
+    TypedStatefulShellBranch<HomeBranch>(
       routes: [
-        TypedGoRoute<AboutUsRoute>(
-          path: 'about-us',
+        TypedGoRoute<HomeRoute>(
+          path: HomeRoute.path,
         ),
-        TypedGoRoute<LegalNoticesRoute>(
-          path: 'legal-notices',
+      ],
+    ),
+    TypedStatefulShellBranch<SessionsBranch>(
+      routes: [
+        TypedGoRoute<SessionsRoute>(
+          path: SessionsRoute.path,
+        ),
+      ],
+    ),
+    TypedStatefulShellBranch<VenueBranch>(
+      routes: [
+        TypedGoRoute<VenueRoute>(
+          path: VenueRoute.path,
+        ),
+      ],
+    ),
+    // Only Appears in Drawer and NavigationRail
+    TypedStatefulShellBranch<SponsorsBranch>(
+      routes: [
+        TypedGoRoute<SponsorsRoute>(
+          path: SponsorsRoute.path,
+        ),
+      ],
+    ),
+    TypedStatefulShellBranch<ContributorsBranch>(
+      routes: [
+        TypedGoRoute<ContributorsRoute>(
+          path: ContributorsRoute.path,
+        ),
+      ],
+    ),
+    TypedStatefulShellBranch<SettingsBranch>(
+      routes: [
+        TypedGoRoute<SettingsRoute>(
+          path: SettingsRoute.path,
+        ),
+      ],
+    ),
+    TypedStatefulShellBranch(
+      routes: [
+        TypedGoRoute<LicenseRoute>(
+          path: LicenseRoute.path,
+          routes: [
+            TypedGoRoute<AboutUsRoute>(
+              path: 'about-us',
+            ),
+            TypedGoRoute<LegalNoticesRoute>(
+              path: 'legal-notices',
+            ),
+          ],
         ),
       ],
     ),
   ],
 )
-class RootRoute extends ShellRouteData {
+class RootRoute extends StatefulShellRouteData {
   const RootRoute();
 
-  static final $navigatorKey = shellNavigatorKey;
-
   @override
-  Widget builder(BuildContext context, GoRouterState state, Widget navigator) {
+  Widget builder(
+    BuildContext context,
+    GoRouterState state,
+    StatefulNavigationShell navigationShell,
+  ) {
+    return navigationShell;
+  }
+
+  static Widget $navigatorContainerBuilder(
+    BuildContext context,
+    StatefulNavigationShell navigationShell,
+    List<Widget> children,
+  ) {
     return RootScreen(
-      navigator: navigator,
+      navigationShell: navigationShell,
+      children: children,
     );
   }
 }
@@ -63,7 +104,6 @@ class RootRoute extends ShellRouteData {
 class HomeRoute extends GoRouteData {
   const HomeRoute();
 
-  static final $navigatorKey = shellNavigatorKey;
   static const path = '/';
 
   @override
@@ -75,10 +115,37 @@ class HomeRoute extends GoRouteData {
   }
 }
 
+class HomeBranch extends StatefulShellBranchData {
+  static final $navigatorKey = homeNavigatorKey;
+}
+
+class SessionsBranch extends StatefulShellBranchData {
+  static final $navigatorKey = sessionNavigatorKey;
+}
+
+class SponsorsBranch extends StatefulShellBranchData {
+  static final $navigatorKey = sponsorsNavigatorKey;
+}
+
+class VenueBranch extends StatefulShellBranchData {
+  static final $navigatorKey = venueNavigatorKey;
+}
+
+class ContributorsBranch extends StatefulShellBranchData {
+  static final $navigatorKey = contributorsNavigatorKey;
+}
+
+class SettingsBranch extends StatefulShellBranchData {
+  static final $navigatorKey = settingsNavigatorKey;
+}
+
+class LicenseBranch extends StatefulShellBranchData {
+  static final $navigatorKey = licenseNavigatorKey;
+}
+
 class SessionsRoute extends GoRouteData {
   const SessionsRoute();
 
-  static final $navigatorKey = shellNavigatorKey;
   static const path = '/sessions';
 
   @override
@@ -93,7 +160,6 @@ class SessionsRoute extends GoRouteData {
 class SponsorsRoute extends GoRouteData {
   const SponsorsRoute();
 
-  static final $navigatorKey = shellNavigatorKey;
   static const path = '/sponsors';
 
   @override
@@ -108,7 +174,6 @@ class SponsorsRoute extends GoRouteData {
 class VenueRoute extends GoRouteData {
   const VenueRoute();
 
-  static final $navigatorKey = shellNavigatorKey;
   static const path = '/venue';
 
   @override
@@ -125,7 +190,6 @@ class ContributorsRoute extends GoRouteData {
     this.tab,
   });
 
-  static final $navigatorKey = shellNavigatorKey;
   static const path = '/contributors';
 
   final ContributorsTab? tab;
@@ -144,7 +208,6 @@ class ContributorsRoute extends GoRouteData {
 class SettingsRoute extends GoRouteData {
   const SettingsRoute();
 
-  static final $navigatorKey = shellNavigatorKey;
   static const path = '/settings';
 
   @override
@@ -159,7 +222,6 @@ class SettingsRoute extends GoRouteData {
 class LicenseRoute extends GoRouteData {
   const LicenseRoute();
 
-  static final $navigatorKey = shellNavigatorKey;
   static const path = '/licenses';
 
   @override

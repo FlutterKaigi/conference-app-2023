@@ -1,4 +1,3 @@
-import 'package:conference_2023/model/contributors/staff.dart';
 import 'package:conference_2023/model/contributors/staff_provider.dart';
 import 'package:conference_2023/util/launch_in_external_app.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +14,7 @@ class Staffs extends ConsumerWidget {
     final state = ref.watch(staffListProvider);
 
     return switch (state) {
-      AsyncData<List<Staff>>(value: final list) => ListView.builder(
+      AsyncData(value: final list) => ListView.builder(
           padding: const EdgeInsets.symmetric(
             vertical: 8,
           ),

@@ -1,27 +1,24 @@
 import 'package:conference_2023/l10n/localization.dart';
-import 'package:conference_2023/ui/router/router_app.dart';
 import 'package:conference_2023/ui/screen/root_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class RootNavigationBar extends ConsumerWidget {
   const RootNavigationBar({
     super.key,
-    required this.currentTab,
+    required this.navigationShell,
   });
 
-  final RootTab currentTab;
+  final StatefulNavigationShell navigationShell;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = ref.watch(localizationProvider);
 
-    final (selectedIndex, indicatorColor) = switch (currentTab) {
-      RootTab.home => (0, null),
-      RootTab.sessions => (1, null),
-      RootTab.venue => (2, null),
-      _ => (0, Colors.transparent),
-    };
+    final (selectedIndex, indicatorColor) = navigationShell.currentIndex <= 2
+        ? (navigationShell.currentIndex, null)
+        : (0, Colors.transparent);
 
     return NavigationBar(
       indicatorColor: indicatorColor,
@@ -40,12 +37,10 @@ class RootNavigationBar extends ConsumerWidget {
           label: RootTab.venue.title(localization),
         ),
       ],
-      onDestinationSelected: (value) => switch (value) {
-        0 => const HomeRoute().go(context),
-        1 => const SessionsRoute().go(context),
-        2 => const VenueRoute().go(context),
-        _ => throw UnimplementedError(),
-      },
+      onDestinationSelected: (index) => navigationShell.goBranch(
+        index,
+        initialLocation: index == navigationShell.currentIndex,
+      ),
     );
   }
 }
