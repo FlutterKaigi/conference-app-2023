@@ -4,6 +4,7 @@ import 'package:conference_2023/ui/screen/root_drawer.dart';
 import 'package:conference_2023/ui/screen/root_navigation_bar.dart';
 import 'package:conference_2023/ui/screen/root_navigation_rail.dart';
 import 'package:conference_2023/ui/screen/root_tab.dart';
+import 'package:conference_2023/ui/widget/selection_area_scaffold.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:conference_2023/util/screen_size.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +36,7 @@ class RootScreen extends ConsumerWidget {
     final screenSize = context.screenSize;
     final currentTab = _getCurrentTab(context);
 
-    return Scaffold(
+    return SelectionAreaScaffold(
       appBar: AppBar(
         title: Text(currentTab.title(localization)),
         centerTitle: true,

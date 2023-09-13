@@ -1,5 +1,6 @@
 import 'package:conference_2023/gen/assets.gen.dart';
 import 'package:conference_2023/l10n/localization.dart';
+import 'package:conference_2023/ui/widget/selection_area_scaffold.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,7 +14,7 @@ class AboutUsPage extends ConsumerWidget {
     final localization = ref.watch(localizationProvider);
     final theme = Theme.of(context);
 
-    return Scaffold(
+    return SelectionAreaScaffold(
       appBar: AppBar(
         title: Text(localization.licensesAboutUs),
       ),
