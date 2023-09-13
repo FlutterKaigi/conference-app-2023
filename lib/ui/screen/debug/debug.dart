@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:conference_2023/model/remote_config.dart';
+import 'package:conference_2023/ui/widget/selection_area_scaffold.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,7 +11,7 @@ class DebugScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
+    return SelectionAreaScaffold(
       appBar: AppBar(
         title: const Text('Debug'),
       ),
