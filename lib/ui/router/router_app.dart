@@ -54,10 +54,8 @@ class RootRoute extends ShellRouteData {
 
   @override
   Widget builder(BuildContext context, GoRouterState state, Widget navigator) {
-    return SelectionArea(
-      child: RootScreen(
-        navigator: navigator,
-      ),
+    return RootScreen(
+      navigator: navigator,
     );
   }
 }
