@@ -12,64 +12,72 @@ import 'package:conference_2023/ui/screen/venue/venue.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+part 'branch/router_app_contributors.dart';
+part 'branch/router_app_home.dart';
+part 'branch/router_app_licenses.dart';
+part 'branch/router_app_sessions.dart';
+part 'branch/router_app_settings.dart';
+part 'branch/router_app_sponsors.dart';
+part 'branch/router_app_venue.dart';
 part 'router_app.g.dart';
 
 @TypedStatefulShellRoute<RootRoute>(
   branches: [
-    // BottomNavigationBar Tabs
+    /// BottomNavigationBar Tabs
     TypedStatefulShellBranch<HomeBranch>(
       routes: [
         TypedGoRoute<HomeRoute>(
-          path: HomeRoute.path,
+          path: '/${HomeRoute.path}',
         ),
       ],
     ),
     TypedStatefulShellBranch<SessionsBranch>(
       routes: [
         TypedGoRoute<SessionsRoute>(
-          path: SessionsRoute.path,
+          path: '/${SessionsRoute.path}',
         ),
       ],
     ),
     TypedStatefulShellBranch<VenueBranch>(
       routes: [
         TypedGoRoute<VenueRoute>(
-          path: VenueRoute.path,
+          path: '/${VenueRoute.path}',
         ),
       ],
     ),
-    // Only Appears in Drawer and NavigationRail
+
+    /// Only Appears in Drawer and NavigationRail
     TypedStatefulShellBranch<SponsorsBranch>(
       routes: [
         TypedGoRoute<SponsorsRoute>(
-          path: SponsorsRoute.path,
+          path: '/${SponsorsRoute.path}',
         ),
       ],
     ),
     TypedStatefulShellBranch<ContributorsBranch>(
       routes: [
         TypedGoRoute<ContributorsRoute>(
-          path: ContributorsRoute.path,
+          path: '/${ContributorsRoute.path}',
         ),
       ],
     ),
     TypedStatefulShellBranch<SettingsBranch>(
       routes: [
         TypedGoRoute<SettingsRoute>(
-          path: SettingsRoute.path,
+          path: '/${SettingsRoute.path}',
         ),
       ],
     ),
     TypedStatefulShellBranch(
       routes: [
-        TypedGoRoute<LicenseRoute>(
-          path: LicenseRoute.path,
+        TypedGoRoute<LicensesRoute>(
+          path: '/${LicensesRoute.path}',
           routes: [
             TypedGoRoute<AboutUsRoute>(
-              path: 'about-us',
+              path: AboutUsRoute.path,
             ),
             TypedGoRoute<LegalNoticesRoute>(
-              path: 'legal-notices',
+              path: LegalNoticesRoute.path,
             ),
           ],
         ),
@@ -97,166 +105,6 @@ class RootRoute extends StatefulShellRouteData {
     return RootScreen(
       navigationShell: navigationShell,
       children: children,
-    );
-  }
-}
-
-class HomeRoute extends GoRouteData {
-  const HomeRoute();
-
-  static const path = '/';
-
-  @override
-  Page<void> buildPage(BuildContext context, GoRouterState state) {
-    return NoTransitionPage(
-      key: state.pageKey,
-      child: const HomePage(),
-    );
-  }
-}
-
-class HomeBranch extends StatefulShellBranchData {
-  static final $navigatorKey = homeNavigatorKey;
-}
-
-class SessionsBranch extends StatefulShellBranchData {
-  static final $navigatorKey = sessionNavigatorKey;
-}
-
-class SponsorsBranch extends StatefulShellBranchData {
-  static final $navigatorKey = sponsorsNavigatorKey;
-}
-
-class VenueBranch extends StatefulShellBranchData {
-  static final $navigatorKey = venueNavigatorKey;
-}
-
-class ContributorsBranch extends StatefulShellBranchData {
-  static final $navigatorKey = contributorsNavigatorKey;
-}
-
-class SettingsBranch extends StatefulShellBranchData {
-  static final $navigatorKey = settingsNavigatorKey;
-}
-
-class LicenseBranch extends StatefulShellBranchData {
-  static final $navigatorKey = licenseNavigatorKey;
-}
-
-class SessionsRoute extends GoRouteData {
-  const SessionsRoute();
-
-  static const path = '/sessions';
-
-  @override
-  Page<void> buildPage(BuildContext context, GoRouterState state) {
-    return NoTransitionPage(
-      key: state.pageKey,
-      child: const SessionsPage(),
-    );
-  }
-}
-
-class SponsorsRoute extends GoRouteData {
-  const SponsorsRoute();
-
-  static const path = '/sponsors';
-
-  @override
-  Page<void> buildPage(BuildContext context, GoRouterState state) {
-    return NoTransitionPage(
-      key: state.pageKey,
-      child: const SponsorsPage(),
-    );
-  }
-}
-
-class VenueRoute extends GoRouteData {
-  const VenueRoute();
-
-  static const path = '/venue';
-
-  @override
-  Page<void> buildPage(BuildContext context, GoRouterState state) {
-    return NoTransitionPage(
-      key: state.pageKey,
-      child: const VenuePage(),
-    );
-  }
-}
-
-class ContributorsRoute extends GoRouteData {
-  const ContributorsRoute({
-    this.tab,
-  });
-
-  static const path = '/contributors';
-
-  final ContributorsTab? tab;
-
-  @override
-  Page<void> buildPage(BuildContext context, GoRouterState state) {
-    return NoTransitionPage(
-      key: state.pageKey,
-      child: ContributorsPage(
-        tab: tab ?? ContributorsTab.developer,
-      ),
-    );
-  }
-}
-
-class SettingsRoute extends GoRouteData {
-  const SettingsRoute();
-
-  static const path = '/settings';
-
-  @override
-  Page<void> buildPage(BuildContext context, GoRouterState state) {
-    return NoTransitionPage(
-      key: state.pageKey,
-      child: const SettingsPage(),
-    );
-  }
-}
-
-class LicenseRoute extends GoRouteData {
-  const LicenseRoute();
-
-  static const path = '/licenses';
-
-  @override
-  Page<void> buildPage(BuildContext context, GoRouterState state) {
-    return NoTransitionPage(
-      key: state.pageKey,
-      child: const LicensesPage(),
-    );
-  }
-}
-
-class AboutUsRoute extends GoRouteData {
-  const AboutUsRoute();
-
-  static final $parentNavigatorKey = rootNavigatorKey;
-
-  @override
-  Page<void> buildPage(BuildContext context, GoRouterState state) {
-    return MaterialPage(
-      key: state.pageKey,
-      child: const AboutUsPage(),
-    );
-  }
-}
-
-class LegalNoticesRoute extends GoRouteData {
-  const LegalNoticesRoute();
-
-  static final $parentNavigatorKey = rootNavigatorKey;
-
-  @override
-  Page<void> buildPage(BuildContext context, GoRouterState state) {
-    return MaterialPage(
-      key: state.pageKey,
-      child: const LegalNoticesPage(),
     );
   }
 }

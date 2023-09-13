@@ -72,7 +72,7 @@ RouteBase get $rootRoute => StatefulShellRouteData.$route(
           routes: [
             GoRouteData.$route(
               path: '/licenses',
-              factory: $LicenseRouteExtension._fromState,
+              factory: $LicensesRouteExtension._fromState,
               routes: [
                 GoRouteData.$route(
                   path: 'about-us',
@@ -208,8 +208,8 @@ extension $SettingsRouteExtension on SettingsRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $LicenseRouteExtension on LicenseRoute {
-  static LicenseRoute _fromState(GoRouterState state) => const LicenseRoute();
+extension $LicensesRouteExtension on LicensesRoute {
+  static LicensesRoute _fromState(GoRouterState state) => const LicensesRoute();
 
   String get location => GoRouteData.$location(
         '/licenses',
