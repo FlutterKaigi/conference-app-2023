@@ -45,6 +45,7 @@ class _ContributorsPageState extends ConsumerState<ContributorsPage>
     _tabController = TabController(
       vsync: this,
       length: ContributorsTab.values.length,
+      initialIndex: widget.tab.index,
     )..addListener(_onChangeTab);
   }
 
