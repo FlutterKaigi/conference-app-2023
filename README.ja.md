@@ -46,6 +46,7 @@ flutter upgrade
   - [json_serializable](https://pub.dev/packages/json_serializable)
 - ナビゲーション
   - [go_router](https://pub.dev/packages/go_router)
+  - [go_router_builder](https://pub.dev/packages/go_router_builder)
 - [M3 (Material Design 3)](https://m3.material.io/)
 
 アプリケーションの設計は、[riverpod pub example](https://github.com/rrousselGit/riverpod/tree/riverpod-v2.3.2/examples/pub)を参考にしています。
