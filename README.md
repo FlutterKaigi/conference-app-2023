@@ -50,6 +50,7 @@ For Japanese, please see [CONTRIBUTING.ja.md](./CONTRIBUTING.ja.md).
   - [json_serializable](https://pub.dev/packages/json_serializable)
 - Navigation
   - [go_router](https://pub.dev/packages/go_router)
+  - [go_router_builder](https://pub.dev/packages/go_router_builder)
 - [M3 (Material Design 3)](https://m3.material.io/)
 
 The application design is based on [riverpod pub example](https://github.com/rrousselGit/riverpod/tree/riverpod-v2.3.2/examples/pub).
