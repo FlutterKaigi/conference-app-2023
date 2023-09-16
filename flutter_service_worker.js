@@ -3,13 +3,13 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"canvaskit/chromium/canvaskit.js": "2236901a15edcdf16e2eaf18ea7a7415",
-"canvaskit/chromium/canvaskit.wasm": "addd330d70d04918ab2059efeba5105f",
-"canvaskit/canvaskit.js": "7c4a2df28f03b428a63fb10250463cf5",
-"canvaskit/skwasm.worker.js": "51253d3321b11ddb8d73fa8aa87d3b15",
-"canvaskit/skwasm.js": "95f16c6690f955a45b2317496983dbe9",
-"canvaskit/canvaskit.wasm": "f93cce574798cbc3f46e44765b523058",
-"canvaskit/skwasm.wasm": "c3803dbb1ac015d00c055bea11adb934",
+const RESOURCES = {"canvaskit/chromium/canvaskit.js": "36d162e8f857ceeacbf01ed75a382f56",
+"canvaskit/chromium/canvaskit.wasm": "b3fabff5b6c1cb4d4e81f4551eba9ba2",
+"canvaskit/canvaskit.js": "dd5b7e38ac853fcf41faa69cf49aa175",
+"canvaskit/skwasm.worker.js": "bfb704a6c714a75da9ef320991e88b03",
+"canvaskit/skwasm.js": "5256dd3e40ec9fe1fc9faa51a116bcfd",
+"canvaskit/canvaskit.wasm": "6e7859012ffcf1d482a8bbc473b8171f",
+"canvaskit/skwasm.wasm": "4ca73baf420612f1657d5b2be4b7467d",
 "assets/shaders/ink_sparkle.frag": "f8b80e740d33eb157090be4e995febdf",
 "assets/assets/svg/flutterkaigi_logo.svg": "a96e950a03340a5025b0ee0d76a9b37f",
 "assets/AssetManifest.json": "464a727cd729a91e84eb2600916eb3ed",
@@ -53,11 +53,11 @@ const RESOURCES = {"canvaskit/chromium/canvaskit.js": "2236901a15edcdf16e2eaf18e
 "images/3bcbd2cc0734ac40b8d4d6ac36de8f5c61fc569e.png": "6c4b9cdf5a3fcbab5ef9f2aed271ce21",
 "images/a20c1b8702c0ad61db18dc73cb955c81ec18f78f.jpeg": "8f3603848a166d14f16757b7025be2fd",
 "images/07d67bd95e83032256abb1e330b66aa245c71ab0.jpeg": "d7feffb988233429b410b60c9064e12c",
-"index.html": "e42ec07b760fbb55f8c8fedc7a62ff6a",
-"/": "e42ec07b760fbb55f8c8fedc7a62ff6a",
+"index.html": "b284848b44e2bc779ef296a8cf89a305",
+"/": "b284848b44e2bc779ef296a8cf89a305",
 "404.html": "603a089184ff8eac1bb30a1b9ee1113b",
 "favicon.png": "ae45dea70e6c64a1519909d37519ddb3",
-"main.dart.js": "7b215972f558fb5c3252e11c4d3c970c",
+"main.dart.js": "1b87fa661f2c6fbbb4e9de02d4fef334",
 "manifest.json": "5725cc90c199f0ffa10d0f90b4e61f8d"};
 // The application shell files that are downloaded before a service worker can
 // start.
