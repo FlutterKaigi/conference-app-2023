@@ -61,10 +61,10 @@ packages:
     dependency: transitive
     description:
       name: archive
-      sha256: "49b1fad315e57ab0bbc15bcbb874e83116a1d78f77ebd500a4af6c9407d6b28e"
+      sha256: e0902a06f0e00414e4e3438a084580161279f137aeb862274710f29ec10cf01e
       url: "https://pub.dev"
     source: hosted
-    version: "3.3.8"
+    version: "3.3.9"
   args:
     dependency: transitive
     description:
@@ -117,10 +117,10 @@ packages:
     dependency: transitive
     description:
       name: build_resolvers
-      sha256: a7417cc44d9edb3f2c8760000270c99dba8c72ff66d0146772b8326565780745
+      sha256: d912852cce27c9e80a93603db721c267716894462e7033165178b91138587972
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.1"
+    version: "2.3.2"
   build_runner:
     dependency: "direct dev"
     description:
@@ -269,10 +269,10 @@ packages:
     dependency: transitive
     description:
       name: dart_style
-      sha256: "1efa911ca7086affd35f463ca2fc1799584fb6aa89883cf0af8e3664d6a02d55"
+      sha256: abd7625e16f51f554ea244d090292945ec4d4be7bfbaf2ec8cccea568919d334
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.2"
+    version: "2.3.3"
   dartx:
     dependency: transitive
     description:
@@ -293,10 +293,10 @@ packages:
     dependency: "direct main"
     description:
       name: dynamic_color
-      sha256: de4798a7069121aee12d5895315680258415de9b00e717723a1bd73d58f0126d
+      sha256: "96bff3df72e3d428bda2b874c7a521e8c86f592cae626ea594922fcc8d166e0c"
       url: "https://pub.dev"
     source: hosted
-    version: "1.6.6"
+    version: "1.6.7"
   fake_async:
     dependency: transitive
     description:
@@ -561,18 +561,18 @@ packages:
     dependency: "direct dev"
     description:
       name: go_router_builder
-      sha256: "89585f7cf2ddd35a3f05908c5bb54339d3f891fc5aac4f30e2864469d7ddc92b"
+      sha256: "8f828e7d8985aaa347d8699830ccef96cf6c47319dce8051bba037e0252e9fe4"
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.1"
+    version: "2.3.2"
   google_fonts:
     dependency: "direct main"
     description:
       name: google_fonts
-      sha256: e20ff62b158b96f392bfc8afe29dee1503c94fbea2cbe8186fd59b756b8ae982
+      sha256: "0833bfcc1c32560ee51d381fcf1d6d6b35921e89afe852c12f83dc8c00b2e6bc"
       url: "https://pub.dev"
     source: hosted
-    version: "5.1.0"
+    version: "6.0.0"
   graphs:
     dependency: transitive
     description:
@@ -697,10 +697,10 @@ packages:
     dependency: transitive
     description:
       name: macos_window_utils
-      sha256: "43a90473f8786f00f07203e6819dab67e032f8896dafa4a6f85fbc71fba32c0b"
+      sha256: c51aba4b8517d1b3dc3d3b0653eff4f84f318040d0f01ea0da4e64298ac76024
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.0"
+    version: "1.3.0"
   matcher:
     dependency: transitive
     description:
@@ -809,18 +809,18 @@ packages:
     dependency: "direct main"
     description:
       name: permission_handler
-      sha256: "63e5216aae014a72fe9579ccd027323395ce7a98271d9defa9d57320d001af81"
+      sha256: ad65ba9af42a3d067203641de3fd9f547ded1410bad3b84400c2b4899faede70
       url: "https://pub.dev"
     source: hosted
-    version: "10.4.3"
+    version: "11.0.0"
   permission_handler_android:
     dependency: transitive
     description:
       name: permission_handler_android
-      sha256: d74e77a5ecd38649905db0a7d05ef16bed42ff263b9efb73ed794317c5764ec3
+      sha256: f23cfe9af0d49c6b9fd8a8b09f7b3301ca7e346204939b5afef4404d36d2608f
       url: "https://pub.dev"
     source: hosted
-    version: "10.3.4"
+    version: "11.0.1"
   permission_handler_apple:
     dependency: transitive
     description:
@@ -833,10 +833,10 @@ packages:
     dependency: transitive
     description:
       name: permission_handler_platform_interface
-      sha256: "7c6b1500385dd1d2ca61bb89e2488ca178e274a69144d26bbd65e33eae7c02a9"
+      sha256: f2343e9fa9c22ae4fd92d4732755bfe452214e7189afcc097380950cf567b4b2
       url: "https://pub.dev"
     source: hosted
-    version: "3.11.3"
+    version: "3.11.5"
   permission_handler_windows:
     dependency: transitive
     description:
@@ -937,10 +937,10 @@ packages:
     dependency: "direct dev"
     description:
       name: riverpod_lint
-      sha256: "74123a5f0a8e809ab80078dbc02061ecf02e09647a2c3231c87b7342bcf8d399"
+      sha256: ac720622fde22356eca69a4831c15ab811615bf256a2ce37f1fff06b7f86cacf
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.4"
+    version: "2.1.0"
   rxdart:
     dependency: transitive
     description:
@@ -1307,5 +1307,5 @@ packages:
     source: hosted
     version: "3.1.2"
 sdks:
-  dart: ">=3.2.0-42.2.beta <4.0.0"
-  flutter: ">=3.14.0-0.2.pre"
+  dart: ">=3.2.0-134.1.beta <4.0.0"
+  flutter: ">=3.15.0-15.1.pre"

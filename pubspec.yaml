@@ -4,8 +4,8 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.2.0-42.2.beta <4.0.0'
-  flutter: '>=3.14.0-0.2.pre'
+  sdk: '>=3.2.0-134.1.beta <4.0.0'
+  flutter: '>=3.15.0-15.1.pre'
 
 dependencies:
   flutter:
@@ -36,10 +36,10 @@ dependencies:
   collection: ^1.0.0
   dynamic_color: ^1.0.0
   gap: ^3.0.0
-  google_fonts: ^5.0.0
+  google_fonts: ^6.0.0
   flutter_svg: ^2.0.0
   flutter_local_notifications: ^15.0.0
-  permission_handler: ^10.0.0
+  permission_handler: ^11.0.0
   shared_preferences: ^2.0.0
   url_launcher: ^6.0.0
 
