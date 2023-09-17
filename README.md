@@ -7,14 +7,14 @@ Welcome FlutterKaigi 2023 official application repository!
 ## Development
 
 See [Figma](https://www.figma.com/file/x71sECvdnsw8RTfKG0E4fB/FlutterKaigi-2023-App?type=design&node-id=11%3A1833&t=Dpxy1yUZMefElIjg-1) for the design of the FlutterKaigi 2023 official application.
-We use GitHub Issues for task management. Please do not contact core members indivisually, but use Issues and Discussions.
+We use GitHub Issues for task management. Please do not contact core members individually, but use Issues and Discussions.
 
 ### Set up
 
 This project uses [Flutter beta channel](https://github.com/flutter/flutter/wiki/Roadmap#releases).
 Therefore, please install Flutter beta channel. There is 2 way to use flutter beta channel.
 
-1. Switch [flutter channel(https://docs.flutter.dev/release/upgrade#switching-flutter-channels).
+1. Switch [flutter channel](https://docs.flutter.dev/release/upgrade#switching-flutter-channels).
 2. Install Flutter beta channel with [fvm](https://fvm.app/).
 
 #### Switch flutter channel
