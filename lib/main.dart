@@ -3,6 +3,7 @@ import 'package:conference_2023/model/messaging.dart';
 import 'package:conference_2023/model/remote_config.dart';
 import 'package:conference_2023/model/shared_preferences.dart';
 import 'package:conference_2023/util/font_lisence.dart';
+import 'package:conference_2023/util/provider_state_logger.dart';
 import 'package:conference_2023/util/web/firebase_options_web.dart';
 import 'package:conference_2023/util/web/path_strategy.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -45,6 +46,9 @@ void main() async {
         /// Note: Because of this trick, [sharedPreferencesProvider] behaves
         /// differently from a normal [Provider].
         sharedPreferencesProvider.overrideWithValue(pref),
+      ],
+      observers: [
+        if (kDebugMode) ...[ProviderStateLogger()],
       ],
       child: const App(),
     ),
