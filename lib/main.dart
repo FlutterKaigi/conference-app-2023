@@ -47,9 +47,11 @@ void main() async {
         /// differently from a normal [Provider].
         sharedPreferencesProvider.overrideWithValue(pref),
       ],
-      observers: [
-        if (kDebugMode) ...[ProviderStateLogger()],
-      ],
+      observers: kDebugMode
+          ? [
+              ProviderStateLogger(),
+            ]
+          : null,
       child: const App(),
     ),
   );
