@@ -30,7 +30,7 @@ dependencies:
   firebase_remote_config: ^4.0.0
 
   flutter_riverpod: ^2.0.0
-  go_router: ^10.0.0
+  go_router: ^11.0.0
 
   adaptive_dialog: ^1.9.0-0
   collection: ^1.0.0
@@ -60,10 +60,6 @@ dev_dependencies:
   flutter_gen_runner: ^5.0.0
   go_router_builder: ^2.0.0
   flutter_launcher_icons: ^0.13.0
-
-dependency_overrides:
-  # workaround for https://github.com/FlutterGen/flutter_gen/pull/414
-  analyzer: ^6.0.0
 
 flutter_gen:
   integrations:
