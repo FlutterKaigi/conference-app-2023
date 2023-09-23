@@ -18,7 +18,9 @@ class BranchContainer extends StatelessWidget {
       children: [
         ...children.mapIndexed(
           (index, navigator) => AnimatedOpacity(
-            duration: const Duration(milliseconds: 400),
+            duration: const Duration(
+              milliseconds: 400,
+            ),
             opacity: index == currentIndex ? 1 : 0,
 
             // Avoid detecting tap event in non selected screen
