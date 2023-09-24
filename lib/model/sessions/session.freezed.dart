@@ -15,16 +15,26 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Session _$SessionFromJson(Map<String, dynamic> json) {
-  return _Session.fromJson(json);
+  switch (json['type']) {
+    case 'talk':
+      return SessionTalk.fromJson(json);
+    case 'sponsor':
+      return SessionSponsor.fromJson(json);
+    case 'event':
+      return SessionEvent.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json, 'type', 'Session', 'Invalid union type "${json['type']}"!');
+  }
 }
 
 /// @nodoc
 mixin _$Session {
+  SessionType get type => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  SessionType get type => throw _privateConstructorUsedError;
-  List<Speaker> get speakers => throw _privateConstructorUsedError;
   DateTime get start => throw _privateConstructorUsedError;
   DateTime get end => throw _privateConstructorUsedError;
 
@@ -39,11 +49,10 @@ abstract class $SessionCopyWith<$Res> {
       _$SessionCopyWithImpl<$Res, Session>;
   @useResult
   $Res call(
-      {String id,
+      {SessionType type,
+      String id,
       String title,
       String description,
-      SessionType type,
-      List<Speaker> speakers,
       DateTime start,
       DateTime end});
 }
@@ -61,15 +70,18 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? type = null,
     Object? id = null,
     Object? title = null,
     Object? description = null,
-    Object? type = null,
-    Object? speakers = null,
     Object? start = null,
     Object? end = null,
   }) {
     return _then(_value.copyWith(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as SessionType,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -82,14 +94,6 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as SessionType,
-      speakers: null == speakers
-          ? _value.speakers
-          : speakers // ignore: cast_nullable_to_non_nullable
-              as List<Speaker>,
       start: null == start
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
@@ -103,41 +107,46 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
 }
 
 /// @nodoc
-abstract class _$$_SessionCopyWith<$Res> implements $SessionCopyWith<$Res> {
-  factory _$$_SessionCopyWith(
-          _$_Session value, $Res Function(_$_Session) then) =
-      __$$_SessionCopyWithImpl<$Res>;
+abstract class _$$SessionTalkCopyWith<$Res> implements $SessionCopyWith<$Res> {
+  factory _$$SessionTalkCopyWith(
+          _$SessionTalk value, $Res Function(_$SessionTalk) then) =
+      __$$SessionTalkCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {String id,
+      {SessionType type,
+      String id,
       String title,
       String description,
-      SessionType type,
       List<Speaker> speakers,
       DateTime start,
       DateTime end});
 }
 
 /// @nodoc
-class __$$_SessionCopyWithImpl<$Res>
-    extends _$SessionCopyWithImpl<$Res, _$_Session>
-    implements _$$_SessionCopyWith<$Res> {
-  __$$_SessionCopyWithImpl(_$_Session _value, $Res Function(_$_Session) _then)
+class __$$SessionTalkCopyWithImpl<$Res>
+    extends _$SessionCopyWithImpl<$Res, _$SessionTalk>
+    implements _$$SessionTalkCopyWith<$Res> {
+  __$$SessionTalkCopyWithImpl(
+      _$SessionTalk _value, $Res Function(_$SessionTalk) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? type = null,
     Object? id = null,
     Object? title = null,
     Object? description = null,
-    Object? type = null,
     Object? speakers = null,
     Object? start = null,
     Object? end = null,
   }) {
-    return _then(_$_Session(
+    return _then(_$SessionTalk(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as SessionType,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -150,10 +159,6 @@ class __$$_SessionCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as SessionType,
       speakers: null == speakers
           ? _value._speakers
           : speakers // ignore: cast_nullable_to_non_nullable
@@ -172,28 +177,28 @@ class __$$_SessionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Session with DiagnosticableTreeMixin implements _Session {
-  const _$_Session(
-      {required this.id,
+class _$SessionTalk with DiagnosticableTreeMixin implements SessionTalk {
+  const _$SessionTalk(
+      {required this.type,
+      required this.id,
       required this.title,
       required this.description,
-      required this.type,
       required final List<Speaker> speakers,
       required this.start,
       required this.end})
       : _speakers = speakers;
 
-  factory _$_Session.fromJson(Map<String, dynamic> json) =>
-      _$$_SessionFromJson(json);
+  factory _$SessionTalk.fromJson(Map<String, dynamic> json) =>
+      _$$SessionTalkFromJson(json);
 
+  @override
+  final SessionType type;
   @override
   final String id;
   @override
   final String title;
   @override
   final String description;
-  @override
-  final SessionType type;
   final List<Speaker> _speakers;
   @override
   List<Speaker> get speakers {
@@ -209,18 +214,18 @@ class _$_Session with DiagnosticableTreeMixin implements _Session {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Session(id: $id, title: $title, description: $description, type: $type, speakers: $speakers, start: $start, end: $end)';
+    return 'Session.talk(type: $type, id: $id, title: $title, description: $description, speakers: $speakers, start: $start, end: $end)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'Session'))
+      ..add(DiagnosticsProperty('type', 'Session.talk'))
+      ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('description', description))
-      ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('speakers', speakers))
       ..add(DiagnosticsProperty('start', start))
       ..add(DiagnosticsProperty('end', end));
@@ -230,12 +235,12 @@ class _$_Session with DiagnosticableTreeMixin implements _Session {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Session &&
+            other is _$SessionTalk &&
+            (identical(other.type, type) || other.type == type) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.type, type) || other.type == type) &&
             const DeepCollectionEquality().equals(other._speakers, _speakers) &&
             (identical(other.start, start) || other.start == start) &&
             (identical(other.end, end) || other.end == end));
@@ -243,44 +248,44 @@ class _$_Session with DiagnosticableTreeMixin implements _Session {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, description, type,
+  int get hashCode => Object.hash(runtimeType, type, id, title, description,
       const DeepCollectionEquality().hash(_speakers), start, end);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SessionCopyWith<_$_Session> get copyWith =>
-      __$$_SessionCopyWithImpl<_$_Session>(this, _$identity);
+  _$$SessionTalkCopyWith<_$SessionTalk> get copyWith =>
+      __$$SessionTalkCopyWithImpl<_$SessionTalk>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SessionToJson(
+    return _$$SessionTalkToJson(
       this,
     );
   }
 }
 
-abstract class _Session implements Session {
-  const factory _Session(
-      {required final String id,
+abstract class SessionTalk implements Session {
+  const factory SessionTalk(
+      {required final SessionType type,
+      required final String id,
       required final String title,
       required final String description,
-      required final SessionType type,
       required final List<Speaker> speakers,
       required final DateTime start,
-      required final DateTime end}) = _$_Session;
+      required final DateTime end}) = _$SessionTalk;
 
-  factory _Session.fromJson(Map<String, dynamic> json) = _$_Session.fromJson;
+  factory SessionTalk.fromJson(Map<String, dynamic> json) =
+      _$SessionTalk.fromJson;
 
+  @override
+  SessionType get type;
   @override
   String get id;
   @override
   String get title;
   @override
   String get description;
-  @override
-  SessionType get type;
-  @override
   List<Speaker> get speakers;
   @override
   DateTime get start;
@@ -288,7 +293,370 @@ abstract class _Session implements Session {
   DateTime get end;
   @override
   @JsonKey(ignore: true)
-  _$$_SessionCopyWith<_$_Session> get copyWith =>
+  _$$SessionTalkCopyWith<_$SessionTalk> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SessionSponsorCopyWith<$Res>
+    implements $SessionCopyWith<$Res> {
+  factory _$$SessionSponsorCopyWith(
+          _$SessionSponsor value, $Res Function(_$SessionSponsor) then) =
+      __$$SessionSponsorCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {SessionType type,
+      String id,
+      String title,
+      String description,
+      List<Speaker> speakers,
+      DateTime start,
+      DateTime end});
+}
+
+/// @nodoc
+class __$$SessionSponsorCopyWithImpl<$Res>
+    extends _$SessionCopyWithImpl<$Res, _$SessionSponsor>
+    implements _$$SessionSponsorCopyWith<$Res> {
+  __$$SessionSponsorCopyWithImpl(
+      _$SessionSponsor _value, $Res Function(_$SessionSponsor) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? id = null,
+    Object? title = null,
+    Object? description = null,
+    Object? speakers = null,
+    Object? start = null,
+    Object? end = null,
+  }) {
+    return _then(_$SessionSponsor(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as SessionType,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      speakers: null == speakers
+          ? _value._speakers
+          : speakers // ignore: cast_nullable_to_non_nullable
+              as List<Speaker>,
+      start: null == start
+          ? _value.start
+          : start // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      end: null == end
+          ? _value.end
+          : end // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SessionSponsor with DiagnosticableTreeMixin implements SessionSponsor {
+  const _$SessionSponsor(
+      {required this.type,
+      required this.id,
+      required this.title,
+      required this.description,
+      required final List<Speaker> speakers,
+      required this.start,
+      required this.end})
+      : _speakers = speakers;
+
+  factory _$SessionSponsor.fromJson(Map<String, dynamic> json) =>
+      _$$SessionSponsorFromJson(json);
+
+  @override
+  final SessionType type;
+  @override
+  final String id;
+  @override
+  final String title;
+  @override
+  final String description;
+  final List<Speaker> _speakers;
+  @override
+  List<Speaker> get speakers {
+    if (_speakers is EqualUnmodifiableListView) return _speakers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_speakers);
+  }
+
+  @override
+  final DateTime start;
+  @override
+  final DateTime end;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'Session.sponsor(type: $type, id: $id, title: $title, description: $description, speakers: $speakers, start: $start, end: $end)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'Session.sponsor'))
+      ..add(DiagnosticsProperty('type', type))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('title', title))
+      ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('speakers', speakers))
+      ..add(DiagnosticsProperty('start', start))
+      ..add(DiagnosticsProperty('end', end));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SessionSponsor &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            const DeepCollectionEquality().equals(other._speakers, _speakers) &&
+            (identical(other.start, start) || other.start == start) &&
+            (identical(other.end, end) || other.end == end));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, type, id, title, description,
+      const DeepCollectionEquality().hash(_speakers), start, end);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SessionSponsorCopyWith<_$SessionSponsor> get copyWith =>
+      __$$SessionSponsorCopyWithImpl<_$SessionSponsor>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SessionSponsorToJson(
+      this,
+    );
+  }
+}
+
+abstract class SessionSponsor implements Session {
+  const factory SessionSponsor(
+      {required final SessionType type,
+      required final String id,
+      required final String title,
+      required final String description,
+      required final List<Speaker> speakers,
+      required final DateTime start,
+      required final DateTime end}) = _$SessionSponsor;
+
+  factory SessionSponsor.fromJson(Map<String, dynamic> json) =
+      _$SessionSponsor.fromJson;
+
+  @override
+  SessionType get type;
+  @override
+  String get id;
+  @override
+  String get title;
+  @override
+  String get description;
+  List<Speaker> get speakers;
+  @override
+  DateTime get start;
+  @override
+  DateTime get end;
+  @override
+  @JsonKey(ignore: true)
+  _$$SessionSponsorCopyWith<_$SessionSponsor> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SessionEventCopyWith<$Res> implements $SessionCopyWith<$Res> {
+  factory _$$SessionEventCopyWith(
+          _$SessionEvent value, $Res Function(_$SessionEvent) then) =
+      __$$SessionEventCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {SessionType type,
+      String id,
+      String title,
+      String description,
+      DateTime start,
+      DateTime end});
+}
+
+/// @nodoc
+class __$$SessionEventCopyWithImpl<$Res>
+    extends _$SessionCopyWithImpl<$Res, _$SessionEvent>
+    implements _$$SessionEventCopyWith<$Res> {
+  __$$SessionEventCopyWithImpl(
+      _$SessionEvent _value, $Res Function(_$SessionEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? type = null,
+    Object? id = null,
+    Object? title = null,
+    Object? description = null,
+    Object? start = null,
+    Object? end = null,
+  }) {
+    return _then(_$SessionEvent(
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as SessionType,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      start: null == start
+          ? _value.start
+          : start // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      end: null == end
+          ? _value.end
+          : end // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SessionEvent with DiagnosticableTreeMixin implements SessionEvent {
+  const _$SessionEvent(
+      {required this.type,
+      required this.id,
+      required this.title,
+      required this.description,
+      required this.start,
+      required this.end});
+
+  factory _$SessionEvent.fromJson(Map<String, dynamic> json) =>
+      _$$SessionEventFromJson(json);
+
+  @override
+  final SessionType type;
+  @override
+  final String id;
+  @override
+  final String title;
+  @override
+  final String description;
+  @override
+  final DateTime start;
+  @override
+  final DateTime end;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'Session.event(type: $type, id: $id, title: $title, description: $description, start: $start, end: $end)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'Session.event'))
+      ..add(DiagnosticsProperty('type', type))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('title', title))
+      ..add(DiagnosticsProperty('description', description))
+      ..add(DiagnosticsProperty('start', start))
+      ..add(DiagnosticsProperty('end', end));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SessionEvent &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.start, start) || other.start == start) &&
+            (identical(other.end, end) || other.end == end));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, type, id, title, description, start, end);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SessionEventCopyWith<_$SessionEvent> get copyWith =>
+      __$$SessionEventCopyWithImpl<_$SessionEvent>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SessionEventToJson(
+      this,
+    );
+  }
+}
+
+abstract class SessionEvent implements Session {
+  const factory SessionEvent(
+      {required final SessionType type,
+      required final String id,
+      required final String title,
+      required final String description,
+      required final DateTime start,
+      required final DateTime end}) = _$SessionEvent;
+
+  factory SessionEvent.fromJson(Map<String, dynamic> json) =
+      _$SessionEvent.fromJson;
+
+  @override
+  SessionType get type;
+  @override
+  String get id;
+  @override
+  String get title;
+  @override
+  String get description;
+  @override
+  DateTime get start;
+  @override
+  DateTime get end;
+  @override
+  @JsonKey(ignore: true)
+  _$$SessionEventCopyWith<_$SessionEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

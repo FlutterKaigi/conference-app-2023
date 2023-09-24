@@ -6,16 +6,17 @@ part of 'session.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Session _$$_SessionFromJson(Map<String, dynamic> json) => $checkedCreate(
-      r'_$_Session',
+_$SessionTalk _$$SessionTalkFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$SessionTalk',
       json,
       ($checkedConvert) {
-        final val = _$_Session(
+        final val = _$SessionTalk(
+          type: $checkedConvert(
+              'type', (v) => $enumDecode(_$SessionTypeEnumMap, v)),
           id: $checkedConvert('id', (v) => v as String),
           title: $checkedConvert('title', (v) => v as String),
           description: $checkedConvert('description', (v) => v as String),
-          type: $checkedConvert(
-              'type', (v) => $enumDecode(_$SessionTypeEnumMap, v)),
           speakers: $checkedConvert(
               'speakers',
               (v) => (v as List<dynamic>)
@@ -28,12 +29,12 @@ _$_Session _$$_SessionFromJson(Map<String, dynamic> json) => $checkedCreate(
       },
     );
 
-Map<String, dynamic> _$$_SessionToJson(_$_Session instance) =>
+Map<String, dynamic> _$$SessionTalkToJson(_$SessionTalk instance) =>
     <String, dynamic>{
+      'type': _$SessionTypeEnumMap[instance.type]!,
       'id': instance.id,
       'title': instance.title,
       'description': instance.description,
-      'type': _$SessionTypeEnumMap[instance.type]!,
       'speakers': instance.speakers.map((e) => e.toJson()).toList(),
       'start': instance.start.toIso8601String(),
       'end': instance.end.toIso8601String(),
@@ -44,6 +45,68 @@ const _$SessionTypeEnumMap = {
   SessionType.sponsor: 'sponsor',
   SessionType.event: 'event',
 };
+
+_$SessionSponsor _$$SessionSponsorFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$SessionSponsor',
+      json,
+      ($checkedConvert) {
+        final val = _$SessionSponsor(
+          type: $checkedConvert(
+              'type', (v) => $enumDecode(_$SessionTypeEnumMap, v)),
+          id: $checkedConvert('id', (v) => v as String),
+          title: $checkedConvert('title', (v) => v as String),
+          description: $checkedConvert('description', (v) => v as String),
+          speakers: $checkedConvert(
+              'speakers',
+              (v) => (v as List<dynamic>)
+                  .map((e) => Speaker.fromJson(e as Map<String, dynamic>))
+                  .toList()),
+          start: $checkedConvert('start', (v) => DateTime.parse(v as String)),
+          end: $checkedConvert('end', (v) => DateTime.parse(v as String)),
+        );
+        return val;
+      },
+    );
+
+Map<String, dynamic> _$$SessionSponsorToJson(_$SessionSponsor instance) =>
+    <String, dynamic>{
+      'type': _$SessionTypeEnumMap[instance.type]!,
+      'id': instance.id,
+      'title': instance.title,
+      'description': instance.description,
+      'speakers': instance.speakers.map((e) => e.toJson()).toList(),
+      'start': instance.start.toIso8601String(),
+      'end': instance.end.toIso8601String(),
+    };
+
+_$SessionEvent _$$SessionEventFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$SessionEvent',
+      json,
+      ($checkedConvert) {
+        final val = _$SessionEvent(
+          type: $checkedConvert(
+              'type', (v) => $enumDecode(_$SessionTypeEnumMap, v)),
+          id: $checkedConvert('id', (v) => v as String),
+          title: $checkedConvert('title', (v) => v as String),
+          description: $checkedConvert('description', (v) => v as String),
+          start: $checkedConvert('start', (v) => DateTime.parse(v as String)),
+          end: $checkedConvert('end', (v) => DateTime.parse(v as String)),
+        );
+        return val;
+      },
+    );
+
+Map<String, dynamic> _$$SessionEventToJson(_$SessionEvent instance) =>
+    <String, dynamic>{
+      'type': _$SessionTypeEnumMap[instance.type]!,
+      'id': instance.id,
+      'title': instance.title,
+      'description': instance.description,
+      'start': instance.start.toIso8601String(),
+      'end': instance.end.toIso8601String(),
+    };
 
 _$_Speaker _$$_SpeakerFromJson(Map<String, dynamic> json) => $checkedCreate(
       r'_$_Speaker',

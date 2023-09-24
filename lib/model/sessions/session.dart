@@ -4,17 +4,36 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'session.freezed.dart';
 part 'session.g.dart';
 
-@freezed
+@Freezed(unionKey: 'type')
 class Session with _$Session {
-  const factory Session({
+  const factory Session.talk({
+    required SessionType type,
     required String id,
     required String title,
     required String description,
-    required SessionType type,
     required List<Speaker> speakers,
     required DateTime start,
     required DateTime end,
-  }) = _Session;
+  }) = SessionTalk;
+
+  const factory Session.sponsor({
+    required SessionType type,
+    required String id,
+    required String title,
+    required String description,
+    required List<Speaker> speakers,
+    required DateTime start,
+    required DateTime end,
+  }) = SessionSponsor;
+
+  const factory Session.event({
+    required SessionType type,
+    required String id,
+    required String title,
+    required String description,
+    required DateTime start,
+    required DateTime end,
+  }) = SessionEvent;
 
   factory Session.fromJson(Map<String, dynamic> json) =>
       _$SessionFromJson(json);
