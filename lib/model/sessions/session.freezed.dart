@@ -31,7 +31,7 @@ Session _$SessionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Session {
-  SessionType get type => throw _privateConstructorUsedError;
+  String get type => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
@@ -49,7 +49,7 @@ abstract class $SessionCopyWith<$Res> {
       _$SessionCopyWithImpl<$Res, Session>;
   @useResult
   $Res call(
-      {SessionType type,
+      {String type,
       String id,
       String title,
       String description,
@@ -81,7 +81,7 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as SessionType,
+              as String,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -114,7 +114,7 @@ abstract class _$$SessionTalkCopyWith<$Res> implements $SessionCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {SessionType type,
+      {String type,
       String id,
       String title,
       String description,
@@ -146,7 +146,7 @@ class __$$SessionTalkCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as SessionType,
+              as String,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -192,7 +192,7 @@ class _$SessionTalk with DiagnosticableTreeMixin implements SessionTalk {
       _$$SessionTalkFromJson(json);
 
   @override
-  final SessionType type;
+  final String type;
   @override
   final String id;
   @override
@@ -267,7 +267,7 @@ class _$SessionTalk with DiagnosticableTreeMixin implements SessionTalk {
 
 abstract class SessionTalk implements Session {
   const factory SessionTalk(
-      {required final SessionType type,
+      {required final String type,
       required final String id,
       required final String title,
       required final String description,
@@ -279,7 +279,7 @@ abstract class SessionTalk implements Session {
       _$SessionTalk.fromJson;
 
   @override
-  SessionType get type;
+  String get type;
   @override
   String get id;
   @override
@@ -306,7 +306,7 @@ abstract class _$$SessionSponsorCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {SessionType type,
+      {String type,
       String id,
       String title,
       String description,
@@ -338,7 +338,7 @@ class __$$SessionSponsorCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as SessionType,
+              as String,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -384,7 +384,7 @@ class _$SessionSponsor with DiagnosticableTreeMixin implements SessionSponsor {
       _$$SessionSponsorFromJson(json);
 
   @override
-  final SessionType type;
+  final String type;
   @override
   final String id;
   @override
@@ -459,7 +459,7 @@ class _$SessionSponsor with DiagnosticableTreeMixin implements SessionSponsor {
 
 abstract class SessionSponsor implements Session {
   const factory SessionSponsor(
-      {required final SessionType type,
+      {required final String type,
       required final String id,
       required final String title,
       required final String description,
@@ -471,7 +471,7 @@ abstract class SessionSponsor implements Session {
       _$SessionSponsor.fromJson;
 
   @override
-  SessionType get type;
+  String get type;
   @override
   String get id;
   @override
@@ -497,7 +497,7 @@ abstract class _$$SessionEventCopyWith<$Res> implements $SessionCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {SessionType type,
+      {String type,
       String id,
       String title,
       String description,
@@ -527,7 +527,7 @@ class __$$SessionEventCopyWithImpl<$Res>
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as SessionType,
+              as String,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -567,7 +567,7 @@ class _$SessionEvent with DiagnosticableTreeMixin implements SessionEvent {
       _$$SessionEventFromJson(json);
 
   @override
-  final SessionType type;
+  final String type;
   @override
   final String id;
   @override
@@ -632,7 +632,7 @@ class _$SessionEvent with DiagnosticableTreeMixin implements SessionEvent {
 
 abstract class SessionEvent implements Session {
   const factory SessionEvent(
-      {required final SessionType type,
+      {required final String type,
       required final String id,
       required final String title,
       required final String description,
@@ -643,7 +643,7 @@ abstract class SessionEvent implements Session {
       _$SessionEvent.fromJson;
 
   @override
-  SessionType get type;
+  String get type;
   @override
   String get id;
   @override

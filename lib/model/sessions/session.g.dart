@@ -12,8 +12,7 @@ _$SessionTalk _$$SessionTalkFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = _$SessionTalk(
-          type: $checkedConvert(
-              'type', (v) => $enumDecode(_$SessionTypeEnumMap, v)),
+          type: $checkedConvert('type', (v) => v as String),
           id: $checkedConvert('id', (v) => v as String),
           title: $checkedConvert('title', (v) => v as String),
           description: $checkedConvert('description', (v) => v as String),
@@ -31,7 +30,7 @@ _$SessionTalk _$$SessionTalkFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$SessionTalkToJson(_$SessionTalk instance) =>
     <String, dynamic>{
-      'type': _$SessionTypeEnumMap[instance.type]!,
+      'type': instance.type,
       'id': instance.id,
       'title': instance.title,
       'description': instance.description,
@@ -40,20 +39,13 @@ Map<String, dynamic> _$$SessionTalkToJson(_$SessionTalk instance) =>
       'end': instance.end.toIso8601String(),
     };
 
-const _$SessionTypeEnumMap = {
-  SessionType.talk: 'talk',
-  SessionType.sponsor: 'sponsor',
-  SessionType.event: 'event',
-};
-
 _$SessionSponsor _$$SessionSponsorFromJson(Map<String, dynamic> json) =>
     $checkedCreate(
       r'_$SessionSponsor',
       json,
       ($checkedConvert) {
         final val = _$SessionSponsor(
-          type: $checkedConvert(
-              'type', (v) => $enumDecode(_$SessionTypeEnumMap, v)),
+          type: $checkedConvert('type', (v) => v as String),
           id: $checkedConvert('id', (v) => v as String),
           title: $checkedConvert('title', (v) => v as String),
           description: $checkedConvert('description', (v) => v as String),
@@ -71,7 +63,7 @@ _$SessionSponsor _$$SessionSponsorFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$SessionSponsorToJson(_$SessionSponsor instance) =>
     <String, dynamic>{
-      'type': _$SessionTypeEnumMap[instance.type]!,
+      'type': instance.type,
       'id': instance.id,
       'title': instance.title,
       'description': instance.description,
@@ -86,8 +78,7 @@ _$SessionEvent _$$SessionEventFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = _$SessionEvent(
-          type: $checkedConvert(
-              'type', (v) => $enumDecode(_$SessionTypeEnumMap, v)),
+          type: $checkedConvert('type', (v) => v as String),
           id: $checkedConvert('id', (v) => v as String),
           title: $checkedConvert('title', (v) => v as String),
           description: $checkedConvert('description', (v) => v as String),
@@ -100,7 +91,7 @@ _$SessionEvent _$$SessionEventFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$SessionEventToJson(_$SessionEvent instance) =>
     <String, dynamic>{
-      'type': _$SessionTypeEnumMap[instance.type]!,
+      'type': instance.type,
       'id': instance.id,
       'title': instance.title,
       'description': instance.description,

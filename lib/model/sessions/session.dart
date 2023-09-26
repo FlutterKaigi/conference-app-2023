@@ -7,7 +7,7 @@ part 'session.g.dart';
 @Freezed(unionKey: 'type')
 class Session with _$Session {
   const factory Session.talk({
-    required SessionType type,
+    required String type,
     required String id,
     required String title,
     required String description,
@@ -17,7 +17,7 @@ class Session with _$Session {
   }) = SessionTalk;
 
   const factory Session.sponsor({
-    required SessionType type,
+    required String type,
     required String id,
     required String title,
     required String description,
@@ -27,7 +27,7 @@ class Session with _$Session {
   }) = SessionSponsor;
 
   const factory Session.event({
-    required SessionType type,
+    required String type,
     required String id,
     required String title,
     required String description,
@@ -37,12 +37,6 @@ class Session with _$Session {
 
   factory Session.fromJson(Map<String, dynamic> json) =>
       _$SessionFromJson(json);
-}
-
-enum SessionType {
-  talk,
-  sponsor,
-  event,
 }
 
 @freezed
