@@ -12,7 +12,6 @@ _$SessionTalk _$$SessionTalkFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = _$SessionTalk(
-          type: $checkedConvert('type', (v) => v as String),
           id: $checkedConvert('id', (v) => v as String),
           title: $checkedConvert('title', (v) => v as String),
           description: $checkedConvert('description', (v) => v as String),
@@ -23,20 +22,22 @@ _$SessionTalk _$$SessionTalkFromJson(Map<String, dynamic> json) =>
                   .toList()),
           start: $checkedConvert('start', (v) => DateTime.parse(v as String)),
           end: $checkedConvert('end', (v) => DateTime.parse(v as String)),
+          $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
       },
+      fieldKeyMap: const {r'$type': 'type'},
     );
 
 Map<String, dynamic> _$$SessionTalkToJson(_$SessionTalk instance) =>
     <String, dynamic>{
-      'type': instance.type,
       'id': instance.id,
       'title': instance.title,
       'description': instance.description,
       'speakers': instance.speakers.map((e) => e.toJson()).toList(),
       'start': instance.start.toIso8601String(),
       'end': instance.end.toIso8601String(),
+      'type': instance.$type,
     };
 
 _$SessionSponsor _$$SessionSponsorFromJson(Map<String, dynamic> json) =>
@@ -45,7 +46,6 @@ _$SessionSponsor _$$SessionSponsorFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = _$SessionSponsor(
-          type: $checkedConvert('type', (v) => v as String),
           id: $checkedConvert('id', (v) => v as String),
           title: $checkedConvert('title', (v) => v as String),
           description: $checkedConvert('description', (v) => v as String),
@@ -56,20 +56,22 @@ _$SessionSponsor _$$SessionSponsorFromJson(Map<String, dynamic> json) =>
                   .toList()),
           start: $checkedConvert('start', (v) => DateTime.parse(v as String)),
           end: $checkedConvert('end', (v) => DateTime.parse(v as String)),
+          $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
       },
+      fieldKeyMap: const {r'$type': 'type'},
     );
 
 Map<String, dynamic> _$$SessionSponsorToJson(_$SessionSponsor instance) =>
     <String, dynamic>{
-      'type': instance.type,
       'id': instance.id,
       'title': instance.title,
       'description': instance.description,
       'speakers': instance.speakers.map((e) => e.toJson()).toList(),
       'start': instance.start.toIso8601String(),
       'end': instance.end.toIso8601String(),
+      'type': instance.$type,
     };
 
 _$SessionEvent _$$SessionEventFromJson(Map<String, dynamic> json) =>
@@ -78,25 +80,26 @@ _$SessionEvent _$$SessionEventFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = _$SessionEvent(
-          type: $checkedConvert('type', (v) => v as String),
           id: $checkedConvert('id', (v) => v as String),
           title: $checkedConvert('title', (v) => v as String),
           description: $checkedConvert('description', (v) => v as String),
           start: $checkedConvert('start', (v) => DateTime.parse(v as String)),
           end: $checkedConvert('end', (v) => DateTime.parse(v as String)),
+          $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
       },
+      fieldKeyMap: const {r'$type': 'type'},
     );
 
 Map<String, dynamic> _$$SessionEventToJson(_$SessionEvent instance) =>
     <String, dynamic>{
-      'type': instance.type,
       'id': instance.id,
       'title': instance.title,
       'description': instance.description,
       'start': instance.start.toIso8601String(),
       'end': instance.end.toIso8601String(),
+      'type': instance.$type,
     };
 
 _$_Speaker _$$_SpeakerFromJson(Map<String, dynamic> json) => $checkedCreate(

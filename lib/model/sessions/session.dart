@@ -7,7 +7,6 @@ part 'session.g.dart';
 @Freezed(unionKey: 'type')
 class Session with _$Session {
   const factory Session.talk({
-    required String type,
     required String id,
     required String title,
     required String description,
@@ -17,7 +16,6 @@ class Session with _$Session {
   }) = SessionTalk;
 
   const factory Session.sponsor({
-    required String type,
     required String id,
     required String title,
     required String description,
@@ -27,7 +25,6 @@ class Session with _$Session {
   }) = SessionSponsor;
 
   const factory Session.event({
-    required String type,
     required String id,
     required String title,
     required String description,

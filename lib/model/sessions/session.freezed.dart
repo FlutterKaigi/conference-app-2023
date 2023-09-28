@@ -31,7 +31,6 @@ Session _$SessionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Session {
-  String get type => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
@@ -49,8 +48,7 @@ abstract class $SessionCopyWith<$Res> {
       _$SessionCopyWithImpl<$Res, Session>;
   @useResult
   $Res call(
-      {String type,
-      String id,
+      {String id,
       String title,
       String description,
       DateTime start,
@@ -70,7 +68,6 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = null,
     Object? id = null,
     Object? title = null,
     Object? description = null,
@@ -78,10 +75,6 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
     Object? end = null,
   }) {
     return _then(_value.copyWith(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -114,8 +107,7 @@ abstract class _$$SessionTalkCopyWith<$Res> implements $SessionCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String type,
-      String id,
+      {String id,
       String title,
       String description,
       List<Speaker> speakers,
@@ -134,7 +126,6 @@ class __$$SessionTalkCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = null,
     Object? id = null,
     Object? title = null,
     Object? description = null,
@@ -143,10 +134,6 @@ class __$$SessionTalkCopyWithImpl<$Res>
     Object? end = null,
   }) {
     return _then(_$SessionTalk(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -179,20 +166,19 @@ class __$$SessionTalkCopyWithImpl<$Res>
 @JsonSerializable()
 class _$SessionTalk with DiagnosticableTreeMixin implements SessionTalk {
   const _$SessionTalk(
-      {required this.type,
-      required this.id,
+      {required this.id,
       required this.title,
       required this.description,
       required final List<Speaker> speakers,
       required this.start,
-      required this.end})
-      : _speakers = speakers;
+      required this.end,
+      final String? $type})
+      : _speakers = speakers,
+        $type = $type ?? 'talk';
 
   factory _$SessionTalk.fromJson(Map<String, dynamic> json) =>
       _$$SessionTalkFromJson(json);
 
-  @override
-  final String type;
   @override
   final String id;
   @override
@@ -212,9 +198,12 @@ class _$SessionTalk with DiagnosticableTreeMixin implements SessionTalk {
   @override
   final DateTime end;
 
+  @JsonKey(name: 'type')
+  final String $type;
+
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Session.talk(type: $type, id: $id, title: $title, description: $description, speakers: $speakers, start: $start, end: $end)';
+    return 'Session.talk(id: $id, title: $title, description: $description, speakers: $speakers, start: $start, end: $end)';
   }
 
   @override
@@ -222,7 +211,6 @@ class _$SessionTalk with DiagnosticableTreeMixin implements SessionTalk {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Session.talk'))
-      ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('description', description))
@@ -236,7 +224,6 @@ class _$SessionTalk with DiagnosticableTreeMixin implements SessionTalk {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SessionTalk &&
-            (identical(other.type, type) || other.type == type) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
@@ -248,7 +235,7 @@ class _$SessionTalk with DiagnosticableTreeMixin implements SessionTalk {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, type, id, title, description,
+  int get hashCode => Object.hash(runtimeType, id, title, description,
       const DeepCollectionEquality().hash(_speakers), start, end);
 
   @JsonKey(ignore: true)
@@ -267,8 +254,7 @@ class _$SessionTalk with DiagnosticableTreeMixin implements SessionTalk {
 
 abstract class SessionTalk implements Session {
   const factory SessionTalk(
-      {required final String type,
-      required final String id,
+      {required final String id,
       required final String title,
       required final String description,
       required final List<Speaker> speakers,
@@ -278,8 +264,6 @@ abstract class SessionTalk implements Session {
   factory SessionTalk.fromJson(Map<String, dynamic> json) =
       _$SessionTalk.fromJson;
 
-  @override
-  String get type;
   @override
   String get id;
   @override
@@ -306,8 +290,7 @@ abstract class _$$SessionSponsorCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String type,
-      String id,
+      {String id,
       String title,
       String description,
       List<Speaker> speakers,
@@ -326,7 +309,6 @@ class __$$SessionSponsorCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = null,
     Object? id = null,
     Object? title = null,
     Object? description = null,
@@ -335,10 +317,6 @@ class __$$SessionSponsorCopyWithImpl<$Res>
     Object? end = null,
   }) {
     return _then(_$SessionSponsor(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -371,20 +349,19 @@ class __$$SessionSponsorCopyWithImpl<$Res>
 @JsonSerializable()
 class _$SessionSponsor with DiagnosticableTreeMixin implements SessionSponsor {
   const _$SessionSponsor(
-      {required this.type,
-      required this.id,
+      {required this.id,
       required this.title,
       required this.description,
       required final List<Speaker> speakers,
       required this.start,
-      required this.end})
-      : _speakers = speakers;
+      required this.end,
+      final String? $type})
+      : _speakers = speakers,
+        $type = $type ?? 'sponsor';
 
   factory _$SessionSponsor.fromJson(Map<String, dynamic> json) =>
       _$$SessionSponsorFromJson(json);
 
-  @override
-  final String type;
   @override
   final String id;
   @override
@@ -404,9 +381,12 @@ class _$SessionSponsor with DiagnosticableTreeMixin implements SessionSponsor {
   @override
   final DateTime end;
 
+  @JsonKey(name: 'type')
+  final String $type;
+
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Session.sponsor(type: $type, id: $id, title: $title, description: $description, speakers: $speakers, start: $start, end: $end)';
+    return 'Session.sponsor(id: $id, title: $title, description: $description, speakers: $speakers, start: $start, end: $end)';
   }
 
   @override
@@ -414,7 +394,6 @@ class _$SessionSponsor with DiagnosticableTreeMixin implements SessionSponsor {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Session.sponsor'))
-      ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('description', description))
@@ -428,7 +407,6 @@ class _$SessionSponsor with DiagnosticableTreeMixin implements SessionSponsor {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SessionSponsor &&
-            (identical(other.type, type) || other.type == type) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
@@ -440,7 +418,7 @@ class _$SessionSponsor with DiagnosticableTreeMixin implements SessionSponsor {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, type, id, title, description,
+  int get hashCode => Object.hash(runtimeType, id, title, description,
       const DeepCollectionEquality().hash(_speakers), start, end);
 
   @JsonKey(ignore: true)
@@ -459,8 +437,7 @@ class _$SessionSponsor with DiagnosticableTreeMixin implements SessionSponsor {
 
 abstract class SessionSponsor implements Session {
   const factory SessionSponsor(
-      {required final String type,
-      required final String id,
+      {required final String id,
       required final String title,
       required final String description,
       required final List<Speaker> speakers,
@@ -470,8 +447,6 @@ abstract class SessionSponsor implements Session {
   factory SessionSponsor.fromJson(Map<String, dynamic> json) =
       _$SessionSponsor.fromJson;
 
-  @override
-  String get type;
   @override
   String get id;
   @override
@@ -497,8 +472,7 @@ abstract class _$$SessionEventCopyWith<$Res> implements $SessionCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String type,
-      String id,
+      {String id,
       String title,
       String description,
       DateTime start,
@@ -516,7 +490,6 @@ class __$$SessionEventCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? type = null,
     Object? id = null,
     Object? title = null,
     Object? description = null,
@@ -524,10 +497,6 @@ class __$$SessionEventCopyWithImpl<$Res>
     Object? end = null,
   }) {
     return _then(_$SessionEvent(
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -556,18 +525,17 @@ class __$$SessionEventCopyWithImpl<$Res>
 @JsonSerializable()
 class _$SessionEvent with DiagnosticableTreeMixin implements SessionEvent {
   const _$SessionEvent(
-      {required this.type,
-      required this.id,
+      {required this.id,
       required this.title,
       required this.description,
       required this.start,
-      required this.end});
+      required this.end,
+      final String? $type})
+      : $type = $type ?? 'event';
 
   factory _$SessionEvent.fromJson(Map<String, dynamic> json) =>
       _$$SessionEventFromJson(json);
 
-  @override
-  final String type;
   @override
   final String id;
   @override
@@ -579,9 +547,12 @@ class _$SessionEvent with DiagnosticableTreeMixin implements SessionEvent {
   @override
   final DateTime end;
 
+  @JsonKey(name: 'type')
+  final String $type;
+
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Session.event(type: $type, id: $id, title: $title, description: $description, start: $start, end: $end)';
+    return 'Session.event(id: $id, title: $title, description: $description, start: $start, end: $end)';
   }
 
   @override
@@ -589,7 +560,6 @@ class _$SessionEvent with DiagnosticableTreeMixin implements SessionEvent {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Session.event'))
-      ..add(DiagnosticsProperty('type', type))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('description', description))
@@ -602,7 +572,6 @@ class _$SessionEvent with DiagnosticableTreeMixin implements SessionEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SessionEvent &&
-            (identical(other.type, type) || other.type == type) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
@@ -614,7 +583,7 @@ class _$SessionEvent with DiagnosticableTreeMixin implements SessionEvent {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, type, id, title, description, start, end);
+      Object.hash(runtimeType, id, title, description, start, end);
 
   @JsonKey(ignore: true)
   @override
@@ -632,8 +601,7 @@ class _$SessionEvent with DiagnosticableTreeMixin implements SessionEvent {
 
 abstract class SessionEvent implements Session {
   const factory SessionEvent(
-      {required final String type,
-      required final String id,
+      {required final String id,
       required final String title,
       required final String description,
       required final DateTime start,
@@ -642,8 +610,6 @@ abstract class SessionEvent implements Session {
   factory SessionEvent.fromJson(Map<String, dynamic> json) =
       _$SessionEvent.fromJson;
 
-  @override
-  String get type;
   @override
   String get id;
   @override
