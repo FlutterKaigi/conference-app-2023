@@ -8,26 +8,27 @@ part 'session.g.dart';
 class Session with _$Session {
   const factory Session.talk({
     required String id,
-    required String title,
-    required String description,
-    required List<Speaker> speakers,
+    required String url,
+    required LocaleText title,
+    required LocaleText description,
+    required Speaker speaker,
     required DateTime start,
     required DateTime end,
   }) = SessionTalk;
 
   const factory Session.sponsor({
     required String id,
-    required String title,
-    required String description,
-    required List<Speaker> speakers,
+    required String url,
+    required LocaleText title,
+    required LocaleText description,
+    required Speaker speaker,
     required DateTime start,
     required DateTime end,
   }) = SessionSponsor;
 
   const factory Session.event({
     required String id,
-    required String title,
-    required String description,
+    required LocaleText title,
     required DateTime start,
     required DateTime end,
   }) = SessionEvent;
@@ -39,14 +40,25 @@ class Session with _$Session {
 @freezed
 class Speaker with _$Speaker {
   const factory Speaker({
-    required String id,
     required String name,
-    required String bio,
-    required String profilePicture,
+    required String kana,
+    @Default('') String twitter,
+    required String avatarUrl,
   }) = _Speaker;
 
   factory Speaker.fromJson(Map<String, dynamic> json) =>
       _$SpeakerFromJson(json);
+}
+
+@freezed
+class LocaleText with _$LocaleText {
+  const factory LocaleText({
+    required String ja,
+    required String en,
+  }) = _LocaleText;
+
+  factory LocaleText.fromJson(Map<String, dynamic> json) =>
+      _$LocaleTextFromJson(json);
 }
 
 @freezed

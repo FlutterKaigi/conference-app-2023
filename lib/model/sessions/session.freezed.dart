@@ -32,8 +32,7 @@ Session _$SessionFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Session {
   String get id => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
+  LocaleText get title => throw _privateConstructorUsedError;
   DateTime get start => throw _privateConstructorUsedError;
   DateTime get end => throw _privateConstructorUsedError;
 
@@ -47,12 +46,9 @@ abstract class $SessionCopyWith<$Res> {
   factory $SessionCopyWith(Session value, $Res Function(Session) then) =
       _$SessionCopyWithImpl<$Res, Session>;
   @useResult
-  $Res call(
-      {String id,
-      String title,
-      String description,
-      DateTime start,
-      DateTime end});
+  $Res call({String id, LocaleText title, DateTime start, DateTime end});
+
+  $LocaleTextCopyWith<$Res> get title;
 }
 
 /// @nodoc
@@ -70,7 +66,6 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
   $Res call({
     Object? id = null,
     Object? title = null,
-    Object? description = null,
     Object? start = null,
     Object? end = null,
   }) {
@@ -82,11 +77,7 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as LocaleText,
       start: null == start
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
@@ -96,6 +87,14 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
           : end // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LocaleTextCopyWith<$Res> get title {
+    return $LocaleTextCopyWith<$Res>(_value.title, (value) {
+      return _then(_value.copyWith(title: value) as $Val);
+    });
   }
 }
 
@@ -108,11 +107,17 @@ abstract class _$$SessionTalkCopyWith<$Res> implements $SessionCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String title,
-      String description,
-      List<Speaker> speakers,
+      String url,
+      LocaleText title,
+      LocaleText description,
+      Speaker speaker,
       DateTime start,
       DateTime end});
+
+  @override
+  $LocaleTextCopyWith<$Res> get title;
+  $LocaleTextCopyWith<$Res> get description;
+  $SpeakerCopyWith<$Res> get speaker;
 }
 
 /// @nodoc
@@ -127,9 +132,10 @@ class __$$SessionTalkCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? url = null,
     Object? title = null,
     Object? description = null,
-    Object? speakers = null,
+    Object? speaker = null,
     Object? start = null,
     Object? end = null,
   }) {
@@ -138,18 +144,22 @@ class __$$SessionTalkCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
+              as LocaleText,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      speakers: null == speakers
-          ? _value._speakers
-          : speakers // ignore: cast_nullable_to_non_nullable
-              as List<Speaker>,
+              as LocaleText,
+      speaker: null == speaker
+          ? _value.speaker
+          : speaker // ignore: cast_nullable_to_non_nullable
+              as Speaker,
       start: null == start
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
@@ -160,6 +170,22 @@ class __$$SessionTalkCopyWithImpl<$Res>
               as DateTime,
     ));
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LocaleTextCopyWith<$Res> get description {
+    return $LocaleTextCopyWith<$Res>(_value.description, (value) {
+      return _then(_value.copyWith(description: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SpeakerCopyWith<$Res> get speaker {
+    return $SpeakerCopyWith<$Res>(_value.speaker, (value) {
+      return _then(_value.copyWith(speaker: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -167,14 +193,14 @@ class __$$SessionTalkCopyWithImpl<$Res>
 class _$SessionTalk with DiagnosticableTreeMixin implements SessionTalk {
   const _$SessionTalk(
       {required this.id,
+      required this.url,
       required this.title,
       required this.description,
-      required final List<Speaker> speakers,
+      required this.speaker,
       required this.start,
       required this.end,
       final String? $type})
-      : _speakers = speakers,
-        $type = $type ?? 'talk';
+      : $type = $type ?? 'talk';
 
   factory _$SessionTalk.fromJson(Map<String, dynamic> json) =>
       _$$SessionTalkFromJson(json);
@@ -182,17 +208,13 @@ class _$SessionTalk with DiagnosticableTreeMixin implements SessionTalk {
   @override
   final String id;
   @override
-  final String title;
+  final String url;
   @override
-  final String description;
-  final List<Speaker> _speakers;
+  final LocaleText title;
   @override
-  List<Speaker> get speakers {
-    if (_speakers is EqualUnmodifiableListView) return _speakers;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_speakers);
-  }
-
+  final LocaleText description;
+  @override
+  final Speaker speaker;
   @override
   final DateTime start;
   @override
@@ -203,7 +225,7 @@ class _$SessionTalk with DiagnosticableTreeMixin implements SessionTalk {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Session.talk(id: $id, title: $title, description: $description, speakers: $speakers, start: $start, end: $end)';
+    return 'Session.talk(id: $id, url: $url, title: $title, description: $description, speaker: $speaker, start: $start, end: $end)';
   }
 
   @override
@@ -212,9 +234,10 @@ class _$SessionTalk with DiagnosticableTreeMixin implements SessionTalk {
     properties
       ..add(DiagnosticsProperty('type', 'Session.talk'))
       ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('url', url))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('description', description))
-      ..add(DiagnosticsProperty('speakers', speakers))
+      ..add(DiagnosticsProperty('speaker', speaker))
       ..add(DiagnosticsProperty('start', start))
       ..add(DiagnosticsProperty('end', end));
   }
@@ -225,18 +248,19 @@ class _$SessionTalk with DiagnosticableTreeMixin implements SessionTalk {
         (other.runtimeType == runtimeType &&
             other is _$SessionTalk &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.url, url) || other.url == url) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            const DeepCollectionEquality().equals(other._speakers, _speakers) &&
+            (identical(other.speaker, speaker) || other.speaker == speaker) &&
             (identical(other.start, start) || other.start == start) &&
             (identical(other.end, end) || other.end == end));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, description,
-      const DeepCollectionEquality().hash(_speakers), start, end);
+  int get hashCode => Object.hash(
+      runtimeType, id, url, title, description, speaker, start, end);
 
   @JsonKey(ignore: true)
   @override
@@ -255,9 +279,10 @@ class _$SessionTalk with DiagnosticableTreeMixin implements SessionTalk {
 abstract class SessionTalk implements Session {
   const factory SessionTalk(
       {required final String id,
-      required final String title,
-      required final String description,
-      required final List<Speaker> speakers,
+      required final String url,
+      required final LocaleText title,
+      required final LocaleText description,
+      required final Speaker speaker,
       required final DateTime start,
       required final DateTime end}) = _$SessionTalk;
 
@@ -266,11 +291,11 @@ abstract class SessionTalk implements Session {
 
   @override
   String get id;
+  String get url;
   @override
-  String get title;
-  @override
-  String get description;
-  List<Speaker> get speakers;
+  LocaleText get title;
+  LocaleText get description;
+  Speaker get speaker;
   @override
   DateTime get start;
   @override
@@ -291,11 +316,17 @@ abstract class _$$SessionSponsorCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
-      String title,
-      String description,
-      List<Speaker> speakers,
+      String url,
+      LocaleText title,
+      LocaleText description,
+      Speaker speaker,
       DateTime start,
       DateTime end});
+
+  @override
+  $LocaleTextCopyWith<$Res> get title;
+  $LocaleTextCopyWith<$Res> get description;
+  $SpeakerCopyWith<$Res> get speaker;
 }
 
 /// @nodoc
@@ -310,9 +341,10 @@ class __$$SessionSponsorCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? url = null,
     Object? title = null,
     Object? description = null,
-    Object? speakers = null,
+    Object? speaker = null,
     Object? start = null,
     Object? end = null,
   }) {
@@ -321,18 +353,22 @@ class __$$SessionSponsorCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
+              as LocaleText,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      speakers: null == speakers
-          ? _value._speakers
-          : speakers // ignore: cast_nullable_to_non_nullable
-              as List<Speaker>,
+              as LocaleText,
+      speaker: null == speaker
+          ? _value.speaker
+          : speaker // ignore: cast_nullable_to_non_nullable
+              as Speaker,
       start: null == start
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
@@ -343,6 +379,22 @@ class __$$SessionSponsorCopyWithImpl<$Res>
               as DateTime,
     ));
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LocaleTextCopyWith<$Res> get description {
+    return $LocaleTextCopyWith<$Res>(_value.description, (value) {
+      return _then(_value.copyWith(description: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SpeakerCopyWith<$Res> get speaker {
+    return $SpeakerCopyWith<$Res>(_value.speaker, (value) {
+      return _then(_value.copyWith(speaker: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -350,14 +402,14 @@ class __$$SessionSponsorCopyWithImpl<$Res>
 class _$SessionSponsor with DiagnosticableTreeMixin implements SessionSponsor {
   const _$SessionSponsor(
       {required this.id,
+      required this.url,
       required this.title,
       required this.description,
-      required final List<Speaker> speakers,
+      required this.speaker,
       required this.start,
       required this.end,
       final String? $type})
-      : _speakers = speakers,
-        $type = $type ?? 'sponsor';
+      : $type = $type ?? 'sponsor';
 
   factory _$SessionSponsor.fromJson(Map<String, dynamic> json) =>
       _$$SessionSponsorFromJson(json);
@@ -365,17 +417,13 @@ class _$SessionSponsor with DiagnosticableTreeMixin implements SessionSponsor {
   @override
   final String id;
   @override
-  final String title;
+  final String url;
   @override
-  final String description;
-  final List<Speaker> _speakers;
+  final LocaleText title;
   @override
-  List<Speaker> get speakers {
-    if (_speakers is EqualUnmodifiableListView) return _speakers;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_speakers);
-  }
-
+  final LocaleText description;
+  @override
+  final Speaker speaker;
   @override
   final DateTime start;
   @override
@@ -386,7 +434,7 @@ class _$SessionSponsor with DiagnosticableTreeMixin implements SessionSponsor {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Session.sponsor(id: $id, title: $title, description: $description, speakers: $speakers, start: $start, end: $end)';
+    return 'Session.sponsor(id: $id, url: $url, title: $title, description: $description, speaker: $speaker, start: $start, end: $end)';
   }
 
   @override
@@ -395,9 +443,10 @@ class _$SessionSponsor with DiagnosticableTreeMixin implements SessionSponsor {
     properties
       ..add(DiagnosticsProperty('type', 'Session.sponsor'))
       ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('url', url))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('description', description))
-      ..add(DiagnosticsProperty('speakers', speakers))
+      ..add(DiagnosticsProperty('speaker', speaker))
       ..add(DiagnosticsProperty('start', start))
       ..add(DiagnosticsProperty('end', end));
   }
@@ -408,18 +457,19 @@ class _$SessionSponsor with DiagnosticableTreeMixin implements SessionSponsor {
         (other.runtimeType == runtimeType &&
             other is _$SessionSponsor &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.url, url) || other.url == url) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            const DeepCollectionEquality().equals(other._speakers, _speakers) &&
+            (identical(other.speaker, speaker) || other.speaker == speaker) &&
             (identical(other.start, start) || other.start == start) &&
             (identical(other.end, end) || other.end == end));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, description,
-      const DeepCollectionEquality().hash(_speakers), start, end);
+  int get hashCode => Object.hash(
+      runtimeType, id, url, title, description, speaker, start, end);
 
   @JsonKey(ignore: true)
   @override
@@ -438,9 +488,10 @@ class _$SessionSponsor with DiagnosticableTreeMixin implements SessionSponsor {
 abstract class SessionSponsor implements Session {
   const factory SessionSponsor(
       {required final String id,
-      required final String title,
-      required final String description,
-      required final List<Speaker> speakers,
+      required final String url,
+      required final LocaleText title,
+      required final LocaleText description,
+      required final Speaker speaker,
       required final DateTime start,
       required final DateTime end}) = _$SessionSponsor;
 
@@ -449,11 +500,11 @@ abstract class SessionSponsor implements Session {
 
   @override
   String get id;
+  String get url;
   @override
-  String get title;
-  @override
-  String get description;
-  List<Speaker> get speakers;
+  LocaleText get title;
+  LocaleText get description;
+  Speaker get speaker;
   @override
   DateTime get start;
   @override
@@ -471,12 +522,10 @@ abstract class _$$SessionEventCopyWith<$Res> implements $SessionCopyWith<$Res> {
       __$$SessionEventCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String title,
-      String description,
-      DateTime start,
-      DateTime end});
+  $Res call({String id, LocaleText title, DateTime start, DateTime end});
+
+  @override
+  $LocaleTextCopyWith<$Res> get title;
 }
 
 /// @nodoc
@@ -492,7 +541,6 @@ class __$$SessionEventCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? title = null,
-    Object? description = null,
     Object? start = null,
     Object? end = null,
   }) {
@@ -504,11 +552,7 @@ class __$$SessionEventCopyWithImpl<$Res>
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as LocaleText,
       start: null == start
           ? _value.start
           : start // ignore: cast_nullable_to_non_nullable
@@ -527,7 +571,6 @@ class _$SessionEvent with DiagnosticableTreeMixin implements SessionEvent {
   const _$SessionEvent(
       {required this.id,
       required this.title,
-      required this.description,
       required this.start,
       required this.end,
       final String? $type})
@@ -539,9 +582,7 @@ class _$SessionEvent with DiagnosticableTreeMixin implements SessionEvent {
   @override
   final String id;
   @override
-  final String title;
-  @override
-  final String description;
+  final LocaleText title;
   @override
   final DateTime start;
   @override
@@ -552,7 +593,7 @@ class _$SessionEvent with DiagnosticableTreeMixin implements SessionEvent {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Session.event(id: $id, title: $title, description: $description, start: $start, end: $end)';
+    return 'Session.event(id: $id, title: $title, start: $start, end: $end)';
   }
 
   @override
@@ -562,7 +603,6 @@ class _$SessionEvent with DiagnosticableTreeMixin implements SessionEvent {
       ..add(DiagnosticsProperty('type', 'Session.event'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('description', description))
       ..add(DiagnosticsProperty('start', start))
       ..add(DiagnosticsProperty('end', end));
   }
@@ -574,16 +614,13 @@ class _$SessionEvent with DiagnosticableTreeMixin implements SessionEvent {
             other is _$SessionEvent &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
             (identical(other.start, start) || other.start == start) &&
             (identical(other.end, end) || other.end == end));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, title, description, start, end);
+  int get hashCode => Object.hash(runtimeType, id, title, start, end);
 
   @JsonKey(ignore: true)
   @override
@@ -602,8 +639,7 @@ class _$SessionEvent with DiagnosticableTreeMixin implements SessionEvent {
 abstract class SessionEvent implements Session {
   const factory SessionEvent(
       {required final String id,
-      required final String title,
-      required final String description,
+      required final LocaleText title,
       required final DateTime start,
       required final DateTime end}) = _$SessionEvent;
 
@@ -613,9 +649,7 @@ abstract class SessionEvent implements Session {
   @override
   String get id;
   @override
-  String get title;
-  @override
-  String get description;
+  LocaleText get title;
   @override
   DateTime get start;
   @override
@@ -632,10 +666,10 @@ Speaker _$SpeakerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Speaker {
-  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get bio => throw _privateConstructorUsedError;
-  String get profilePicture => throw _privateConstructorUsedError;
+  String get kana => throw _privateConstructorUsedError;
+  String get twitter => throw _privateConstructorUsedError;
+  String get avatarUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -647,7 +681,7 @@ abstract class $SpeakerCopyWith<$Res> {
   factory $SpeakerCopyWith(Speaker value, $Res Function(Speaker) then) =
       _$SpeakerCopyWithImpl<$Res, Speaker>;
   @useResult
-  $Res call({String id, String name, String bio, String profilePicture});
+  $Res call({String name, String kana, String twitter, String avatarUrl});
 }
 
 /// @nodoc
@@ -663,27 +697,27 @@ class _$SpeakerCopyWithImpl<$Res, $Val extends Speaker>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? name = null,
-    Object? bio = null,
-    Object? profilePicture = null,
+    Object? kana = null,
+    Object? twitter = null,
+    Object? avatarUrl = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      bio: null == bio
-          ? _value.bio
-          : bio // ignore: cast_nullable_to_non_nullable
+      kana: null == kana
+          ? _value.kana
+          : kana // ignore: cast_nullable_to_non_nullable
               as String,
-      profilePicture: null == profilePicture
-          ? _value.profilePicture
-          : profilePicture // ignore: cast_nullable_to_non_nullable
+      twitter: null == twitter
+          ? _value.twitter
+          : twitter // ignore: cast_nullable_to_non_nullable
+              as String,
+      avatarUrl: null == avatarUrl
+          ? _value.avatarUrl
+          : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -696,7 +730,7 @@ abstract class _$$_SpeakerCopyWith<$Res> implements $SpeakerCopyWith<$Res> {
       __$$_SpeakerCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name, String bio, String profilePicture});
+  $Res call({String name, String kana, String twitter, String avatarUrl});
 }
 
 /// @nodoc
@@ -709,27 +743,27 @@ class __$$_SpeakerCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? name = null,
-    Object? bio = null,
-    Object? profilePicture = null,
+    Object? kana = null,
+    Object? twitter = null,
+    Object? avatarUrl = null,
   }) {
     return _then(_$_Speaker(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      bio: null == bio
-          ? _value.bio
-          : bio // ignore: cast_nullable_to_non_nullable
+      kana: null == kana
+          ? _value.kana
+          : kana // ignore: cast_nullable_to_non_nullable
               as String,
-      profilePicture: null == profilePicture
-          ? _value.profilePicture
-          : profilePicture // ignore: cast_nullable_to_non_nullable
+      twitter: null == twitter
+          ? _value.twitter
+          : twitter // ignore: cast_nullable_to_non_nullable
+              as String,
+      avatarUrl: null == avatarUrl
+          ? _value.avatarUrl
+          : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -739,26 +773,27 @@ class __$$_SpeakerCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Speaker with DiagnosticableTreeMixin implements _Speaker {
   const _$_Speaker(
-      {required this.id,
-      required this.name,
-      required this.bio,
-      required this.profilePicture});
+      {required this.name,
+      required this.kana,
+      this.twitter = '',
+      required this.avatarUrl});
 
   factory _$_Speaker.fromJson(Map<String, dynamic> json) =>
       _$$_SpeakerFromJson(json);
 
   @override
-  final String id;
-  @override
   final String name;
   @override
-  final String bio;
+  final String kana;
   @override
-  final String profilePicture;
+  @JsonKey()
+  final String twitter;
+  @override
+  final String avatarUrl;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Speaker(id: $id, name: $name, bio: $bio, profilePicture: $profilePicture)';
+    return 'Speaker(name: $name, kana: $kana, twitter: $twitter, avatarUrl: $avatarUrl)';
   }
 
   @override
@@ -766,10 +801,10 @@ class _$_Speaker with DiagnosticableTreeMixin implements _Speaker {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Speaker'))
-      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('bio', bio))
-      ..add(DiagnosticsProperty('profilePicture', profilePicture));
+      ..add(DiagnosticsProperty('kana', kana))
+      ..add(DiagnosticsProperty('twitter', twitter))
+      ..add(DiagnosticsProperty('avatarUrl', avatarUrl));
   }
 
   @override
@@ -777,16 +812,16 @@ class _$_Speaker with DiagnosticableTreeMixin implements _Speaker {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Speaker &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.bio, bio) || other.bio == bio) &&
-            (identical(other.profilePicture, profilePicture) ||
-                other.profilePicture == profilePicture));
+            (identical(other.kana, kana) || other.kana == kana) &&
+            (identical(other.twitter, twitter) || other.twitter == twitter) &&
+            (identical(other.avatarUrl, avatarUrl) ||
+                other.avatarUrl == avatarUrl));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, bio, profilePicture);
+  int get hashCode => Object.hash(runtimeType, name, kana, twitter, avatarUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -804,24 +839,186 @@ class _$_Speaker with DiagnosticableTreeMixin implements _Speaker {
 
 abstract class _Speaker implements Speaker {
   const factory _Speaker(
-      {required final String id,
-      required final String name,
-      required final String bio,
-      required final String profilePicture}) = _$_Speaker;
+      {required final String name,
+      required final String kana,
+      final String twitter,
+      required final String avatarUrl}) = _$_Speaker;
 
   factory _Speaker.fromJson(Map<String, dynamic> json) = _$_Speaker.fromJson;
 
   @override
-  String get id;
-  @override
   String get name;
   @override
-  String get bio;
+  String get kana;
   @override
-  String get profilePicture;
+  String get twitter;
+  @override
+  String get avatarUrl;
   @override
   @JsonKey(ignore: true)
   _$$_SpeakerCopyWith<_$_Speaker> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+LocaleText _$LocaleTextFromJson(Map<String, dynamic> json) {
+  return _LocaleText.fromJson(json);
+}
+
+/// @nodoc
+mixin _$LocaleText {
+  String get ja => throw _privateConstructorUsedError;
+  String get en => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LocaleTextCopyWith<LocaleText> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LocaleTextCopyWith<$Res> {
+  factory $LocaleTextCopyWith(
+          LocaleText value, $Res Function(LocaleText) then) =
+      _$LocaleTextCopyWithImpl<$Res, LocaleText>;
+  @useResult
+  $Res call({String ja, String en});
+}
+
+/// @nodoc
+class _$LocaleTextCopyWithImpl<$Res, $Val extends LocaleText>
+    implements $LocaleTextCopyWith<$Res> {
+  _$LocaleTextCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ja = null,
+    Object? en = null,
+  }) {
+    return _then(_value.copyWith(
+      ja: null == ja
+          ? _value.ja
+          : ja // ignore: cast_nullable_to_non_nullable
+              as String,
+      en: null == en
+          ? _value.en
+          : en // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_LocaleTextCopyWith<$Res>
+    implements $LocaleTextCopyWith<$Res> {
+  factory _$$_LocaleTextCopyWith(
+          _$_LocaleText value, $Res Function(_$_LocaleText) then) =
+      __$$_LocaleTextCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String ja, String en});
+}
+
+/// @nodoc
+class __$$_LocaleTextCopyWithImpl<$Res>
+    extends _$LocaleTextCopyWithImpl<$Res, _$_LocaleText>
+    implements _$$_LocaleTextCopyWith<$Res> {
+  __$$_LocaleTextCopyWithImpl(
+      _$_LocaleText _value, $Res Function(_$_LocaleText) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ja = null,
+    Object? en = null,
+  }) {
+    return _then(_$_LocaleText(
+      ja: null == ja
+          ? _value.ja
+          : ja // ignore: cast_nullable_to_non_nullable
+              as String,
+      en: null == en
+          ? _value.en
+          : en // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_LocaleText with DiagnosticableTreeMixin implements _LocaleText {
+  const _$_LocaleText({required this.ja, required this.en});
+
+  factory _$_LocaleText.fromJson(Map<String, dynamic> json) =>
+      _$$_LocaleTextFromJson(json);
+
+  @override
+  final String ja;
+  @override
+  final String en;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'LocaleText(ja: $ja, en: $en)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'LocaleText'))
+      ..add(DiagnosticsProperty('ja', ja))
+      ..add(DiagnosticsProperty('en', en));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_LocaleText &&
+            (identical(other.ja, ja) || other.ja == ja) &&
+            (identical(other.en, en) || other.en == en));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, ja, en);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LocaleTextCopyWith<_$_LocaleText> get copyWith =>
+      __$$_LocaleTextCopyWithImpl<_$_LocaleText>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_LocaleTextToJson(
+      this,
+    );
+  }
+}
+
+abstract class _LocaleText implements LocaleText {
+  const factory _LocaleText(
+      {required final String ja, required final String en}) = _$_LocaleText;
+
+  factory _LocaleText.fromJson(Map<String, dynamic> json) =
+      _$_LocaleText.fromJson;
+
+  @override
+  String get ja;
+  @override
+  String get en;
+  @override
+  @JsonKey(ignore: true)
+  _$$_LocaleTextCopyWith<_$_LocaleText> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
