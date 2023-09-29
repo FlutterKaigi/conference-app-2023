@@ -13,13 +13,13 @@ _$SessionTalk _$$SessionTalkFromJson(Map<String, dynamic> json) =>
       ($checkedConvert) {
         final val = _$SessionTalk(
           id: $checkedConvert('id', (v) => v as String),
-          title: $checkedConvert('title', (v) => v as String),
-          description: $checkedConvert('description', (v) => v as String),
-          speakers: $checkedConvert(
-              'speakers',
-              (v) => (v as List<dynamic>)
-                  .map((e) => Speaker.fromJson(e as Map<String, dynamic>))
-                  .toList()),
+          url: $checkedConvert('url', (v) => v as String),
+          title: $checkedConvert(
+              'title', (v) => LocaleText.fromJson(v as Map<String, dynamic>)),
+          description: $checkedConvert('description',
+              (v) => LocaleText.fromJson(v as Map<String, dynamic>)),
+          speaker: $checkedConvert(
+              'speaker', (v) => Speaker.fromJson(v as Map<String, dynamic>)),
           start: $checkedConvert('start', (v) => DateTime.parse(v as String)),
           end: $checkedConvert('end', (v) => DateTime.parse(v as String)),
           $type: $checkedConvert('type', (v) => v as String?),
@@ -32,9 +32,10 @@ _$SessionTalk _$$SessionTalkFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$SessionTalkToJson(_$SessionTalk instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'title': instance.title,
-      'description': instance.description,
-      'speakers': instance.speakers.map((e) => e.toJson()).toList(),
+      'url': instance.url,
+      'title': instance.title.toJson(),
+      'description': instance.description.toJson(),
+      'speaker': instance.speaker.toJson(),
       'start': instance.start.toIso8601String(),
       'end': instance.end.toIso8601String(),
       'type': instance.$type,
@@ -47,13 +48,13 @@ _$SessionSponsor _$$SessionSponsorFromJson(Map<String, dynamic> json) =>
       ($checkedConvert) {
         final val = _$SessionSponsor(
           id: $checkedConvert('id', (v) => v as String),
-          title: $checkedConvert('title', (v) => v as String),
-          description: $checkedConvert('description', (v) => v as String),
-          speakers: $checkedConvert(
-              'speakers',
-              (v) => (v as List<dynamic>)
-                  .map((e) => Speaker.fromJson(e as Map<String, dynamic>))
-                  .toList()),
+          url: $checkedConvert('url', (v) => v as String),
+          title: $checkedConvert(
+              'title', (v) => LocaleText.fromJson(v as Map<String, dynamic>)),
+          description: $checkedConvert('description',
+              (v) => LocaleText.fromJson(v as Map<String, dynamic>)),
+          speaker: $checkedConvert(
+              'speaker', (v) => Speaker.fromJson(v as Map<String, dynamic>)),
           start: $checkedConvert('start', (v) => DateTime.parse(v as String)),
           end: $checkedConvert('end', (v) => DateTime.parse(v as String)),
           $type: $checkedConvert('type', (v) => v as String?),
@@ -66,9 +67,10 @@ _$SessionSponsor _$$SessionSponsorFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$SessionSponsorToJson(_$SessionSponsor instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'title': instance.title,
-      'description': instance.description,
-      'speakers': instance.speakers.map((e) => e.toJson()).toList(),
+      'url': instance.url,
+      'title': instance.title.toJson(),
+      'description': instance.description.toJson(),
+      'speaker': instance.speaker.toJson(),
       'start': instance.start.toIso8601String(),
       'end': instance.end.toIso8601String(),
       'type': instance.$type,
@@ -81,8 +83,8 @@ _$SessionEvent _$$SessionEventFromJson(Map<String, dynamic> json) =>
       ($checkedConvert) {
         final val = _$SessionEvent(
           id: $checkedConvert('id', (v) => v as String),
-          title: $checkedConvert('title', (v) => v as String),
-          description: $checkedConvert('description', (v) => v as String),
+          title: $checkedConvert(
+              'title', (v) => LocaleText.fromJson(v as Map<String, dynamic>)),
           start: $checkedConvert('start', (v) => DateTime.parse(v as String)),
           end: $checkedConvert('end', (v) => DateTime.parse(v as String)),
           $type: $checkedConvert('type', (v) => v as String?),
@@ -95,8 +97,7 @@ _$SessionEvent _$$SessionEventFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$SessionEventToJson(_$SessionEvent instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'title': instance.title,
-      'description': instance.description,
+      'title': instance.title.toJson(),
       'start': instance.start.toIso8601String(),
       'end': instance.end.toIso8601String(),
       'type': instance.$type,
@@ -107,23 +108,41 @@ _$_Speaker _$$_SpeakerFromJson(Map<String, dynamic> json) => $checkedCreate(
       json,
       ($checkedConvert) {
         final val = _$_Speaker(
-          id: $checkedConvert('id', (v) => v as String),
           name: $checkedConvert('name', (v) => v as String),
-          bio: $checkedConvert('bio', (v) => v as String),
-          profilePicture:
-              $checkedConvert('profile_picture', (v) => v as String),
+          kana: $checkedConvert('kana', (v) => v as String),
+          twitter: $checkedConvert('twitter', (v) => v as String? ?? ''),
+          avatarUrl: $checkedConvert('avatar_url', (v) => v as String),
         );
         return val;
       },
-      fieldKeyMap: const {'profilePicture': 'profile_picture'},
+      fieldKeyMap: const {'avatarUrl': 'avatar_url'},
     );
 
 Map<String, dynamic> _$$_SpeakerToJson(_$_Speaker instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'name': instance.name,
-      'bio': instance.bio,
-      'profile_picture': instance.profilePicture,
+      'kana': instance.kana,
+      'twitter': instance.twitter,
+      'avatar_url': instance.avatarUrl,
+    };
+
+_$_LocaleText _$$_LocaleTextFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$_LocaleText',
+      json,
+      ($checkedConvert) {
+        final val = _$_LocaleText(
+          ja: $checkedConvert('ja', (v) => v as String),
+          en: $checkedConvert('en', (v) => v as String),
+        );
+        return val;
+      },
+    );
+
+Map<String, dynamic> _$$_LocaleTextToJson(_$_LocaleText instance) =>
+    <String, dynamic>{
+      'ja': instance.ja,
+      'en': instance.en,
     };
 
 _$_SessionData _$$_SessionDataFromJson(Map<String, dynamic> json) =>
