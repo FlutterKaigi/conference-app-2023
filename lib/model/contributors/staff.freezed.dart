@@ -61,21 +61,22 @@ class _$StaffListCopyWithImpl<$Res, $Val extends StaffList>
 }
 
 /// @nodoc
-abstract class _$$_StaffListCopyWith<$Res> implements $StaffListCopyWith<$Res> {
-  factory _$$_StaffListCopyWith(
-          _$_StaffList value, $Res Function(_$_StaffList) then) =
-      __$$_StaffListCopyWithImpl<$Res>;
+abstract class _$$StaffListImplCopyWith<$Res>
+    implements $StaffListCopyWith<$Res> {
+  factory _$$StaffListImplCopyWith(
+          _$StaffListImpl value, $Res Function(_$StaffListImpl) then) =
+      __$$StaffListImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Staff> items});
 }
 
 /// @nodoc
-class __$$_StaffListCopyWithImpl<$Res>
-    extends _$StaffListCopyWithImpl<$Res, _$_StaffList>
-    implements _$$_StaffListCopyWith<$Res> {
-  __$$_StaffListCopyWithImpl(
-      _$_StaffList _value, $Res Function(_$_StaffList) _then)
+class __$$StaffListImplCopyWithImpl<$Res>
+    extends _$StaffListCopyWithImpl<$Res, _$StaffListImpl>
+    implements _$$StaffListImplCopyWith<$Res> {
+  __$$StaffListImplCopyWithImpl(
+      _$StaffListImpl _value, $Res Function(_$StaffListImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -83,7 +84,7 @@ class __$$_StaffListCopyWithImpl<$Res>
   $Res call({
     Object? items = null,
   }) {
-    return _then(_$_StaffList(
+    return _then(_$StaffListImpl(
       items: null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
@@ -94,11 +95,11 @@ class __$$_StaffListCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_StaffList with DiagnosticableTreeMixin implements _StaffList {
-  const _$_StaffList({required final List<Staff> items}) : _items = items;
+class _$StaffListImpl with DiagnosticableTreeMixin implements _StaffList {
+  const _$StaffListImpl({required final List<Staff> items}) : _items = items;
 
-  factory _$_StaffList.fromJson(Map<String, dynamic> json) =>
-      _$$_StaffListFromJson(json);
+  factory _$StaffListImpl.fromJson(Map<String, dynamic> json) =>
+      _$$StaffListImplFromJson(json);
 
   final List<Staff> _items;
   @override
@@ -125,7 +126,7 @@ class _$_StaffList with DiagnosticableTreeMixin implements _StaffList {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StaffList &&
+            other is _$StaffListImpl &&
             const DeepCollectionEquality().equals(other._items, _items));
   }
 
@@ -137,28 +138,29 @@ class _$_StaffList with DiagnosticableTreeMixin implements _StaffList {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StaffListCopyWith<_$_StaffList> get copyWith =>
-      __$$_StaffListCopyWithImpl<_$_StaffList>(this, _$identity);
+  _$$StaffListImplCopyWith<_$StaffListImpl> get copyWith =>
+      __$$StaffListImplCopyWithImpl<_$StaffListImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_StaffListToJson(
+    return _$$StaffListImplToJson(
       this,
     );
   }
 }
 
 abstract class _StaffList implements StaffList {
-  const factory _StaffList({required final List<Staff> items}) = _$_StaffList;
+  const factory _StaffList({required final List<Staff> items}) =
+      _$StaffListImpl;
 
   factory _StaffList.fromJson(Map<String, dynamic> json) =
-      _$_StaffList.fromJson;
+      _$StaffListImpl.fromJson;
 
   @override
   List<Staff> get items;
   @override
   @JsonKey(ignore: true)
-  _$$_StaffListCopyWith<_$_StaffList> get copyWith =>
+  _$$StaffListImplCopyWith<_$StaffListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -220,18 +222,21 @@ class _$StaffCopyWithImpl<$Res, $Val extends Staff>
 }
 
 /// @nodoc
-abstract class _$$_StaffCopyWith<$Res> implements $StaffCopyWith<$Res> {
-  factory _$$_StaffCopyWith(_$_Staff value, $Res Function(_$_Staff) then) =
-      __$$_StaffCopyWithImpl<$Res>;
+abstract class _$$StaffImplCopyWith<$Res> implements $StaffCopyWith<$Res> {
+  factory _$$StaffImplCopyWith(
+          _$StaffImpl value, $Res Function(_$StaffImpl) then) =
+      __$$StaffImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String displayName, String userIcon, String link});
 }
 
 /// @nodoc
-class __$$_StaffCopyWithImpl<$Res> extends _$StaffCopyWithImpl<$Res, _$_Staff>
-    implements _$$_StaffCopyWith<$Res> {
-  __$$_StaffCopyWithImpl(_$_Staff _value, $Res Function(_$_Staff) _then)
+class __$$StaffImplCopyWithImpl<$Res>
+    extends _$StaffCopyWithImpl<$Res, _$StaffImpl>
+    implements _$$StaffImplCopyWith<$Res> {
+  __$$StaffImplCopyWithImpl(
+      _$StaffImpl _value, $Res Function(_$StaffImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -241,7 +246,7 @@ class __$$_StaffCopyWithImpl<$Res> extends _$StaffCopyWithImpl<$Res, _$_Staff>
     Object? userIcon = null,
     Object? link = null,
   }) {
-    return _then(_$_Staff(
+    return _then(_$StaffImpl(
       displayName: null == displayName
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
@@ -260,12 +265,12 @@ class __$$_StaffCopyWithImpl<$Res> extends _$StaffCopyWithImpl<$Res, _$_Staff>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Staff with DiagnosticableTreeMixin implements _Staff {
-  const _$_Staff(
+class _$StaffImpl with DiagnosticableTreeMixin implements _Staff {
+  const _$StaffImpl(
       {required this.displayName, this.userIcon = '', required this.link});
 
-  factory _$_Staff.fromJson(Map<String, dynamic> json) =>
-      _$$_StaffFromJson(json);
+  factory _$StaffImpl.fromJson(Map<String, dynamic> json) =>
+      _$$StaffImplFromJson(json);
 
   @override
   final String displayName;
@@ -294,7 +299,7 @@ class _$_Staff with DiagnosticableTreeMixin implements _Staff {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Staff &&
+            other is _$StaffImpl &&
             (identical(other.displayName, displayName) ||
                 other.displayName == displayName) &&
             (identical(other.userIcon, userIcon) ||
@@ -309,12 +314,12 @@ class _$_Staff with DiagnosticableTreeMixin implements _Staff {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StaffCopyWith<_$_Staff> get copyWith =>
-      __$$_StaffCopyWithImpl<_$_Staff>(this, _$identity);
+  _$$StaffImplCopyWith<_$StaffImpl> get copyWith =>
+      __$$StaffImplCopyWithImpl<_$StaffImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_StaffToJson(
+    return _$$StaffImplToJson(
       this,
     );
   }
@@ -324,9 +329,9 @@ abstract class _Staff implements Staff {
   const factory _Staff(
       {required final String displayName,
       final String userIcon,
-      required final String link}) = _$_Staff;
+      required final String link}) = _$StaffImpl;
 
-  factory _Staff.fromJson(Map<String, dynamic> json) = _$_Staff.fromJson;
+  factory _Staff.fromJson(Map<String, dynamic> json) = _$StaffImpl.fromJson;
 
   @override
   String get displayName;
@@ -336,6 +341,6 @@ abstract class _Staff implements Staff {
   String get link;
   @override
   @JsonKey(ignore: true)
-  _$$_StaffCopyWith<_$_Staff> get copyWith =>
+  _$$StaffImplCopyWith<_$StaffImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

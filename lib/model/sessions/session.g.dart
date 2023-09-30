@@ -6,12 +6,12 @@ part of 'session.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SessionTalk _$$SessionTalkFromJson(Map<String, dynamic> json) =>
+_$SessionTalkImpl _$$SessionTalkImplFromJson(Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$SessionTalk',
+      r'_$SessionTalkImpl',
       json,
       ($checkedConvert) {
-        final val = _$SessionTalk(
+        final val = _$SessionTalkImpl(
           id: $checkedConvert('id', (v) => v as String),
           url: $checkedConvert('url', (v) => v as String),
           title: $checkedConvert(
@@ -29,7 +29,7 @@ _$SessionTalk _$$SessionTalkFromJson(Map<String, dynamic> json) =>
       fieldKeyMap: const {r'$type': 'type'},
     );
 
-Map<String, dynamic> _$$SessionTalkToJson(_$SessionTalk instance) =>
+Map<String, dynamic> _$$SessionTalkImplToJson(_$SessionTalkImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'url': instance.url,
@@ -41,12 +41,12 @@ Map<String, dynamic> _$$SessionTalkToJson(_$SessionTalk instance) =>
       'type': instance.$type,
     };
 
-_$SessionSponsor _$$SessionSponsorFromJson(Map<String, dynamic> json) =>
+_$SessionSponsorImpl _$$SessionSponsorImplFromJson(Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$SessionSponsor',
+      r'_$SessionSponsorImpl',
       json,
       ($checkedConvert) {
-        final val = _$SessionSponsor(
+        final val = _$SessionSponsorImpl(
           id: $checkedConvert('id', (v) => v as String),
           url: $checkedConvert('url', (v) => v as String),
           title: $checkedConvert(
@@ -64,7 +64,8 @@ _$SessionSponsor _$$SessionSponsorFromJson(Map<String, dynamic> json) =>
       fieldKeyMap: const {r'$type': 'type'},
     );
 
-Map<String, dynamic> _$$SessionSponsorToJson(_$SessionSponsor instance) =>
+Map<String, dynamic> _$$SessionSponsorImplToJson(
+        _$SessionSponsorImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'url': instance.url,
@@ -76,12 +77,12 @@ Map<String, dynamic> _$$SessionSponsorToJson(_$SessionSponsor instance) =>
       'type': instance.$type,
     };
 
-_$SessionEvent _$$SessionEventFromJson(Map<String, dynamic> json) =>
+_$SessionEventImpl _$$SessionEventImplFromJson(Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$SessionEvent',
+      r'_$SessionEventImpl',
       json,
       ($checkedConvert) {
-        final val = _$SessionEvent(
+        final val = _$SessionEventImpl(
           id: $checkedConvert('id', (v) => v as String),
           title: $checkedConvert(
               'title', (v) => LocaleText.fromJson(v as Map<String, dynamic>)),
@@ -94,7 +95,7 @@ _$SessionEvent _$$SessionEventFromJson(Map<String, dynamic> json) =>
       fieldKeyMap: const {r'$type': 'type'},
     );
 
-Map<String, dynamic> _$$SessionEventToJson(_$SessionEvent instance) =>
+Map<String, dynamic> _$$SessionEventImplToJson(_$SessionEventImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title.toJson(),
@@ -103,11 +104,12 @@ Map<String, dynamic> _$$SessionEventToJson(_$SessionEvent instance) =>
       'type': instance.$type,
     };
 
-_$_Speaker _$$_SpeakerFromJson(Map<String, dynamic> json) => $checkedCreate(
-      r'_$_Speaker',
+_$SpeakerImpl _$$SpeakerImplFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$SpeakerImpl',
       json,
       ($checkedConvert) {
-        final val = _$_Speaker(
+        final val = _$SpeakerImpl(
           name: $checkedConvert('name', (v) => v as String),
           kana: $checkedConvert('kana', (v) => v as String),
           twitter: $checkedConvert('twitter', (v) => v as String? ?? ''),
@@ -118,7 +120,7 @@ _$_Speaker _$$_SpeakerFromJson(Map<String, dynamic> json) => $checkedCreate(
       fieldKeyMap: const {'avatarUrl': 'avatar_url'},
     );
 
-Map<String, dynamic> _$$_SpeakerToJson(_$_Speaker instance) =>
+Map<String, dynamic> _$$SpeakerImplToJson(_$SpeakerImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'kana': instance.kana,
@@ -126,12 +128,12 @@ Map<String, dynamic> _$$_SpeakerToJson(_$_Speaker instance) =>
       'avatar_url': instance.avatarUrl,
     };
 
-_$_LocaleText _$$_LocaleTextFromJson(Map<String, dynamic> json) =>
+_$LocaleTextImpl _$$LocaleTextImplFromJson(Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_LocaleText',
+      r'_$LocaleTextImpl',
       json,
       ($checkedConvert) {
-        final val = _$_LocaleText(
+        final val = _$LocaleTextImpl(
           ja: $checkedConvert('ja', (v) => v as String),
           en: $checkedConvert('en', (v) => v as String),
         );
@@ -139,18 +141,18 @@ _$_LocaleText _$$_LocaleTextFromJson(Map<String, dynamic> json) =>
       },
     );
 
-Map<String, dynamic> _$$_LocaleTextToJson(_$_LocaleText instance) =>
+Map<String, dynamic> _$$LocaleTextImplToJson(_$LocaleTextImpl instance) =>
     <String, dynamic>{
       'ja': instance.ja,
       'en': instance.en,
     };
 
-_$_SessionData _$$_SessionDataFromJson(Map<String, dynamic> json) =>
+_$SessionDataImpl _$$SessionDataImplFromJson(Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_SessionData',
+      r'_$SessionDataImpl',
       json,
       ($checkedConvert) {
-        final val = _$_SessionData(
+        final val = _$SessionDataImpl(
           items: $checkedConvert(
               'items',
               (v) => (v as Map<String, dynamic>).map(
@@ -166,7 +168,7 @@ _$_SessionData _$$_SessionDataFromJson(Map<String, dynamic> json) =>
       },
     );
 
-Map<String, dynamic> _$$_SessionDataToJson(_$_SessionData instance) =>
+Map<String, dynamic> _$$SessionDataImplToJson(_$SessionDataImpl instance) =>
     <String, dynamic>{
       'items': instance.items.map((k, e) =>
           MapEntry(_$RoomEnumMap[k]!, e.map((e) => e.toJson()).toList())),

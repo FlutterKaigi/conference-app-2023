@@ -62,22 +62,22 @@ class _$DeveloperListCopyWithImpl<$Res, $Val extends DeveloperList>
 }
 
 /// @nodoc
-abstract class _$$_DeveloperListCopyWith<$Res>
+abstract class _$$DeveloperListImplCopyWith<$Res>
     implements $DeveloperListCopyWith<$Res> {
-  factory _$$_DeveloperListCopyWith(
-          _$_DeveloperList value, $Res Function(_$_DeveloperList) then) =
-      __$$_DeveloperListCopyWithImpl<$Res>;
+  factory _$$DeveloperListImplCopyWith(
+          _$DeveloperListImpl value, $Res Function(_$DeveloperListImpl) then) =
+      __$$DeveloperListImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Developer> items});
 }
 
 /// @nodoc
-class __$$_DeveloperListCopyWithImpl<$Res>
-    extends _$DeveloperListCopyWithImpl<$Res, _$_DeveloperList>
-    implements _$$_DeveloperListCopyWith<$Res> {
-  __$$_DeveloperListCopyWithImpl(
-      _$_DeveloperList _value, $Res Function(_$_DeveloperList) _then)
+class __$$DeveloperListImplCopyWithImpl<$Res>
+    extends _$DeveloperListCopyWithImpl<$Res, _$DeveloperListImpl>
+    implements _$$DeveloperListImplCopyWith<$Res> {
+  __$$DeveloperListImplCopyWithImpl(
+      _$DeveloperListImpl _value, $Res Function(_$DeveloperListImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +85,7 @@ class __$$_DeveloperListCopyWithImpl<$Res>
   $Res call({
     Object? items = null,
   }) {
-    return _then(_$_DeveloperList(
+    return _then(_$DeveloperListImpl(
       items: null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
@@ -96,12 +96,14 @@ class __$$_DeveloperListCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DeveloperList with DiagnosticableTreeMixin implements _DeveloperList {
-  const _$_DeveloperList({required final List<Developer> items})
+class _$DeveloperListImpl
+    with DiagnosticableTreeMixin
+    implements _DeveloperList {
+  const _$DeveloperListImpl({required final List<Developer> items})
       : _items = items;
 
-  factory _$_DeveloperList.fromJson(Map<String, dynamic> json) =>
-      _$$_DeveloperListFromJson(json);
+  factory _$DeveloperListImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DeveloperListImplFromJson(json);
 
   final List<Developer> _items;
   @override
@@ -128,7 +130,7 @@ class _$_DeveloperList with DiagnosticableTreeMixin implements _DeveloperList {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DeveloperList &&
+            other is _$DeveloperListImpl &&
             const DeepCollectionEquality().equals(other._items, _items));
   }
 
@@ -140,12 +142,12 @@ class _$_DeveloperList with DiagnosticableTreeMixin implements _DeveloperList {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DeveloperListCopyWith<_$_DeveloperList> get copyWith =>
-      __$$_DeveloperListCopyWithImpl<_$_DeveloperList>(this, _$identity);
+  _$$DeveloperListImplCopyWith<_$DeveloperListImpl> get copyWith =>
+      __$$DeveloperListImplCopyWithImpl<_$DeveloperListImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DeveloperListToJson(
+    return _$$DeveloperListImplToJson(
       this,
     );
   }
@@ -153,16 +155,16 @@ class _$_DeveloperList with DiagnosticableTreeMixin implements _DeveloperList {
 
 abstract class _DeveloperList implements DeveloperList {
   const factory _DeveloperList({required final List<Developer> items}) =
-      _$_DeveloperList;
+      _$DeveloperListImpl;
 
   factory _DeveloperList.fromJson(Map<String, dynamic> json) =
-      _$_DeveloperList.fromJson;
+      _$DeveloperListImpl.fromJson;
 
   @override
   List<Developer> get items;
   @override
   @JsonKey(ignore: true)
-  _$$_DeveloperListCopyWith<_$_DeveloperList> get copyWith =>
+  _$$DeveloperListImplCopyWith<_$DeveloperListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -225,21 +227,22 @@ class _$DeveloperCopyWithImpl<$Res, $Val extends Developer>
 }
 
 /// @nodoc
-abstract class _$$_DeveloperCopyWith<$Res> implements $DeveloperCopyWith<$Res> {
-  factory _$$_DeveloperCopyWith(
-          _$_Developer value, $Res Function(_$_Developer) then) =
-      __$$_DeveloperCopyWithImpl<$Res>;
+abstract class _$$DeveloperImplCopyWith<$Res>
+    implements $DeveloperCopyWith<$Res> {
+  factory _$$DeveloperImplCopyWith(
+          _$DeveloperImpl value, $Res Function(_$DeveloperImpl) then) =
+      __$$DeveloperImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, String avatarUrl, String url});
 }
 
 /// @nodoc
-class __$$_DeveloperCopyWithImpl<$Res>
-    extends _$DeveloperCopyWithImpl<$Res, _$_Developer>
-    implements _$$_DeveloperCopyWith<$Res> {
-  __$$_DeveloperCopyWithImpl(
-      _$_Developer _value, $Res Function(_$_Developer) _then)
+class __$$DeveloperImplCopyWithImpl<$Res>
+    extends _$DeveloperCopyWithImpl<$Res, _$DeveloperImpl>
+    implements _$$DeveloperImplCopyWith<$Res> {
+  __$$DeveloperImplCopyWithImpl(
+      _$DeveloperImpl _value, $Res Function(_$DeveloperImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -249,7 +252,7 @@ class __$$_DeveloperCopyWithImpl<$Res>
     Object? avatarUrl = null,
     Object? url = null,
   }) {
-    return _then(_$_Developer(
+    return _then(_$DeveloperImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -268,12 +271,12 @@ class __$$_DeveloperCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Developer with DiagnosticableTreeMixin implements _Developer {
-  const _$_Developer(
+class _$DeveloperImpl with DiagnosticableTreeMixin implements _Developer {
+  const _$DeveloperImpl(
       {required this.name, required this.avatarUrl, required this.url});
 
-  factory _$_Developer.fromJson(Map<String, dynamic> json) =>
-      _$$_DeveloperFromJson(json);
+  factory _$DeveloperImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DeveloperImplFromJson(json);
 
   @override
   final String name;
@@ -301,7 +304,7 @@ class _$_Developer with DiagnosticableTreeMixin implements _Developer {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Developer &&
+            other is _$DeveloperImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.avatarUrl, avatarUrl) ||
                 other.avatarUrl == avatarUrl) &&
@@ -315,12 +318,12 @@ class _$_Developer with DiagnosticableTreeMixin implements _Developer {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DeveloperCopyWith<_$_Developer> get copyWith =>
-      __$$_DeveloperCopyWithImpl<_$_Developer>(this, _$identity);
+  _$$DeveloperImplCopyWith<_$DeveloperImpl> get copyWith =>
+      __$$DeveloperImplCopyWithImpl<_$DeveloperImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DeveloperToJson(
+    return _$$DeveloperImplToJson(
       this,
     );
   }
@@ -330,10 +333,10 @@ abstract class _Developer implements Developer {
   const factory _Developer(
       {required final String name,
       required final String avatarUrl,
-      required final String url}) = _$_Developer;
+      required final String url}) = _$DeveloperImpl;
 
   factory _Developer.fromJson(Map<String, dynamic> json) =
-      _$_Developer.fromJson;
+      _$DeveloperImpl.fromJson;
 
   @override
   String get name;
@@ -343,6 +346,6 @@ abstract class _Developer implements Developer {
   String get url;
   @override
   @JsonKey(ignore: true)
-  _$$_DeveloperCopyWith<_$_Developer> get copyWith =>
+  _$$DeveloperImplCopyWith<_$DeveloperImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

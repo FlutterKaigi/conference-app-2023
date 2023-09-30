@@ -6,11 +6,12 @@ part of 'staff.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_StaffList _$$_StaffListFromJson(Map<String, dynamic> json) => $checkedCreate(
-      r'_$_StaffList',
+_$StaffListImpl _$$StaffListImplFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$StaffListImpl',
       json,
       ($checkedConvert) {
-        final val = _$_StaffList(
+        final val = _$StaffListImpl(
           items: $checkedConvert(
               'items',
               (v) => (v as List<dynamic>)
@@ -21,16 +22,16 @@ _$_StaffList _$$_StaffListFromJson(Map<String, dynamic> json) => $checkedCreate(
       },
     );
 
-Map<String, dynamic> _$$_StaffListToJson(_$_StaffList instance) =>
+Map<String, dynamic> _$$StaffListImplToJson(_$StaffListImpl instance) =>
     <String, dynamic>{
       'items': instance.items.map((e) => e.toJson()).toList(),
     };
 
-_$_Staff _$$_StaffFromJson(Map<String, dynamic> json) => $checkedCreate(
-      r'_$_Staff',
+_$StaffImpl _$$StaffImplFromJson(Map<String, dynamic> json) => $checkedCreate(
+      r'_$StaffImpl',
       json,
       ($checkedConvert) {
-        final val = _$_Staff(
+        final val = _$StaffImpl(
           displayName: $checkedConvert('display_name', (v) => v as String),
           userIcon: $checkedConvert('user_icon', (v) => v as String? ?? ''),
           link: $checkedConvert('link', (v) => v as String),
@@ -43,7 +44,8 @@ _$_Staff _$$_StaffFromJson(Map<String, dynamic> json) => $checkedCreate(
       },
     );
 
-Map<String, dynamic> _$$_StaffToJson(_$_Staff instance) => <String, dynamic>{
+Map<String, dynamic> _$$StaffImplToJson(_$StaffImpl instance) =>
+    <String, dynamic>{
       'display_name': instance.displayName,
       'user_icon': instance.userIcon,
       'link': instance.link,
