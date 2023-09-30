@@ -6,12 +6,12 @@ part of 'developer.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_DeveloperList _$$_DeveloperListFromJson(Map<String, dynamic> json) =>
+_$DeveloperListImpl _$$DeveloperListImplFromJson(Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_DeveloperList',
+      r'_$DeveloperListImpl',
       json,
       ($checkedConvert) {
-        final val = _$_DeveloperList(
+        final val = _$DeveloperListImpl(
           items: $checkedConvert(
               'items',
               (v) => (v as List<dynamic>)
@@ -22,16 +22,17 @@ _$_DeveloperList _$$_DeveloperListFromJson(Map<String, dynamic> json) =>
       },
     );
 
-Map<String, dynamic> _$$_DeveloperListToJson(_$_DeveloperList instance) =>
+Map<String, dynamic> _$$DeveloperListImplToJson(_$DeveloperListImpl instance) =>
     <String, dynamic>{
       'items': instance.items.map((e) => e.toJson()).toList(),
     };
 
-_$_Developer _$$_DeveloperFromJson(Map<String, dynamic> json) => $checkedCreate(
-      r'_$_Developer',
+_$DeveloperImpl _$$DeveloperImplFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$DeveloperImpl',
       json,
       ($checkedConvert) {
-        final val = _$_Developer(
+        final val = _$DeveloperImpl(
           name: $checkedConvert('name', (v) => v as String),
           avatarUrl: $checkedConvert('avatar_url', (v) => v as String),
           url: $checkedConvert('url', (v) => v as String),
@@ -41,7 +42,7 @@ _$_Developer _$$_DeveloperFromJson(Map<String, dynamic> json) => $checkedCreate(
       fieldKeyMap: const {'avatarUrl': 'avatar_url'},
     );
 
-Map<String, dynamic> _$$_DeveloperToJson(_$_Developer instance) =>
+Map<String, dynamic> _$$DeveloperImplToJson(_$DeveloperImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'avatar_url': instance.avatarUrl,
