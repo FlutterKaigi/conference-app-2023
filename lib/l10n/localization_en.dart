@@ -166,4 +166,10 @@ final class LocalizationEn extends Localization {
 
   @override
   String get licensesLegalNotices => 'Legal Notices';
+
+  @override
+  String get roomOne => 'Room1';
+
+  @override
+  String get roomTwo => 'Room2';
 }

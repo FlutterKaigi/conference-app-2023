@@ -8,6 +8,9 @@
   "files.watcherExclude": {
     "**/.fvm": true
   },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {

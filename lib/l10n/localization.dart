@@ -129,6 +129,10 @@ abstract base class Localization {
   String get licensesContactUsUrl;
 
   String get licensesLegalNotices;
+
+  String get roomOne;
+
+  String get roomTwo;
 }
 
 /// A wrapper class of [DateFormat] for localization.
