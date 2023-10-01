@@ -63,6 +63,7 @@ class _SessionSection extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = ref.watch(localizationProvider);
+    final sessionDuration = session.end.difference(session.start);
     return Column(
       children: [
         Row(
@@ -77,7 +78,7 @@ class _SessionSection extends ConsumerWidget {
         const Gap(8),
         Container(
           margin: const EdgeInsets.only(left: 16),
-          padding: const EdgeInsets.fromLTRB(16, 0, 0, 8),
+          padding: const EdgeInsets.fromLTRB(16, 0, 0, 4),
           decoration: BoxDecoration(
             border: Border(
               left: BorderSide(
@@ -86,7 +87,20 @@ class _SessionSection extends ConsumerWidget {
               ),
             ),
           ),
-          child: _SessionCard(session: session),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _SessionCard(session: session),
+              const Gap(4),
+              Padding(
+                padding: const EdgeInsets.only(left: 16),
+                child: Text(
+                  localization.durationMinutes(sessionDuration),
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              ),
+            ],
+          ),
         ),
         const Gap(8),
       ],
@@ -141,7 +155,12 @@ class _SessionCard extends ConsumerWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
-        onTap: () {},
+        onTap: switch (session) {
+          SessionTalk() || SessionSponsor() => () {
+              // TODO(Kurogoma4D): Open session detail page.
+            },
+          _ => null,
+        },
       ),
     );
   }

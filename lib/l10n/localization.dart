@@ -133,6 +133,8 @@ abstract base class Localization {
   String get roomOne;
 
   String get roomTwo;
+
+  String durationMinutes(Duration duration);
 }
 
 /// A wrapper class of [DateFormat] for localization.
