@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -69,6 +71,14 @@ class SessionData with _$SessionData {
 
   factory SessionData.fromJson(Map<String, dynamic> json) =>
       _$SessionDataFromJson(json);
+}
+
+extension LocaleTextEx on LocaleText {
+  String get(Locale locale) => switch (locale.languageCode) {
+        'ja' => ja,
+        'en' => en,
+        _ => en,
+      };
 }
 
 enum Room {

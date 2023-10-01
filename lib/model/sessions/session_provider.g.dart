@@ -281,7 +281,7 @@ class _SessionsProviderElement extends AutoDisposeProviderElement<List<Session>>
   Room get room => (origin as SessionsProvider).room;
 }
 
-String _$sessionDataHash() => r'894667e8fe8f4f7465e1af5e3f149586e187bbe9';
+String _$sessionDataHash() => r'01578fa8eb3a3c80f3c253d3a05e16e8ee550e88';
 
 /// See also [sessionData].
 @ProviderFor(sessionData)

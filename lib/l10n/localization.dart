@@ -144,4 +144,7 @@ class DateFormatter {
   final String languageCode;
 
   late final yMMEd = DateFormat.yMMMEd(languageCode);
+
+  // ignore: non_constant_identifier_names
+  late final Hm = DateFormat.Hm(languageCode);
 }
