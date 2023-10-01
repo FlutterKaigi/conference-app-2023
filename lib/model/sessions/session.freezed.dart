@@ -33,7 +33,9 @@ Session _$SessionFromJson(Map<String, dynamic> json) {
 mixin _$Session {
   String get id => throw _privateConstructorUsedError;
   LocaleText get title => throw _privateConstructorUsedError;
+  @JpDateTimeConverter()
   DateTime get start => throw _privateConstructorUsedError;
+  @JpDateTimeConverter()
   DateTime get end => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,7 +48,11 @@ abstract class $SessionCopyWith<$Res> {
   factory $SessionCopyWith(Session value, $Res Function(Session) then) =
       _$SessionCopyWithImpl<$Res, Session>;
   @useResult
-  $Res call({String id, LocaleText title, DateTime start, DateTime end});
+  $Res call(
+      {String id,
+      LocaleText title,
+      @JpDateTimeConverter() DateTime start,
+      @JpDateTimeConverter() DateTime end});
 
   $LocaleTextCopyWith<$Res> get title;
 }
@@ -112,8 +118,8 @@ abstract class _$$SessionTalkImplCopyWith<$Res>
       LocaleText title,
       LocaleText description,
       Speaker speaker,
-      DateTime start,
-      DateTime end});
+      @JpDateTimeConverter() DateTime start,
+      @JpDateTimeConverter() DateTime end});
 
   @override
   $LocaleTextCopyWith<$Res> get title;
@@ -198,8 +204,8 @@ class _$SessionTalkImpl with DiagnosticableTreeMixin implements SessionTalk {
       required this.title,
       required this.description,
       required this.speaker,
-      required this.start,
-      required this.end,
+      @JpDateTimeConverter() required this.start,
+      @JpDateTimeConverter() required this.end,
       final String? $type})
       : $type = $type ?? 'talk';
 
@@ -217,8 +223,10 @@ class _$SessionTalkImpl with DiagnosticableTreeMixin implements SessionTalk {
   @override
   final Speaker speaker;
   @override
+  @JpDateTimeConverter()
   final DateTime start;
   @override
+  @JpDateTimeConverter()
   final DateTime end;
 
   @JsonKey(name: 'type')
@@ -284,8 +292,8 @@ abstract class SessionTalk implements Session {
       required final LocaleText title,
       required final LocaleText description,
       required final Speaker speaker,
-      required final DateTime start,
-      required final DateTime end}) = _$SessionTalkImpl;
+      @JpDateTimeConverter() required final DateTime start,
+      @JpDateTimeConverter() required final DateTime end}) = _$SessionTalkImpl;
 
   factory SessionTalk.fromJson(Map<String, dynamic> json) =
       _$SessionTalkImpl.fromJson;
@@ -298,8 +306,10 @@ abstract class SessionTalk implements Session {
   LocaleText get description;
   Speaker get speaker;
   @override
+  @JpDateTimeConverter()
   DateTime get start;
   @override
+  @JpDateTimeConverter()
   DateTime get end;
   @override
   @JsonKey(ignore: true)
@@ -321,8 +331,8 @@ abstract class _$$SessionSponsorImplCopyWith<$Res>
       LocaleText title,
       LocaleText description,
       Speaker speaker,
-      DateTime start,
-      DateTime end});
+      @JpDateTimeConverter() DateTime start,
+      @JpDateTimeConverter() DateTime end});
 
   @override
   $LocaleTextCopyWith<$Res> get title;
@@ -409,8 +419,8 @@ class _$SessionSponsorImpl
       required this.title,
       required this.description,
       required this.speaker,
-      required this.start,
-      required this.end,
+      @JpDateTimeConverter() required this.start,
+      @JpDateTimeConverter() required this.end,
       final String? $type})
       : $type = $type ?? 'sponsor';
 
@@ -428,8 +438,10 @@ class _$SessionSponsorImpl
   @override
   final Speaker speaker;
   @override
+  @JpDateTimeConverter()
   final DateTime start;
   @override
+  @JpDateTimeConverter()
   final DateTime end;
 
   @JsonKey(name: 'type')
@@ -491,13 +503,14 @@ class _$SessionSponsorImpl
 
 abstract class SessionSponsor implements Session {
   const factory SessionSponsor(
-      {required final String id,
-      required final String url,
-      required final LocaleText title,
-      required final LocaleText description,
-      required final Speaker speaker,
-      required final DateTime start,
-      required final DateTime end}) = _$SessionSponsorImpl;
+          {required final String id,
+          required final String url,
+          required final LocaleText title,
+          required final LocaleText description,
+          required final Speaker speaker,
+          @JpDateTimeConverter() required final DateTime start,
+          @JpDateTimeConverter() required final DateTime end}) =
+      _$SessionSponsorImpl;
 
   factory SessionSponsor.fromJson(Map<String, dynamic> json) =
       _$SessionSponsorImpl.fromJson;
@@ -510,8 +523,10 @@ abstract class SessionSponsor implements Session {
   LocaleText get description;
   Speaker get speaker;
   @override
+  @JpDateTimeConverter()
   DateTime get start;
   @override
+  @JpDateTimeConverter()
   DateTime get end;
   @override
   @JsonKey(ignore: true)
@@ -527,7 +542,11 @@ abstract class _$$SessionEventImplCopyWith<$Res>
       __$$SessionEventImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, LocaleText title, DateTime start, DateTime end});
+  $Res call(
+      {String id,
+      LocaleText title,
+      @JpDateTimeConverter() DateTime start,
+      @JpDateTimeConverter() DateTime end});
 
   @override
   $LocaleTextCopyWith<$Res> get title;
@@ -576,8 +595,8 @@ class _$SessionEventImpl with DiagnosticableTreeMixin implements SessionEvent {
   const _$SessionEventImpl(
       {required this.id,
       required this.title,
-      required this.start,
-      required this.end,
+      @JpDateTimeConverter() required this.start,
+      @JpDateTimeConverter() required this.end,
       final String? $type})
       : $type = $type ?? 'event';
 
@@ -589,8 +608,10 @@ class _$SessionEventImpl with DiagnosticableTreeMixin implements SessionEvent {
   @override
   final LocaleText title;
   @override
+  @JpDateTimeConverter()
   final DateTime start;
   @override
+  @JpDateTimeConverter()
   final DateTime end;
 
   @JsonKey(name: 'type')
@@ -645,8 +666,8 @@ abstract class SessionEvent implements Session {
   const factory SessionEvent(
       {required final String id,
       required final LocaleText title,
-      required final DateTime start,
-      required final DateTime end}) = _$SessionEventImpl;
+      @JpDateTimeConverter() required final DateTime start,
+      @JpDateTimeConverter() required final DateTime end}) = _$SessionEventImpl;
 
   factory SessionEvent.fromJson(Map<String, dynamic> json) =
       _$SessionEventImpl.fromJson;
@@ -656,8 +677,10 @@ abstract class SessionEvent implements Session {
   @override
   LocaleText get title;
   @override
+  @JpDateTimeConverter()
   DateTime get start;
   @override
+  @JpDateTimeConverter()
   DateTime get end;
   @override
   @JsonKey(ignore: true)
