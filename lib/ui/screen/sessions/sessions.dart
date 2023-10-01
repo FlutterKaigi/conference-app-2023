@@ -44,13 +44,11 @@ class SessionsPage extends ConsumerWidget {
             ),
           ),
           const Gap(16),
-          for (final session in sessions) ...[
+          for (final session in sessions)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: _SessionSection(session: session),
             ),
-            const Gap(16),
-          ],
         ],
       ),
     );
@@ -76,27 +74,56 @@ class _SessionSection extends ConsumerWidget {
             const Spacer(),
           ],
         ),
-        Row(
-          children: [
-            const Gap(32),
-            Expanded(
-              child: _SessionCard(session: session),
+        const Gap(8),
+        Container(
+          margin: const EdgeInsets.only(left: 16),
+          padding: const EdgeInsets.fromLTRB(16, 0, 0, 8),
+          decoration: BoxDecoration(
+            border: Border(
+              left: BorderSide(
+                width: 2,
+                color: Theme.of(context).colorScheme.outlineVariant,
+              ),
             ),
-          ],
+          ),
+          child: _SessionCard(session: session),
         ),
+        const Gap(8),
       ],
     );
   }
 }
 
 class _SessionCard extends ConsumerWidget {
-  const _SessionCard({super.key, required this.session});
+  const _SessionCard({required this.session});
 
   final Session session;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final locale = ref.watch(appLocaleProvider);
+
+    final speakerName = switch (session) {
+      SessionSponsor(speaker: final s) => Wrap(
+          spacing: 8,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: [
+            Text(s.name),
+            const Icon(Icons.handshake_outlined),
+          ],
+        ),
+      SessionTalk(speaker: final s) => Text(s.name),
+      _ => null,
+    };
+
+    final leadingImage = switch (session) {
+      SessionSponsor(speaker: final s) ||
+      SessionTalk(speaker: final s) =>
+        CircleAvatar(
+          backgroundImage: NetworkImage(s.avatarUrl),
+        ),
+      _ => null,
+    };
 
     return Card(
       elevation: 0,
@@ -109,21 +136,8 @@ class _SessionCard extends ConsumerWidget {
       child: ListTile(
         title: Text(session.title.get(locale)),
         contentPadding: const EdgeInsets.only(left: 16),
-        trailing: switch (session) {
-          SessionSponsor(speaker: final s) ||
-          SessionTalk(speaker: final s) =>
-            Padding(
-              padding: const EdgeInsets.all(1),
-              child: ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topRight: Radius.circular(11),
-                  bottomRight: Radius.circular(11),
-                ),
-                child: Image.network(s.avatarUrl),
-              ),
-            ),
-          _ => null,
-        },
+        subtitle: speakerName,
+        leading: leadingImage,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
