@@ -7,7 +7,6 @@ import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 
 class SessionsPage extends ConsumerWidget {
   const SessionsPage({super.key, this.room = Room.room1});
@@ -43,7 +42,9 @@ class SessionsPage extends ConsumerWidget {
               ],
               onSelectionChanged: (rooms) {
                 if (rooms.isEmpty) return;
-                context.go('/${SessionsRoute.pathWithRoom(rooms.first)}');
+                SessionsRoute(
+                  room: rooms.first,
+                ).go(context);
               },
               selected: {room},
             ),
