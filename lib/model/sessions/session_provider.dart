@@ -30,8 +30,9 @@ List<Session> sessions(SessionsRef ref, Room room) {
 @riverpod
 Map<Room, List<Session>> sessionData(SessionDataRef ref) {
   final remoteConfig = ref.watch(remoteConfigProvider);
-  final json = remoteConfig.getJsonMapFromKey(RemoteConfigKey.session);
-  final sessionData = SessionData.fromJson(json);
+  final sessionData = SessionData.fromJson(
+    remoteConfig.getJsonMapFromKey(RemoteConfigKey.session),
+  );
 
   return sessionData.items;
 }
