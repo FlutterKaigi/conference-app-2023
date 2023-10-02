@@ -9,8 +9,15 @@ class SessionsRoute extends GoRouteData {
 
   static const path = 'sessions';
 
+  static String pathWithRoom(Room room) => '$path?room=${room.number}';
+
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const SessionsPage();
+    final rawRoom = state.uri.queryParameters['room']?.replaceFirst('room', '');
+    final room = Room.values.firstWhereOrNull((e) => e.number == rawRoom);
+    if (room == null) {
+      return const SessionsPage();
+    }
+    return SessionsPage(room: room);
   }
 }

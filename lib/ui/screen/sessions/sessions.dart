@@ -2,20 +2,22 @@ import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/model/app_locale.dart';
 import 'package:conference_2023/model/sessions/session.dart';
 import 'package:conference_2023/model/sessions/session_provider.dart';
-import 'package:conference_2023/model/sessions/session_room.dart';
+import 'package:conference_2023/ui/router/router_app.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 class SessionsPage extends ConsumerWidget {
-  const SessionsPage({super.key});
+  const SessionsPage({super.key, this.room = Room.room1});
+
+  final Room room;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = ref.watch(localizationProvider);
-    final selectedRoom = ref.watch(selectedRoomProvider);
-    final sessions = ref.watch(sessionsProvider(selectedRoom));
+    final sessions = ref.watch(sessionsProvider(room));
 
     return SelectionContainer.disabled(
       child: ListView(
@@ -41,9 +43,9 @@ class SessionsPage extends ConsumerWidget {
               ],
               onSelectionChanged: (rooms) {
                 if (rooms.isEmpty) return;
-                ref.read(selectedRoomProvider.notifier).update(rooms.first);
+                context.go('/${SessionsRoute.pathWithRoom(rooms.first)}');
               },
-              selected: {selectedRoom},
+              selected: {room},
             ),
           ),
           const Gap(16),

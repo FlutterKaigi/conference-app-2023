@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+import 'package:conference_2023/model/sessions/session.dart';
 import 'package:conference_2023/ui/router/navigator_key.dart';
 import 'package:conference_2023/ui/screen/contributors/contributors.dart';
 import 'package:conference_2023/ui/screen/home.dart';

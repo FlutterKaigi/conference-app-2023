@@ -99,3 +99,7 @@ enum Room {
   room1,
   room2,
 }
+
+extension RoomEx on Room {
+  String get number => name.replaceFirst('room', '');
+}
