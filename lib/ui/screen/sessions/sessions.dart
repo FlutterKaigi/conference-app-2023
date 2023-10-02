@@ -3,6 +3,7 @@ import 'package:conference_2023/model/app_locale.dart';
 import 'package:conference_2023/model/sessions/session.dart';
 import 'package:conference_2023/model/sessions/session_provider.dart';
 import 'package:conference_2023/model/sessions/session_room.dart';
+import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
@@ -18,11 +19,13 @@ class SessionsPage extends ConsumerWidget {
 
     return SelectionContainer.disabled(
       child: ListView(
-        padding: const EdgeInsets.symmetric(vertical: 16),
+        padding: EdgeInsets.symmetric(
+          vertical: 16,
+          horizontal: context.spacing,
+        ),
         children: [
           Container(
             alignment: Alignment.center,
-            padding: const EdgeInsets.symmetric(horizontal: 24),
             child: SegmentedButton<Room>(
               segments: [
                 ButtonSegment(
@@ -44,11 +47,7 @@ class SessionsPage extends ConsumerWidget {
             ),
           ),
           const Gap(16),
-          for (final session in sessions)
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: _SessionSection(session: session),
-            ),
+          for (final session in sessions) _SessionSection(session: session),
         ],
       ),
     );
@@ -56,7 +55,7 @@ class SessionsPage extends ConsumerWidget {
 }
 
 class _SessionSection extends ConsumerWidget {
-  const _SessionSection({super.key, required this.session});
+  const _SessionSection({required this.session});
 
   final Session session;
 
