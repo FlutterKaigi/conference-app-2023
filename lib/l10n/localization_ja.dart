@@ -139,6 +139,18 @@ final class LocalizationJa extends Localization {
   String get settingsResetPreferences => '設定のリセット';
 
   @override
+  String get sponsor => 'スポンサー';
+
+  @override
+  String get sponsorPlatinum => 'Platinum';
+
+  @override
+  String get sponsorGold => 'Gold';
+
+  @override
+  String get sponsorSilver => 'Silver';
+
+  @override
   String get licensesLicenses => 'ライセンス';
 
   @override

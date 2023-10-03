@@ -143,6 +143,18 @@ final class LocalizationEn extends Localization {
   String get settingsResetPreferences => 'Reset settings';
 
   @override
+  String get sponsor => 'Sponsor';
+
+  @override
+  String get sponsorPlatinum => 'Platinum';
+
+  @override
+  String get sponsorGold => 'Gold';
+
+  @override
+  String get sponsorSilver => 'Silver';
+
+  @override
   String get licensesLicenses => 'License';
 
   @override
