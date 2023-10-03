@@ -20,8 +20,10 @@ _$SessionTalkImpl _$$SessionTalkImplFromJson(Map<String, dynamic> json) =>
               (v) => LocaleText.fromJson(v as Map<String, dynamic>)),
           speaker: $checkedConvert(
               'speaker', (v) => Speaker.fromJson(v as Map<String, dynamic>)),
-          start: $checkedConvert('start', (v) => DateTime.parse(v as String)),
-          end: $checkedConvert('end', (v) => DateTime.parse(v as String)),
+          start: $checkedConvert('start',
+              (v) => const JpDateTimeConverter().fromJson(v as String)),
+          end: $checkedConvert(
+              'end', (v) => const JpDateTimeConverter().fromJson(v as String)),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
@@ -36,8 +38,8 @@ Map<String, dynamic> _$$SessionTalkImplToJson(_$SessionTalkImpl instance) =>
       'title': instance.title.toJson(),
       'description': instance.description.toJson(),
       'speaker': instance.speaker.toJson(),
-      'start': instance.start.toIso8601String(),
-      'end': instance.end.toIso8601String(),
+      'start': const JpDateTimeConverter().toJson(instance.start),
+      'end': const JpDateTimeConverter().toJson(instance.end),
       'type': instance.$type,
     };
 
@@ -55,8 +57,10 @@ _$SessionSponsorImpl _$$SessionSponsorImplFromJson(Map<String, dynamic> json) =>
               (v) => LocaleText.fromJson(v as Map<String, dynamic>)),
           speaker: $checkedConvert(
               'speaker', (v) => Speaker.fromJson(v as Map<String, dynamic>)),
-          start: $checkedConvert('start', (v) => DateTime.parse(v as String)),
-          end: $checkedConvert('end', (v) => DateTime.parse(v as String)),
+          start: $checkedConvert('start',
+              (v) => const JpDateTimeConverter().fromJson(v as String)),
+          end: $checkedConvert(
+              'end', (v) => const JpDateTimeConverter().fromJson(v as String)),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
@@ -72,8 +76,8 @@ Map<String, dynamic> _$$SessionSponsorImplToJson(
       'title': instance.title.toJson(),
       'description': instance.description.toJson(),
       'speaker': instance.speaker.toJson(),
-      'start': instance.start.toIso8601String(),
-      'end': instance.end.toIso8601String(),
+      'start': const JpDateTimeConverter().toJson(instance.start),
+      'end': const JpDateTimeConverter().toJson(instance.end),
       'type': instance.$type,
     };
 
@@ -86,8 +90,10 @@ _$SessionEventImpl _$$SessionEventImplFromJson(Map<String, dynamic> json) =>
           id: $checkedConvert('id', (v) => v as String),
           title: $checkedConvert(
               'title', (v) => LocaleText.fromJson(v as Map<String, dynamic>)),
-          start: $checkedConvert('start', (v) => DateTime.parse(v as String)),
-          end: $checkedConvert('end', (v) => DateTime.parse(v as String)),
+          start: $checkedConvert('start',
+              (v) => const JpDateTimeConverter().fromJson(v as String)),
+          end: $checkedConvert(
+              'end', (v) => const JpDateTimeConverter().fromJson(v as String)),
           $type: $checkedConvert('type', (v) => v as String?),
         );
         return val;
@@ -99,8 +105,8 @@ Map<String, dynamic> _$$SessionEventImplToJson(_$SessionEventImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title.toJson(),
-      'start': instance.start.toIso8601String(),
-      'end': instance.end.toIso8601String(),
+      'start': const JpDateTimeConverter().toJson(instance.start),
+      'end': const JpDateTimeConverter().toJson(instance.end),
       'type': instance.$type,
     };
 

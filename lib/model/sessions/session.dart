@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -12,8 +14,8 @@ class Session with _$Session {
     required LocaleText title,
     required LocaleText description,
     required Speaker speaker,
-    required DateTime start,
-    required DateTime end,
+    @JpDateTimeConverter() required DateTime start,
+    @JpDateTimeConverter() required DateTime end,
   }) = SessionTalk;
 
   const factory Session.sponsor({
@@ -22,15 +24,15 @@ class Session with _$Session {
     required LocaleText title,
     required LocaleText description,
     required Speaker speaker,
-    required DateTime start,
-    required DateTime end,
+    @JpDateTimeConverter() required DateTime start,
+    @JpDateTimeConverter() required DateTime end,
   }) = SessionSponsor;
 
   const factory Session.event({
     required String id,
     required LocaleText title,
-    required DateTime start,
-    required DateTime end,
+    @JpDateTimeConverter() required DateTime start,
+    @JpDateTimeConverter() required DateTime end,
   }) = SessionEvent;
 
   factory Session.fromJson(Map<String, dynamic> json) =>
@@ -69,6 +71,28 @@ class SessionData with _$SessionData {
 
   factory SessionData.fromJson(Map<String, dynamic> json) =>
       _$SessionDataFromJson(json);
+}
+
+class JpDateTimeConverter implements JsonConverter<DateTime, String> {
+  const JpDateTimeConverter();
+
+  @override
+  DateTime fromJson(String json) {
+    return DateTime.parse(json).toLocal();
+  }
+
+  @override
+  String toJson(DateTime object) {
+    return object.toUtc().toIso8601String();
+  }
+}
+
+extension LocaleTextEx on LocaleText {
+  String get(Locale locale) => switch (locale.languageCode) {
+        'ja' => ja,
+        'en' => en,
+        _ => en,
+      };
 }
 
 enum Room {

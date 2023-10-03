@@ -113,10 +113,16 @@ extension $HomeRouteExtension on HomeRoute {
 }
 
 extension $SessionsRouteExtension on SessionsRoute {
-  static SessionsRoute _fromState(GoRouterState state) => const SessionsRoute();
+  static SessionsRoute _fromState(GoRouterState state) => SessionsRoute(
+        room: _$convertMapValue(
+            'room', state.uri.queryParameters, _$RoomEnumMap._$fromName),
+      );
 
   String get location => GoRouteData.$location(
         '/sessions',
+        queryParams: {
+          if (room != null) 'room': _$RoomEnumMap[room!],
+        },
       );
 
   void go(BuildContext context) => context.go(location);
@@ -128,6 +134,11 @@ extension $SessionsRouteExtension on SessionsRoute {
 
   void replace(BuildContext context) => context.replace(location);
 }
+
+const _$RoomEnumMap = {
+  Room.room1: 'room1',
+  Room.room2: 'room2',
+};
 
 extension $VenueRouteExtension on VenueRoute {
   static VenueRoute _fromState(GoRouterState state) => const VenueRoute();

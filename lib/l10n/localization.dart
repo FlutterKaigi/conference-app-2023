@@ -129,6 +129,12 @@ abstract base class Localization {
   String get licensesContactUsUrl;
 
   String get licensesLegalNotices;
+
+  String get roomOne;
+
+  String get roomTwo;
+
+  String durationMinutes(Duration duration);
 }
 
 /// A wrapper class of [DateFormat] for localization.
@@ -140,4 +146,7 @@ class DateFormatter {
   final String languageCode;
 
   late final yMMEd = DateFormat.yMMMEd(languageCode);
+
+  // ignore: non_constant_identifier_names
+  late final Hm = DateFormat.Hm(languageCode);
 }
