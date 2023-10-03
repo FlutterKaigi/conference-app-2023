@@ -9,7 +9,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
 class SessionsPage extends ConsumerWidget {
-  const SessionsPage({super.key, this.room = Room.room1});
+  const SessionsPage({
+    super.key,
+    this.room = Room.room1,
+  });
 
   final Room room;
 
@@ -50,7 +53,10 @@ class SessionsPage extends ConsumerWidget {
             ),
           ),
           const Gap(16),
-          for (final session in sessions) _SessionSection(session: session),
+          for (final session in sessions)
+            _SessionSection(
+              session: session,
+            ),
         ],
       ),
     );
@@ -58,7 +64,9 @@ class SessionsPage extends ConsumerWidget {
 }
 
 class _SessionSection extends ConsumerWidget {
-  const _SessionSection({required this.session});
+  const _SessionSection({
+    required this.session,
+  });
 
   final Session session;
 
@@ -79,8 +87,15 @@ class _SessionSection extends ConsumerWidget {
         ),
         const Gap(8),
         Container(
-          margin: const EdgeInsets.only(left: 16),
-          padding: const EdgeInsets.fromLTRB(16, 0, 0, 4),
+          margin: const EdgeInsets.only(
+            left: 16,
+          ),
+          padding: const EdgeInsets.only(
+            left: 16,
+            right: 0,
+            top: 0,
+            bottom: 4,
+          ),
           decoration: BoxDecoration(
             border: Border(
               left: BorderSide(
@@ -92,10 +107,14 @@ class _SessionSection extends ConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _SessionCard(session: session),
+              _SessionCard(
+                session: session,
+              ),
               const Gap(4),
               Padding(
-                padding: const EdgeInsets.only(left: 16),
+                padding: const EdgeInsets.only(
+                  left: 16,
+                ),
                 child: Text(
                   localization.durationMinutes(sessionDuration),
                   style: Theme.of(context).textTheme.bodySmall,
@@ -111,7 +130,9 @@ class _SessionSection extends ConsumerWidget {
 }
 
 class _SessionCard extends ConsumerWidget {
-  const _SessionCard({required this.session});
+  const _SessionCard({
+    required this.session,
+  });
 
   final Session session;
 
@@ -151,7 +172,9 @@ class _SessionCard extends ConsumerWidget {
       ),
       child: ListTile(
         title: Text(session.title.get(locale)),
-        contentPadding: const EdgeInsets.only(left: 16),
+        contentPadding: const EdgeInsets.only(
+          left: 16,
+        ),
         subtitle: speakerName,
         leading: leadingImage,
         shape: RoundedRectangleBorder(

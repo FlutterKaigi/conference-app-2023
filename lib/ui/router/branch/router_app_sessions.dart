@@ -5,7 +5,9 @@ class SessionsBranch extends StatefulShellBranchData {
 }
 
 class SessionsRoute extends GoRouteData {
-  const SessionsRoute({this.room});
+  const SessionsRoute({
+    this.room,
+  });
 
   static const path = 'sessions';
 
@@ -13,6 +15,8 @@ class SessionsRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return SessionsPage(room: room ?? Room.room1);
+    return SessionsPage(
+      room: room ?? Room.room1,
+    );
   }
 }
