@@ -62,6 +62,12 @@ abstract base class Localization {
 
   String get pageTitleLicense;
 
+  String get venueLocationMap;
+
+  String get venueFloorMap;
+
+  String get venueLunchMap;
+
   String get contributorsDeveloper;
 
   String get contributorsStaff;

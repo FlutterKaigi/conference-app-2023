@@ -5,12 +5,18 @@ class VenueBranch extends StatefulShellBranchData {
 }
 
 class VenueRoute extends GoRouteData {
-  const VenueRoute();
+  const VenueRoute({
+    this.tab,
+  });
 
   static const path = 'venue';
 
+  final VenueTab? tab;
+
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const VenuePage();
+    return VenuePage(
+      type: tab ?? VenueTab.values.first,
+    );
   }
 }

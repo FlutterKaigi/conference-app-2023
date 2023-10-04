@@ -141,10 +141,16 @@ const _$RoomEnumMap = {
 };
 
 extension $VenueRouteExtension on VenueRoute {
-  static VenueRoute _fromState(GoRouterState state) => const VenueRoute();
+  static VenueRoute _fromState(GoRouterState state) => VenueRoute(
+        tab: _$convertMapValue(
+            'tab', state.uri.queryParameters, _$VenueTabEnumMap._$fromName),
+      );
 
   String get location => GoRouteData.$location(
         '/venue',
+        queryParams: {
+          if (tab != null) 'tab': _$VenueTabEnumMap[tab!],
+        },
       );
 
   void go(BuildContext context) => context.go(location);
@@ -156,6 +162,12 @@ extension $VenueRouteExtension on VenueRoute {
 
   void replace(BuildContext context) => context.replace(location);
 }
+
+const _$VenueTabEnumMap = {
+  VenueTab.floor: 'floor',
+  VenueTab.location: 'location',
+  VenueTab.lunch: 'lunch',
+};
 
 extension $SponsorsRouteExtension on SponsorsRoute {
   static SponsorsRoute _fromState(GoRouterState state) => const SponsorsRoute();
