@@ -54,6 +54,7 @@ class VenuePage extends ConsumerWidget {
               tab: value.first,
             ).go(context);
           },
+          showSelectedIcon: false,
         ),
         const Gap(16),
         Expanded(
