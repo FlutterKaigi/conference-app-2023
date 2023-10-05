@@ -28,7 +28,7 @@ Future<void> initFirebaseRemoteConfig() async {
     const {
       'staff': '{"items": []}',
       'developer': '{"items": []}',
-      'sponsor': '{"gold": [], "silver": [], "bronze": []}',
+      'sponsor': '{"platinum": [], "gold": [], "silver": []}',
       'session': '{"items": {"room1": [],"room2": []}}',
     },
   );
