@@ -22,11 +22,13 @@ class SponsorItem extends ConsumerWidget {
       showModalBottomSheet(
         context: context,
         clipBehavior: Clip.antiAlias,
-        useRootNavigator: true,
         isScrollControlled: true,
+        useRootNavigator: true,
+        enableDrag: true,
+        showDragHandle: true,
         builder: (context) => DraggableScrollableSheet(
           initialChildSize: 0.75,
-          minChildSize: 0.7,
+          minChildSize: 0.6,
           maxChildSize: 0.75,
           expand: false,
           builder: (context, scrollController) => Stack(
@@ -36,7 +38,6 @@ class SponsorItem extends ConsumerWidget {
                 controller: scrollController,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 16,
-                  vertical: 32,
                 ),
                 children: [
                   Text(
@@ -71,7 +72,7 @@ class SponsorItem extends ConsumerWidget {
                     },
                     text: sponsor.sponsorDescription,
                   ),
-                  const Gap(32),
+                  const Gap(64),
                 ],
               ),
               Align(
