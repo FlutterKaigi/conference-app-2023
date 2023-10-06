@@ -104,7 +104,9 @@ class SponsorImage extends ConsumerWidget {
       );
     }
 
-    return ClipRRect(
+    return Material(
+      elevation: 1,
+      color: Colors.transparent,
       borderRadius: const BorderRadius.all(
         Radius.circular(8),
       ),
