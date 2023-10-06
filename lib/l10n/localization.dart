@@ -116,6 +116,16 @@ abstract base class Localization {
 
   String get settingsResetPreferences;
 
+  String get sponsor;
+
+  String get sponsorPlatinum;
+
+  String get sponsorGold;
+
+  String get sponsorSilver;
+
+  String get sponsorLink;
+
   String get licensesLicenses;
 
   String get licensesAboutUs;

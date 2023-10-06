@@ -14,7 +14,12 @@ ThemeData theme(ThemeRef ref, ColorScheme? colorScheme) {
 
   final fontFamily = ref.watch(fontFamilyNotifierProvider);
   return _setFontFamily(
-    baseTheme: baseTheme,
+    baseTheme: baseTheme.copyWith(
+      bottomSheetTheme: baseTheme.bottomSheetTheme.copyWith(
+        showDragHandle: true,
+        clipBehavior: Clip.antiAlias,
+      ),
+    ),
     fontFamily: fontFamily,
   );
 }
@@ -28,7 +33,12 @@ ThemeData darkTheme(DarkThemeRef ref, ColorScheme? colorScheme) {
 
   final fontFamily = ref.watch(fontFamilyNotifierProvider);
   return _setFontFamily(
-    baseTheme: baseTheme,
+    baseTheme: baseTheme.copyWith(
+      bottomSheetTheme: baseTheme.bottomSheetTheme.copyWith(
+        showDragHandle: true,
+        clipBehavior: Clip.antiAlias,
+      ),
+    ),
     fontFamily: fontFamily,
   );
 }
