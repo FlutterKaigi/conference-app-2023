@@ -27,75 +27,81 @@ class SponsorsPage extends ConsumerWidget {
         return switch (state) {
           AsyncData(value: final sponsor) => CustomScrollView(
               slivers: [
-                const SliverGap(16),
-                SliverPaddingBoxToAdapter(
-                  padding: padding,
-                  child: Text(
-                    localizations.sponsorPlatinum,
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                ),
-                const SliverGap(16),
-                SliverPadding(
-                  padding: padding,
-                  sliver: SliverList.separated(
-                    itemBuilder: (context, index) => SponsorImage(
-                      sponsor: sponsor.platinum[index],
+                if (sponsor.platinum.isNotEmpty) ...[
+                  const SliverGap(16),
+                  SliverPaddingBoxToAdapter(
+                    padding: padding,
+                    child: Text(
+                      localizations.sponsorPlatinum,
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
-                    itemCount: sponsor.platinum.length,
-                    separatorBuilder: (context, index) => const Gap(16),
                   ),
-                ),
-                const SliverGap(16),
-                SliverPaddingBoxToAdapter(
-                  padding: padding,
-                  child: Text(
-                    localizations.sponsorGold,
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                ),
-                const SliverGap(16),
-                SliverPadding(
-                  padding: padding,
-                  sliver: SliverGrid.builder(
-                    itemBuilder: (context, index) => SponsorImage(
-                      sponsor: sponsor.gold[index],
+                  const SliverGap(16),
+                  SliverPadding(
+                    padding: padding,
+                    sliver: SliverList.separated(
+                      itemBuilder: (context, index) => SponsorImage(
+                        sponsor: sponsor.platinum[index],
+                      ),
+                      itemCount: sponsor.platinum.length,
+                      separatorBuilder: (context, index) => const Gap(16),
                     ),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisSpacing: 16,
-                      crossAxisSpacing: 16,
-                      crossAxisCount: 2,
-                      childAspectRatio: 1.25,
-                    ),
-                    itemCount: sponsor.gold.length,
                   ),
-                ),
-                const SliverGap(16),
-                SliverPaddingBoxToAdapter(
-                  padding: padding,
-                  child: Text(
-                    localizations.sponsorSilver,
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                ),
-                const SliverGap(16),
-                SliverPadding(
-                  padding: padding,
-                  sliver: SliverGrid.builder(
-                    itemBuilder: (context, index) => SponsorImage(
-                      sponsor: sponsor.silver[index],
+                ],
+                if (sponsor.gold.isNotEmpty) ...[
+                  const SliverGap(16),
+                  SliverPaddingBoxToAdapter(
+                    padding: padding,
+                    child: Text(
+                      localizations.sponsorGold,
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisSpacing: 8,
-                      crossAxisSpacing: 8,
-                      crossAxisCount: 3,
-                      childAspectRatio: 1.25,
-                    ),
-                    itemCount: sponsor.silver.length,
                   ),
-                ),
+                  const SliverGap(16),
+                  SliverPadding(
+                    padding: padding,
+                    sliver: SliverGrid.builder(
+                      itemBuilder: (context, index) => SponsorImage(
+                        sponsor: sponsor.gold[index],
+                      ),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        mainAxisSpacing: 16,
+                        crossAxisSpacing: 16,
+                        crossAxisCount: 2,
+                        childAspectRatio: 1.25,
+                      ),
+                      itemCount: sponsor.gold.length,
+                    ),
+                  ),
+                ],
+                if (sponsor.silver.isNotEmpty) ...[
+                  const SliverGap(16),
+                  SliverPaddingBoxToAdapter(
+                    padding: padding,
+                    child: Text(
+                      localizations.sponsorSilver,
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                  ),
+                  const SliverGap(16),
+                  SliverPadding(
+                    padding: padding,
+                    sliver: SliverGrid.builder(
+                      itemBuilder: (context, index) => SponsorImage(
+                        sponsor: sponsor.silver[index],
+                      ),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        mainAxisSpacing: 8,
+                        crossAxisSpacing: 8,
+                        crossAxisCount: 3,
+                        childAspectRatio: 1.25,
+                      ),
+                      itemCount: sponsor.silver.length,
+                    ),
+                  ),
+                ],
                 const SliverGap(16),
               ],
             ),
