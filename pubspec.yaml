@@ -37,6 +37,7 @@ dependencies:
   dynamic_color: ^1.0.0
   gap: ^3.0.0
   google_fonts: ^6.0.0
+  flutter_linkify: ^6.0.0
   flutter_svg: ^2.0.0
   flutter_local_notifications: ^15.0.0
   permission_handler: ^11.0.0

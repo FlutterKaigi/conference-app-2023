@@ -155,6 +155,9 @@ final class LocalizationEn extends Localization {
   String get sponsorSilver => 'Silver';
 
   @override
+  String get sponsorLink => 'Learn more';
+
+  @override
   String get licensesLicenses => 'License';
 
   @override

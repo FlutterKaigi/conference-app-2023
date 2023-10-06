@@ -23,6 +23,7 @@ class Sponsor with _$Sponsor {
     required String sponsorName,
     required String sponsorLinkUrl,
     required String sponsorLogoUrl,
+    required String sponsorDescription,
   }) = _Sponsor;
 
   factory Sponsor.fromJson(Map<String, dynamic> json) =>

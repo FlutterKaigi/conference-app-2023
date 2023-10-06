@@ -124,6 +124,8 @@ abstract base class Localization {
 
   String get sponsorSilver;
 
+  String get sponsorLink;
+
   String get licensesLicenses;
 
   String get licensesAboutUs;

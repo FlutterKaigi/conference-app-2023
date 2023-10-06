@@ -151,6 +151,9 @@ final class LocalizationJa extends Localization {
   String get sponsorSilver => 'Silver';
 
   @override
+  String get sponsorLink => 'もっと詳しく';
+
+  @override
   String get licensesLicenses => 'ライセンス';
 
   @override

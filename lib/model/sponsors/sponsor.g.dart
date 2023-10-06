@@ -50,13 +50,16 @@ _$SponsorImpl _$$SponsorImplFromJson(Map<String, dynamic> json) =>
               $checkedConvert('sponsor_link_url', (v) => v as String),
           sponsorLogoUrl:
               $checkedConvert('sponsor_logo_url', (v) => v as String),
+          sponsorDescription:
+              $checkedConvert('sponsor_description', (v) => v as String),
         );
         return val;
       },
       fieldKeyMap: const {
         'sponsorName': 'sponsor_name',
         'sponsorLinkUrl': 'sponsor_link_url',
-        'sponsorLogoUrl': 'sponsor_logo_url'
+        'sponsorLogoUrl': 'sponsor_logo_url',
+        'sponsorDescription': 'sponsor_description'
       },
     );
 
@@ -65,4 +68,5 @@ Map<String, dynamic> _$$SponsorImplToJson(_$SponsorImpl instance) =>
       'sponsor_name': instance.sponsorName,
       'sponsor_link_url': instance.sponsorLinkUrl,
       'sponsor_logo_url': instance.sponsorLogoUrl,
+      'sponsor_description': instance.sponsorDescription,
     };

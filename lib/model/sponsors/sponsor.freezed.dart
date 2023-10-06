@@ -230,6 +230,7 @@ mixin _$Sponsor {
   String get sponsorName => throw _privateConstructorUsedError;
   String get sponsorLinkUrl => throw _privateConstructorUsedError;
   String get sponsorLogoUrl => throw _privateConstructorUsedError;
+  String get sponsorDescription => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -241,7 +242,11 @@ abstract class $SponsorCopyWith<$Res> {
   factory $SponsorCopyWith(Sponsor value, $Res Function(Sponsor) then) =
       _$SponsorCopyWithImpl<$Res, Sponsor>;
   @useResult
-  $Res call({String sponsorName, String sponsorLinkUrl, String sponsorLogoUrl});
+  $Res call(
+      {String sponsorName,
+      String sponsorLinkUrl,
+      String sponsorLogoUrl,
+      String sponsorDescription});
 }
 
 /// @nodoc
@@ -260,6 +265,7 @@ class _$SponsorCopyWithImpl<$Res, $Val extends Sponsor>
     Object? sponsorName = null,
     Object? sponsorLinkUrl = null,
     Object? sponsorLogoUrl = null,
+    Object? sponsorDescription = null,
   }) {
     return _then(_value.copyWith(
       sponsorName: null == sponsorName
@@ -274,6 +280,10 @@ class _$SponsorCopyWithImpl<$Res, $Val extends Sponsor>
           ? _value.sponsorLogoUrl
           : sponsorLogoUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      sponsorDescription: null == sponsorDescription
+          ? _value.sponsorDescription
+          : sponsorDescription // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -285,7 +295,11 @@ abstract class _$$SponsorImplCopyWith<$Res> implements $SponsorCopyWith<$Res> {
       __$$SponsorImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String sponsorName, String sponsorLinkUrl, String sponsorLogoUrl});
+  $Res call(
+      {String sponsorName,
+      String sponsorLinkUrl,
+      String sponsorLogoUrl,
+      String sponsorDescription});
 }
 
 /// @nodoc
@@ -302,6 +316,7 @@ class __$$SponsorImplCopyWithImpl<$Res>
     Object? sponsorName = null,
     Object? sponsorLinkUrl = null,
     Object? sponsorLogoUrl = null,
+    Object? sponsorDescription = null,
   }) {
     return _then(_$SponsorImpl(
       sponsorName: null == sponsorName
@@ -316,6 +331,10 @@ class __$$SponsorImplCopyWithImpl<$Res>
           ? _value.sponsorLogoUrl
           : sponsorLogoUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      sponsorDescription: null == sponsorDescription
+          ? _value.sponsorDescription
+          : sponsorDescription // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -326,7 +345,8 @@ class _$SponsorImpl with DiagnosticableTreeMixin implements _Sponsor {
   const _$SponsorImpl(
       {required this.sponsorName,
       required this.sponsorLinkUrl,
-      required this.sponsorLogoUrl});
+      required this.sponsorLogoUrl,
+      required this.sponsorDescription});
 
   factory _$SponsorImpl.fromJson(Map<String, dynamic> json) =>
       _$$SponsorImplFromJson(json);
@@ -337,10 +357,12 @@ class _$SponsorImpl with DiagnosticableTreeMixin implements _Sponsor {
   final String sponsorLinkUrl;
   @override
   final String sponsorLogoUrl;
+  @override
+  final String sponsorDescription;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Sponsor(sponsorName: $sponsorName, sponsorLinkUrl: $sponsorLinkUrl, sponsorLogoUrl: $sponsorLogoUrl)';
+    return 'Sponsor(sponsorName: $sponsorName, sponsorLinkUrl: $sponsorLinkUrl, sponsorLogoUrl: $sponsorLogoUrl, sponsorDescription: $sponsorDescription)';
   }
 
   @override
@@ -350,7 +372,8 @@ class _$SponsorImpl with DiagnosticableTreeMixin implements _Sponsor {
       ..add(DiagnosticsProperty('type', 'Sponsor'))
       ..add(DiagnosticsProperty('sponsorName', sponsorName))
       ..add(DiagnosticsProperty('sponsorLinkUrl', sponsorLinkUrl))
-      ..add(DiagnosticsProperty('sponsorLogoUrl', sponsorLogoUrl));
+      ..add(DiagnosticsProperty('sponsorLogoUrl', sponsorLogoUrl))
+      ..add(DiagnosticsProperty('sponsorDescription', sponsorDescription));
   }
 
   @override
@@ -363,13 +386,15 @@ class _$SponsorImpl with DiagnosticableTreeMixin implements _Sponsor {
             (identical(other.sponsorLinkUrl, sponsorLinkUrl) ||
                 other.sponsorLinkUrl == sponsorLinkUrl) &&
             (identical(other.sponsorLogoUrl, sponsorLogoUrl) ||
-                other.sponsorLogoUrl == sponsorLogoUrl));
+                other.sponsorLogoUrl == sponsorLogoUrl) &&
+            (identical(other.sponsorDescription, sponsorDescription) ||
+                other.sponsorDescription == sponsorDescription));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, sponsorName, sponsorLinkUrl, sponsorLogoUrl);
+  int get hashCode => Object.hash(runtimeType, sponsorName, sponsorLinkUrl,
+      sponsorLogoUrl, sponsorDescription);
 
   @JsonKey(ignore: true)
   @override
@@ -389,7 +414,8 @@ abstract class _Sponsor implements Sponsor {
   const factory _Sponsor(
       {required final String sponsorName,
       required final String sponsorLinkUrl,
-      required final String sponsorLogoUrl}) = _$SponsorImpl;
+      required final String sponsorLogoUrl,
+      required final String sponsorDescription}) = _$SponsorImpl;
 
   factory _Sponsor.fromJson(Map<String, dynamic> json) = _$SponsorImpl.fromJson;
 
@@ -399,6 +425,8 @@ abstract class _Sponsor implements Sponsor {
   String get sponsorLinkUrl;
   @override
   String get sponsorLogoUrl;
+  @override
+  String get sponsorDescription;
   @override
   @JsonKey(ignore: true)
   _$$SponsorImplCopyWith<_$SponsorImpl> get copyWith =>
