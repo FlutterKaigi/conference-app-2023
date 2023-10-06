@@ -6,8 +6,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class SponsorImage extends ConsumerWidget {
-  const SponsorImage({
+class SponsorItem extends ConsumerWidget {
+  const SponsorItem({
     super.key,
     required this.sponsor,
   });

@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/model/sponsors/sponsor_provider.dart';
-import 'package:conference_2023/ui/screen/sponsors/sponsor_image.dart';
+import 'package:conference_2023/ui/screen/sponsors/sponsor_item.dart';
 import 'package:conference_2023/ui/widget/sliver_padding_box_to_adapter.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +40,7 @@ class SponsorsPage extends ConsumerWidget {
                   SliverPadding(
                     padding: padding,
                     sliver: SliverList.separated(
-                      itemBuilder: (context, index) => SponsorImage(
+                      itemBuilder: (context, index) => SponsorItem(
                         sponsor: sponsor.platinum[index],
                       ),
                       itemCount: sponsor.platinum.length,
@@ -61,7 +61,7 @@ class SponsorsPage extends ConsumerWidget {
                   SliverPadding(
                     padding: padding,
                     sliver: SliverGrid.builder(
-                      itemBuilder: (context, index) => SponsorImage(
+                      itemBuilder: (context, index) => SponsorItem(
                         sponsor: sponsor.gold[index],
                       ),
                       gridDelegate:
@@ -88,7 +88,7 @@ class SponsorsPage extends ConsumerWidget {
                   SliverPadding(
                     padding: padding,
                     sliver: SliverGrid.builder(
-                      itemBuilder: (context, index) => SponsorImage(
+                      itemBuilder: (context, index) => SponsorItem(
                         sponsor: sponsor.silver[index],
                       ),
                       gridDelegate:
