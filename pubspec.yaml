@@ -39,7 +39,7 @@ dependencies:
   google_fonts: ^6.0.0
   flutter_linkify: ^6.0.0
   flutter_svg: ^2.0.0
-  flutter_local_notifications: ^15.0.0
+  flutter_local_notifications: ^16.0.0
   permission_handler: ^11.0.0
   shared_preferences: ^2.0.0
   url_launcher: ^6.0.0
