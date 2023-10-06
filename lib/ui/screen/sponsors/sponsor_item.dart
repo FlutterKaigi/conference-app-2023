@@ -21,11 +21,9 @@ class SponsorItem extends ConsumerWidget {
     void onTap() {
       showModalBottomSheet(
         context: context,
-        clipBehavior: Clip.antiAlias,
         isScrollControlled: true,
         useRootNavigator: true,
         enableDrag: true,
-        showDragHandle: true,
         builder: (context) => DraggableScrollableSheet(
           initialChildSize: 0.75,
           minChildSize: 0.6,
