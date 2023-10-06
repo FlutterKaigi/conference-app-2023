@@ -18,7 +18,7 @@ class SponsorItem extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = ref.watch(localizationProvider);
 
-    onTap() {
+    void onTap() {
       showModalBottomSheet(
         context: context,
         clipBehavior: Clip.antiAlias,
