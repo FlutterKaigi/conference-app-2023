@@ -6,6 +6,7 @@ import 'package:conference_2023/ui/screen/licenses/about_us/about_us.dart';
 import 'package:conference_2023/ui/screen/licenses/legal_notices/legal_notices.dart';
 import 'package:conference_2023/ui/screen/licenses/licenses.dart';
 import 'package:conference_2023/ui/screen/root.dart';
+import 'package:conference_2023/ui/screen/sessions/session_detail.dart';
 import 'package:conference_2023/ui/screen/sessions/sessions.dart';
 import 'package:conference_2023/ui/screen/settings/settings.dart';
 import 'package:conference_2023/ui/screen/sponsors/sponsors.dart';
@@ -36,6 +37,11 @@ part 'router_app.g.dart';
       routes: [
         TypedGoRoute<SessionsRoute>(
           path: '/${SessionsRoute.path}',
+          routes: [
+            TypedGoRoute<SessionDetailRoute>(
+              path: SessionDetailRoute.path,
+            ),
+          ],
         ),
       ],
     ),

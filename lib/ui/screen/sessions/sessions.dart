@@ -171,7 +171,10 @@ class _SessionCard extends ConsumerWidget {
         ),
       ),
       child: ListTile(
-        title: Text(session.title.get(locale)),
+        title: Hero(
+          tag: 'session-${session.id}',
+          child: Text(session.title.get(locale)),
+        ),
         contentPadding: const EdgeInsets.only(
           left: 16,
         ),
@@ -182,7 +185,7 @@ class _SessionCard extends ConsumerWidget {
         ),
         onTap: switch (session) {
           SessionTalk() || SessionSponsor() => () {
-              // TODO(Kurogoma4D): Open session detail page.
+              SessionDetailRoute(sessionId: session.id).go(context);
             },
           _ => null,
         },

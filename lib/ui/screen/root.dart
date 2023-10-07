@@ -1,5 +1,6 @@
 import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/ui/router/branch_container.dart';
+import 'package:conference_2023/ui/router/router_provider.dart';
 import 'package:conference_2023/ui/screen/root_drawer.dart';
 import 'package:conference_2023/ui/screen/root_navigation_bar.dart';
 import 'package:conference_2023/ui/screen/root_navigation_rail.dart';
@@ -32,6 +33,7 @@ class RootScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = ref.watch(localizationProvider);
+    final router = ref.watch(routerProvider);
 
     final screenSize = context.screenSize;
     final currentTab = _getCurrentTab(context);
@@ -40,6 +42,12 @@ class RootScreen extends ConsumerWidget {
       appBar: AppBar(
         title: Text(currentTab.title(localization)),
         centerTitle: true,
+        leading: router.isSubRouteFromSession
+            ? IconButton(
+                onPressed: () => router.pop(),
+                icon: const Icon(Icons.arrow_back),
+              )
+            : null,
       ),
       drawer: switch (screenSize) {
         ScreenSize.compact => RootDrawer(
