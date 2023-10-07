@@ -31,9 +31,11 @@ class SponsorsPage extends ConsumerWidget {
                   const SliverGap(16),
                   SliverPaddingBoxToAdapter(
                     padding: padding,
-                    child: Text(
-                      localizations.sponsorPlatinum,
-                      style: Theme.of(context).textTheme.titleLarge,
+                    child: Center(
+                      child: Text(
+                        localizations.sponsorPlatinum,
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
                     ),
                   ),
                   const SliverGap(16),
@@ -52,9 +54,11 @@ class SponsorsPage extends ConsumerWidget {
                   const SliverGap(16),
                   SliverPaddingBoxToAdapter(
                     padding: padding,
-                    child: Text(
-                      localizations.sponsorGold,
-                      style: Theme.of(context).textTheme.titleLarge,
+                    child: Center(
+                      child: Text(
+                        localizations.sponsorGold,
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
                     ),
                   ),
                   const SliverGap(16),
@@ -79,9 +83,11 @@ class SponsorsPage extends ConsumerWidget {
                   const SliverGap(16),
                   SliverPaddingBoxToAdapter(
                     padding: padding,
-                    child: Text(
-                      localizations.sponsorSilver,
-                      style: Theme.of(context).textTheme.titleLarge,
+                    child: Center(
+                      child: Text(
+                        localizations.sponsorSilver,
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
                     ),
                   ),
                   const SliverGap(16),
