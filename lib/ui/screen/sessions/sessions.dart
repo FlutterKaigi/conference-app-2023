@@ -182,7 +182,9 @@ class _SessionCard extends ConsumerWidget {
         ),
         onTap: switch (session) {
           SessionTalk() || SessionSponsor() => () {
-              SessionDetailRoute(sessionId: session.id).go(context);
+              SessionDetailRoute(
+                sessionId: session.id,
+              ).go(context);
             },
           _ => null,
         },

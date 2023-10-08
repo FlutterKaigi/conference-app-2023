@@ -33,9 +33,11 @@ class SessionDetailPage extends ConsumerWidget {
     };
 
     return Material(
-      color: Theme.of(context).colorScheme.background,
       child: SingleChildScrollView(
-        padding: EdgeInsets.all(context.spacing),
+        padding: EdgeInsets.symmetric(
+          horizontal: context.spacing,
+          vertical: 16,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
