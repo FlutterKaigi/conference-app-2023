@@ -171,10 +171,7 @@ class _SessionCard extends ConsumerWidget {
         ),
       ),
       child: ListTile(
-        title: Hero(
-          tag: 'session-${session.id}',
-          child: Text(session.title.get(locale)),
-        ),
+        title: Text(session.title.get(locale)),
         contentPadding: const EdgeInsets.only(
           left: 16,
         ),

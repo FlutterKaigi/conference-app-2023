@@ -39,12 +39,9 @@ class SessionDetailPage extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Hero(
-              tag: 'session-${session.id}',
-              child: Text(
-                session.title.get(locale),
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
+            Text(
+              session.title.get(locale),
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
             const Gap(24),
             if (speaker != null) ...[
@@ -82,7 +79,7 @@ class SessionDetailPage extends ConsumerWidget {
               const Gap(24),
             ],
             if (description != null)
-              Markdown(
+              MarkdownBody(
                 shrinkWrap: true,
                 selectable: true,
                 data: description.get(locale),
