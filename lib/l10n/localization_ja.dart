@@ -194,5 +194,8 @@ final class LocalizationJa extends Localization {
   String get roomTwo => 'Room2';
 
   @override
+  String get back => '戻る';
+
+  @override
   String durationMinutes(Duration duration) => '${duration.inMinutes}分';
 }

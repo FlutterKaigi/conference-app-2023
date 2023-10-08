@@ -46,6 +46,7 @@ class RootScreen extends ConsumerWidget {
             ? IconButton(
                 onPressed: () => router.pop(),
                 icon: const Icon(Icons.arrow_back),
+                tooltip: localization.back,
               )
             : null,
       ),

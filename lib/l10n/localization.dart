@@ -150,6 +150,8 @@ abstract base class Localization {
 
   String get roomTwo;
 
+  String get back;
+
   String durationMinutes(Duration duration);
 }
 

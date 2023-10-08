@@ -198,5 +198,8 @@ final class LocalizationEn extends Localization {
   String get roomTwo => 'Room2';
 
   @override
+  String get back => 'Back';
+
+  @override
   String durationMinutes(Duration duration) => '${duration.inMinutes}min.';
 }
