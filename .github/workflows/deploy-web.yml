@@ -14,6 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: echo ${{ secrets.FIREBASE_OPTIONS_WEB_PRO }} | base64 -di | tee firebase_options_web_pro.dart lib/util/web/firebase_options_web_pro.dart >/dev/null
+      - run: echo ${{ secrets.DART_DEFINE_PRO_WEB }} | base64 -di | tee pro.json dart_defines/pro.json >/dev/null
       - uses: subosito/flutter-action@v2
         with:
           channel: 'beta'
