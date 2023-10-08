@@ -38,11 +38,14 @@ class RootScreen extends ConsumerWidget {
     final screenSize = context.screenSize;
     final currentTab = _getCurrentTab(context);
 
+    final isShellRouteChildPath =
+        GoRouterState.of(context).uri.pathSegments.length >= 2;
+
     return SelectionAreaScaffold(
       appBar: AppBar(
         title: Text(currentTab.title(localization)),
         centerTitle: true,
-        leading: router.isSubRouteFromSession
+        leading: isShellRouteChildPath
             ? BackButton(
                 onPressed: router.pop,
               )
