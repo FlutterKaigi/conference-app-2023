@@ -43,10 +43,8 @@ class RootScreen extends ConsumerWidget {
         title: Text(currentTab.title(localization)),
         centerTitle: true,
         leading: router.isSubRouteFromSession
-            ? IconButton(
-                onPressed: () => router.pop(),
-                icon: const Icon(Icons.arrow_back),
-                tooltip: localization.back,
+            ? BackButton(
+                onPressed: router.pop,
               )
             : null,
       ),
