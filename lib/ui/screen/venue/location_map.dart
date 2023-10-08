@@ -1,13 +1,10 @@
 import 'package:conference_2023/util/extension/build_context_ext.dart';
+import 'package:conference_2023/util/launch_in_external_app.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_static_maps_controller/google_static_maps_controller.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 const _navitimeLatLng = GeocodedLocation.latLng(35.6672, 139.7150);
-final _navitimeMapUri =
-    Uri.parse('https://www.navitime.co.jp/maps/poi?code=02010-0000000001');
-final _googleMapUri = Uri.parse('https://maps.app.goo.gl/9ibs3TyTcgajHazE9');
 
 class LocationMapPage extends StatelessWidget {
   const LocationMapPage({super.key});
@@ -32,12 +29,20 @@ class LocationMapPage extends StatelessWidget {
                 children: [
                   const Spacer(),
                   OutlinedButton(
-                    onPressed: () async => launchUrl(_navitimeMapUri),
-                    child: const Text('Navitime Map'),
+                    onPressed: () async => launchInExternalApp(
+                      Uri.parse(
+                        'https://www.navitime.co.jp/maps/poi?code=02010-0000000001',
+                      ),
+                    ),
+                    child: const Text('NAVITIME Map'),
                   ),
                   const Gap(8),
                   OutlinedButton(
-                    onPressed: () async => launchUrl(_googleMapUri),
+                    onPressed: () async => launchInExternalApp(
+                      Uri.parse(
+                        'https://maps.app.goo.gl/9ibs3TyTcgajHazE9',
+                      ),
+                    ),
                     child: const Text('Google Map'),
                   ),
                 ],
