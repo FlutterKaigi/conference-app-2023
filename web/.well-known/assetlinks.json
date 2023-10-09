@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "jp.flutterkaigi.conf2023",
+            "sha256_cert_fingerprints": [
+                "4C:2C:09:A5:13:A7:83:D0:3E:E6:5C:FD:25:1F:6F:B6:9A:3D:B5:33:8E:98:BD:4D:E1:BD:72:F0:67:8A:1A:2A"
+            ]
+        }
+    }
+]
