@@ -3,6 +3,7 @@ import 'package:conference_2023/ui/router/router_app.dart';
 import 'package:conference_2023/ui/screen/venue/floor_map.dart';
 import 'package:conference_2023/ui/screen/venue/location_map.dart';
 import 'package:conference_2023/ui/screen/venue/lunch_map.dart';
+import 'package:conference_2023/ui/screen/venue/venue_dev_dummy.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
@@ -20,6 +21,8 @@ class VenuePage extends ConsumerWidget {
   });
 
   final VenueTab type;
+
+  bool get _isProduction => const String.fromEnvironment('flavor') == 'pro';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -56,17 +59,16 @@ class VenuePage extends ConsumerWidget {
           },
           showSelectedIcon: false,
         ),
-        const Gap(16),
+        const Gap(8),
         Expanded(
-          child: SingleChildScrollView(
-            child: switch (type) {
-              VenueTab.floor => const FloorMapPage(),
-              VenueTab.location => const LocationMapPage(),
-              VenueTab.lunch => const LaunchMapPage(),
-            },
-          ),
+          child: switch (type) {
+            VenueTab.floor => const FloorMapPage(),
+            VenueTab.location =>
+              _isProduction ? const LocationMapPage() : const VenueDevDummy(),
+            VenueTab.lunch =>
+              _isProduction ? const LaunchMapPage() : const VenueDevDummy(),
+          },
         ),
-        const Gap(16),
       ],
     );
   }
