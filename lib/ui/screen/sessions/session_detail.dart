@@ -32,62 +32,60 @@ class SessionDetailPage extends ConsumerWidget {
       _ => null,
     };
 
-    return Material(
-      child: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(
-          horizontal: context.spacing,
-          vertical: 16,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              session.title.get(locale),
-              style: Theme.of(context).textTheme.headlineMedium,
+    return SingleChildScrollView(
+      padding: EdgeInsets.symmetric(
+        horizontal: context.spacing,
+        vertical: 16,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            session.title.get(locale),
+            style: Theme.of(context).textTheme.headlineMedium,
+          ),
+          const Gap(24),
+          if (speaker != null) ...[
+            Wrap(
+              spacing: 16,
+              runSpacing: 8,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                CircleAvatar(
+                  backgroundImage: NetworkImage(speaker.avatarUrl),
+                ),
+                Text(
+                  speaker.name,
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+              ],
+            ),
+            const Gap(16),
+            ElevatedButton.icon(
+              icon: Assets.svg.xLogo.svg(
+                width: 18,
+                colorFilter: ColorFilter.mode(
+                  Theme.of(context).colorScheme.primary,
+                  BlendMode.srcIn,
+                ),
+              ),
+              label: Text('@${speaker.twitter}'),
+              onPressed: () async {
+                final uri = Uri.parse(
+                  'https://x.com/${speaker.twitter}',
+                );
+                await launchInExternalApp(uri);
+              },
             ),
             const Gap(24),
-            if (speaker != null) ...[
-              Wrap(
-                spacing: 16,
-                runSpacing: 8,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  CircleAvatar(
-                    backgroundImage: NetworkImage(speaker.avatarUrl),
-                  ),
-                  Text(
-                    speaker.name,
-                    style: Theme.of(context).textTheme.bodyLarge,
-                  ),
-                ],
-              ),
-              const Gap(16),
-              ElevatedButton.icon(
-                icon: Assets.svg.xLogo.svg(
-                  width: 18,
-                  colorFilter: ColorFilter.mode(
-                    Theme.of(context).colorScheme.primary,
-                    BlendMode.srcIn,
-                  ),
-                ),
-                label: Text('@${speaker.twitter}'),
-                onPressed: () async {
-                  final uri = Uri.parse(
-                    'https://x.com/${speaker.twitter}',
-                  );
-                  await launchInExternalApp(uri);
-                },
-              ),
-              const Gap(24),
-            ],
-            if (description != null)
-              MarkdownBody(
-                shrinkWrap: true,
-                selectable: true,
-                data: description.get(locale),
-              ),
           ],
-        ),
+          if (description != null)
+            MarkdownBody(
+              shrinkWrap: true,
+              selectable: true,
+              data: description.get(locale),
+            ),
+        ],
       ),
     );
   }
