@@ -66,14 +66,14 @@ class SessionDetailPage extends ConsumerWidget {
                 icon: Assets.svg.xLogo.svg(
                   width: 18,
                   colorFilter: ColorFilter.mode(
-                    Theme.of(context).colorScheme.onBackground,
+                    Theme.of(context).colorScheme.primary,
                     BlendMode.srcIn,
                   ),
                 ),
                 label: Text('@${speaker.twitter}'),
                 onPressed: () async {
                   final uri = Uri.parse(
-                    'https://twitter.com/${speaker.twitter}',
+                    'https://x.com/${speaker.twitter}',
                   );
                   await launchInExternalApp(uri);
                 },
