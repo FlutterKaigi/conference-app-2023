@@ -4,6 +4,7 @@ targets:
       flutter_gen_runner:
         generate_for:
           include:
+            - $package$
             - pubspec.yaml
       freezed:
         generate_for:

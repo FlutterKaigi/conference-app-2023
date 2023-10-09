@@ -20,3 +20,22 @@ class SessionsRoute extends GoRouteData {
     );
   }
 }
+
+class SessionDetailRoute extends GoRouteData {
+  const SessionDetailRoute({
+    required this.sessionId,
+  });
+
+  static const path = ':sessionId';
+
+  final String sessionId;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return Material(
+      child: SessionDetailPage(
+        sessionId: sessionId,
+      ),
+    );
+  }
+}

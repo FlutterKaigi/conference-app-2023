@@ -182,7 +182,9 @@ class _SessionCard extends ConsumerWidget {
         ),
         onTap: switch (session) {
           SessionTalk() || SessionSponsor() => () {
-              // TODO(Kurogoma4D): Open session detail page.
+              SessionDetailRoute(
+                sessionId: session.id,
+              ).go(context);
             },
           _ => null,
         },

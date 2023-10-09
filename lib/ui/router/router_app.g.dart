@@ -29,6 +29,12 @@ RouteBase get $rootRoute => StatefulShellRouteData.$route(
             GoRouteData.$route(
               path: '/sessions',
               factory: $SessionsRouteExtension._fromState,
+              routes: [
+                GoRouteData.$route(
+                  path: ':sessionId',
+                  factory: $SessionDetailRouteExtension._fromState,
+                ),
+              ],
             ),
           ],
         ),
@@ -139,6 +145,26 @@ const _$RoomEnumMap = {
   Room.room1: 'room1',
   Room.room2: 'room2',
 };
+
+extension $SessionDetailRouteExtension on SessionDetailRoute {
+  static SessionDetailRoute _fromState(GoRouterState state) =>
+      SessionDetailRoute(
+        sessionId: state.pathParameters['sessionId']!,
+      );
+
+  String get location => GoRouteData.$location(
+        '/sessions/${Uri.encodeComponent(sessionId)}',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
 
 extension $VenueRouteExtension on VenueRoute {
   static VenueRoute _fromState(GoRouterState state) => VenueRoute(
