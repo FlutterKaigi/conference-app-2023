@@ -7,7 +7,14 @@
     "theme_color": "#005ac1",
     "description": "This application is designed to help you enjoy FlutterKaigi 2023 more.",
     "orientation": "portrait-primary",
-    "prefer_related_applications": false,
+    "prefer_related_applications": true,
+    "related_applications": [
+        {
+            "platform": "play",
+            "url": "https://play.google.com/store/apps/details?id=jp.flutterkaigi.conf2023",
+            "id": "jp.flutterkaigi.conf2023"
+        }
+    ],
     "icons": [
         {
             "src": "icons/Icon-192.png",
