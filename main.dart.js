@@ -37500,7 +37500,7 @@ $1(a){var s=$.de
 s=(s==null?$.de=A.ir(self.window.flutterConfiguration):s).b
 if(s==null)s=null
 else{s=s.canvasKitBaseUrl
-if(s==null)s=null}return(s==null?"https://www.gstatic.com/flutter-canvaskit/7ccdde78a7d174dc0bf0be77102b205e844c7998/":s)+a},
+if(s==null)s=null}return(s==null?"https://www.gstatic.com/flutter-canvaskit/249cc9b86c45acb7e32b4097bc8a5059b91c888e/":s)+a},
 $S:32}
 A.aVC.prototype={
 $1(a){this.a.remove()
