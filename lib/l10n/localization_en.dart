@@ -66,6 +66,22 @@ final class LocalizationEn extends Localization {
   String get venueLunchMap => 'Launch';
 
   @override
+  String Function(String minutes) get venueRouteTime =>
+      (minutes) => '$minutes min.';
+
+  @override
+  String get venueMenuOption => 'Option';
+
+  @override
+  String get venueMenuLink => 'Link';
+
+  @override
+  String get venueMenuNavitimeMap => 'Navitime Map';
+
+  @override
+  String get venueMenuGoogleMap => 'Google Map';
+
+  @override
   String get contributorsDeveloper => 'Developer';
 
   @override

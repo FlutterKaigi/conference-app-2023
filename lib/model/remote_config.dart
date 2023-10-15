@@ -15,6 +15,7 @@ enum RemoteConfigKey {
   developer('developer'),
   sponsor('sponsor'),
   session('session'),
+  lunch('lunch'),
   ;
 
   const RemoteConfigKey(this.key);
@@ -30,6 +31,7 @@ Future<void> initFirebaseRemoteConfig() async {
       'developer': '{"items": []}',
       'sponsor': '{"platinum": [], "gold": [], "silver": []}',
       'session': '{"items": {"room1": [],"room2": []}}',
+      'lunch': '{"items": []}',
     },
   );
 
