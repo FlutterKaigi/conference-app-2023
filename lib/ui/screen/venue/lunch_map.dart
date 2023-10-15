@@ -16,7 +16,7 @@ class LaunchMapPage extends ConsumerWidget {
 
     return TableView.builder(
       pinnedRowCount: 1,
-      columnCount: 6,
+      columnCount: 7,
       rowCount: storeList.items.length,
       columnBuilder: (index) => switch (index) {
         0 => const TableSpan(
@@ -39,6 +39,9 @@ class LaunchMapPage extends ConsumerWidget {
           ),
         5 => const TableSpan(
             extent: FixedTableSpanExtent(100),
+          ),
+        6 => const TableSpan(
+            extent: RemainingTableSpanExtent(),
           ),
         _ => const TableSpan(
             extent: FixedTableSpanExtent(0),
