@@ -66,8 +66,7 @@ final class LocalizationJa extends Localization {
   String get venueLunchMap => 'ランチ';
 
   @override
-  String Function(String minutes) get venueRouteTime =>
-      (minutes) => '$minutes分';
+  String venueRouteTime(String minutes) => '$minutes分';
 
   @override
   String get venueMenuOption => 'オプション';
