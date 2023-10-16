@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:two_dimensional_scrollables/two_dimensional_scrollables.dart';
 
-class LaunchMapPage extends ConsumerWidget {
-  const LaunchMapPage({super.key});
+class LunchMapPage extends ConsumerWidget {
+  const LunchMapPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,7 +20,7 @@ class LaunchMapPage extends ConsumerWidget {
       rowCount: storeList.items.length,
       columnBuilder: (index) => switch (index) {
         0 => const TableSpan(
-            extent: FixedTableSpanExtent(60),
+            extent: FixedTableSpanExtent(48),
           ),
         1 || 2 => const TableSpan(
             extent: FixedTableSpanExtent(140),
@@ -101,7 +101,7 @@ class LaunchMapPage extends ConsumerWidget {
         return Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 16,
+              horizontal: 8,
             ),
             child: switch (vicinity.column) {
               0 => Text('${vicinity.row}'),

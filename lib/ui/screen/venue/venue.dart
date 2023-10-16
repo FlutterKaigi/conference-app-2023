@@ -65,7 +65,7 @@ class VenuePage extends ConsumerWidget {
             VenueTab.floor => const FloorMapPage(),
             VenueTab.location =>
               _isProduction ? const LocationMapPage() : const VenueDevDummy(),
-            VenueTab.lunch => const LaunchMapPage(),
+            VenueTab.lunch => const LunchMapPage(),
           },
         ),
       ],
