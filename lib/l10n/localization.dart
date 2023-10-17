@@ -68,6 +68,16 @@ abstract base class Localization {
 
   String get venueLunchMap;
 
+  String venueRouteTime(String minutes);
+
+  String get venueMenuOption;
+
+  String get venueMenuLink;
+
+  String get venueMenuNavitimeMap;
+
+  String get venueMenuGoogleMap;
+
   String get contributorsDeveloper;
 
   String get contributorsStaff;
