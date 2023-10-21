@@ -57,8 +57,4 @@ enum StoreSortOption {
   asc,
   desc,
   ;
-
-  bool get isById => this == StoreSortOption.byId;
-  bool get isAsc => this == StoreSortOption.asc;
-  bool get isDesc => this == StoreSortOption.desc;
 }
