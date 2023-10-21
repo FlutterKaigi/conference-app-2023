@@ -13,6 +13,7 @@ enum SharedPreferenceKey {
   themeMode('theme_mode'),
   localizationMode('localization_mode'),
   fontFamily('font_family'),
+  favoriteSessionIds('favorite_session_ids'),
   ;
 
   const SharedPreferenceKey(this.value);
