@@ -32,7 +32,7 @@ class StoreSortOptionNotifier extends _$StoreSortOptionNotifier {
   @override
   StoreSortOption build() => StoreSortOption.byId;
 
-  Future<void> update(StoreSortOption sortOption) async {
+  void update(StoreSortOption sortOption) {
     state = sortOption;
   }
 }
