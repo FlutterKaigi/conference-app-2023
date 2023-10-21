@@ -210,4 +210,13 @@ final class LocalizationJa extends Localization {
 
   @override
   String durationMinutes(Duration duration) => '${duration.inMinutes}分';
+
+  @override
+  String get lunchMapSortReset => 'リセット';
+
+  @override
+  String get lunchMapSortAsc => '昇順';
+
+  @override
+  String get lunchMapSortDesc => '降順';
 }

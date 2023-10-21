@@ -19,3 +19,20 @@ StoreList storeList(
     ),
   );
 }
+
+@riverpod
+StoreList sortedStoreList(SortedStoreListRef ref) {
+  final storeList = ref.watch(storeListProvider);
+  final sortOption = ref.watch(storeSortOptionNotifierProvider);
+  return storeList.getSortedStoreListByOption(sortOption);
+}
+
+@riverpod
+class StoreSortOptionNotifier extends _$StoreSortOptionNotifier {
+  @override
+  StoreSortOption build() => StoreSortOption.byId;
+
+  void update(StoreSortOption sortOption) {
+    state = sortOption;
+  }
+}

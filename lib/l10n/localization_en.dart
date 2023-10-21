@@ -214,4 +214,13 @@ final class LocalizationEn extends Localization {
 
   @override
   String durationMinutes(Duration duration) => '${duration.inMinutes}min.';
+
+  @override
+  String get lunchMapSortReset => 'Reset';
+
+  @override
+  String get lunchMapSortAsc => 'ASC';
+
+  @override
+  String get lunchMapSortDesc => 'DESC';
 }
