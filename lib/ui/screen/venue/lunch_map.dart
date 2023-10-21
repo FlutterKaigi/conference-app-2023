@@ -85,7 +85,7 @@ class LunchMapPage extends ConsumerWidget {
                 horizontal: 8,
               ),
               child: switch (vicinity.column) {
-                0 => const Text(''),
+                0 => const Text('id'),
                 1 => Text(store.name),
                 2 => Row(
                     children: [
