@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:collection/collection.dart';
 import 'package:conference_2023/model/remote_config.dart';
 import 'package:conference_2023/model/sessions/session.dart';
 import 'package:conference_2023/util/extension/remote_config_ext.dart';
@@ -35,4 +36,17 @@ Map<Room, List<Session>> sessionData(SessionDataRef ref) {
   );
 
   return sessionData.items;
+}
+
+@riverpod
+Room sessionRoom(SessionRoomRef ref, String sessionId) {
+  final sessions = ref.watch(sessionDataProvider);
+  final entry = sessions.entries.firstWhereOrNull(
+    (e) => e.value.firstWhereOrNull((e) => e.id == sessionId) != null,
+  );
+  if (entry == null) {
+    log('missing session room');
+    return Room.room1;
+  }
+  return entry.key;
 }
