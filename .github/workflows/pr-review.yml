@@ -48,6 +48,7 @@ jobs:
         run: |
           mkdir -p ./pr
           echo ${{ github.event.number }} > ./pr/NR
+          echo ${{ github.event.pull_request.head.sha }} > ./pr/SHA
       - uses: actions/upload-artifact@v3
         with:
           name: pr
