@@ -34,11 +34,11 @@ class Store with _$Store {
 extension StoreListEx on StoreList {
   StoreList getSortedStoreListByOption(StoreSortOption sortOption) {
     final copiedItems = [...items];
+    // idや店名などのテーブル最上部に表示する情報が含まれたStoreオブジェクトを取り出し、リストから削除する
     final topRow = copiedItems.firstWhereOrNull((e) => e.id == 'id');
     if (topRow == null) {
       return this;
     }
-
     copiedItems.removeWhere((e) => e.id == topRow.id);
 
     if (sortOption.isById) {
@@ -52,6 +52,7 @@ extension StoreListEx on StoreList {
         ((a, b) => int.parse(b.routeTime).compareTo(int.parse(a.routeTime))),
       );
     }
+    // ソートの内容に関わらずtopRowがitemsの先頭に来るようにする
     return StoreList(items: [topRow, ...copiedItems]);
   }
 }
