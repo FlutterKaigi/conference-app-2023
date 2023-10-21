@@ -33,27 +33,22 @@ class Store with _$Store {
 
 extension StoreListEx on StoreList {
   StoreList getSortedStoreListByOption(StoreSortOption sortOption) {
-    final copiedItems = [...items];
-    // idや店名などのテーブル最上部に表示する情報が含まれたStoreオブジェクトを取り出し、リストから削除する
-    final topRow = copiedItems.firstWhereOrNull((e) => e.id == 'id');
-    if (topRow == null) {
-      return this;
-    }
-    copiedItems.removeWhere((e) => e.id == topRow.id);
-
-    if (sortOption.isById) {
-      copiedItems.sort(((a, b) => int.parse(a.id).compareTo(int.parse(b.id))));
-    } else if (sortOption.isAsc) {
-      copiedItems.sort(
-        ((a, b) => int.parse(a.routeTime).compareTo(int.parse(b.routeTime))),
-      );
-    } else if (sortOption.isDesc) {
-      copiedItems.sort(
-        ((a, b) => int.parse(b.routeTime).compareTo(int.parse(a.routeTime))),
-      );
-    }
-    // ソートの内容に関わらずtopRowがitemsの先頭に来るようにする
-    return StoreList(items: [topRow, ...copiedItems]);
+    final topRow = items.first;
+    final valueRows = items.skip(1);
+    final sortedRows = switch (sortOption) {
+      StoreSortOption.byId => valueRows.sorted(
+          (a, b) => int.parse(a.id).compareTo(int.parse(b.id)),
+        ),
+      StoreSortOption.asc => valueRows.sorted(
+          (a, b) => int.parse(a.routeTime).compareTo(int.parse(b.routeTime)),
+        ),
+      StoreSortOption.desc => valueRows.sorted(
+          (a, b) => int.parse(b.routeTime).compareTo(int.parse(a.routeTime)),
+        ),
+    };
+    return StoreList(
+      items: [topRow, ...sortedRows],
+    );
   }
 }
 
