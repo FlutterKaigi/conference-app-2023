@@ -36,8 +36,11 @@ class SessionDetailPage extends ConsumerWidget {
         d,
       _ => null,
     };
-    final favoriteSessionIds = ref.watch(favoriteSessionIdsNotifierProvider);
-    final isFavorite = favoriteSessionIds.contains(sessionId);
+    final isFavorite = ref.watch(
+      favoriteSessionIdsNotifierProvider.select(
+        (favoriteSessionIds) => favoriteSessionIds.contains(sessionId),
+      ),
+    );
 
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(
@@ -56,7 +59,6 @@ class SessionDetailPage extends ConsumerWidget {
                 ),
               ),
               IconButton(
-                iconSize: 28,
                 icon: Icon(
                   isFavorite ? Icons.favorite : Icons.favorite_border,
                 ),
