@@ -98,15 +98,29 @@ class LunchMapPage extends ConsumerWidget {
                           icon: null,
                           child: const Icon(Icons.arrow_drop_down_outlined),
                           itemBuilder: (context) => [
-                            ...StoreSortOption.values.map(
-                              (e) => PopupMenuItem(
-                                child: Text(e.label),
-                                onTap: () => ref
-                                    .read(
-                                      storeSortOptionNotifierProvider.notifier,
-                                    )
-                                    .update(e),
-                              ),
+                            PopupMenuItem(
+                              child: Text(localization.lunchMapSortReset),
+                              onTap: () => ref
+                                  .read(
+                                    storeSortOptionNotifierProvider.notifier,
+                                  )
+                                  .update(StoreSortOption.byId),
+                            ),
+                            PopupMenuItem(
+                              child: Text(localization.lunchMapSortAsc),
+                              onTap: () => ref
+                                  .read(
+                                    storeSortOptionNotifierProvider.notifier,
+                                  )
+                                  .update(StoreSortOption.asc),
+                            ),
+                            PopupMenuItem(
+                              child: Text(localization.lunchMapSortDesc),
+                              onTap: () => ref
+                                  .read(
+                                    storeSortOptionNotifierProvider.notifier,
+                                  )
+                                  .update(StoreSortOption.desc),
                             ),
                           ],
                         ),

@@ -58,14 +58,10 @@ extension StoreListEx on StoreList {
 }
 
 enum StoreSortOption {
-  byId('リセット'),
-  asc('昇順'),
-  desc('降順'),
+  byId,
+  asc,
+  desc,
   ;
-
-  const StoreSortOption(this.label);
-
-  final String label;
 
   bool get isById => this == StoreSortOption.byId;
   bool get isAsc => this == StoreSortOption.asc;
