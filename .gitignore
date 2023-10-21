@@ -50,3 +50,9 @@ app.*.map.json
 /vendor
 /fastlane/*
 
+# config
+/dart_defines/pro_android.json
+/dart_defines/pro_ios.json
+/dart_defines/pro_web.json
+
+/ios/Config/pro
