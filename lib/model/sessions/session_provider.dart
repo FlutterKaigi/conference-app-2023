@@ -36,3 +36,15 @@ Map<Room, List<Session>> sessionData(SessionDataRef ref) {
 
   return sessionData.items;
 }
+
+@riverpod
+Room sessionRoom(SessionRoomRef ref, String sessionId) {
+  final sessions = ref.watch(sessionDataProvider);
+  return sessions.entries.firstWhere(
+    (e) => e.value.any((e) => e.id == sessionId),
+    orElse: () {
+      log('missing session room');
+      return const MapEntry(Room.room1, []);
+    },
+  ).key;
+}

@@ -296,5 +296,132 @@ final sessionDataProvider =
 );
 
 typedef SessionDataRef = AutoDisposeProviderRef<Map<Room, List<Session>>>;
+String _$sessionRoomHash() => r'70431fc1ed80d35671f4c6e062303798531fad22';
+
+/// See also [sessionRoom].
+@ProviderFor(sessionRoom)
+const sessionRoomProvider = SessionRoomFamily();
+
+/// See also [sessionRoom].
+class SessionRoomFamily extends Family<Room> {
+  /// See also [sessionRoom].
+  const SessionRoomFamily();
+
+  /// See also [sessionRoom].
+  SessionRoomProvider call(
+    String sessionId,
+  ) {
+    return SessionRoomProvider(
+      sessionId,
+    );
+  }
+
+  @override
+  SessionRoomProvider getProviderOverride(
+    covariant SessionRoomProvider provider,
+  ) {
+    return call(
+      provider.sessionId,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'sessionRoomProvider';
+}
+
+/// See also [sessionRoom].
+class SessionRoomProvider extends AutoDisposeProvider<Room> {
+  /// See also [sessionRoom].
+  SessionRoomProvider(
+    String sessionId,
+  ) : this._internal(
+          (ref) => sessionRoom(
+            ref as SessionRoomRef,
+            sessionId,
+          ),
+          from: sessionRoomProvider,
+          name: r'sessionRoomProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$sessionRoomHash,
+          dependencies: SessionRoomFamily._dependencies,
+          allTransitiveDependencies:
+              SessionRoomFamily._allTransitiveDependencies,
+          sessionId: sessionId,
+        );
+
+  SessionRoomProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.sessionId,
+  }) : super.internal();
+
+  final String sessionId;
+
+  @override
+  Override overrideWith(
+    Room Function(SessionRoomRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: SessionRoomProvider._internal(
+        (ref) => create(ref as SessionRoomRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        sessionId: sessionId,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeProviderElement<Room> createElement() {
+    return _SessionRoomProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is SessionRoomProvider && other.sessionId == sessionId;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, sessionId.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+mixin SessionRoomRef on AutoDisposeProviderRef<Room> {
+  /// The parameter `sessionId` of this provider.
+  String get sessionId;
+}
+
+class _SessionRoomProviderElement extends AutoDisposeProviderElement<Room>
+    with SessionRoomRef {
+  _SessionRoomProviderElement(super.provider);
+
+  @override
+  String get sessionId => (origin as SessionRoomProvider).sessionId;
+}
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
