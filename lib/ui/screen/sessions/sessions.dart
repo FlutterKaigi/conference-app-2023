@@ -34,12 +34,12 @@ class SessionsPage extends ConsumerWidget {
               segments: [
                 ButtonSegment(
                   value: Room.room1,
-                  label: Text(localization.roomOne),
+                  label: Text(Room.room1.alias),
                   tooltip: localization.roomOne,
                 ),
                 ButtonSegment(
                   value: Room.room2,
-                  label: Text(localization.roomTwo),
+                  label: Text(Room.room2.alias),
                   tooltip: localization.roomTwo,
                 ),
               ],
