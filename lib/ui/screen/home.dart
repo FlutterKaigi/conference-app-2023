@@ -28,6 +28,7 @@ class HomePage extends ConsumerWidget {
               Colors.transparent,
               BlendMode.dst,
             ),
+            semanticsLabel: localization.flutterKaigiLogoSemanticsLabel,
           ),
           const Gap(8),
           Text(
@@ -92,34 +93,46 @@ class HomePage extends ConsumerWidget {
             runSpacing: 16,
             alignment: WrapAlignment.center,
             children: [
-              OutlinedButton(
-                onPressed: () async {
-                  final uri = Uri.parse('https://twitter.com/flutterkaigi');
-                  await launchInExternalApp(uri);
-                },
-                child: Text(localization.twitter),
+              Tooltip(
+                message: localization.twitterTooltip,
+                child: OutlinedButton(
+                  onPressed: () async {
+                    final uri = Uri.parse('https://twitter.com/flutterkaigi');
+                    await launchInExternalApp(uri);
+                  },
+                  child: Text(localization.twitter),
+                ),
               ),
-              OutlinedButton(
-                onPressed: () async {
-                  final uri = Uri.parse('https://medium.com/flutterkaigi');
-                  await launchInExternalApp(uri);
-                },
-                child: Text(localization.medium),
+              Tooltip(
+                message: localization.mediumTooltip,
+                child: OutlinedButton(
+                  onPressed: () async {
+                    final uri = Uri.parse('https://medium.com/flutterkaigi');
+                    await launchInExternalApp(uri);
+                  },
+                  child: Text(localization.medium),
+                ),
               ),
-              OutlinedButton(
-                onPressed: () async {
-                  final uri = Uri.parse('https://github.com/FlutterKaigi');
-                  await launchInExternalApp(uri);
-                },
-                child: Text(localization.github),
+              Tooltip(
+                message: localization.githubTooltip,
+                child: OutlinedButton(
+                  onPressed: () async {
+                    final uri = Uri.parse('https://github.com/FlutterKaigi');
+                    await launchInExternalApp(uri);
+                  },
+                  child: Text(localization.github),
+                ),
               ),
-              OutlinedButton(
-                onPressed: () async {
-                  final uri =
-                      Uri.parse('https://discord.com/invite/Nr7H8JTJSF');
-                  await launchInExternalApp(uri);
-                },
-                child: Text(localization.discord),
+              Tooltip(
+                message: localization.discordTooltip,
+                child: OutlinedButton(
+                  onPressed: () async {
+                    final uri =
+                        Uri.parse('https://discord.com/invite/Nr7H8JTJSF');
+                    await launchInExternalApp(uri);
+                  },
+                  child: Text(localization.discord),
+                ),
               ),
             ],
           ),

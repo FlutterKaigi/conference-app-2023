@@ -1,4 +1,5 @@
 import 'package:conference_2023/gen/assets.gen.dart';
+import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/model/app_locale.dart';
 import 'package:conference_2023/model/sessions/session.dart';
 import 'package:conference_2023/model/sessions/session_provider.dart';
@@ -19,6 +20,8 @@ class SessionDetailPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final localization = ref.watch(localizationProvider);
+
     final session = ref.watch(sessionProvider(sessionId));
     final locale = ref.watch(appLocaleProvider);
     final room = ref.watch(sessionRoomProvider(sessionId));
@@ -79,21 +82,24 @@ class SessionDetailPage extends ConsumerWidget {
               ],
             ),
             const Gap(8),
-            ElevatedButton.icon(
-              icon: Assets.svg.xLogo.svg(
-                width: 18,
-                colorFilter: ColorFilter.mode(
-                  Theme.of(context).colorScheme.primary,
-                  BlendMode.srcIn,
+            Tooltip(
+              message: localization.twitterTooltip,
+              child: ElevatedButton.icon(
+                icon: Assets.svg.xLogo.svg(
+                  width: 18,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).colorScheme.primary,
+                    BlendMode.srcIn,
+                  ),
                 ),
+                label: Text('@${speaker.twitter}'),
+                onPressed: () async {
+                  final uri = Uri.parse(
+                    'https://x.com/${speaker.twitter}',
+                  );
+                  await launchInExternalApp(uri);
+                },
               ),
-              label: Text('@${speaker.twitter}'),
-              onPressed: () async {
-                final uri = Uri.parse(
-                  'https://x.com/${speaker.twitter}',
-                );
-                await launchInExternalApp(uri);
-              },
             ),
             const Gap(24),
           ],
