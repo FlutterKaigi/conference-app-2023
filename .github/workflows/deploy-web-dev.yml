@@ -52,7 +52,12 @@ jobs:
           script: |
             const fs = require('fs');
             const issue_number = Number(fs.readFileSync('./pr/NR'));
+            echo "issue_number: $issue_number"
+            const pull_request_head_sha = fs.readFileSync('./pr/SHA');
+            echo "pull_request_head_sha: $pull_request_head_sha"
+
             process.env.PR_NUMBER = issue_number;
+            process.env.PR_HEAD_SHA = pull_request_head_sha;
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         id: hosting
@@ -61,7 +66,8 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_DEV }}"
           expires: 7d
           projectId: flutterkakgi-2023-conf-app-dev
-          channelId: 'pr-${{ env.PR_NUMBER }}'
+          # set channel id with pr_number and pr_head_sha
+          channelId: 'pr-${{ env.PR_NUMBER }}-${{ env.PR_HEAD_SHA }}'
 
       - name: 'Comment on PR'
         uses: actions/github-script@v6
