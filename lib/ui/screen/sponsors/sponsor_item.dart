@@ -34,8 +34,10 @@ class SponsorItem extends ConsumerWidget {
             children: [
               ListView(
                 controller: scrollController,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
+                padding: EdgeInsets.only(
+                  left: 16,
+                  right: 16,
+                  bottom: MediaQuery.paddingOf(context).bottom,
                 ),
                 children: [
                   Text(
@@ -71,30 +73,33 @@ class SponsorItem extends ConsumerWidget {
                     },
                     text: sponsor.sponsorDescription,
                   ),
-                  const Gap(64),
+                  const Gap(80),
                 ],
               ),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: SafeArea(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: FilledButton(
-                      style: FilledButton.styleFrom(
-                        minimumSize: const Size.fromHeight(40),
-                      ),
-                      onPressed: () async {
-                        Navigator.of(context).pop();
-
-                        final uri = Uri.parse(
-                          sponsor.sponsorLinkUrl,
-                        );
-                        if (await canLaunchUrl(uri)) {
-                          await launchUrl(uri);
-                        }
-                      },
-                      child: Text(localization.sponsorLink),
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    top: 16,
+                    left: 16,
+                    right: 16,
+                    bottom: 16 + MediaQuery.paddingOf(context).bottom,
+                  ),
+                  child: FilledButton(
+                    style: FilledButton.styleFrom(
+                      minimumSize: const Size.fromHeight(40),
                     ),
+                    onPressed: () async {
+                      Navigator.of(context).pop();
+
+                      final uri = Uri.parse(
+                        sponsor.sponsorLinkUrl,
+                      );
+                      if (await canLaunchUrl(uri)) {
+                        await launchUrl(uri);
+                      }
+                    },
+                    child: Text(localization.sponsorLink),
                   ),
                 ),
               ),
