@@ -34,6 +34,8 @@ class SponsorsPage extends ConsumerWidget {
                     child: Center(
                       child: Text(
                         localizations.sponsorPlatinum,
+                        semanticsLabel:
+                            localizations.sponsorPlatinumSemanticsLabel,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ),
@@ -57,6 +59,7 @@ class SponsorsPage extends ConsumerWidget {
                     child: Center(
                       child: Text(
                         localizations.sponsorGold,
+                        semanticsLabel: localizations.sponsorGoldSemanticsLabel,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ),
@@ -86,6 +89,8 @@ class SponsorsPage extends ConsumerWidget {
                     child: Center(
                       child: Text(
                         localizations.sponsorSilver,
+                        semanticsLabel:
+                            localizations.sponsorSilverSemanticsLabel,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ),

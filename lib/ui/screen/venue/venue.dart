@@ -36,16 +36,19 @@ class VenuePage extends ConsumerWidget {
             ButtonSegment(
               icon: const Icon(Icons.layers),
               label: Text(localization.venueFloorMap),
+              tooltip: localization.venueFloorMapTooltip,
               value: VenueTab.floor,
             ),
             ButtonSegment(
               icon: const Icon(Icons.location_on),
               label: Text(localization.venueLocationMap),
+              tooltip: localization.venueLocationMapTooltip,
               value: VenueTab.location,
             ),
             ButtonSegment(
               icon: const Icon(Icons.restaurant),
               label: Text(localization.venueLunchMap),
+              tooltip: localization.venueLunchMapTooltip,
               value: VenueTab.lunch,
             ),
           ],

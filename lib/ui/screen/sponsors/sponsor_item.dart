@@ -53,6 +53,7 @@ class SponsorItem extends ConsumerWidget {
                       child: AspectRatio(
                         aspectRatio: 16 / 9,
                         child: _WhiteBackgroundImage(
+                          semanticLabel: sponsor.sponsorName,
                           imageUrl: sponsor.sponsorLogoUrl,
                         ),
                       ),
@@ -116,6 +117,7 @@ class SponsorItem extends ConsumerWidget {
           children: [
             Positioned.fill(
               child: _WhiteBackgroundImage(
+                semanticLabel: sponsor.sponsorName,
                 imageUrl: sponsor.sponsorLogoUrl,
               ),
             ),
@@ -136,9 +138,11 @@ class SponsorItem extends ConsumerWidget {
 
 class _WhiteBackgroundImage extends StatelessWidget {
   const _WhiteBackgroundImage({
+    required this.semanticLabel,
     required this.imageUrl,
   });
 
+  final String semanticLabel;
   final String imageUrl;
 
   @override
@@ -152,6 +156,7 @@ class _WhiteBackgroundImage extends StatelessWidget {
           errorBuilder: (context, error, stackTrace) => const Center(
             child: Icon(Icons.error_outline),
           ),
+          semanticLabel: semanticLabel,
         ),
       ),
     );

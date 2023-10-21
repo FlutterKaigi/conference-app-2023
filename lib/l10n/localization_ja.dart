@@ -9,6 +9,9 @@ final class LocalizationJa extends Localization {
   String get flutterKaigiTitle => 'FlutterKaigi 2023';
 
   @override
+  String get flutterKaigiLogoSemanticsLabel => 'FlutterKaigi 2023 ロゴ';
+
+  @override
   String get event => 'イベント';
 
   @override
@@ -27,13 +30,25 @@ final class LocalizationJa extends Localization {
   String get twitter => 'Twitter';
 
   @override
+  String get twitterTooltip => 'Twitterを開く';
+
+  @override
   String get github => 'GitHub';
+
+  @override
+  String get githubTooltip => 'GitHubを開く';
 
   @override
   String get medium => 'Medium';
 
   @override
+  String get mediumTooltip => 'Mediumを開く';
+
+  @override
   String get discord => 'Discord';
+
+  @override
+  String get discordTooltip => 'Discordを開く';
 
   @override
   String get pageTitleHome => 'ホーム';
@@ -60,10 +75,19 @@ final class LocalizationJa extends Localization {
   String get venueLocationMap => '会場';
 
   @override
+  String get venueLocationMapTooltip => '会場マップを開く';
+
+  @override
   String get venueFloorMap => 'フロア';
 
   @override
+  String get venueFloorMapTooltip => 'フロアマップを開く';
+
+  @override
   String get venueLunchMap => 'ランチ';
+
+  @override
+  String get venueLunchMapTooltip => 'ランチマップを開く';
 
   @override
   String venueRouteTime(String minutes) => '$minutes分';
@@ -160,10 +184,19 @@ final class LocalizationJa extends Localization {
   String get sponsorPlatinum => 'Platinum';
 
   @override
+  String get sponsorPlatinumSemanticsLabel => 'Platinumスポンサー';
+
+  @override
   String get sponsorGold => 'Gold';
 
   @override
+  String get sponsorGoldSemanticsLabel => 'Goldスポンサー';
+
+  @override
   String get sponsorSilver => 'Silver';
+
+  @override
+  String get sponsorSilverSemanticsLabel => 'Silverスポンサー';
 
   @override
   String get sponsorLink => 'もっと詳しく';
