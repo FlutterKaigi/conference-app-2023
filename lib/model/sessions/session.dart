@@ -88,11 +88,13 @@ class JpDateTimeConverter implements JsonConverter<DateTime, String> {
 }
 
 extension LocaleTextEx on LocaleText {
-  String get(Locale locale) => switch (locale.languageCode) {
-        'ja' => ja,
-        'en' => en,
-        _ => en,
-      };
+  /// TODO: blocked by [https://github.com/FlutterKaigi/conference-app-2023/issues/189]
+  String get(Locale locale) => ja;
+// switch (locale.languageCode) {
+//   'ja' => ja,
+//   'en' => en,
+//   _ => en,
+// };
 }
 
 enum Room {
