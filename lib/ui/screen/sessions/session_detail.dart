@@ -21,6 +21,7 @@ class SessionDetailPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final session = ref.watch(sessionProvider(sessionId));
     final locale = ref.watch(appLocaleProvider);
+    final room = ref.watch(sessionRoomProvider(sessionId));
     final speaker = switch (session) {
       SessionSponsor(speaker: final s) || SessionTalk(speaker: final s) => s,
       _ => null,
@@ -44,7 +45,24 @@ class SessionDetailPage extends ConsumerWidget {
             session.title.get(locale),
             style: Theme.of(context).textTheme.headlineMedium,
           ),
-          const Gap(24),
+          const Gap(8),
+          Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.secondary,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            padding: const EdgeInsets.symmetric(
+              vertical: 4,
+              horizontal: 8,
+            ),
+            child: Text(
+              room.alias,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.onSecondary,
+                  ),
+            ),
+          ),
+          const Gap(16),
           if (speaker != null) ...[
             Wrap(
               spacing: 16,
@@ -60,7 +78,7 @@ class SessionDetailPage extends ConsumerWidget {
                 ),
               ],
             ),
-            const Gap(16),
+            const Gap(8),
             ElevatedButton.icon(
               icon: Assets.svg.xLogo.svg(
                 width: 18,
