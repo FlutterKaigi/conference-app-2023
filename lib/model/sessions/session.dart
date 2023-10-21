@@ -98,6 +98,10 @@ extension LocaleTextEx on LocaleText {
 }
 
 enum Room {
-  room1,
-  room2,
+  room1('東急(株) URBAN HACKS'),
+  room2('⚔️†††開拓者の部屋†††🛡');
+
+  final String alias;
+
+  const Room(this.alias);
 }
