@@ -30,6 +30,8 @@ abstract base class Localization {
 
   String get flutterKaigiTitle;
 
+  String get flutterKaigiLogoSemanticsLabel;
+
   String get event;
 
   String get eventDate;
@@ -42,11 +44,19 @@ abstract base class Localization {
 
   String get twitter;
 
+  String get twitterTooltip;
+
   String get github;
+
+  String get githubTooltip;
 
   String get medium;
 
+  String get mediumTooltip;
+
   String get discord;
+
+  String get discordTooltip;
 
   String get pageTitleHome;
 
@@ -64,9 +74,15 @@ abstract base class Localization {
 
   String get venueLocationMap;
 
+  String get venueLocationMapTooltip;
+
   String get venueFloorMap;
 
+  String get venueFloorMapTooltip;
+
   String get venueLunchMap;
+
+  String get venueLunchMapTooltip;
 
   String venueRouteTime(String minutes);
 
@@ -130,9 +146,15 @@ abstract base class Localization {
 
   String get sponsorPlatinum;
 
+  String get sponsorPlatinumSemanticsLabel;
+
   String get sponsorGold;
 
+  String get sponsorGoldSemanticsLabel;
+
   String get sponsorSilver;
+
+  String get sponsorSilverSemanticsLabel;
 
   String get sponsorLink;
 
