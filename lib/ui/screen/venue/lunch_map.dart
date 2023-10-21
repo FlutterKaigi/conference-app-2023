@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:conference_2023/l10n/localization.dart';
+import 'package:conference_2023/model/venue/lunch.dart';
 import 'package:conference_2023/model/venue/lunch_provider.dart';
 import 'package:conference_2023/util/launch_in_external_app.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,7 @@ class LunchMapPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = ref.watch(localizationProvider);
-    final storeList = ref.watch(storeListProvider);
+    final storeList = ref.watch(sortedStoreListProvider);
 
     return TableView.builder(
       pinnedRowCount: 1,
@@ -28,7 +29,7 @@ class LunchMapPage extends ConsumerWidget {
         3 => const TableSpan(
             extent: MaxTableSpanExtent(
               FixedTableSpanExtent(140),
-              FractionalTableSpanExtent(0.2),
+              FractionalTableSpanExtent(0.4),
             ),
           ),
         4 => const TableSpan(
@@ -83,17 +84,38 @@ class LunchMapPage extends ConsumerWidget {
               padding: const EdgeInsets.symmetric(
                 horizontal: 8,
               ),
-              child: Text(
-                switch (vicinity.column) {
-                  0 => '',
-                  1 => store.name,
-                  2 => store.routeTime,
-                  3 => store.recommendedMenu,
-                  4 => store.comment,
-                  5 => localization.venueMenuOption,
-                  _ => '',
-                },
-              ),
+              child: switch (vicinity.column) {
+                0 => const Text(''),
+                1 => Text(store.name),
+                2 => Row(
+                    children: [
+                      Text(store.routeTime),
+                      Flexible(
+                        child: PopupMenuButton(
+                          padding: EdgeInsets.zero,
+                          icon: null,
+                          child: const Icon(Icons.arrow_drop_down_outlined),
+                          itemBuilder: (context) => [
+                            ...StoreSortOption.values.map(
+                              (e) => PopupMenuItem(
+                                child: Text(e.label),
+                                onTap: () => ref
+                                    .read(
+                                      storeSortOptionNotifierProvider.notifier,
+                                    )
+                                    .update(e),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                3 => Text(store.recommendedMenu),
+                4 => Text(store.comment),
+                5 => Text(localization.venueMenuOption),
+                _ => const Text(''),
+              },
             ),
           );
         }
@@ -104,7 +126,7 @@ class LunchMapPage extends ConsumerWidget {
               horizontal: 8,
             ),
             child: switch (vicinity.column) {
-              0 => Text('${vicinity.row}'),
+              0 => Text(store.id),
               1 => AutoSizeText(
                   store.name,
                   maxLines: 2,
