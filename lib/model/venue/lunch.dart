@@ -17,6 +17,7 @@ class StoreList with _$StoreList {
 @freezed
 class Store with _$Store {
   const factory Store({
+    required String id,
     required String name,
     required String routeTime,
     required String recommendedMenu,

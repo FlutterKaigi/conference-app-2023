@@ -170,6 +170,7 @@ Store _$StoreFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Store {
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get routeTime => throw _privateConstructorUsedError;
   String get recommendedMenu => throw _privateConstructorUsedError;
@@ -189,7 +190,8 @@ abstract class $StoreCopyWith<$Res> {
       _$StoreCopyWithImpl<$Res, Store>;
   @useResult
   $Res call(
-      {String name,
+      {String id,
+      String name,
       String routeTime,
       String recommendedMenu,
       String comment,
@@ -211,6 +213,7 @@ class _$StoreCopyWithImpl<$Res, $Val extends Store>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
     Object? routeTime = null,
     Object? recommendedMenu = null,
@@ -220,6 +223,10 @@ class _$StoreCopyWithImpl<$Res, $Val extends Store>
     Object? googleMapLink = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -260,7 +267,8 @@ abstract class _$$LunchImplCopyWith<$Res> implements $StoreCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String name,
+      {String id,
+      String name,
       String routeTime,
       String recommendedMenu,
       String comment,
@@ -280,6 +288,7 @@ class __$$LunchImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
     Object? routeTime = null,
     Object? recommendedMenu = null,
@@ -289,6 +298,10 @@ class __$$LunchImplCopyWithImpl<$Res>
     Object? googleMapLink = null,
   }) {
     return _then(_$LunchImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -325,7 +338,8 @@ class __$$LunchImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$LunchImpl with DiagnosticableTreeMixin implements _Lunch {
   const _$LunchImpl(
-      {required this.name,
+      {required this.id,
+      required this.name,
       required this.routeTime,
       required this.recommendedMenu,
       required this.comment,
@@ -336,6 +350,8 @@ class _$LunchImpl with DiagnosticableTreeMixin implements _Lunch {
   factory _$LunchImpl.fromJson(Map<String, dynamic> json) =>
       _$$LunchImplFromJson(json);
 
+  @override
+  final String id;
   @override
   final String name;
   @override
@@ -353,7 +369,7 @@ class _$LunchImpl with DiagnosticableTreeMixin implements _Lunch {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Store(name: $name, routeTime: $routeTime, recommendedMenu: $recommendedMenu, comment: $comment, externalLink: $externalLink, navitimeMapLink: $navitimeMapLink, googleMapLink: $googleMapLink)';
+    return 'Store(id: $id, name: $name, routeTime: $routeTime, recommendedMenu: $recommendedMenu, comment: $comment, externalLink: $externalLink, navitimeMapLink: $navitimeMapLink, googleMapLink: $googleMapLink)';
   }
 
   @override
@@ -361,6 +377,7 @@ class _$LunchImpl with DiagnosticableTreeMixin implements _Lunch {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Store'))
+      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('routeTime', routeTime))
       ..add(DiagnosticsProperty('recommendedMenu', recommendedMenu))
@@ -375,6 +392,7 @@ class _$LunchImpl with DiagnosticableTreeMixin implements _Lunch {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LunchImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.routeTime, routeTime) ||
                 other.routeTime == routeTime) &&
@@ -391,8 +409,8 @@ class _$LunchImpl with DiagnosticableTreeMixin implements _Lunch {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, routeTime, recommendedMenu,
-      comment, externalLink, navitimeMapLink, googleMapLink);
+  int get hashCode => Object.hash(runtimeType, id, name, routeTime,
+      recommendedMenu, comment, externalLink, navitimeMapLink, googleMapLink);
 
   @JsonKey(ignore: true)
   @override
@@ -410,7 +428,8 @@ class _$LunchImpl with DiagnosticableTreeMixin implements _Lunch {
 
 abstract class _Lunch implements Store {
   const factory _Lunch(
-      {required final String name,
+      {required final String id,
+      required final String name,
       required final String routeTime,
       required final String recommendedMenu,
       required final String comment,
@@ -420,6 +439,8 @@ abstract class _Lunch implements Store {
 
   factory _Lunch.fromJson(Map<String, dynamic> json) = _$LunchImpl.fromJson;
 
+  @override
+  String get id;
   @override
   String get name;
   @override
