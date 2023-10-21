@@ -10,18 +10,18 @@ PODS:
   - Firebase/RemoteConfig (10.15.0):
     - Firebase/CoreOnly
     - FirebaseRemoteConfig (~> 10.15.0)
-  - firebase_core (2.17.0):
+  - firebase_core (2.19.0):
     - Firebase/CoreOnly (= 10.15.0)
     - Flutter
-  - firebase_crashlytics (3.3.7):
+  - firebase_crashlytics (3.4.1):
     - Firebase/Crashlytics (= 10.15.0)
     - firebase_core
     - Flutter
-  - firebase_messaging (14.6.9):
+  - firebase_messaging (14.7.1):
     - Firebase/Messaging (= 10.15.0)
     - firebase_core
     - Flutter
-  - firebase_remote_config (4.2.7):
+  - firebase_remote_config (4.3.1):
     - Firebase/RemoteConfig (= 10.15.0)
     - firebase_core
     - Flutter
@@ -168,10 +168,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Firebase: 66043bd4579e5b73811f96829c694c7af8d67435
-  firebase_core: 28e84c2a4fcf6a50ef83f47b145ded8c1fa331e4
-  firebase_crashlytics: 36b8a72e23437dbb69bd97102661ce31b6721be5
-  firebase_messaging: 91ec967913a5d144f951b3c3ac17a57796d38735
-  firebase_remote_config: bcb36b69fdcb50397341c9d1c220a2a35fbd6c21
+  firebase_core: fd674fcc642742ef7289acea60bd21a1a021bd98
+  firebase_crashlytics: 22dcddd1039445d697779785abe25dfcdd3bca02
+  firebase_messaging: 4f6c9f2920785b409108c8b5f1f8cdaf89d8def2
+  firebase_remote_config: d2d26e1e4ec40f95bf61bf9fc2fb727e4d3796a6
   FirebaseABTesting: 03f0a8b88cf618350527f2c6a2234e29b9c65064
   FirebaseCore: 2cec518b43635f96afe7ac3a9c513e47558abd2e
   FirebaseCoreExtension: 2dbc745b337eb99d2026a7a309ae037bd873f45e
@@ -193,6 +193,6 @@ SPEC CHECKSUMS:
   shared_preferences_foundation: 5b919d13b803cadd15ed2dc053125c68730e5126
   url_launcher_ios: 08a3dfac5fb39e8759aeb0abbd5d9480f30fc8b4
 
-PODFILE CHECKSUM: 513eb21fadd290ebcd730440ba6ccbac73ebe0b6
+PODFILE CHECKSUM: 604363895f77c6a4e0ad97f1a63093c85fbc250c
 
 COCOAPODS: 1.13.0
