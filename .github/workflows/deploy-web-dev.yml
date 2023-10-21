@@ -46,18 +46,8 @@ jobs:
         run: unzip pr.zip
 
       - name: 'Set environment variable'
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const fs = require('fs');
-            const issue_number = Number(fs.readFileSync('./pr/NR'));
-            echo "issue_number: $issue_number"
-            const pull_request_head_sha = fs.readFileSync('./pr/SHA');
-            echo "pull_request_head_sha: $pull_request_head_sha"
-
-            process.env.PR_NUMBER = issue_number;
-            process.env.PR_HEAD_SHA = pull_request_head_sha;
+        run: |
+          echo "PR_NUMBER=$(cat pr/number)" >> $GITHUB_ENV
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         id: hosting
@@ -67,7 +57,7 @@ jobs:
           expires: 7d
           projectId: flutterkakgi-2023-conf-app-dev
           # set channel id with pr_number and pr_head_sha
-          channelId: 'pr-${{ env.PR_NUMBER }}-${{ env.PR_HEAD_SHA }}'
+          channelId: 'pr-${{ env.PR_NUMBER }}'
 
       - name: 'Comment on PR'
         uses: actions/github-script@v6
@@ -75,7 +65,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const fs = require('fs');
-            const issue_number = Number(fs.readFileSync('./pr/NR'));
+            const issue_number = Number(fs.readFileSync('./pr/number'));
 
             const {data: comments} = await github.rest.issues.listComments({
               owner: context.repo.owner,
