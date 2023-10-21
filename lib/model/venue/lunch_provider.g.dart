@@ -20,5 +20,37 @@ final storeListProvider = AutoDisposeProvider<StoreList>.internal(
 );
 
 typedef StoreListRef = AutoDisposeProviderRef<StoreList>;
+String _$sortedStoreListHash() => r'cfe0617a6221de8e77a4d187941aa2cb040d5b6a';
+
+/// See also [sortedStoreList].
+@ProviderFor(sortedStoreList)
+final sortedStoreListProvider = AutoDisposeProvider<StoreList>.internal(
+  sortedStoreList,
+  name: r'sortedStoreListProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$sortedStoreListHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef SortedStoreListRef = AutoDisposeProviderRef<StoreList>;
+String _$storeSortOptionNotifierHash() =>
+    r'22a8268e4926f3866843fc00c7504ea20d59340c';
+
+/// See also [StoreSortOptionNotifier].
+@ProviderFor(StoreSortOptionNotifier)
+final storeSortOptionNotifierProvider = AutoDisposeNotifierProvider<
+    StoreSortOptionNotifier, StoreSortOption>.internal(
+  StoreSortOptionNotifier.new,
+  name: r'storeSortOptionNotifierProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$storeSortOptionNotifierHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$StoreSortOptionNotifier = AutoDisposeNotifier<StoreSortOption>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
