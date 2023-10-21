@@ -27,7 +27,7 @@ class LunchMapPage extends ConsumerWidget {
             extent: FixedTableSpanExtent(140),
           ),
         2 => const TableSpan(
-            extent: FixedTableSpanExtent(150),
+            extent: FixedTableSpanExtent(160),
           ),
         3 => const TableSpan(
             extent: MaxTableSpanExtent(
@@ -92,10 +92,9 @@ class LunchMapPage extends ConsumerWidget {
                 1 => Text(store.name),
                 2 => Row(
                     children: [
-                      const Text('所要時間（徒歩）'),
+                      Text(store.routeTime),
                       Flexible(
                         child: PopupMenuButton(
-                          icon: null,
                           child: const Icon(Icons.arrow_drop_down_outlined),
                           itemBuilder: (context) => [
                             PopupMenuItem(
