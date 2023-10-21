@@ -296,7 +296,7 @@ final sessionDataProvider =
 );
 
 typedef SessionDataRef = AutoDisposeProviderRef<Map<Room, List<Session>>>;
-String _$sessionRoomHash() => r'c86a4edcaeabefa3ae70aa0072e2c67338d26431';
+String _$sessionRoomHash() => r'70431fc1ed80d35671f4c6e062303798531fad22';
 
 /// See also [sessionRoom].
 @ProviderFor(sessionRoom)
