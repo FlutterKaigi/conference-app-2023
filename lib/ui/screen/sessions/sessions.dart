@@ -31,6 +31,7 @@ class SessionsPage extends ConsumerWidget {
           Container(
             alignment: Alignment.center,
             child: SegmentedButton<Room>(
+              showSelectedIcon: false,
               segments: [
                 ButtonSegment(
                   value: Room.room1,
