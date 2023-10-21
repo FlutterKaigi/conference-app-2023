@@ -1,5 +1,6 @@
 import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/model/app_locale.dart';
+import 'package:conference_2023/model/favorites/favorite_session_ids.dart';
 import 'package:conference_2023/model/sessions/session.dart';
 import 'package:conference_2023/model/sessions/session_provider.dart';
 import 'package:conference_2023/ui/router/router_app.dart';
@@ -139,6 +140,7 @@ class _SessionCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final locale = ref.watch(appLocaleProvider);
+    final favoriteSessionIds = ref.watch(favoriteSessionIdsNotifierProvider);
 
     final speakerName = switch (session) {
       SessionSponsor(speaker: final s) => Wrap(
@@ -162,6 +164,15 @@ class _SessionCard extends ConsumerWidget {
       _ => null,
     };
 
+    final trailingFavorite = switch (session) {
+      SessionSponsor(id: final i) || SessionTalk(id: final i) => Icon(
+          favoriteSessionIds.contains(i)
+              ? Icons.favorite
+              : Icons.favorite_border,
+        ),
+      _ => null,
+    };
+
     return Card(
       elevation: 0,
       shape: RoundedRectangleBorder(
@@ -172,11 +183,12 @@ class _SessionCard extends ConsumerWidget {
       ),
       child: ListTile(
         title: Text(session.title.get(locale)),
-        contentPadding: const EdgeInsets.only(
-          left: 16,
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
         ),
         subtitle: speakerName,
         leading: leadingImage,
+        trailing: trailingFavorite,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
