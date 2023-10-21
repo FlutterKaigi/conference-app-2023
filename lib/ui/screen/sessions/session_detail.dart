@@ -1,6 +1,7 @@
 import 'package:conference_2023/gen/assets.gen.dart';
 import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/model/app_locale.dart';
+import 'package:conference_2023/model/favorites/favorite_session_ids.dart';
 import 'package:conference_2023/model/sessions/session.dart';
 import 'package:conference_2023/model/sessions/session_provider.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
@@ -35,6 +36,11 @@ class SessionDetailPage extends ConsumerWidget {
         d,
       _ => null,
     };
+    final isFavorite = ref.watch(
+      favoriteSessionIdsNotifierProvider.select(
+        (favoriteSessionIds) => favoriteSessionIds.contains(sessionId),
+      ),
+    );
 
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(
@@ -44,9 +50,29 @@ class SessionDetailPage extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            session.title.get(locale),
-            style: Theme.of(context).textTheme.headlineMedium,
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  session.title.get(locale),
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+              ),
+              IconButton(
+                icon: Icon(
+                  isFavorite ? Icons.favorite : Icons.favorite_border,
+                ),
+                onPressed: () async {
+                  isFavorite
+                      ? await ref
+                          .read(favoriteSessionIdsNotifierProvider.notifier)
+                          .remove(sessionId)
+                      : await ref
+                          .read(favoriteSessionIdsNotifierProvider.notifier)
+                          .add(sessionId);
+                },
+              ),
+            ],
           ),
           const Gap(8),
           Container(
