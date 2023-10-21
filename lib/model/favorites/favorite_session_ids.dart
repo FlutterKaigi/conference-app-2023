@@ -10,7 +10,7 @@ class FavoriteSessionIdsNotifier extends _$FavoriteSessionIdsNotifier {
   @override
   List<String> build() {
     final sharedPreferences = ref.watch(sharedPreferencesProvider);
-    return sharedPreferences.getStringList(_key) ?? [];
+    return sharedPreferences.getStringList(_key) ?? const [];
   }
 
   Future<void> add(String id) async {
