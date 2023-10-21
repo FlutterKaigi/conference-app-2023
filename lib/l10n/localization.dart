@@ -161,6 +161,12 @@ abstract base class Localization {
   String get roomTwo;
 
   String durationMinutes(Duration duration);
+
+  String get lunchMapSortReset;
+
+  String get lunchMapSortAsc;
+
+  String get lunchMapSortDesc;
 }
 
 /// A wrapper class of [DateFormat] for localization.

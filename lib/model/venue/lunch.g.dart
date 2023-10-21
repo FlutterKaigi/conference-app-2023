@@ -32,6 +32,7 @@ _$LunchImpl _$$LunchImplFromJson(Map<String, dynamic> json) => $checkedCreate(
       json,
       ($checkedConvert) {
         final val = _$LunchImpl(
+          id: $checkedConvert('id', (v) => v as String),
           name: $checkedConvert('name', (v) => v as String),
           routeTime: $checkedConvert('route_time', (v) => v as String),
           recommendedMenu:
@@ -55,6 +56,7 @@ _$LunchImpl _$$LunchImplFromJson(Map<String, dynamic> json) => $checkedCreate(
 
 Map<String, dynamic> _$$LunchImplToJson(_$LunchImpl instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'name': instance.name,
       'route_time': instance.routeTime,
       'recommended_menu': instance.recommendedMenu,
