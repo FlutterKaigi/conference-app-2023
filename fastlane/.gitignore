@@ -1,4 +1,8 @@
 !.gitignore
+!Appfile
+!Deliverfile
 !Fastfile
 !Pluginfile
 !README.md
+!metadata
+!screenshots

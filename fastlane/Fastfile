@@ -97,6 +97,10 @@ platform :ios do
   lane :deploy_pro do
     build_pro
 
-    upload_to_app_store
+    upload_to_app_store(
+      app_identifier: "jp.flutterkaigi.conf2023",
+      skip_metadata: true,
+      overwrite_screenshots: true,
+    )
   end
 end
