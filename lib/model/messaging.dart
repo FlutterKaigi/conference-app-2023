@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
@@ -57,6 +58,15 @@ Future<void> initFirebaseMessaging() async {
 
   if (kIsWeb) {
     return;
+  }
+
+  if (Platform.isIOS) {
+    final token = await FirebaseMessaging.instance.getAPNSToken();
+    if (token == null) {
+      /// if apns token is null, cannot subscribe to topics.
+      log('FirebaseMessaging.getAPNSToken: null');
+      return;
+    }
   }
 
   /// read topics
