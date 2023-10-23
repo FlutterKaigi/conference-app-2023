@@ -99,8 +99,11 @@ platform :ios do
 
     upload_to_app_store(
       app_identifier: "jp.flutterkaigi.conf2023",
+      ipa: "build/ios/ipa/FlutterKaigi 2023.ipa",
+      force: true,
       skip_metadata: true,
       overwrite_screenshots: true,
+      precheck_include_in_app_purchases: false,
     )
   end
 end
