@@ -107,26 +107,28 @@ class SessionDetailPage extends ConsumerWidget {
                 ),
               ],
             ),
-            const Gap(8),
-            Tooltip(
-              message: localization.twitterTooltip,
-              child: ElevatedButton.icon(
-                icon: Assets.svg.xLogo.svg(
-                  width: 18,
-                  colorFilter: ColorFilter.mode(
-                    Theme.of(context).colorScheme.primary,
-                    BlendMode.srcIn,
+            if (speaker.twitter.isNotEmpty) ...[
+              const Gap(8),
+              Tooltip(
+                message: localization.twitterTooltip,
+                child: ElevatedButton.icon(
+                  icon: Assets.svg.xLogo.svg(
+                    width: 18,
+                    colorFilter: ColorFilter.mode(
+                      Theme.of(context).colorScheme.primary,
+                      BlendMode.srcIn,
+                    ),
                   ),
+                  label: Text('@${speaker.twitter}'),
+                  onPressed: () async {
+                    final uri = Uri.parse(
+                      'https://x.com/${speaker.twitter}',
+                    );
+                    await launchInExternalApp(uri);
+                  },
                 ),
-                label: Text('@${speaker.twitter}'),
-                onPressed: () async {
-                  final uri = Uri.parse(
-                    'https://x.com/${speaker.twitter}',
-                  );
-                  await launchInExternalApp(uri);
-                },
               ),
-            ),
+            ],
             const Gap(24),
           ],
           if (description != null)
