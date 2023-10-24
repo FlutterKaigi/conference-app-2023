@@ -32,6 +32,7 @@ RouteBase get $rootRoute => StatefulShellRouteData.$route(
               routes: [
                 GoRouteData.$route(
                   path: ':sessionId',
+                  parentNavigatorKey: SessionDetailRoute.$parentNavigatorKey,
                   factory: $SessionDetailRouteExtension._fromState,
                 ),
               ],

@@ -197,7 +197,7 @@ class _SessionCard extends ConsumerWidget {
           SessionTalk() || SessionSponsor() => () {
               SessionDetailRoute(
                 sessionId: session.id,
-              ).go(context);
+              ).push(context);
             },
           _ => null,
         },

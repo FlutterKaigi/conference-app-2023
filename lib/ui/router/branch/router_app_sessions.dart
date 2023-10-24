@@ -28,6 +28,8 @@ class SessionDetailRoute extends GoRouteData {
 
   static const path = ':sessionId';
 
+  static final $parentNavigatorKey = rootNavigatorKey;
+
   final String sessionId;
 
   @override
