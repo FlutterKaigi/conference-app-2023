@@ -1,6 +1,7 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/model/permission.dart';
+import 'package:conference_2023/util/firebase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -33,11 +34,11 @@ class ListTilePushNotification extends ConsumerWidget {
             },
           ),
           onTap: () async {
-            String message;
+            final String message;
             switch (type) {
               case NotificationPermission.granted:
-                message =
-                    localization.settingsPushNotificationMessageAuthorized;
+                message = localization
+                    .settingsPushNotificationMessageAlreadyAuthorized;
               case NotificationPermission.denied:
                 final shouldShowRequestRationale =
                     await Permission.notification.shouldShowRequestRationale;
@@ -60,6 +61,8 @@ class ListTilePushNotification extends ConsumerWidget {
                   case NotificationPermission.provisional:
                     message =
                         localization.settingsPushNotificationMessageAuthorized;
+
+                    await subscribeTopics(ref);
                   case NotificationPermission.denied:
                   case NotificationPermission.permanentlyDenied:
                     message =

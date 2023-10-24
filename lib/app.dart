@@ -21,12 +21,13 @@ class _AppState extends ConsumerState<App> {
   void initState() {
     Future(() async {
       await initFirebaseRemoteConfig(ref);
+      await initFirebaseMessaging(ref);
     });
 
     super.initState();
   }
 
-@override
+  @override
   Widget build(BuildContext context) {
     final router = ref.watch(routerProvider);
     final themeMode = ref.watch(themeModeNotifierProvider);
