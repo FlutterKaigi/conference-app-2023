@@ -34,10 +34,8 @@ class SessionDetailRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return Material(
-      child: SessionDetailPage(
-        sessionId: sessionId,
-      ),
+    return SessionDetailPage(
+      sessionId: sessionId,
     );
   }
 }
