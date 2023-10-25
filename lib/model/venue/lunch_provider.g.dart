@@ -36,7 +36,7 @@ final sortedStoreListProvider = AutoDisposeProvider<StoreList>.internal(
 
 typedef SortedStoreListRef = AutoDisposeProviderRef<StoreList>;
 String _$storeSortOptionNotifierHash() =>
-    r'22a8268e4926f3866843fc00c7504ea20d59340c';
+    r'a6b3ad8a382b9938256fc86ca7691a61d4263b93';
 
 /// See also [StoreSortOptionNotifier].
 @ProviderFor(StoreSortOptionNotifier)

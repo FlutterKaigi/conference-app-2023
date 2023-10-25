@@ -7,7 +7,7 @@ part of 'favorite_session_ids.dart';
 // **************************************************************************
 
 String _$favoriteSessionIdsNotifierHash() =>
-    r'81eece064524ce2aba87219be6c5f3f10e2d880e';
+    r'06dfdc6f3cb304b497401d31cef98b65895a43dc';
 
 /// See also [FavoriteSessionIdsNotifier].
 @ProviderFor(FavoriteSessionIdsNotifier)
