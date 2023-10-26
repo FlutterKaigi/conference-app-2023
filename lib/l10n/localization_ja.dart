@@ -139,6 +139,10 @@ final class LocalizationJa extends Localization {
   String get settingsPushNotificationMessageAuthorized => 'プッシュ通知がの受信が許可されました！';
 
   @override
+  String get settingsPushNotificationMessageAlreadyAuthorized =>
+      'プッシュ通知は既に許可されています。';
+
+  @override
   String get settingsPushNotificationMessageDenied => 'プッシュ通知が拒否されました。';
 
   @override

@@ -140,6 +140,10 @@ final class LocalizationEn extends Localization {
       'OK! Push notification is enabled.';
 
   @override
+  String get settingsPushNotificationMessageAlreadyAuthorized =>
+      'Push notification is already enabled.';
+
+  @override
   String get settingsPushNotificationMessageDenied =>
       'Sorry, do not send push notifications';
 

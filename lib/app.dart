@@ -3,16 +3,32 @@ import 'package:conference_2023/model/app_locale.dart';
 import 'package:conference_2023/model/settings/theme_mode.dart';
 import 'package:conference_2023/ui/router/router_provider.dart';
 import 'package:conference_2023/ui/theme.dart';
+import 'package:conference_2023/util/firebase.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class App extends ConsumerWidget {
+class App extends ConsumerStatefulWidget {
   const App({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<App> createState() => _AppState();
+}
+
+class _AppState extends ConsumerState<App> {
+  @override
+  void initState() {
+    Future(() async {
+      await initFirebaseRemoteConfig(ref);
+      await initFirebaseMessaging(ref);
+    });
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final router = ref.watch(routerProvider);
     final themeMode = ref.watch(themeModeNotifierProvider);
     final appLocale = ref.watch(appLocaleProvider);
