@@ -13,6 +13,11 @@
             "platform": "play",
             "url": "https://play.google.com/store/apps/details?id=jp.flutterkaigi.conf2023",
             "id": "jp.flutterkaigi.conf2023"
+        },
+        {
+            "platform": "itunes",
+            "url": "https://apps.apple.com/us/app/flutterkaigi-2023/id6469518498",
+            "id": "jp.flutterkaigi.conf2023"
         }
     ],
     "icons": [
