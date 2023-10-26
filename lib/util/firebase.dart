@@ -87,7 +87,15 @@ Future<void> initFirebaseMessaging(WidgetRef ref) async {
 }
 
 Future<void> subscribeTopics(WidgetRef ref) async {
+  if (kIsWeb) {
+    /// subscribeToTopic is not supported on web.
+    return;
+  }
+
   final instance = ref.read(firebaseMessagingProvider);
+
+  /// Since subscribeToTopic is only supported on mobile devices,
+  /// we need to check "whether the platform is iOS or macOS".
   if (Platform.isIOS || Platform.isMacOS) {
     final token = await instance.getAPNSToken();
     if (token == null) {
