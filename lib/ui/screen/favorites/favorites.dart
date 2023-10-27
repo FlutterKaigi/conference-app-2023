@@ -6,7 +6,6 @@ import 'package:conference_2023/ui/router/router_app.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gap/gap.dart';
 
 class FavoritesPage extends ConsumerWidget {
   const FavoritesPage({super.key});
