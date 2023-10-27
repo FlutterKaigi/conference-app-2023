@@ -27,9 +27,9 @@ class FavoritesPage extends ConsumerWidget {
         horizontal: context.spacing,
       ),
       itemCount: favoriteSessions.length,
-      itemBuilder: (context, index) {
-        return _SessionTile(session: favoriteSessions[index]);
-      },
+      itemBuilder: (context, index) => _SessionTile(
+        session: favoriteSessions[index],
+      ),
     );
   }
 }
