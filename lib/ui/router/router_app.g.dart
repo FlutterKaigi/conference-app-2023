@@ -58,6 +58,15 @@ RouteBase get $rootRoute => StatefulShellRouteData.$route(
           ],
         ),
         StatefulShellBranchData.$branch(
+          navigatorKey: FavoritesBranch.$navigatorKey,
+          routes: [
+            GoRouteData.$route(
+              path: '/favorites',
+              factory: $FavoritesRouteExtension._fromState,
+            ),
+          ],
+        ),
+        StatefulShellBranchData.$branch(
           navigatorKey: ContributorsBranch.$navigatorKey,
           routes: [
             GoRouteData.$route(
@@ -201,6 +210,24 @@ extension $SponsorsRouteExtension on SponsorsRoute {
 
   String get location => GoRouteData.$location(
         '/sponsors',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $FavoritesRouteExtension on FavoritesRoute {
+  static FavoritesRoute _fromState(GoRouterState state) =>
+      const FavoritesRoute();
+
+  String get location => GoRouteData.$location(
+        '/favorites',
       );
 
   void go(BuildContext context) => context.go(location);

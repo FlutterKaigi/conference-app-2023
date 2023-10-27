@@ -6,6 +6,7 @@ import 'package:conference_2023/ui/screen/licenses/about_us/about_us.dart';
 import 'package:conference_2023/ui/screen/licenses/legal_notices/legal_notices.dart';
 import 'package:conference_2023/ui/screen/licenses/licenses.dart';
 import 'package:conference_2023/ui/screen/root.dart';
+import 'package:conference_2023/ui/screen/favorites/favorites.dart';
 import 'package:conference_2023/ui/screen/sessions/session_detail.dart';
 import 'package:conference_2023/ui/screen/sessions/sessions.dart';
 import 'package:conference_2023/ui/screen/settings/settings.dart';
@@ -21,6 +22,7 @@ part 'branch/router_app_sessions.dart';
 part 'branch/router_app_settings.dart';
 part 'branch/router_app_sponsors.dart';
 part 'branch/router_app_venue.dart';
+part 'branch/router_app_favorites.dart';
 part 'router_app.g.dart';
 
 @TypedStatefulShellRoute<RootRoute>(
@@ -58,6 +60,13 @@ part 'router_app.g.dart';
       routes: [
         TypedGoRoute<SponsorsRoute>(
           path: '/${SponsorsRoute.path}',
+        ),
+      ],
+    ),
+    TypedStatefulShellBranch<FavoritesBranch>(
+      routes: [
+        TypedGoRoute<FavoritesRoute>(
+          path: '/${FavoritesRoute.path}',
         ),
       ],
     ),

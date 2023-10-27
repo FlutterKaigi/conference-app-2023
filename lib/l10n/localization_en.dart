@@ -63,6 +63,9 @@ final class LocalizationEn extends Localization {
   String get pageTitleVenue => 'Venue';
 
   @override
+  String get pageTitleFavorites => 'Favorites';
+
+  @override
   String get pageTitleContributors => 'Contributor';
 
   @override
