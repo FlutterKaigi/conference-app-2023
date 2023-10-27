@@ -21,26 +21,11 @@ class FavoritesPage extends ConsumerWidget {
       );
     }
 
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            localization.pageTitleSessions,
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
-          const Gap(16),
-          Expanded(
-            child: ListView(
-              children: [
-                for (final favoriteSession in favoriteSessions)
-                  _SessionTile(session: favoriteSession),
-              ],
-            ),
-          ),
-        ],
-      ),
+    return ListView(
+      children: [
+        for (final favoriteSession in favoriteSessions)
+          _SessionTile(session: favoriteSession),
+      ],
     );
   }
 }
