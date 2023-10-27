@@ -98,6 +98,8 @@ abstract base class Localization {
 
   String get venueMenuGoogleMap;
 
+  String get favoritesSessionEmptyPrompt;
+
   String get contributorsDeveloper;
 
   String get contributorsStaff;

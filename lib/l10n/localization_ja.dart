@@ -108,6 +108,9 @@ final class LocalizationJa extends Localization {
   String get venueMenuGoogleMap => 'Googleマップ';
 
   @override
+  String get favoritesSessionEmptyPrompt => 'お気に入り登録したセッションがありません。';
+
+  @override
   String get contributorsDeveloper => '開発者';
 
   @override

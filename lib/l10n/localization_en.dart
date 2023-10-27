@@ -108,6 +108,10 @@ final class LocalizationEn extends Localization {
   String get venueMenuGoogleMap => 'Google Map';
 
   @override
+  String get favoritesSessionEmptyPrompt =>
+      'There are no sessions added to favorites.';
+
+  @override
   String get contributorsDeveloper => 'Developer';
 
   @override
