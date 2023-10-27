@@ -59,6 +59,10 @@ class RootDrawer extends ConsumerWidget {
           icon: RootTab.venue.icon,
           label: Text(RootTab.venue.title(localization)),
         ),
+        NavigationDrawerDestination(
+          icon: RootTab.favorites.icon,
+          label: Text(RootTab.favorites.title(localization)),
+        ),
         const Divider(),
         NavigationDrawerDestination(
           icon: RootTab.contributors.icon,

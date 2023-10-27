@@ -68,6 +68,8 @@ abstract base class Localization {
 
   String get pageTitleVenue;
 
+  String get pageTitleFavorites;
+
   String get pageTitleContributors;
 
   String get pageTitleSettings;
@@ -95,6 +97,8 @@ abstract base class Localization {
   String get venueMenuNavitimeMap;
 
   String get venueMenuGoogleMap;
+
+  String get favoritesSessionEmptyPrompt;
 
   String get contributorsDeveloper;
 

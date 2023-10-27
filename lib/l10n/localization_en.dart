@@ -63,6 +63,9 @@ final class LocalizationEn extends Localization {
   String get pageTitleVenue => 'Venue';
 
   @override
+  String get pageTitleFavorites => 'Favorites';
+
+  @override
   String get pageTitleContributors => 'Contributor';
 
   @override
@@ -103,6 +106,10 @@ final class LocalizationEn extends Localization {
 
   @override
   String get venueMenuGoogleMap => 'Google Map';
+
+  @override
+  String get favoritesSessionEmptyPrompt =>
+      'There are no sessions added to favorites.';
 
   @override
   String get contributorsDeveloper => 'Developer';

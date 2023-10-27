@@ -63,6 +63,9 @@ final class LocalizationJa extends Localization {
   String get pageTitleVenue => '会場';
 
   @override
+  String get pageTitleFavorites => 'お気に入り';
+
+  @override
   String get pageTitleContributors => 'コントリビューター';
 
   @override
@@ -103,6 +106,9 @@ final class LocalizationJa extends Localization {
 
   @override
   String get venueMenuGoogleMap => 'Googleマップ';
+
+  @override
+  String get favoritesSessionEmptyPrompt => 'お気に入り登録したセッションがありません。';
 
   @override
   String get contributorsDeveloper => '開発者';
