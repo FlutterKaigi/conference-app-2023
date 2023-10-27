@@ -3,6 +3,7 @@ import 'package:conference_2023/model/app_locale.dart';
 import 'package:conference_2023/model/favorites/favorite_session_provider.dart';
 import 'package:conference_2023/model/sessions/session.dart';
 import 'package:conference_2023/ui/router/router_app.dart';
+import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
@@ -21,11 +22,15 @@ class FavoritesPage extends ConsumerWidget {
       );
     }
 
-    return ListView(
-      children: [
-        for (final favoriteSession in favoriteSessions)
-          _SessionTile(session: favoriteSession),
-      ],
+    return ListView.builder(
+      padding: EdgeInsets.symmetric(
+        vertical: 16,
+        horizontal: context.spacing,
+      ),
+      itemCount: favoriteSessions.length,
+      itemBuilder: (context, index) {
+        return _SessionTile(session: favoriteSessions[index]);
+      },
     );
   }
 }
