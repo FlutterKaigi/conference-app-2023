@@ -130,4 +130,3 @@ class _SessionSection extends ConsumerWidget {
     );
   }
 }
-
