@@ -61,17 +61,15 @@ class SessionCard extends ConsumerWidget {
           color: Theme.of(context).colorScheme.outline,
         ),
       ),
+      clipBehavior: Clip.antiAlias,
       child: ListTile(
-        title: Text(session.title.get(locale)),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 16,
         ),
+        title: Text(session.title.get(locale)),
         subtitle: speakerName,
         leading: leadingImage,
         trailing: trailingFavorite,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
         onTap: switch (session) {
           SessionTalk() || SessionSponsor() => () {
               SessionDetailRoute(
