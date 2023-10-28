@@ -115,11 +115,11 @@ class SessionDetailPage extends ConsumerWidget {
                 const Gap(8),
                 Tooltip(
                   message: localization.twitterTooltip,
-                  child: ElevatedButton.icon(
+                  child: OutlinedButton.icon(
                     icon: Assets.svg.xLogo.svg(
                       width: 18,
                       colorFilter: ColorFilter.mode(
-                        Theme.of(context).colorScheme.primary,
+                        Theme.of(context).colorScheme.onSurface,
                         BlendMode.srcIn,
                       ),
                     ),

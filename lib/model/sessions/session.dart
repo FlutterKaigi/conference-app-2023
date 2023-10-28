@@ -7,7 +7,7 @@ part 'session.freezed.dart';
 part 'session.g.dart';
 
 @Freezed(unionKey: 'type')
-class Session with _$Session {
+sealed class Session with _$Session {
   const factory Session.talk({
     required String id,
     required String url,
