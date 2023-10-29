@@ -33,6 +33,9 @@ final class LocalizationJa extends Localization {
   String get twitterTooltip => 'Twitterを開く';
 
   @override
+  String get tweetTooltip => 'ツイートする';
+
+  @override
   String get github => 'GitHub';
 
   @override

@@ -66,6 +66,20 @@ class SessionDetailPage extends ConsumerWidget {
                       .add(sessionId);
             },
           ),
+          IconButton(
+            icon: Assets.svg.xLogo.svg(width: 18),
+            constraints: const BoxConstraints(
+              minHeight: kToolbarHeight,
+              minWidth: kToolbarHeight,
+            ),
+            tooltip: localization.tweetTooltip,
+            onPressed: () async {
+              final uri = Uri.parse(
+                'https://twitter.com/share?url=https://flutterkaigi.jp/2023/sessions/$sessionId&hashtags=flutterkaigi&via=FlutterKaigi',
+              );
+              await launchInExternalApp(uri);
+            },
+          ),
         ],
       ),
       body: SingleChildScrollView(

@@ -48,6 +48,8 @@ abstract base class Localization {
 
   String get twitterTooltip;
 
+  String get tweetTooltip;
+
   String get github;
 
   String get githubTooltip;
