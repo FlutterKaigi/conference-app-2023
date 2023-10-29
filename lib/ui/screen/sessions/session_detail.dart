@@ -53,6 +53,9 @@ class SessionDetailPage extends ConsumerWidget {
               minHeight: kToolbarHeight,
               minWidth: kToolbarHeight,
             ),
+            tooltip: isFavorite
+                ? localization.favoritesRemoveTooltip
+                : localization.favoritesAddTooltip,
             onPressed: () async {
               isFavorite
                   ? await ref

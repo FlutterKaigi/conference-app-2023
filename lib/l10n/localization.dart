@@ -100,6 +100,10 @@ abstract base class Localization {
 
   String get favoritesSessionEmptyPrompt;
 
+  String get favoritesAddTooltip;
+
+  String get favoritesRemoveTooltip;
+
   String get contributorsDeveloper;
 
   String get contributorsStaff;

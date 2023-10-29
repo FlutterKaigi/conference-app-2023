@@ -111,6 +111,12 @@ final class LocalizationJa extends Localization {
   String get favoritesSessionEmptyPrompt => 'お気に入り登録したセッションがありません。';
 
   @override
+  String get favoritesAddTooltip => 'お気に入りに追加する';
+
+  @override
+  String get favoritesRemoveTooltip => 'お気に入りから削除する';
+
+  @override
   String get contributorsDeveloper => '開発者';
 
   @override

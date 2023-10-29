@@ -112,6 +112,12 @@ final class LocalizationEn extends Localization {
       'There are no sessions added to favorites.';
 
   @override
+  String get favoritesAddTooltip => 'Add to favorites';
+
+  @override
+  String get favoritesRemoveTooltip => 'Remove from favorites';
+
+  @override
   String get contributorsDeveloper => 'Developer';
 
   @override
