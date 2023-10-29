@@ -25,13 +25,25 @@ class SessionCard extends ConsumerWidget {
     );
 
     final speakerName = switch (session) {
-      SessionSponsor(speaker: final s) => Wrap(
-          spacing: 8,
-          crossAxisAlignment: WrapCrossAlignment.center,
-          children: [
-            Text(s.name),
-            const Icon(Icons.handshake_outlined),
-          ],
+      SessionSponsor(speaker: final s) => Text.rich(
+          TextSpan(
+            children: [
+              const WidgetSpan(
+                child: Icon(
+                  Icons.handshake_outlined,
+                  size: 16,
+                ),
+              ),
+              const WidgetSpan(
+                child: SizedBox(
+                  width: 4,
+                ),
+              ),
+              TextSpan(
+                text: s.name,
+              ),
+            ],
+          ),
         ),
       SessionTalk(speaker: final s) => Text(s.name),
       _ => null,
@@ -48,7 +60,10 @@ class SessionCard extends ConsumerWidget {
 
     final trailingFavorite = switch (session) {
       SessionSponsor() || SessionTalk() => showFavoriteIcon
-          ? Icon(isFavorite ? Icons.favorite : Icons.favorite_border)
+          ? Icon(
+              isFavorite ? Icons.favorite : Icons.favorite_border,
+              color: Theme.of(context).colorScheme.primary,
+            )
           : null,
       _ => null,
     };
