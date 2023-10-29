@@ -203,6 +203,12 @@ abstract base class Localization {
   String get userName;
 
   String get selfIntroductionUrl;
+
+  String get uploadImage;
+
+  String get uploadingImage;
+
+  String get uploadedImage;
 }
 
 /// A wrapper class of [DateFormat] for localization.

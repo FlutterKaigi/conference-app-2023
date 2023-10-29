@@ -4,6 +4,7 @@ import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProfilePage extends ConsumerWidget {
   const ProfilePage({super.key});
@@ -50,27 +51,63 @@ class _Icon extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final imageUrl = ref.watch(profileImageUrlProvider);
+    final localization = ref.watch(localizationProvider);
     final image = switch (imageUrl) {
-      AsyncData<String>() => Image.network(imageUrl.value),
-      AsyncError<String>() => const Icon(Icons.error),
+      AsyncData<String>() => Image.network(
+          imageUrl.value,
+          loadingBuilder: (context, _, __) =>
+              const CircularProgressIndicator.adaptive(),
+          errorBuilder: (context, _, __) => const Icon(Icons.error),
+        ),
+      AsyncError<String>() => const Icon(Icons.upload),
       _ => const CircularProgressIndicator.adaptive(),
     };
 
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Theme.of(context).colorScheme.outlineVariant,
-          width: 2,
-        ),
-        shape: BoxShape.circle,
-      ),
-      child: ClipOval(
-        child: Center(
-          child: image,
+    return Tooltip(
+      message: localization.uploadImage,
+      child: GestureDetector(
+        onTap: () async {
+          final messanger = ScaffoldMessenger.of(context);
+          final file = await ImagePicker().pickImage(
+            source: ImageSource.gallery,
+          );
+          if (file == null) {
+            return;
+          }
+          final userId = ref.read(
+            profileNotifierProvider.select((value) => value.valueOrNull?.id),
+          );
+          if (userId == null) {
+            return;
+          }
+
+          messanger.showSnackBar(_buildSnackBar(localization.uploadingImage));
+          final data = await file.readAsBytes();
+          await ref.read(uploadImageProvider(userId)).call(data);
+          messanger.showSnackBar(_buildSnackBar(localization.uploadedImage));
+          ref.invalidate(profileImageUrlProvider);
+        },
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Theme.of(context).colorScheme.outlineVariant,
+              width: 2,
+            ),
+            shape: BoxShape.circle,
+          ),
+          child: ClipOval(
+            child: Center(
+              child: image,
+            ),
+          ),
         ),
       ),
     );
   }
+
+  SnackBar _buildSnackBar(String message) => SnackBar(
+        content: Text(message),
+      );
 }
 
 class _Name extends ConsumerWidget {

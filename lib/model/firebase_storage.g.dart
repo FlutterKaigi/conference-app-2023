@@ -154,5 +154,133 @@ class _ImageDownloadUrlProviderElement
   @override
   String get path => (origin as ImageDownloadUrlProvider).path;
 }
+
+String _$imageReferenceHash() => r'5790d8ad2d11a5e7713513105d130b3b2f18bf8f';
+
+/// See also [imageReference].
+@ProviderFor(imageReference)
+const imageReferenceProvider = ImageReferenceFamily();
+
+/// See also [imageReference].
+class ImageReferenceFamily extends Family<Reference> {
+  /// See also [imageReference].
+  const ImageReferenceFamily();
+
+  /// See also [imageReference].
+  ImageReferenceProvider call(
+    String path,
+  ) {
+    return ImageReferenceProvider(
+      path,
+    );
+  }
+
+  @override
+  ImageReferenceProvider getProviderOverride(
+    covariant ImageReferenceProvider provider,
+  ) {
+    return call(
+      provider.path,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'imageReferenceProvider';
+}
+
+/// See also [imageReference].
+class ImageReferenceProvider extends AutoDisposeProvider<Reference> {
+  /// See also [imageReference].
+  ImageReferenceProvider(
+    String path,
+  ) : this._internal(
+          (ref) => imageReference(
+            ref as ImageReferenceRef,
+            path,
+          ),
+          from: imageReferenceProvider,
+          name: r'imageReferenceProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$imageReferenceHash,
+          dependencies: ImageReferenceFamily._dependencies,
+          allTransitiveDependencies:
+              ImageReferenceFamily._allTransitiveDependencies,
+          path: path,
+        );
+
+  ImageReferenceProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.path,
+  }) : super.internal();
+
+  final String path;
+
+  @override
+  Override overrideWith(
+    Reference Function(ImageReferenceRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: ImageReferenceProvider._internal(
+        (ref) => create(ref as ImageReferenceRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        path: path,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeProviderElement<Reference> createElement() {
+    return _ImageReferenceProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is ImageReferenceProvider && other.path == path;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, path.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+mixin ImageReferenceRef on AutoDisposeProviderRef<Reference> {
+  /// The parameter `path` of this provider.
+  String get path;
+}
+
+class _ImageReferenceProviderElement
+    extends AutoDisposeProviderElement<Reference> with ImageReferenceRef {
+  _ImageReferenceProviderElement(super.provider);
+
+  @override
+  String get path => (origin as ImageReferenceProvider).path;
+}
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

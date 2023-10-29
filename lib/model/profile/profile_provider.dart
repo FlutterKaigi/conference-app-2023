@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:typed_data';
+
 import 'package:conference_2023/model/firebase_auth.dart';
 import 'package:conference_2023/model/firebase_storage.dart';
 import 'package:conference_2023/model/profile/profile.dart';
@@ -5,6 +8,8 @@ import 'package:conference_2023/model/shared_preferences.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'profile_provider.g.dart';
+
+typedef ImageUploadFunction = Future<void> Function(Uint8List byteData);
 
 @riverpod
 class ProfileNotifier extends _$ProfileNotifier {
@@ -57,4 +62,13 @@ Future<String> profileImageUrl(ProfileImageUrlRef ref) async {
   );
   final path = '/icons/$id/icon.png';
   return ref.watch(imageDownloadUrlProvider(path).future);
+}
+
+@riverpod
+ImageUploadFunction uploadImage(UploadImageRef ref, String userId) {
+  final path = '/icons/$userId/icon.png';
+  final imageRef = ref.watch(imageReferenceProvider(path));
+  return (fileData) async {
+    await imageRef.putData(fileData);
+  };
 }

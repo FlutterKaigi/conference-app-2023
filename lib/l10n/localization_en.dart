@@ -276,4 +276,13 @@ final class LocalizationEn extends Localization {
 
   @override
   String get selfIntroductionUrl => 'Self-introduction URL';
+
+  @override
+  String get uploadImage => 'Upload image';
+
+  @override
+  String get uploadingImage => 'Uploading image...';
+
+  @override
+  String get uploadedImage => 'Uploaded image.';
 }

@@ -271,4 +271,13 @@ final class LocalizationJa extends Localization {
 
   @override
   String get selfIntroductionUrl => '自己紹介用URL';
+
+  @override
+  String get uploadImage => '画像をアップロードする';
+
+  @override
+  String get uploadingImage => '画像をアップロード中...';
+
+  @override
+  String get uploadedImage => '画像をアップロードしました。';
 }
