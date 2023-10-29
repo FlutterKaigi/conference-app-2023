@@ -44,7 +44,26 @@ class SessionDetailPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(localization.pageTitleSessions),
+        actions: [
+          IconButton(
+            icon: Icon(
+              isFavorite ? Icons.favorite : Icons.favorite_border,
+            ),
+            constraints: const BoxConstraints(
+              minHeight: kToolbarHeight,
+              minWidth: kToolbarHeight,
+            ),
+            onPressed: () async {
+              isFavorite
+                  ? await ref
+                      .read(favoriteSessionIdsNotifierProvider.notifier)
+                      .remove(sessionId)
+                  : await ref
+                      .read(favoriteSessionIdsNotifierProvider.notifier)
+                      .add(sessionId);
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(
@@ -54,29 +73,9 @@ class SessionDetailPage extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    session.title.get(locale),
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  ),
-                ),
-                IconButton(
-                  icon: Icon(
-                    isFavorite ? Icons.favorite : Icons.favorite_border,
-                  ),
-                  onPressed: () async {
-                    isFavorite
-                        ? await ref
-                            .read(favoriteSessionIdsNotifierProvider.notifier)
-                            .remove(sessionId)
-                        : await ref
-                            .read(favoriteSessionIdsNotifierProvider.notifier)
-                            .add(sessionId);
-                  },
-                ),
-              ],
+            Text(
+              session.title.get(locale),
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
             const Gap(8),
             Container(
