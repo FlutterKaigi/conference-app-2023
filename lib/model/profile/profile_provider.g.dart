@@ -6,7 +6,22 @@ part of 'profile_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$profileNotifierHash() => r'800cbb1ff760df272199eb2fd4aa4658d4b4d566';
+String _$profileImageUrlHash() => r'6333780b97fe99b58668225d5882a296552f4407';
+
+/// See also [profileImageUrl].
+@ProviderFor(profileImageUrl)
+final profileImageUrlProvider = AutoDisposeFutureProvider<String>.internal(
+  profileImageUrl,
+  name: r'profileImageUrlProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$profileImageUrlHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef ProfileImageUrlRef = AutoDisposeFutureProviderRef<String>;
+String _$profileNotifierHash() => r'158d40eb6305e2d571d8c96acfcbbc2cd5dd4268';
 
 /// See also [ProfileNotifier].
 @ProviderFor(ProfileNotifier)

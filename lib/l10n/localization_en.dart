@@ -270,4 +270,10 @@ final class LocalizationEn extends Localization {
 
   @override
   String get lunchMapSortDesc => 'DESC';
+
+  @override
+  String get userName => 'Name';
+
+  @override
+  String get selfIntroductionUrl => 'Self-introduction URL';
 }

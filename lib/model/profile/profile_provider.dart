@@ -1,4 +1,5 @@
 import 'package:conference_2023/model/firebase_auth.dart';
+import 'package:conference_2023/model/firebase_storage.dart';
 import 'package:conference_2023/model/profile/profile.dart';
 import 'package:conference_2023/model/shared_preferences.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -47,4 +48,13 @@ class ProfileNotifier extends _$ProfileNotifier {
       },
     );
   }
+}
+
+@riverpod
+Future<String> profileImageUrl(ProfileImageUrlRef ref) async {
+  final id = await ref.watch(
+    profileNotifierProvider.selectAsync((data) => data.id),
+  );
+  final path = '/icons/$id/icon.png';
+  return ref.watch(imageDownloadUrlProvider(path).future);
 }

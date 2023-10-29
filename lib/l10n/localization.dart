@@ -199,6 +199,10 @@ abstract base class Localization {
   String get lunchMapSortAsc;
 
   String get lunchMapSortDesc;
+
+  String get userName;
+
+  String get selfIntroductionUrl;
 }
 
 /// A wrapper class of [DateFormat] for localization.
