@@ -75,6 +75,9 @@ final class LocalizationJa extends Localization {
   String get pageTitleLicense => 'ライセンス';
 
   @override
+  String get pageTitleProfile => 'プロフィール';
+
+  @override
   String get venueLocationMap => '会場';
 
   @override

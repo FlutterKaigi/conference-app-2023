@@ -10,3 +10,4 @@ final favoritesNavigatorKey = GlobalKey<NavigatorState>();
 final contributorsNavigatorKey = GlobalKey<NavigatorState>();
 final settingsNavigatorKey = GlobalKey<NavigatorState>();
 final licenseNavigatorKey = GlobalKey<NavigatorState>();
+final profileNavigatorKey = GlobalKey<NavigatorState>();

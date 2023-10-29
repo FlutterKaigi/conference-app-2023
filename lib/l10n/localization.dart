@@ -76,6 +76,8 @@ abstract base class Localization {
 
   String get pageTitleLicense;
 
+  String get pageTitleProfile;
+
   String get venueLocationMap;
 
   String get venueLocationMapTooltip;
