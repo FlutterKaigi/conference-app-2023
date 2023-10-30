@@ -6,7 +6,17 @@ part 'firebase_storage.g.dart';
 @riverpod
 Future<String> imageDownloadUrl(ImageDownloadUrlRef ref, String path) async {
   final ref = FirebaseStorage.instance.ref(path);
-  return ref.getDownloadURL();
+  try {
+    final url = await ref.getDownloadURL();
+    return url;
+  } on FirebaseException catch (e) {
+    if (e.code == 'object-not-found') {
+      return '';
+    }
+    rethrow;
+  } catch (_) {
+    rethrow;
+  }
 }
 
 @riverpod

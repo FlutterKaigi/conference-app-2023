@@ -53,13 +53,15 @@ class _Icon extends ConsumerWidget {
     final imageUrl = ref.watch(profileImageUrlProvider);
     final localization = ref.watch(localizationProvider);
     final image = switch (imageUrl) {
-      AsyncData<String>() => Image.network(
-          imageUrl.value,
-          loadingBuilder: (context, _, __) =>
-              const CircularProgressIndicator.adaptive(),
-          errorBuilder: (context, _, __) => const Icon(Icons.error),
-        ),
-      AsyncError<String>() => const Icon(Icons.upload),
+      AsyncData(value: final value) => value.isEmpty
+          ? const Icon(Icons.upload)
+          : Image.network(
+              imageUrl.value,
+              loadingBuilder: (context, _, __) =>
+                  const CircularProgressIndicator.adaptive(),
+              errorBuilder: (context, _, __) => const Icon(Icons.error),
+            ),
+      AsyncError() => const Icon(Icons.error),
       _ => const CircularProgressIndicator.adaptive(),
     };
 
