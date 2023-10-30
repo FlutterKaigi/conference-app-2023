@@ -9,12 +9,10 @@ Future<String> imageDownloadUrl(ImageDownloadUrlRef ref, String path) async {
   try {
     final url = await ref.getDownloadURL();
     return url;
-  } on FirebaseException catch (e) {
-    if (e.code == 'object-not-found') {
+  } catch (e) {
+    if (e.toString().contains('object-not-found')) {
       return '';
     }
-    rethrow;
-  } catch (_) {
     rethrow;
   }
 }

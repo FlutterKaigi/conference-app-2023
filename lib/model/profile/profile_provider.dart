@@ -5,6 +5,7 @@ import 'package:conference_2023/model/firebase_auth.dart';
 import 'package:conference_2023/model/firebase_storage.dart';
 import 'package:conference_2023/model/profile/profile.dart';
 import 'package:conference_2023/model/shared_preferences.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'profile_provider.g.dart';
@@ -61,7 +62,8 @@ Future<String> profileImageUrl(ProfileImageUrlRef ref) async {
     profileNotifierProvider.selectAsync((data) => data.id),
   );
   final path = '/icons/$id/icon.png';
-  return ref.watch(imageDownloadUrlProvider(path).future);
+  final url = await ref.watch(imageDownloadUrlProvider(path).future);
+  return url;
 }
 
 @riverpod
@@ -69,6 +71,11 @@ ImageUploadFunction uploadImage(UploadImageRef ref, String userId) {
   final path = '/icons/$userId/icon.png';
   final imageRef = ref.watch(imageReferenceProvider(path));
   return (fileData) async {
-    await imageRef.putData(fileData);
+    await imageRef.putData(
+      fileData,
+      SettableMetadata(
+        contentType: 'image/png',
+      ),
+    );
   };
 }

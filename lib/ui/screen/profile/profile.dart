@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/model/profile/profile_provider.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
@@ -45,30 +46,39 @@ class ProfilePage extends ConsumerWidget {
   }
 }
 
-class _Icon extends ConsumerWidget {
+class _Icon extends ConsumerStatefulWidget {
   const _Icon();
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<_Icon> createState() => _IconState();
+}
+
+class _IconState extends ConsumerState<_Icon> {
+  bool _isUploading = false;
+
+  @override
+  Widget build(BuildContext context) {
     final imageUrl = ref.watch(profileImageUrlProvider);
     final localization = ref.watch(localizationProvider);
     final image = switch (imageUrl) {
       AsyncData(value: final value) => value.isEmpty
           ? const Icon(Icons.upload)
-          : Image.network(
-              imageUrl.value,
-              loadingBuilder: (context, _, __) =>
-                  const CircularProgressIndicator.adaptive(),
-              errorBuilder: (context, _, __) => const Icon(Icons.error),
+          : _IconImage(
+              url: value,
             ),
       AsyncError() => const Icon(Icons.error),
-      _ => const CircularProgressIndicator.adaptive(),
+      _ => const Center(
+          child: CircularProgressIndicator.adaptive(),
+        ),
     };
 
     return Tooltip(
       message: localization.uploadImage,
       child: GestureDetector(
         onTap: () async {
+          if (_isUploading) {
+            return;
+          }
           final messanger = ScaffoldMessenger.of(context);
           final file = await ImagePicker().pickImage(
             source: ImageSource.gallery,
@@ -82,10 +92,16 @@ class _Icon extends ConsumerWidget {
           if (userId == null) {
             return;
           }
+          setState(() {
+            _isUploading = true;
+          });
 
           messanger.showSnackBar(_buildSnackBar(localization.uploadingImage));
           final data = await file.readAsBytes();
           await ref.read(uploadImageProvider(userId)).call(data);
+          setState(() {
+            _isUploading = false;
+          });
           messanger.showSnackBar(_buildSnackBar(localization.uploadedImage));
           ref.invalidate(profileImageUrlProvider);
         },
@@ -97,9 +113,14 @@ class _Icon extends ConsumerWidget {
             ),
             shape: BoxShape.circle,
           ),
-          child: ClipOval(
-            child: Center(
-              child: image,
+          child: Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: ClipOval(
+              child: _isUploading
+                  ? const Center(
+                      child: CircularProgressIndicator.adaptive(),
+                    )
+                  : image,
             ),
           ),
         ),
@@ -110,6 +131,28 @@ class _Icon extends ConsumerWidget {
   SnackBar _buildSnackBar(String message) => SnackBar(
         content: Text(message),
       );
+}
+
+class _IconImage extends StatelessWidget {
+  const _IconImage({required this.url});
+
+  final String url;
+
+  @override
+  Widget build(BuildContext context) {
+    final uri = Uri.parse(url);
+    final cacheKey = uri.origin + uri.path;
+
+    return CachedNetworkImage(
+      imageUrl: url,
+      cacheKey: cacheKey,
+      fit: BoxFit.cover,
+      placeholder: (context, _) => const Center(
+        child: CircularProgressIndicator.adaptive(),
+      ),
+      errorWidget: (context, _, __) => const Icon(Icons.error),
+    );
+  }
 }
 
 class _Name extends ConsumerWidget {
