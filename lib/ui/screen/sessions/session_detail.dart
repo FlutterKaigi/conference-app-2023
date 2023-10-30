@@ -50,10 +50,6 @@ class SessionDetailPage extends ConsumerWidget {
               isFavorite ? Icons.favorite : Icons.favorite_border,
               color: Theme.of(context).colorScheme.primary,
             ),
-            constraints: const BoxConstraints(
-              minHeight: kToolbarHeight,
-              minWidth: kToolbarHeight,
-            ),
             tooltip: isFavorite
                 ? localization.favoritesRemoveTooltip
                 : localization.favoritesAddTooltip,
@@ -74,10 +70,6 @@ class SessionDetailPage extends ConsumerWidget {
                 Theme.of(context).colorScheme.onSurface,
                 BlendMode.srcIn,
               ),
-            ),
-            constraints: const BoxConstraints(
-              minHeight: kToolbarHeight,
-              minWidth: kToolbarHeight,
             ),
             tooltip: localization.tweetTooltip,
             onPressed: () async {
