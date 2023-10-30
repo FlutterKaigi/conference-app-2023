@@ -68,7 +68,13 @@ class SessionDetailPage extends ConsumerWidget {
             },
           ),
           IconButton(
-            icon: Assets.svg.xLogo.svg(width: 18),
+            icon: Assets.svg.xLogo.svg(
+              width: 18,
+              colorFilter: ColorFilter.mode(
+                Theme.of(context).colorScheme.onSurface,
+                BlendMode.srcIn,
+              ),
+            ),
             constraints: const BoxConstraints(
               minHeight: kToolbarHeight,
               minWidth: kToolbarHeight,
