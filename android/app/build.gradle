@@ -1,8 +1,8 @@
 plugins {
-    id "com.android.application"
-    id "kotlin-android"
-    id "dev.flutter.flutter-gradle-plugin"
-    id "com.google.gms.google-services"
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'dev.flutter.flutter-gradle-plugin'
+    id 'com.google.gms.google-services'
 }
 
 def localProperties = new Properties()
@@ -20,10 +20,10 @@ if (keystorePropertiesFile.exists()) {
         keystoreProperties.load(reader)
     }
 } else {
-    keystoreProperties['keyAlias'] = "androiddebugkey"
-    keystoreProperties['keyPassword'] = "android"
-    keystoreProperties['storeFile'] = "debug.keystore"
-    keystoreProperties['storePassword'] = "android"
+    keystoreProperties['keyAlias'] = 'androiddebugkey'
+    keystoreProperties['keyPassword'] = 'android'
+    keystoreProperties['storeFile'] = rootProject.file('debug.keystore')
+    keystoreProperties['storePassword'] = 'android'
 }
 
 
@@ -38,18 +38,18 @@ if (flutterVersionName == null) {
 }
 
 task selectGoogleServicesJson(type: Copy) {
-    from "src/$flavor/google-services.json"
+    from 'src/$flavor/google-services.json'
     into './'
 }
 
 task copyMipmaps(type: Copy) {
-    from "src/$flavor/res"
+    from 'src/$flavor/res'
     include 'mipmap-*/'
     into 'src/main/res'
 }
 
 task copyDrawables(type: Copy) {
-    from "src/$flavor/res"
+    from 'src/$flavor/res'
     include 'drawable-*/'
     into 'src/main/res'
 }
@@ -61,7 +61,7 @@ tasks.whenTaskAdded { task ->
 }
 
 android {
-    namespace "jp.flutterkaigi.conf2023"
+    namespace 'jp.flutterkaigi.conf2023'
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
@@ -79,16 +79,22 @@ android {
     }
 
     defaultConfig {
-        applicationId "jp.flutterkaigi.conf2023"
+        applicationId 'jp.flutterkaigi.conf2023'
         minSdkVersion 30
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         applicationIdSuffix app_id_suffix
-        resValue "string", "app_name", app_name
+        resValue 'string', 'app_name', app_name
     }
 
     signingConfigs {
+        debug {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile rootProject.file('debug.keystore')
+            storePassword 'android'
+        }
         release {
             keyAlias keystoreProperties['keyAlias']
             keyPassword keystoreProperties['keyPassword']
