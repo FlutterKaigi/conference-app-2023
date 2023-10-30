@@ -65,6 +65,7 @@ class SessionDetailPage extends ConsumerWidget {
                 IconButton(
                   icon: Icon(
                     isFavorite ? Icons.favorite : Icons.favorite_border,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                   onPressed: () async {
                     isFavorite
