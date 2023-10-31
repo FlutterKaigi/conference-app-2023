@@ -65,10 +65,10 @@ class SessionCard extends ConsumerWidget {
           ? IconButton(
               tooltip: isFavorite
                   ? localization.favoritesRemoveTooltip
-                  : localization.favoritesAddTooltip
+                  : localization.favoritesAddTooltip,
               icon: Icon(
-              isFavorite ? Icons.favorite : Icons.favorite_border,
-              color: Theme.of(context).colorScheme.primary
+                isFavorite ? Icons.favorite : Icons.favorite_border,
+                color: Theme.of(context).colorScheme.primary,
               ),
               onPressed: () async {
                 isFavorite
