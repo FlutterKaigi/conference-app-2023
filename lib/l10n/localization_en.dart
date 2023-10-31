@@ -33,6 +33,9 @@ final class LocalizationEn extends Localization {
   String get twitterTooltip => 'Open Twitter';
 
   @override
+  String get tweetTooltip => 'Tweet';
+
+  @override
   String get github => 'GitHub';
 
   @override
@@ -110,6 +113,12 @@ final class LocalizationEn extends Localization {
   @override
   String get favoritesSessionEmptyPrompt =>
       'There are no sessions added to favorites.';
+
+  @override
+  String get favoritesAddTooltip => 'Add to favorites';
+
+  @override
+  String get favoritesRemoveTooltip => 'Remove from favorites';
 
   @override
   String get contributorsDeveloper => 'Developer';
