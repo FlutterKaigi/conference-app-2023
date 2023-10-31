@@ -60,9 +60,20 @@ class SessionCard extends ConsumerWidget {
 
     final trailingFavorite = switch (session) {
       SessionSponsor() || SessionTalk() => showFavoriteIcon
-          ? Icon(
+          ? IconButton(
+              icon: Icon(
               isFavorite ? Icons.favorite : Icons.favorite_border,
               color: Theme.of(context).colorScheme.primary,
+              ),
+              onPressed: () async {
+                isFavorite
+                    ? await ref
+                        .read(favoriteSessionIdsNotifierProvider.notifier)
+                        .remove(session.id)
+                    : await ref
+                        .read(favoriteSessionIdsNotifierProvider.notifier)
+                        .add(session.id);
+              },
             )
           : null,
       _ => null,
