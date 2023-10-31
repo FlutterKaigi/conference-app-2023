@@ -1,3 +1,4 @@
+import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/model/app_locale.dart';
 import 'package:conference_2023/model/favorites/favorite_session_ids.dart';
 import 'package:conference_2023/model/sessions/session.dart';
@@ -18,6 +19,7 @@ class SessionCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final locale = ref.watch(appLocaleProvider);
+    final localization = ref.watch(localizationProvider);
     final isFavorite = ref.watch(
       favoriteSessionIdsNotifierProvider.select(
         (value) => value.contains(session.id),
@@ -60,9 +62,23 @@ class SessionCard extends ConsumerWidget {
 
     final trailingFavorite = switch (session) {
       SessionSponsor() || SessionTalk() => showFavoriteIcon
-          ? Icon(
-              isFavorite ? Icons.favorite : Icons.favorite_border,
-              color: Theme.of(context).colorScheme.primary,
+          ? IconButton(
+              tooltip: isFavorite
+                  ? localization.favoritesRemoveTooltip
+                  : localization.favoritesAddTooltip,
+              icon: Icon(
+                isFavorite ? Icons.favorite : Icons.favorite_border,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              onPressed: () async {
+                isFavorite
+                    ? await ref
+                        .read(favoriteSessionIdsNotifierProvider.notifier)
+                        .remove(session.id)
+                    : await ref
+                        .read(favoriteSessionIdsNotifierProvider.notifier)
+                        .add(session.id);
+              },
             )
           : null,
       _ => null,
