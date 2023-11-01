@@ -16,8 +16,9 @@ class FloorMapPage extends ConsumerWidget {
           vertical: 16,
           horizontal: context.spacing,
         ),
-        child: SizedBox.square(
-          dimension: 600,
+        child: SizedBox(
+          width: 1000,
+          height: 800,
           child: InteractiveViewer(
             minScale: 1.0,
             maxScale: 3.0,
