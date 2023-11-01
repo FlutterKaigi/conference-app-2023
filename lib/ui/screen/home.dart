@@ -2,6 +2,7 @@ import 'package:conference_2023/gen/assets.gen.dart';
 import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:conference_2023/util/launch_in_external_app.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
@@ -13,7 +14,7 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = ref.watch(localizationProvider);
 
-    return SingleChildScrollView(
+    final contents = SingleChildScrollView(
       padding: EdgeInsets.symmetric(
         vertical: 16,
         horizontal: context.spacing,
@@ -139,5 +140,7 @@ class HomePage extends ConsumerWidget {
         ],
       ),
     );
+
+    return kIsWeb ? SelectionArea(child: contents) : contents;
   }
 }
