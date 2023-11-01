@@ -141,6 +141,13 @@ class HomePage extends ConsumerWidget {
       ),
     );
 
-    return kIsWeb ? SelectionArea(child: contents) : contents;
+    if (kIsWeb) {
+      // Allow text selection only in the browser.
+      return SelectionArea(
+        child: contents,
+      );
+    }
+
+    return contents;
   }
 }
