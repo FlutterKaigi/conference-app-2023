@@ -90,6 +90,9 @@ final class LocalizationEn extends Localization {
   String get venueFloorMapTooltip => 'Open the floor map of the venue';
 
   @override
+  String get venueFloorMapSemanticsLabel => 'Floor Map';
+
+  @override
   String get venueLunchMap => 'Lunch';
 
   @override

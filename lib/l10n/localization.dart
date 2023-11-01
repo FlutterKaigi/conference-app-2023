@@ -86,6 +86,8 @@ abstract base class Localization {
 
   String get venueFloorMapTooltip;
 
+  String get venueFloorMapSemanticsLabel;
+
   String get venueLunchMap;
 
   String get venueLunchMapTooltip;

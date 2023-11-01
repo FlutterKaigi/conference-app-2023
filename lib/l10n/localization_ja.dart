@@ -90,6 +90,9 @@ final class LocalizationJa extends Localization {
   String get venueFloorMapTooltip => 'フロアマップを開く';
 
   @override
+  String get venueFloorMapSemanticsLabel => 'フロアマップ';
+
+  @override
   String get venueLunchMap => 'ランチ';
 
   @override
