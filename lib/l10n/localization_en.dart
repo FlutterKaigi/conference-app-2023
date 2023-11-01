@@ -57,10 +57,10 @@ final class LocalizationEn extends Localization {
   String get pageTitleHome => 'Home';
 
   @override
-  String get pageTitleSessions => 'Session';
+  String get pageTitleSessions => 'Sessions';
 
   @override
-  String get pageTitleSponsors => 'Sponsor';
+  String get pageTitleSponsors => 'Sponsors';
 
   @override
   String get pageTitleVenue => 'Venue';
@@ -69,7 +69,7 @@ final class LocalizationEn extends Localization {
   String get pageTitleFavorites => 'Favorites';
 
   @override
-  String get pageTitleContributors => 'Contributor';
+  String get pageTitleContributors => 'Contributors';
 
   @override
   String get pageTitleSettings => 'Settings';
