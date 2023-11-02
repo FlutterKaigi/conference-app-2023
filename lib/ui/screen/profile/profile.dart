@@ -217,10 +217,6 @@ class __InputAreaState extends State<_InputArea> {
   late TextEditingController _controller = TextEditingController(
     text: widget.initialValue,
   );
-  late final _focusNode = FocusNode()
-    ..addListener(
-      () => setState(() {}),
-    );
 
   @override
   void didUpdateWidget(covariant _InputArea oldWidget) {
@@ -242,12 +238,13 @@ class __InputAreaState extends State<_InputArea> {
   Widget build(BuildContext context) {
     return TextField(
       controller: _controller,
-      focusNode: _focusNode,
       style: widget.style ?? Theme.of(context).textTheme.headlineMedium,
       maxLines: 1,
       textAlign: TextAlign.center,
       decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+        ),
         hintText: widget.placeholder,
       ),
       onEditingComplete: () {
