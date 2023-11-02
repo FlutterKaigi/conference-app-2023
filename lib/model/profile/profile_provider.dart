@@ -39,7 +39,11 @@ class ProfileNotifier extends _$ProfileNotifier {
     state = await AsyncValue.guard(
       () async {
         await ref.read(sharedPreferencesProvider).setString(_userNameKey, name);
-        return update((profile) => profile.copyWith(name: name));
+        return update(
+          (profile) => profile.copyWith(
+            name: name,
+          ),
+        );
       },
     );
   }
@@ -50,7 +54,11 @@ class ProfileNotifier extends _$ProfileNotifier {
         await ref
             .read(sharedPreferencesProvider)
             .setString(_websiteUrlKey, url);
-        return update((profile) => profile.copyWith(websiteUrl: url));
+        return update(
+          (profile) => profile.copyWith(
+            websiteUrl: url,
+          ),
+        );
       },
     );
   }

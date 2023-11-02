@@ -7,17 +7,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
 
-class ProfilePage extends ConsumerWidget {
+class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
           const Gap(32),
           ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 600),
+            constraints: const BoxConstraints(
+              maxWidth: 600,
+            ),
             child: const FractionallySizedBox(
               widthFactor: 0.5,
               child: AspectRatio(
@@ -134,7 +136,9 @@ class _IconState extends ConsumerState<_Icon> {
 }
 
 class _IconImage extends StatelessWidget {
-  const _IconImage({required this.url});
+  const _IconImage({
+    required this.url,
+  });
 
   final String url;
 
@@ -229,6 +233,12 @@ class __InputAreaState extends State<_InputArea> {
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return TextField(
       controller: _controller,
@@ -245,11 +255,5 @@ class __InputAreaState extends State<_InputArea> {
         widget.onCompleted(_controller.text);
       },
     );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 }
