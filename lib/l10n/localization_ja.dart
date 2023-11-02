@@ -33,6 +33,9 @@ final class LocalizationJa extends Localization {
   String get twitterTooltip => 'Twitterを開く';
 
   @override
+  String get tweetTooltip => 'ツイートする';
+
+  @override
   String get github => 'GitHub';
 
   @override
@@ -90,6 +93,9 @@ final class LocalizationJa extends Localization {
   String get venueFloorMapTooltip => 'フロアマップを開く';
 
   @override
+  String get venueFloorMapSemanticsLabel => 'フロアマップ';
+
+  @override
   String get venueLunchMap => 'ランチ';
 
   @override
@@ -112,6 +118,12 @@ final class LocalizationJa extends Localization {
 
   @override
   String get favoritesSessionEmptyPrompt => 'お気に入り登録したセッションがありません。';
+
+  @override
+  String get favoritesAddTooltip => 'お気に入りに追加する';
+
+  @override
+  String get favoritesRemoveTooltip => 'お気に入りから削除する';
 
   @override
   String get contributorsDeveloper => '開発者';

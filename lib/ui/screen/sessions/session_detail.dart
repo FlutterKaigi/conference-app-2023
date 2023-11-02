@@ -44,7 +44,42 @@ class SessionDetailPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(localization.pageTitleSessions),
+        actions: [
+          IconButton(
+            icon: Icon(
+              isFavorite ? Icons.favorite : Icons.favorite_border,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            tooltip: isFavorite
+                ? localization.favoritesRemoveTooltip
+                : localization.favoritesAddTooltip,
+            onPressed: () async {
+              isFavorite
+                  ? await ref
+                      .read(favoriteSessionIdsNotifierProvider.notifier)
+                      .remove(sessionId)
+                  : await ref
+                      .read(favoriteSessionIdsNotifierProvider.notifier)
+                      .add(sessionId);
+            },
+          ),
+          IconButton(
+            icon: Assets.svg.xLogo.svg(
+              width: 18,
+              colorFilter: ColorFilter.mode(
+                Theme.of(context).colorScheme.onSurface,
+                BlendMode.srcIn,
+              ),
+            ),
+            tooltip: localization.tweetTooltip,
+            onPressed: () async {
+              final uri = Uri.parse(
+                'https://twitter.com/share?url=https://flutterkaigi.jp/2023/sessions/$sessionId&hashtags=flutterkaigi&via=FlutterKaigi',
+              );
+              await launchInExternalApp(uri);
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(
@@ -54,30 +89,9 @@ class SessionDetailPage extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    session.title.get(locale),
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  ),
-                ),
-                IconButton(
-                  icon: Icon(
-                    isFavorite ? Icons.favorite : Icons.favorite_border,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                  onPressed: () async {
-                    isFavorite
-                        ? await ref
-                            .read(favoriteSessionIdsNotifierProvider.notifier)
-                            .remove(sessionId)
-                        : await ref
-                            .read(favoriteSessionIdsNotifierProvider.notifier)
-                            .add(sessionId);
-                  },
-                ),
-              ],
+            Text(
+              session.title.get(locale),
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
             const Gap(8),
             Container(

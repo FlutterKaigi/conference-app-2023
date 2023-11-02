@@ -33,6 +33,9 @@ final class LocalizationEn extends Localization {
   String get twitterTooltip => 'Open Twitter';
 
   @override
+  String get tweetTooltip => 'Tweet';
+
+  @override
   String get github => 'GitHub';
 
   @override
@@ -54,10 +57,10 @@ final class LocalizationEn extends Localization {
   String get pageTitleHome => 'Home';
 
   @override
-  String get pageTitleSessions => 'Session';
+  String get pageTitleSessions => 'Sessions';
 
   @override
-  String get pageTitleSponsors => 'Sponsor';
+  String get pageTitleSponsors => 'Sponsors';
 
   @override
   String get pageTitleVenue => 'Venue';
@@ -66,7 +69,7 @@ final class LocalizationEn extends Localization {
   String get pageTitleFavorites => 'Favorites';
 
   @override
-  String get pageTitleContributors => 'Contributor';
+  String get pageTitleContributors => 'Contributors';
 
   @override
   String get pageTitleSettings => 'Settings';
@@ -88,6 +91,9 @@ final class LocalizationEn extends Localization {
 
   @override
   String get venueFloorMapTooltip => 'Open the floor map of the venue';
+
+  @override
+  String get venueFloorMapSemanticsLabel => 'Floor Map';
 
   @override
   String get venueLunchMap => 'Lunch';
@@ -113,6 +119,12 @@ final class LocalizationEn extends Localization {
   @override
   String get favoritesSessionEmptyPrompt =>
       'There are no sessions added to favorites.';
+
+  @override
+  String get favoritesAddTooltip => 'Add to favorites';
+
+  @override
+  String get favoritesRemoveTooltip => 'Remove from favorites';
 
   @override
   String get contributorsDeveloper => 'Developer';

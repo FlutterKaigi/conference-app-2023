@@ -48,6 +48,8 @@ abstract base class Localization {
 
   String get twitterTooltip;
 
+  String get tweetTooltip;
+
   String get github;
 
   String get githubTooltip;
@@ -86,6 +88,8 @@ abstract base class Localization {
 
   String get venueFloorMapTooltip;
 
+  String get venueFloorMapSemanticsLabel;
+
   String get venueLunchMap;
 
   String get venueLunchMapTooltip;
@@ -101,6 +105,10 @@ abstract base class Localization {
   String get venueMenuGoogleMap;
 
   String get favoritesSessionEmptyPrompt;
+
+  String get favoritesAddTooltip;
+
+  String get favoritesRemoveTooltip;
 
   String get contributorsDeveloper;
 
