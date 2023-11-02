@@ -19,17 +19,13 @@ class ProfileNotifier extends _$ProfileNotifier {
 
   @override
   Future<Profile> build() async {
-    final firebaseAuth = ref.watch(firebaseAuthProvider);
+    final currentUserIdFuture = ref.watch(currentUserIdProvider.future);
     final sharedPreference = ref.watch(sharedPreferencesProvider);
-    final credential = await firebaseAuth.signInAnonymously();
-    final user = credential.user;
 
-    if (user == null) {
-      return const Profile();
-    }
+    final userId = await currentUserIdFuture;
 
     return Profile(
-      id: user.uid,
+      id: userId ?? '',
       name: sharedPreference.getString(_userNameKey) ?? '',
       websiteUrl: sharedPreference.getString(_websiteUrlKey) ?? '',
     );
@@ -66,24 +62,20 @@ class ProfileNotifier extends _$ProfileNotifier {
 
 @riverpod
 Future<String> profileImageUrl(ProfileImageUrlRef ref) async {
-  final id = await ref.watch(
-    profileNotifierProvider.selectAsync((data) => data.id),
-  );
+  final id = await ref.watch(currentUserIdProvider.future);
+  if (id == null) {
+    return '';
+  }
   final path = '/icons/$id/icon.png';
   final url = await ref.watch(imageDownloadUrlProvider(path).future);
   return url;
 }
 
-@riverpod
-ImageUploadFunction uploadImage(UploadImageRef ref, String userId) {
-  final path = '/icons/$userId/icon.png';
-  final imageRef = ref.watch(imageReferenceProvider(path));
-  return (fileData) async {
-    await imageRef.putData(
-      fileData,
-      SettableMetadata(
-        contentType: 'image/png',
-      ),
-    );
-  };
+Future<void> uploadImage(Reference imageRef, Uint8List fileData) async {
+  await imageRef.putData(
+    fileData,
+    SettableMetadata(
+      contentType: 'image/png',
+    ),
+  );
 }

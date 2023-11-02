@@ -1,5 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:conference_2023/l10n/localization.dart';
+import 'package:conference_2023/model/firebase_auth.dart';
+import 'package:conference_2023/model/firebase_storage.dart';
 import 'package:conference_2023/model/profile/profile_provider.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
@@ -88,9 +90,13 @@ class _IconState extends ConsumerState<_Icon> {
           if (file == null) {
             return;
           }
-          final userId = ref.read(
-            profileNotifierProvider.select((value) => value.valueOrNull?.id),
-          );
+          var userIdOrNull = await ref.read(currentUserIdProvider.future);
+          if (userIdOrNull == null) {
+            final user =
+                await ref.read(firebaseAuthProvider).signInAnonymously();
+            userIdOrNull = user.user?.uid;
+          }
+          final userId = userIdOrNull;
           if (userId == null) {
             return;
           }
@@ -104,7 +110,9 @@ class _IconState extends ConsumerState<_Icon> {
             ),
           );
           final data = await file.readAsBytes();
-          await ref.read(uploadImageProvider(userId)).call(data);
+          final path = '/icons/$userId/icon.png';
+          final imageRef = ref.read(imageReferenceProvider(path));
+          await uploadImage(imageRef, data);
           setState(() {
             _isUploading = false;
           });
