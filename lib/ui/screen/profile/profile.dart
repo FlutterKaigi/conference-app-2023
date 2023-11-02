@@ -98,13 +98,22 @@ class _IconState extends ConsumerState<_Icon> {
             _isUploading = true;
           });
 
-          messanger.showSnackBar(_buildSnackBar(localization.uploadingImage));
+          messanger.showSnackBar(
+            SnackBar(
+              content: Text(localization.uploadingImage),
+            ),
+          );
           final data = await file.readAsBytes();
           await ref.read(uploadImageProvider(userId)).call(data);
           setState(() {
             _isUploading = false;
           });
-          messanger.showSnackBar(_buildSnackBar(localization.uploadedImage));
+
+          messanger.showSnackBar(
+            SnackBar(
+              content: Text(localization.uploadedImage),
+            ),
+          );
           ref.invalidate(profileImageUrlProvider);
         },
         child: DecoratedBox(
@@ -129,10 +138,6 @@ class _IconState extends ConsumerState<_Icon> {
       ),
     );
   }
-
-  SnackBar _buildSnackBar(String message) => SnackBar(
-        content: Text(message),
-      );
 }
 
 class _IconImage extends StatelessWidget {
