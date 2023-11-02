@@ -291,5 +291,5 @@ final class LocalizationJa extends Localization {
   String get uploadingImage => '画像をアップロード中...';
 
   @override
-  String get uploadedImage => '画像をアップロードしました。';
+  String get uploadedImage => '画像をアップロードしました';
 }
