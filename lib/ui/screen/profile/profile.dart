@@ -241,6 +241,7 @@ class __ProfileDisplayState extends State<_ProfileDisplay> {
         placeholder: widget.placeholder,
         initialValue: widget.text,
         style: widget.style,
+        initialFocus: _isEditing,
         onCompleted: (value) {
           setState(() {
             _isEditing = false;
@@ -278,12 +279,14 @@ class _InputArea extends StatefulWidget {
     required this.placeholder,
     required this.initialValue,
     required this.onCompleted,
+    required this.initialFocus,
     this.style,
   });
 
   final String placeholder;
   final String? initialValue;
   final void Function(String) onCompleted;
+  final bool initialFocus;
   final TextStyle? style;
 
   @override
@@ -298,7 +301,9 @@ class __InputAreaState extends State<_InputArea> {
 
   @override
   void initState() {
-    _focusNode.requestFocus();
+    if (widget.initialFocus) {
+      _focusNode.requestFocus();
+    }
     super.initState();
   }
 
