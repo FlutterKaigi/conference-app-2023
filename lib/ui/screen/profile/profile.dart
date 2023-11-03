@@ -169,20 +169,54 @@ class _IconImage extends StatelessWidget {
   }
 }
 
-class _Name extends ConsumerWidget {
+class _Name extends ConsumerStatefulWidget {
   const _Name();
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<_Name> createState() => _NameState();
+}
+
+class _NameState extends ConsumerState<_Name> {
+  bool _isEditing = false;
+
+  @override
+  Widget build(BuildContext context) {
     final name = ref.watch(
-      profileNotifierProvider.select((value) => value.valueOrNull?.name),
+      profileNotifierProvider.select((value) => value.valueOrNull?.name ?? ''),
     );
     final localization = ref.watch(localizationProvider);
-    return _InputArea(
-      placeholder: localization.userName,
-      initialValue: name,
-      onCompleted: (value) =>
-          ref.read(profileNotifierProvider.notifier).updateName(value),
+
+    if (_isEditing || name.isEmpty) {
+      return _InputArea(
+        placeholder: localization.userName,
+        initialValue: name,
+        onCompleted: (value) {
+          setState(() {
+            _isEditing = false;
+          });
+          ref.read(profileNotifierProvider.notifier).updateName(value);
+        },
+      );
+    }
+
+    return InkWell(
+      onTap: () => setState(() {
+        _isEditing = true;
+      }),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 8,
+        ),
+        child: SizedBox(
+          width: double.infinity,
+          child: Text(
+            name,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.headlineMedium,
+          ),
+        ),
+      ),
     );
   }
 }
@@ -224,23 +258,21 @@ class _InputArea extends StatefulWidget {
 }
 
 class __InputAreaState extends State<_InputArea> {
-  late TextEditingController _controller = TextEditingController(
+  late final TextEditingController _controller = TextEditingController(
     text: widget.initialValue,
   );
+  final _focusNode = FocusNode();
 
   @override
-  void didUpdateWidget(covariant _InputArea oldWidget) {
-    if (oldWidget.initialValue != widget.initialValue) {
-      _controller = TextEditingController(
-        text: widget.initialValue,
-      );
-    }
-    super.didUpdateWidget(oldWidget);
+  void initState() {
+    _focusNode.requestFocus();
+    super.initState();
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    _focusNode.dispose();
     super.dispose();
   }
 
@@ -248,6 +280,7 @@ class __InputAreaState extends State<_InputArea> {
   Widget build(BuildContext context) {
     return TextField(
       controller: _controller,
+      focusNode: _focusNode,
       style: widget.style ?? Theme.of(context).textTheme.headlineMedium,
       maxLines: 1,
       textAlign: TextAlign.center,
