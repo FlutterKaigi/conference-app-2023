@@ -1,57 +1,57 @@
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'dev.flutter.flutter-gradle-plugin'
-    id 'com.google.gms.google-services'
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services"
 }
 
 def localProperties = new Properties()
-def localPropertiesFile = rootProject.file('local.properties')
+def localPropertiesFile = rootProject.file("local.properties")
 if (localPropertiesFile.exists()) {
-    localPropertiesFile.withReader('UTF-8') { reader ->
+    localPropertiesFile.withReader("UTF-8") { reader ->
         localProperties.load(reader)
     }
 }
 
 def keystoreProperties = new Properties()
-def keystorePropertiesFile = rootProject.file('key.properties')
+def keystorePropertiesFile = rootProject.file("key.properties")
 if (keystorePropertiesFile.exists()) {
-    keystorePropertiesFile.withReader('UTF-8') { reader ->
+    keystorePropertiesFile.withReader("UTF-8") { reader ->
         keystoreProperties.load(reader)
     }
 } else {
-    keystoreProperties['keyAlias'] = 'androiddebugkey'
-    keystoreProperties['keyPassword'] = 'android'
-    keystoreProperties['storeFile'] = rootProject.file('debug.keystore')
-    keystoreProperties['storePassword'] = 'android'
+    keystoreProperties["keyAlias"] = "androiddebugkey"
+    keystoreProperties["keyPassword"] = "android"
+    keystoreProperties["storeFile"] = rootProject.file("debug.keystore")
+    keystoreProperties["storePassword"] = "android"
 }
 
 
-def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+def flutterVersionCode = localProperties.getProperty("flutter.versionCode")
 if (flutterVersionCode == null) {
-    flutterVersionCode = '1'
+    flutterVersionCode = "1"
 }
 
-def flutterVersionName = localProperties.getProperty('flutter.versionName')
+def flutterVersionName = localProperties.getProperty("flutter.versionName")
 if (flutterVersionName == null) {
-    flutterVersionName = '1.0'
+    flutterVersionName = "1.0"
 }
 
 task selectGoogleServicesJson(type: Copy) {
-    from 'src/$flavor/google-services.json'
-    into './'
+    from "src/$flavor/google-services.json"
+    into "./"
 }
 
 task copyMipmaps(type: Copy) {
-    from 'src/$flavor/res'
-    include 'mipmap-*/'
-    into 'src/main/res'
+    from "src/$flavor/res"
+    include "mipmap-*/"
+    into "src/main/res"
 }
 
 task copyDrawables(type: Copy) {
-    from 'src/$flavor/res'
-    include 'drawable-*/'
-    into 'src/main/res'
+    from "src/$flavor/res"
+    include "drawable-*/"
+    into "src/main/res"
 }
 
 tasks.whenTaskAdded { task ->
@@ -61,7 +61,7 @@ tasks.whenTaskAdded { task ->
 }
 
 android {
-    namespace 'jp.flutterkaigi.conf2023'
+    namespace "jp.flutterkaigi.conf2023"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
@@ -71,35 +71,35 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = "1.8"
     }
 
     sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
+        main.java.srcDirs += "src/main/kotlin"
     }
 
     defaultConfig {
-        applicationId 'jp.flutterkaigi.conf2023'
+        applicationId "jp.flutterkaigi.conf2023"
         minSdkVersion 30
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         applicationIdSuffix app_id_suffix
-        resValue 'string', 'app_name', app_name
+        resValue "string", "app_name", app_name
     }
 
     signingConfigs {
         debug {
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
-            storeFile rootProject.file('debug.keystore')
-            storePassword 'android'
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+            storeFile rootProject.file("debug.keystore")
+            storePassword "android"
         }
         release {
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
-            storePassword keystoreProperties['storePassword']
+            keyAlias keystoreProperties["keyAlias"]
+            keyPassword keystoreProperties["keyPassword"]
+            storeFile keystoreProperties["storeFile"] ? file(keystoreProperties["storeFile"]) : null
+            storePassword keystoreProperties["storePassword"]
         }
     }
 
@@ -111,7 +111,7 @@ android {
 }
 
 flutter {
-    source '../..'
+    source "../.."
 }
 
 dependencies {}
