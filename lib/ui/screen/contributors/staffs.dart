@@ -3,7 +3,7 @@ import 'package:conference_2023/util/launch_in_external_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// FlutterKaigi Icon
+/// FlutterKaigi Icon
 const _defaultIconUrl = 'https://avatars.githubusercontent.com/u/79250595?v=4';
 
 class Staffs extends ConsumerWidget {

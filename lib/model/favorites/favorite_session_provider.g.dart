@@ -6,7 +6,7 @@ part of 'favorite_session_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$favoriteSessionsHash() => r'77f6c8f4c9ac9a41c5cd802ceb61dd84bad4669f';
+String _$favoriteSessionsHash() => r'36e9991adaedd570d3cf1f4f0bd42593be7bf10f';
 
 /// See also [favoriteSessions].
 @ProviderFor(favoriteSessions)

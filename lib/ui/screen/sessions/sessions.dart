@@ -21,45 +21,43 @@ class SessionsPage extends ConsumerWidget {
     final localization = ref.watch(localizationProvider);
     final sessions = ref.watch(sessionsProvider(room));
 
-    return SelectionContainer.disabled(
-      child: ListView(
-        padding: EdgeInsets.symmetric(
-          vertical: 16,
-          horizontal: context.spacing,
-        ),
-        children: [
-          Container(
-            alignment: Alignment.center,
-            child: SegmentedButton<Room>(
-              showSelectedIcon: false,
-              segments: [
-                ButtonSegment(
-                  value: Room.room1,
-                  label: Text(Room.room1.alias),
-                  tooltip: localization.roomOne,
-                ),
-                ButtonSegment(
-                  value: Room.room2,
-                  label: Text(Room.room2.alias),
-                  tooltip: localization.roomTwo,
-                ),
-              ],
-              onSelectionChanged: (rooms) {
-                if (rooms.isEmpty) return;
-                SessionsRoute(
-                  room: rooms.first,
-                ).go(context);
-              },
-              selected: {room},
-            ),
-          ),
-          const Gap(16),
-          for (final session in sessions)
-            _SessionSection(
-              session: session,
-            ),
-        ],
+    return ListView(
+      padding: EdgeInsets.symmetric(
+        vertical: 16,
+        horizontal: context.spacing,
       ),
+      children: [
+        Container(
+          alignment: Alignment.center,
+          child: SegmentedButton<Room>(
+            showSelectedIcon: false,
+            segments: [
+              ButtonSegment(
+                value: Room.room1,
+                label: Text(Room.room1.alias),
+                tooltip: localization.roomOne,
+              ),
+              ButtonSegment(
+                value: Room.room2,
+                label: Text(Room.room2.alias),
+                tooltip: localization.roomTwo,
+              ),
+            ],
+            onSelectionChanged: (rooms) {
+              if (rooms.isEmpty) return;
+              SessionsRoute(
+                room: rooms.first,
+              ).go(context);
+            },
+            selected: {room},
+          ),
+        ),
+        const Gap(16),
+        for (final session in sessions)
+          _SessionSection(
+            session: session,
+          ),
+      ],
     );
   }
 }

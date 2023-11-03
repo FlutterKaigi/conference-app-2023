@@ -8,7 +8,10 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'session_provider.g.dart';
 
 @riverpod
-Session session(SessionRef ref, String id) {
+Session session(
+  SessionRef ref,
+  String id,
+) {
   final data = ref.watch(sessionDataProvider);
   return data.values
       .expand((element) => element)
@@ -16,7 +19,10 @@ Session session(SessionRef ref, String id) {
 }
 
 @riverpod
-List<Session> sessions(SessionsRef ref, Room room) {
+List<Session> sessions(
+  SessionsRef ref,
+  Room room,
+) {
   final data = ref.watch(sessionDataProvider);
   final sessions = data[room];
   if (sessions == null) {
@@ -28,7 +34,9 @@ List<Session> sessions(SessionsRef ref, Room room) {
 }
 
 @riverpod
-Map<Room, List<Session>> sessionData(SessionDataRef ref) {
+Map<Room, List<Session>> sessionData(
+  SessionDataRef ref,
+) {
   final remoteConfig = ref.watch(remoteConfigProvider);
   final sessionData = SessionData.fromJson(
     remoteConfig.getJsonMapFromKey(RemoteConfigKey.session),
@@ -38,7 +46,10 @@ Map<Room, List<Session>> sessionData(SessionDataRef ref) {
 }
 
 @riverpod
-Room sessionRoom(SessionRoomRef ref, String sessionId) {
+Room sessionRoom(
+  SessionRoomRef ref,
+  String sessionId,
+) {
   final sessions = ref.watch(sessionDataProvider);
   return sessions.entries.firstWhere(
     (e) => e.value.any((e) => e.id == sessionId),

@@ -18,7 +18,7 @@ class FavoriteSessionIdsNotifier extends _$FavoriteSessionIdsNotifier {
   }
 
   Future<void> remove(String id) async {
-    await _updateFavoriteSessionIds(state.where((e) => e != id).toList());
+    await _updateFavoriteSessionIds([...state.where((e) => e != id)]);
   }
 
   Future<void> _updateFavoriteSessionIds(List<String> ids) async {
