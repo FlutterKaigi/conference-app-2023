@@ -78,6 +78,9 @@ final class LocalizationEn extends Localization {
   String get pageTitleLicense => 'License';
 
   @override
+  String get pageTitleProfile => 'Profile';
+
+  @override
   String get venueLocationMap => 'Location';
 
   @override
@@ -279,4 +282,19 @@ final class LocalizationEn extends Localization {
 
   @override
   String get lunchMapSortDesc => 'DESC';
+
+  @override
+  String get userName => 'Name';
+
+  @override
+  String get selfIntroductionUrl => 'Self-introduction URL';
+
+  @override
+  String get uploadImage => 'Upload image';
+
+  @override
+  String get uploadingImage => 'Uploading image...';
+
+  @override
+  String get uploadedImage => 'Image uploaded';
 }
