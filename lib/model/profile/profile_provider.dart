@@ -10,8 +10,6 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'profile_provider.g.dart';
 
-typedef ImageUploadFunction = Future<void> Function(Uint8List byteData);
-
 @riverpod
 class ProfileNotifier extends _$ProfileNotifier {
   String get _userNameKey => SharedPreferenceKey.userName.value;
