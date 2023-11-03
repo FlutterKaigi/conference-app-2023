@@ -6,7 +6,7 @@ part of 'firebase_storage.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$imageDownloadUrlHash() => r'6e29578d1ca623c6005f44f72b9da7d509b3c6e9';
+String _$imageDownloadUrlHash() => r'a80838addf12f1a174387e2f2f4e148f9a1a12c6';
 
 /// Copied from Dart SDK
 class _SystemHash {

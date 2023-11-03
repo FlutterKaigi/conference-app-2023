@@ -6,7 +6,23 @@ part of 'profile_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$profileImageUrlHash() => r'b17d1dd9c8ef498f1f9962d500711338b533c5b7';
+String _$storageUidIconPathHash() =>
+    r'c1dfff22275880e84377e4fa9d0afeaf2b8f1ea2';
+
+/// See also [storageUidIconPath].
+@ProviderFor(storageUidIconPath)
+final storageUidIconPathProvider = AutoDisposeFutureProvider<String>.internal(
+  storageUidIconPath,
+  name: r'storageUidIconPathProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$storageUidIconPathHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef StorageUidIconPathRef = AutoDisposeFutureProviderRef<String>;
+String _$profileImageUrlHash() => r'88d77b50ed0be4fc979287731c1ede6081a38db6';
 
 /// See also [profileImageUrl].
 @ProviderFor(profileImageUrl)

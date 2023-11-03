@@ -5,6 +5,9 @@ part 'firebase_storage.g.dart';
 
 @riverpod
 Future<String> imageDownloadUrl(ImageDownloadUrlRef ref, String path) async {
+  if (path.isEmpty) {
+    return '';
+  }
   final ref = FirebaseStorage.instance.ref(path);
   try {
     final url = await ref.getDownloadURL();

@@ -90,14 +90,12 @@ class _IconState extends ConsumerState<_Icon> {
           if (file == null) {
             return;
           }
-          var userIdOrNull = await ref.read(currentUserIdProvider.future);
-          if (userIdOrNull == null) {
-            final user =
-                await ref.read(firebaseAuthProvider).signInAnonymously();
-            userIdOrNull = user.user?.uid;
+          var path = await ref.read(storageUidIconPathProvider.future);
+          if (path.isEmpty) {
+            await ref.read(firebaseAuthProvider).signInAnonymously();
+            path = await ref.read(storageUidIconPathProvider.future);
           }
-          final userId = userIdOrNull;
-          if (userId == null) {
+          if (path.isEmpty) {
             return;
           }
           setState(() {
@@ -110,7 +108,6 @@ class _IconState extends ConsumerState<_Icon> {
             ),
           );
           final data = await file.readAsBytes();
-          final path = '/icons/$userId/icon.png';
           final imageRef = ref.read(imageReferenceProvider(path));
           await uploadImage(imageRef, data);
           setState(() {

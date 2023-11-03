@@ -61,12 +61,18 @@ class ProfileNotifier extends _$ProfileNotifier {
 }
 
 @riverpod
-Future<String> profileImageUrl(ProfileImageUrlRef ref) async {
+Future<String> storageUidIconPath(StorageUidIconPathRef ref) async {
   final id = await ref.watch(currentUserIdProvider.future);
-  if (id == null) {
+  if (id == null || id.isEmpty) {
     return '';
   }
-  final path = '/icons/$id/icon.png';
+
+  return '/icons/$id/icon.png';
+}
+
+@riverpod
+Future<String> profileImageUrl(ProfileImageUrlRef ref) async {
+  final path = await ref.watch(storageUidIconPathProvider.future);
   final url = await ref.watch(imageDownloadUrlProvider(path).future);
   return url;
 }
