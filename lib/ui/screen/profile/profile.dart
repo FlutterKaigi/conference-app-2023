@@ -177,8 +177,6 @@ class _Name extends ConsumerStatefulWidget {
 }
 
 class _NameState extends ConsumerState<_Name> {
-  bool _isEditing = false;
-
   @override
   Widget build(BuildContext context) {
     final name = ref.watch(
@@ -186,37 +184,11 @@ class _NameState extends ConsumerState<_Name> {
     );
     final localization = ref.watch(localizationProvider);
 
-    if (_isEditing || name.isEmpty) {
-      return _InputArea(
-        placeholder: localization.userName,
-        initialValue: name,
-        onCompleted: (value) {
-          setState(() {
-            _isEditing = false;
-          });
-          ref.read(profileNotifierProvider.notifier).updateName(value);
-        },
-      );
-    }
-
-    return InkWell(
-      onTap: () => setState(() {
-        _isEditing = true;
-      }),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 8,
-        ),
-        child: SizedBox(
-          width: double.infinity,
-          child: Text(
-            name,
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
-        ),
-      ),
+    return _ProfileDisplay(
+      text: name,
+      style: Theme.of(context).textTheme.headlineMedium,
+      placeholder: localization.userName,
+      onEditCompleted: ref.read(profileNotifierProvider.notifier).updateName,
     );
   }
 }
@@ -227,15 +199,76 @@ class _Website extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final websiteUrl = ref.watch(
-      profileNotifierProvider.select((value) => value.valueOrNull?.websiteUrl),
+      profileNotifierProvider
+          .select((value) => value.valueOrNull?.websiteUrl ?? ''),
     );
     final localization = ref.watch(localizationProvider);
-    return _InputArea(
-      placeholder: localization.selfIntroductionUrl,
-      initialValue: websiteUrl,
-      onCompleted: (value) =>
-          ref.read(profileNotifierProvider.notifier).updateWebsiteUrl(value),
+
+    return _ProfileDisplay(
+      text: websiteUrl,
       style: Theme.of(context).textTheme.bodyLarge,
+      placeholder: localization.selfIntroductionUrl,
+      onEditCompleted:
+          ref.read(profileNotifierProvider.notifier).updateWebsiteUrl,
+    );
+  }
+}
+
+class _ProfileDisplay extends StatefulWidget {
+  const _ProfileDisplay({
+    required this.text,
+    required this.style,
+    required this.placeholder,
+    required this.onEditCompleted,
+  });
+
+  final String text;
+  final TextStyle? style;
+  final String placeholder;
+  final void Function(String) onEditCompleted;
+
+  @override
+  State<_ProfileDisplay> createState() => __ProfileDisplayState();
+}
+
+class __ProfileDisplayState extends State<_ProfileDisplay> {
+  bool _isEditing = false;
+
+  @override
+  Widget build(BuildContext context) {
+    if (_isEditing || widget.text.isEmpty) {
+      return _InputArea(
+        placeholder: widget.placeholder,
+        initialValue: widget.text,
+        style: widget.style,
+        onCompleted: (value) {
+          setState(() {
+            _isEditing = false;
+          });
+          widget.onEditCompleted(value);
+        },
+      );
+    }
+
+    return InkWell(
+      onTap: () => setState(() {
+        _isEditing = true;
+      }),
+      borderRadius: BorderRadius.circular(40),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 8,
+        ),
+        child: SizedBox(
+          width: double.infinity,
+          child: Text(
+            widget.text,
+            textAlign: TextAlign.center,
+            style: widget.style,
+          ),
+        ),
+      ),
     );
   }
 }
@@ -281,7 +314,7 @@ class __InputAreaState extends State<_InputArea> {
     return TextField(
       controller: _controller,
       focusNode: _focusNode,
-      style: widget.style ?? Theme.of(context).textTheme.headlineMedium,
+      style: widget.style,
       maxLines: 1,
       textAlign: TextAlign.center,
       decoration: InputDecoration(
