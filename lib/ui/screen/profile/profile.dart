@@ -187,6 +187,7 @@ class _NameState extends ConsumerState<_Name> {
     return _ProfileDisplay(
       text: name,
       style: Theme.of(context).textTheme.headlineMedium,
+      tooltip: localization.editName,
       placeholder: localization.userName,
       onEditCompleted: ref.read(profileNotifierProvider.notifier).updateName,
     );
@@ -207,6 +208,7 @@ class _Website extends ConsumerWidget {
     return _ProfileDisplay(
       text: websiteUrl,
       style: Theme.of(context).textTheme.bodyLarge,
+      tooltip: localization.editUrl,
       placeholder: localization.selfIntroductionUrl,
       onEditCompleted:
           ref.read(profileNotifierProvider.notifier).updateWebsiteUrl,
@@ -218,12 +220,14 @@ class _ProfileDisplay extends StatefulWidget {
   const _ProfileDisplay({
     required this.text,
     required this.style,
+    required this.tooltip,
     required this.placeholder,
     required this.onEditCompleted,
   });
 
   final String text;
   final TextStyle? style;
+  final String tooltip;
   final String placeholder;
   final void Function(String) onEditCompleted;
 
@@ -251,22 +255,25 @@ class __ProfileDisplayState extends State<_ProfileDisplay> {
       );
     }
 
-    return InkWell(
-      onTap: () => setState(() {
-        _isEditing = true;
-      }),
-      borderRadius: BorderRadius.circular(40),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 8,
-        ),
-        child: SizedBox(
-          width: double.infinity,
-          child: Text(
-            widget.text,
-            textAlign: TextAlign.center,
-            style: widget.style,
+    return Tooltip(
+      message: widget.tooltip,
+      child: InkWell(
+        onTap: () => setState(() {
+          _isEditing = true;
+        }),
+        borderRadius: BorderRadius.circular(40),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 8,
+          ),
+          child: SizedBox(
+            width: double.infinity,
+            child: Text(
+              widget.text,
+              textAlign: TextAlign.center,
+              style: widget.style,
+            ),
           ),
         ),
       ),
