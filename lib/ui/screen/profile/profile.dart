@@ -179,9 +179,7 @@ class _Name extends ConsumerStatefulWidget {
 class _NameState extends ConsumerState<_Name> {
   @override
   Widget build(BuildContext context) {
-    final name = ref.watch(
-      profileNotifierProvider.select((value) => value.valueOrNull?.name ?? ''),
-    );
+    final name = ref.watch(userNameProvider);
     final localization = ref.watch(localizationProvider);
 
     return _ProfileDisplay(
@@ -189,7 +187,7 @@ class _NameState extends ConsumerState<_Name> {
       style: Theme.of(context).textTheme.headlineMedium,
       tooltip: localization.editName,
       placeholder: localization.userName,
-      onEditCompleted: ref.read(profileNotifierProvider.notifier).updateName,
+      onEditCompleted: ref.read(userNameProvider.notifier).update,
     );
   }
 }
@@ -199,10 +197,7 @@ class _Website extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final websiteUrl = ref.watch(
-      profileNotifierProvider
-          .select((value) => value.valueOrNull?.websiteUrl ?? ''),
-    );
+    final websiteUrl = ref.watch(websiteUrlProvider);
     final localization = ref.watch(localizationProvider);
 
     return _ProfileDisplay(
@@ -210,8 +205,7 @@ class _Website extends ConsumerWidget {
       style: Theme.of(context).textTheme.bodyLarge,
       tooltip: localization.editUrl,
       placeholder: localization.selfIntroductionUrl,
-      onEditCompleted:
-          ref.read(profileNotifierProvider.notifier).updateWebsiteUrl,
+      onEditCompleted: ref.read(websiteUrlProvider.notifier).update,
     );
   }
 }
