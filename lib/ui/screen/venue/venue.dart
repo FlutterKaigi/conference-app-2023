@@ -4,6 +4,7 @@ import 'package:conference_2023/ui/screen/venue/floor_map.dart';
 import 'package:conference_2023/ui/screen/venue/location_map.dart';
 import 'package:conference_2023/ui/screen/venue/lunch_map.dart';
 import 'package:conference_2023/ui/screen/venue/venue_dev_dummy.dart';
+import 'package:conference_2023/ui/widget/scroll_controller_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
@@ -27,6 +28,11 @@ class VenuePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = ref.watch(localizationProvider);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      ScrollControllerNotification(
+        controller: PrimaryScrollController.of(context),
+      ).dispatch(context);
+    });
 
     return Column(
       children: [

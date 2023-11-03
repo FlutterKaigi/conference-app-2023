@@ -12,6 +12,7 @@ class Developers extends ConsumerWidget {
 
     return switch (state) {
       AsyncData(value: final list) => ListView.builder(
+          primary: true,
           padding: const EdgeInsets.symmetric(
             vertical: 8,
           ),

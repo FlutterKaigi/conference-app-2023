@@ -1,5 +1,6 @@
 import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/ui/router/router_app.dart';
+import 'package:conference_2023/ui/widget/scroll_controller_notification.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:conference_2023/util/launch_in_external_app.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +12,14 @@ class LicensesPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = ref.watch(localizationProvider);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      ScrollControllerNotification(
+        controller: PrimaryScrollController.of(context),
+      ).dispatch(context);
+    });
 
     return ListView(
+      primary: true,
       children: [
         ListTile(
           contentPadding: EdgeInsets.symmetric(

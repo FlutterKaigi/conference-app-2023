@@ -2,6 +2,7 @@ import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/model/sessions/session.dart';
 import 'package:conference_2023/model/sessions/session_provider.dart';
 import 'package:conference_2023/ui/router/router_app.dart';
+import 'package:conference_2023/ui/widget/scroll_controller_notification.dart';
 import 'package:conference_2023/ui/widget/session_card.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +21,14 @@ class SessionsPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = ref.watch(localizationProvider);
     final sessions = ref.watch(sessionsProvider(room));
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      ScrollControllerNotification(
+        controller: PrimaryScrollController.of(context),
+      ).dispatch(context);
+    });
 
     return ListView(
+      primary: true,
       padding: EdgeInsets.symmetric(
         vertical: 16,
         horizontal: context.spacing,

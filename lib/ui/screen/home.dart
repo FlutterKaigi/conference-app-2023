@@ -1,5 +1,6 @@
 import 'package:conference_2023/gen/assets.gen.dart';
 import 'package:conference_2023/l10n/localization.dart';
+import 'package:conference_2023/ui/widget/scroll_controller_notification.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:conference_2023/util/launch_in_external_app.dart';
 import 'package:flutter/foundation.dart';
@@ -13,8 +14,14 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = ref.watch(localizationProvider);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      ScrollControllerNotification(
+        controller: PrimaryScrollController.of(context),
+      ).dispatch(context);
+    });
 
     final contents = SingleChildScrollView(
+      primary: true,
       padding: EdgeInsets.symmetric(
         vertical: 16,
         horizontal: context.spacing,

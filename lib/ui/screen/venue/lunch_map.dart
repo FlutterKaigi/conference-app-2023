@@ -16,6 +16,7 @@ class LunchMapPage extends ConsumerWidget {
     final storeList = ref.watch(sortedStoreListProvider);
 
     return TableView.builder(
+      primary: true,
       pinnedRowCount: 1,
       columnCount: 7,
       rowCount: storeList.items.length,

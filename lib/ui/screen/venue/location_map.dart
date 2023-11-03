@@ -14,6 +14,7 @@ class LocationMapPage extends StatelessWidget {
     const maxSize = 600.0;
 
     return SingleChildScrollView(
+      primary: true,
       padding: EdgeInsets.symmetric(
         vertical: 16,
         horizontal: context.spacing,
