@@ -169,16 +169,11 @@ class _IconImage extends StatelessWidget {
   }
 }
 
-class _Name extends ConsumerStatefulWidget {
+class _Name extends ConsumerWidget {
   const _Name();
 
   @override
-  ConsumerState<_Name> createState() => _NameState();
-}
-
-class _NameState extends ConsumerState<_Name> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final name = ref.watch(userNameProvider);
     final localization = ref.watch(localizationProvider);
 
