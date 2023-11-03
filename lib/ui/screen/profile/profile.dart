@@ -3,48 +3,61 @@ import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/model/firebase_auth.dart';
 import 'package:conference_2023/model/firebase_storage.dart';
 import 'package:conference_2023/model/profile/profile_provider.dart';
+import 'package:conference_2023/ui/widget/scroll_controller_notification.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          const Gap(32),
-          ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxWidth: 600,
-            ),
-            child: const FractionallySizedBox(
-              widthFactor: 0.5,
-              child: AspectRatio(
-                aspectRatio: 1,
-                child: _Icon(),
+    return VisibilityDetector(
+      key: const Key('ProfilePage'),
+      onVisibilityChanged: (info) {
+        if (info.visibleFraction == 1) {
+          ScrollControllerNotification(
+            controller: PrimaryScrollController.of(context),
+          ).dispatch(context);
+        }
+      },
+      child: SingleChildScrollView(
+        primary: true,
+        child: Column(
+          children: [
+            const Gap(32),
+            ConstrainedBox(
+              constraints: const BoxConstraints(
+                maxWidth: 600,
+              ),
+              child: const FractionallySizedBox(
+                widthFactor: 0.5,
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: _Icon(),
+                ),
               ),
             ),
-          ),
-          const Gap(32),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: context.spacing,
+            const Gap(32),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: context.spacing,
+              ),
+              child: const _Name(),
             ),
-            child: const _Name(),
-          ),
-          const Gap(32),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: context.spacing,
+            const Gap(32),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: context.spacing,
+              ),
+              child: const _Website(),
             ),
-            child: const _Website(),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

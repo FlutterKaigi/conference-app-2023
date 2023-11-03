@@ -6,6 +6,7 @@ import 'package:conference_2023/ui/widget/scroll_controller_notification.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 enum ContributorsTab {
   developer,
@@ -68,40 +69,45 @@ class _ContributorsPageState extends ConsumerState<ContributorsPage>
         ),
       ),
     );
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      ScrollControllerNotification(
-        controller: PrimaryScrollController.of(context),
-      ).dispatch(context);
-    });
 
     return Theme(
       data: contributorsPageTheme,
-      child: Column(
-        children: [
-          Material(
-            color: currentTheme.colorScheme.surface,
-            child: TabBar(
-              controller: _tabController,
-              tabs: [
-                Tab(
-                  text: localizations.contributorsDeveloper,
-                ),
-                Tab(
-                  text: localizations.contributorsStaff,
-                ),
-              ],
+      child: VisibilityDetector(
+        key: const Key('ContributorsPage'),
+        onVisibilityChanged: (info) {
+          if (info.visibleFraction == 1) {
+            ScrollControllerNotification(
+              controller: PrimaryScrollController.of(context),
+            ).dispatch(context);
+          }
+        },
+        child: Column(
+          children: [
+            Material(
+              color: currentTheme.colorScheme.surface,
+              child: TabBar(
+                controller: _tabController,
+                tabs: [
+                  Tab(
+                    text: localizations.contributorsDeveloper,
+                  ),
+                  Tab(
+                    text: localizations.contributorsStaff,
+                  ),
+                ],
+              ),
             ),
-          ),
-          Expanded(
-            child: TabBarView(
-              controller: _tabController,
-              children: const [
-                Developers(),
-                Staffs(),
-              ],
+            Expanded(
+              child: TabBarView(
+                controller: _tabController,
+                children: const [
+                  Developers(),
+                  Staffs(),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
