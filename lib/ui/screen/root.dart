@@ -20,20 +20,12 @@ class RootScreen extends ConsumerWidget {
   final StatefulNavigationShell navigationShell;
   final List<Widget> children;
 
-  RootTab _getCurrentTab(BuildContext context) {
-    final location = GoRouterState.of(context).uri;
-    return RootTab.values.firstWhere(
-      (element) => location.pathSegments.firstOrNull == element.path,
-      orElse: () => RootTab.home,
-    );
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = ref.watch(localizationProvider);
 
     final screenSize = context.screenSize;
-    final currentTab = _getCurrentTab(context);
+    final currentTab = RootTab.current(context);
 
     return Scaffold(
       appBar: AppBar(

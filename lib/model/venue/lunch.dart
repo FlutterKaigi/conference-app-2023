@@ -56,5 +56,4 @@ enum StoreSortOption {
   byId,
   asc,
   desc,
-  ;
 }

@@ -1,6 +1,7 @@
 import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/ui/router/router_app.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 enum RootTab {
   home(HomeRoute.path),
@@ -16,6 +17,14 @@ enum RootTab {
   const RootTab(this.path);
 
   final String path;
+
+  static RootTab current(BuildContext context) {
+    final location = GoRouterState.of(context).uri;
+    return RootTab.values.firstWhere(
+      (element) => location.pathSegments.firstOrNull == element.path,
+      orElse: () => RootTab.home,
+    );
+  }
 }
 
 extension RootTabExt on RootTab {
