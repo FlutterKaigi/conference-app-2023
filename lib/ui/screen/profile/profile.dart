@@ -290,7 +290,7 @@ class _InputArea extends StatefulWidget {
 }
 
 class __InputAreaState extends State<_InputArea> {
-  late final TextEditingController _controller = TextEditingController(
+  final _controller = TextEditingController(
     text: widget.initialValue,
   );
   final _focusNode = FocusNode();
