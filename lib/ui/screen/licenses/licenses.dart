@@ -5,7 +5,6 @@ import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:conference_2023/util/launch_in_external_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:visibility_detector/visibility_detector.dart';
 
 class LicensesPage extends ConsumerWidget {
   const LicensesPage({super.key});
@@ -14,15 +13,8 @@ class LicensesPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = ref.watch(localizationProvider);
 
-    return VisibilityDetector(
-      key: const Key('LicensesPage'),
-      onVisibilityChanged: (info) {
-        if (info.visibleFraction == 1) {
-          ScrollControllerNotification(
-            controller: PrimaryScrollController.of(context),
-          ).dispatch(context);
-        }
-      },
+    return VisibleDetectScrollControllerNotifier(
+      visibleDetectorKey: const Key('LicensesPage'),
       child: ListView(
         primary: true,
         children: [

@@ -6,7 +6,6 @@ import 'package:conference_2023/ui/widget/scroll_controller_notification.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:visibility_detector/visibility_detector.dart';
 
 enum ContributorsTab {
   developer,
@@ -72,15 +71,8 @@ class _ContributorsPageState extends ConsumerState<ContributorsPage>
 
     return Theme(
       data: contributorsPageTheme,
-      child: VisibilityDetector(
-        key: const Key('ContributorsPage'),
-        onVisibilityChanged: (info) {
-          if (info.visibleFraction == 1) {
-            ScrollControllerNotification(
-              controller: PrimaryScrollController.of(context),
-            ).dispatch(context);
-          }
-        },
+      child: VisibleDetectScrollControllerNotifier(
+        visibleDetectorKey: const Key('ContributorsPage'),
         child: Column(
           children: [
             Material(

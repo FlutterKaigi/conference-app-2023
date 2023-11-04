@@ -7,7 +7,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:visibility_detector/visibility_detector.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
@@ -16,15 +15,8 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = ref.watch(localizationProvider);
 
-    final contents = VisibilityDetector(
-      key: const Key('HomePage'),
-      onVisibilityChanged: (info) {
-        if (info.visibleFraction == 1) {
-          ScrollControllerNotification(
-            controller: PrimaryScrollController.of(context),
-          ).dispatch(context);
-        }
-      },
+    final contents = VisibleDetectScrollControllerNotifier(
+      visibleDetectorKey: const Key('HomePage'),
       child: SingleChildScrollView(
         primary: true,
         padding: EdgeInsets.symmetric(

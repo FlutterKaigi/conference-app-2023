@@ -9,7 +9,6 @@ import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:visibility_detector/visibility_detector.dart';
 
 class SponsorsPage extends ConsumerWidget {
   const SponsorsPage({super.key});
@@ -19,15 +18,8 @@ class SponsorsPage extends ConsumerWidget {
     final localizations = ref.watch(localizationProvider);
     final state = ref.watch(sponsorListProvider);
 
-    return VisibilityDetector(
-      key: const Key('SponsorsPage'),
-      onVisibilityChanged: (info) {
-        if (info.visibleFraction == 1) {
-          ScrollControllerNotification(
-            controller: PrimaryScrollController.of(context),
-          ).dispatch(context);
-        }
-      },
+    return VisibleDetectScrollControllerNotifier(
+      visibleDetectorKey: const Key('SponsorsPage'),
       child: LayoutBuilder(
         builder: (context, constraints) {
           final spacing =

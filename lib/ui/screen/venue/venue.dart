@@ -8,7 +8,6 @@ import 'package:conference_2023/ui/widget/scroll_controller_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:visibility_detector/visibility_detector.dart';
 
 enum VenueTab {
   floor,
@@ -30,15 +29,8 @@ class VenuePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = ref.watch(localizationProvider);
 
-    return VisibilityDetector(
-      key: const Key('VenuePage'),
-      onVisibilityChanged: (info) {
-        if (info.visibleFraction == 1) {
-          ScrollControllerNotification(
-            controller: PrimaryScrollController.of(context),
-          ).dispatch(context);
-        }
-      },
+    return VisibleDetectScrollControllerNotifier(
+      visibleDetectorKey: const Key('VenuePage'),
       child: Column(
         children: [
           const Gap(16),

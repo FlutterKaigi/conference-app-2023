@@ -5,7 +5,6 @@ import 'package:conference_2023/ui/widget/session_card.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:visibility_detector/visibility_detector.dart';
 
 class FavoritesPage extends ConsumerWidget {
   const FavoritesPage({super.key});
@@ -21,15 +20,8 @@ class FavoritesPage extends ConsumerWidget {
       );
     }
 
-    return VisibilityDetector(
-      key: const Key('FavoritesPage'),
-      onVisibilityChanged: (info) {
-        if (info.visibleFraction == 1) {
-          ScrollControllerNotification(
-            controller: PrimaryScrollController.of(context),
-          ).dispatch(context);
-        }
-      },
+    return VisibleDetectScrollControllerNotifier(
+      visibleDetectorKey: const Key('FavoritesPage'),
       child: ListView.builder(
         primary: true,
         padding: EdgeInsets.symmetric(

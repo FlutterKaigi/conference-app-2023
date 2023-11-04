@@ -9,22 +9,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:visibility_detector/visibility_detector.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return VisibilityDetector(
-      key: const Key('ProfilePage'),
-      onVisibilityChanged: (info) {
-        if (info.visibleFraction == 1) {
-          ScrollControllerNotification(
-            controller: PrimaryScrollController.of(context),
-          ).dispatch(context);
-        }
-      },
+    return VisibleDetectScrollControllerNotifier(
+      visibleDetectorKey: const Key('ProfilePage'),
       child: SingleChildScrollView(
         primary: true,
         child: Column(

@@ -7,7 +7,6 @@ import 'package:conference_2023/ui/widget/scroll_controller_notification.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:visibility_detector/visibility_detector.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -23,23 +22,10 @@ class SettingsPage extends StatelessWidget {
       ),
     );
 
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      ScrollControllerNotification(
-        controller: PrimaryScrollController.of(context),
-      ).dispatch(context);
-    });
-
     return Theme(
       data: settingsPageTheme,
-      child: VisibilityDetector(
-        key: const Key('SettingsPage'),
-        onVisibilityChanged: (info) {
-          if (info.visibleFraction == 1) {
-            ScrollControllerNotification(
-              controller: PrimaryScrollController.of(context),
-            ).dispatch(context);
-          }
-        },
+      child: VisibleDetectScrollControllerNotifier(
+        visibleDetectorKey: const Key('SettingsPage'),
         child: ListView(
           primary: true,
           children: const [

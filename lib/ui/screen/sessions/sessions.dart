@@ -8,7 +8,6 @@ import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:visibility_detector/visibility_detector.dart';
 
 class SessionsPage extends ConsumerWidget {
   const SessionsPage({
@@ -23,15 +22,8 @@ class SessionsPage extends ConsumerWidget {
     final localization = ref.watch(localizationProvider);
     final sessions = ref.watch(sessionsProvider(room));
 
-    return VisibilityDetector(
-      key: const Key('SessionsPage'),
-      onVisibilityChanged: (info) {
-        if (info.visibleFraction == 1) {
-          ScrollControllerNotification(
-            controller: PrimaryScrollController.of(context),
-          ).dispatch(context);
-        }
-      },
+    return VisibleDetectScrollControllerNotifier(
+      visibleDetectorKey: const Key('SessionsPage'),
       child: ListView(
         primary: true,
         padding: EdgeInsets.symmetric(
