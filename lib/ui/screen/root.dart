@@ -29,18 +29,6 @@ class _RootScreenState extends ConsumerState<RootScreen> {
   ScrollController? _primaryScrollController;
 
   @override
-  void initState() {
-    _primaryScrollController = ScrollController();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _primaryScrollController?.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final localization = ref.watch(localizationProvider);
 
