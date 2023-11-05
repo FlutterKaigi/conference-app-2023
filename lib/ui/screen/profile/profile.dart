@@ -9,6 +9,7 @@ import 'package:conference_2023/model/profile/profile_provider.dart';
 import 'package:conference_2023/ui/router/router_app.dart';
 import 'package:conference_2023/ui/widget/visible_detect_scroll_controller_notifier.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
@@ -21,6 +22,10 @@ class ProfilePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = ref.watch(localizationProvider);
+    final canShowQrCode = switch (defaultTargetPlatform) {
+      TargetPlatform.android || TargetPlatform.iOS => true,
+      _ => false,
+    };
     return VisibleDetectScrollControllerNotifier(
       visibleDetectorKey: const Key('ProfilePage'),
       child: SingleChildScrollView(
@@ -44,13 +49,14 @@ class ProfilePage extends ConsumerWidget {
                       ),
                     ),
                   ),
-                  const Positioned(
-                    bottom: 0,
-                    right: 0,
-                    width: 72,
-                    height: 72,
-                    child: _QrCode(),
-                  ),
+                  if (canShowQrCode)
+                    const Positioned(
+                      bottom: 0,
+                      right: 0,
+                      width: 72,
+                      height: 72,
+                      child: _QrCode(),
+                    ),
                 ],
               ),
             ),
@@ -68,30 +74,32 @@ class ProfilePage extends ConsumerWidget {
               ),
               child: const _Website(),
             ),
-            const Gap(60),
-            const Divider(),
-            const Gap(16),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: context.spacing,
+            if (canShowQrCode) ...[
+              const Gap(60),
+              const Divider(),
+              const Gap(16),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: context.spacing,
+                ),
+                child: Text(
+                  localization.meetUpWithOthers,
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
               ),
-              child: Text(
-                localization.meetUpWithOthers,
-                style: Theme.of(context).textTheme.bodyLarge,
+              const Gap(16),
+              ListTile(
+                leading: const Icon(Icons.camera_alt_outlined),
+                title: Text(localization.scanProfileCode),
+                onTap: () async {
+                  final result =
+                      await const ScanCodeRoute().push<Profile>(context);
+                  if (result == null) {
+                    return;
+                  }
+                },
               ),
-            ),
-            const Gap(16),
-            ListTile(
-              leading: const Icon(Icons.camera_alt_outlined),
-              title: Text(localization.scanProfileCode),
-              onTap: () async {
-                final result =
-                    await const ScanCodeRoute().push<Profile>(context);
-                if (result == null) {
-                  return;
-                }
-              },
-            ),
+            ],
           ],
         ),
       ),
