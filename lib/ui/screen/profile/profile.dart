@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/model/firebase_auth.dart';
@@ -11,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:pretty_qr_code/pretty_qr_code.dart';
 
 class ProfilePage extends ConsumerWidget {
   const ProfilePage({super.key});
@@ -27,17 +30,28 @@ class ProfilePage extends ConsumerWidget {
           children: [
             const Gap(32),
             Center(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(
-                  maxWidth: 600,
-                ),
-                child: const FractionallySizedBox(
-                  widthFactor: 0.5,
-                  child: AspectRatio(
-                    aspectRatio: 1,
-                    child: _Icon(),
+              child: Stack(
+                children: [
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      maxWidth: 600,
+                    ),
+                    child: const FractionallySizedBox(
+                      widthFactor: 0.5,
+                      child: AspectRatio(
+                        aspectRatio: 1,
+                        child: _Icon(),
+                      ),
+                    ),
                   ),
-                ),
+                  const Positioned(
+                    bottom: 0,
+                    right: 0,
+                    width: 72,
+                    height: 72,
+                    child: _QrCode(),
+                  ),
+                ],
               ),
             ),
             const Gap(32),
@@ -200,6 +214,46 @@ class _IconImage extends StatelessWidget {
         child: CircularProgressIndicator.adaptive(),
       ),
       errorWidget: (context, _, __) => const Icon(Icons.error),
+    );
+  }
+}
+
+class _QrCode extends ConsumerWidget {
+  const _QrCode();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final id = ref.watch(currentUserIdProvider).valueOrNull;
+    final name = ref.watch(userNameProvider);
+    final url = ref.watch(websiteUrlProvider);
+
+    if (id == null) {
+      return const SizedBox.shrink();
+    }
+
+    final profile = Profile(
+      id: id,
+      name: name,
+      websiteUrl: url,
+    );
+    return Container(
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.outline,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: Theme.of(context).colorScheme.outline,
+          width: 4,
+        ),
+      ),
+      child: PrettyQrView.data(
+        data: jsonEncode(profile.toJson()),
+        decoration: PrettyQrDecoration(
+          shape: PrettyQrRoundedSymbol(
+            color: Theme.of(context).colorScheme.onSecondary,
+          ),
+        ),
+      ),
     );
   }
 }

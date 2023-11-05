@@ -49,6 +49,7 @@ dependencies:
   google_static_maps_controller: ^1.0.0
   image_picker: ^1.0.0
   permission_handler: ^11.0.0
+  pretty_qr_code: ^3.0.0
   shared_preferences: ^2.0.0
   two_dimensional_scrollables: ^0.0.1
   url_launcher: ^6.0.0
