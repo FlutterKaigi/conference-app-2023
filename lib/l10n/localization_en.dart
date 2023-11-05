@@ -127,6 +127,12 @@ final class LocalizationEn extends Localization {
   String get favoritesRemoveTooltip => 'Remove from favorites';
 
   @override
+  String get shareX => 'Share with X';
+
+  @override
+  String get shareCalendar => 'Add to Calendar';
+
+  @override
   String get contributorsDeveloper => 'Developer';
 
   @override

@@ -126,6 +126,12 @@ final class LocalizationJa extends Localization {
   String get favoritesRemoveTooltip => 'お気に入りから削除する';
 
   @override
+  String get shareX => 'Xで共有';
+
+  @override
+  String get shareCalendar => 'カレンダーへ登録';
+
+  @override
   String get contributorsDeveloper => '開発者';
 
   @override

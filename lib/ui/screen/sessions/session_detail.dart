@@ -114,13 +114,13 @@ class SessionDetailPage extends ConsumerWidget {
               }
             },
             itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-              const PopupMenuItem<String>(
+              PopupMenuItem<String>(
                 value: 'share_x',
-                child: Text('Xで共有'),
+                child: Text(localization.shareX),
               ),
-              const PopupMenuItem<String>(
+              PopupMenuItem<String>(
                 value: 'add_calendar',
-                child: Text('カレンダー登録'),
+                child: Text(localization.shareCalendar),
               ),
             ],
             icon: const Icon(Icons.share),

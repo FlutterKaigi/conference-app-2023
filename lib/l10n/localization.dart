@@ -110,6 +110,10 @@ abstract base class Localization {
 
   String get favoritesRemoveTooltip;
 
+  String get shareX;
+
+  String get shareCalendar;
+
   String get contributorsDeveloper;
 
   String get contributorsStaff;
