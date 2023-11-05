@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:conference_2023/gen/assets.gen.dart';
 import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/model/app_locale.dart';
@@ -6,6 +9,7 @@ import 'package:conference_2023/model/sessions/session.dart';
 import 'package:conference_2023/model/sessions/session_provider.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:conference_2023/util/launch_in_external_app.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -41,6 +45,16 @@ class SessionDetailPage extends ConsumerWidget {
         (favoriteSessionIds) => favoriteSessionIds.contains(sessionId),
       ),
     );
+    Event createIosEvent() {
+      return Event(
+        title: session.title.get(locale),
+        description: description?.get(locale) ?? '',
+        location: room.alias,
+        startDate: session.start,
+        endDate: session.end,
+        iosParams: const IOSParams(reminder: Duration(minutes: 10)),
+      );
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -73,6 +87,9 @@ class SessionDetailPage extends ConsumerWidget {
                   await launchInExternalApp(uri);
                   break;
                 case 'add_calendar':
+                  if (!kIsWeb && Platform.isIOS) {
+                    await Add2Calendar.addEvent2Cal(createIosEvent());
+                  }
                   break;
               }
             },
