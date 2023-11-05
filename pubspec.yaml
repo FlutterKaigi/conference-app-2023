@@ -39,18 +39,19 @@ dependencies:
   cached_network_image: ^3.0.0
   collection: ^1.0.0
   dynamic_color: ^1.0.0
-  gap: ^3.0.0
-  google_fonts: ^6.0.0
-  google_static_maps_controller: ^1.0.0
   flutter_linkify: ^6.0.0
   flutter_local_notifications: ^16.0.0
   flutter_markdown: ^0.6.0
   flutter_svg: ^2.0.0
+  gap: ^3.0.0
+  google_fonts: ^6.0.0
+  google_static_maps_controller: ^1.0.0
   image_picker: ^1.0.0
   permission_handler: ^11.0.0
   shared_preferences: ^2.0.0
   two_dimensional_scrollables: ^0.0.1
   url_launcher: ^6.0.0
+  visibility_detector: ^0.4.0
 
   accessibility_tools: ^1.0.0
 

@@ -2,6 +2,7 @@ import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/ui/router/router_app.dart';
 import 'package:conference_2023/ui/screen/contributors/developers.dart';
 import 'package:conference_2023/ui/screen/contributors/staffs.dart';
+import 'package:conference_2023/ui/widget/visible_detect_scroll_controller_notifier.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -70,32 +71,35 @@ class _ContributorsPageState extends ConsumerState<ContributorsPage>
 
     return Theme(
       data: contributorsPageTheme,
-      child: Column(
-        children: [
-          Material(
-            color: currentTheme.colorScheme.surface,
-            child: TabBar(
-              controller: _tabController,
-              tabs: [
-                Tab(
-                  text: localizations.contributorsDeveloper,
-                ),
-                Tab(
-                  text: localizations.contributorsStaff,
-                ),
-              ],
+      child: VisibleDetectScrollControllerNotifier(
+        visibleDetectorKey: const Key('ContributorsPage'),
+        child: Column(
+          children: [
+            Material(
+              color: currentTheme.colorScheme.surface,
+              child: TabBar(
+                controller: _tabController,
+                tabs: [
+                  Tab(
+                    text: localizations.contributorsDeveloper,
+                  ),
+                  Tab(
+                    text: localizations.contributorsStaff,
+                  ),
+                ],
+              ),
             ),
-          ),
-          Expanded(
-            child: TabBarView(
-              controller: _tabController,
-              children: const [
-                Developers(),
-                Staffs(),
-              ],
+            Expanded(
+              child: TabBarView(
+                controller: _tabController,
+                children: const [
+                  Developers(),
+                  Staffs(),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

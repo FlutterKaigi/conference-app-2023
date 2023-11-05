@@ -3,6 +3,7 @@ import 'package:conference_2023/model/sessions/session.dart';
 import 'package:conference_2023/model/sessions/session_provider.dart';
 import 'package:conference_2023/ui/router/router_app.dart';
 import 'package:conference_2023/ui/widget/session_card.dart';
+import 'package:conference_2023/ui/widget/visible_detect_scroll_controller_notifier.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,43 +22,47 @@ class SessionsPage extends ConsumerWidget {
     final localization = ref.watch(localizationProvider);
     final sessions = ref.watch(sessionsProvider(room));
 
-    return ListView(
-      padding: EdgeInsets.symmetric(
-        vertical: 16,
-        horizontal: context.spacing,
-      ),
-      children: [
-        Container(
-          alignment: Alignment.center,
-          child: SegmentedButton<Room>(
-            showSelectedIcon: false,
-            segments: [
-              ButtonSegment(
-                value: Room.room1,
-                label: Text(Room.room1.alias),
-                tooltip: localization.roomOne,
-              ),
-              ButtonSegment(
-                value: Room.room2,
-                label: Text(Room.room2.alias),
-                tooltip: localization.roomTwo,
-              ),
-            ],
-            onSelectionChanged: (rooms) {
-              if (rooms.isEmpty) return;
-              SessionsRoute(
-                room: rooms.first,
-              ).go(context);
-            },
-            selected: {room},
-          ),
+    return VisibleDetectScrollControllerNotifier(
+      visibleDetectorKey: const Key('SessionsPage'),
+      child: ListView(
+        primary: true,
+        padding: EdgeInsets.symmetric(
+          vertical: 16,
+          horizontal: context.spacing,
         ),
-        const Gap(16),
-        for (final session in sessions)
-          _SessionSection(
-            session: session,
+        children: [
+          Container(
+            alignment: Alignment.center,
+            child: SegmentedButton<Room>(
+              showSelectedIcon: false,
+              segments: [
+                ButtonSegment(
+                  value: Room.room1,
+                  label: Text(Room.room1.alias),
+                  tooltip: localization.roomOne,
+                ),
+                ButtonSegment(
+                  value: Room.room2,
+                  label: Text(Room.room2.alias),
+                  tooltip: localization.roomTwo,
+                ),
+              ],
+              onSelectionChanged: (rooms) {
+                if (rooms.isEmpty) return;
+                SessionsRoute(
+                  room: rooms.first,
+                ).go(context);
+              },
+              selected: {room},
+            ),
           ),
-      ],
+          const Gap(16),
+          for (final session in sessions)
+            _SessionSection(
+              session: session,
+            ),
+        ],
+      ),
     );
   }
 }

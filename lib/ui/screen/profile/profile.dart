@@ -3,6 +3,7 @@ import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/model/firebase_auth.dart';
 import 'package:conference_2023/model/firebase_storage.dart';
 import 'package:conference_2023/model/profile/profile_provider.dart';
+import 'package:conference_2023/ui/widget/visible_detect_scroll_controller_notifier.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,37 +15,41 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          const Gap(32),
-          ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxWidth: 600,
-            ),
-            child: const FractionallySizedBox(
-              widthFactor: 0.5,
-              child: AspectRatio(
-                aspectRatio: 1,
-                child: _Icon(),
+    return VisibleDetectScrollControllerNotifier(
+      visibleDetectorKey: const Key('ProfilePage'),
+      child: SingleChildScrollView(
+        primary: true,
+        child: Column(
+          children: [
+            const Gap(32),
+            ConstrainedBox(
+              constraints: const BoxConstraints(
+                maxWidth: 600,
+              ),
+              child: const FractionallySizedBox(
+                widthFactor: 0.5,
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: _Icon(),
+                ),
               ),
             ),
-          ),
-          const Gap(32),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: context.spacing,
+            const Gap(32),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: context.spacing,
+              ),
+              child: const _Name(),
             ),
-            child: const _Name(),
-          ),
-          const Gap(32),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: context.spacing,
+            const Gap(32),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: context.spacing,
+              ),
+              child: const _Website(),
             ),
-            child: const _Website(),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -290,7 +295,7 @@ class _InputArea extends StatefulWidget {
 }
 
 class __InputAreaState extends State<_InputArea> {
-  final _controller = TextEditingController(
+  late final TextEditingController _controller = TextEditingController(
     text: widget.initialValue,
   );
   final _focusNode = FocusNode();
