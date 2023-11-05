@@ -25,7 +25,7 @@ Uri? questionnaireUrl(
     return Uri.parse(questionnaire.link);
   } on FormatException {
     ref.read(firebaseCrashlyticsProvider).recordError(
-          Exception('Questionnaire URL is invalid.'),
+          Exception('Questionnaire url is invalid. url=${questionnaire.link}'),
           StackTrace.current,
         );
   }
