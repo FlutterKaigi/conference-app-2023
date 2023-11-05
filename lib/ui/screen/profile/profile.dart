@@ -2,7 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/model/firebase_auth.dart';
 import 'package:conference_2023/model/firebase_storage.dart';
+import 'package:conference_2023/model/profile/profile.dart';
 import 'package:conference_2023/model/profile/profile_provider.dart';
+import 'package:conference_2023/ui/router/router_app.dart';
 import 'package:conference_2023/ui/widget/visible_detect_scroll_controller_notifier.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
@@ -68,7 +70,13 @@ class ProfilePage extends ConsumerWidget {
             ListTile(
               leading: const Icon(Icons.camera_alt_outlined),
               title: Text(localization.scanProfileCode),
-              onTap: () {},
+              onTap: () async {
+                final result =
+                    await const ScanCodeRoute().push<Profile>(context);
+                if (result == null) {
+                  return;
+                }
+              },
             ),
           ],
         ),

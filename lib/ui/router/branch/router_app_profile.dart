@@ -14,3 +14,16 @@ class ProfileRoute extends GoRouteData {
     return const ProfilePage();
   }
 }
+
+class ScanCodeRoute extends GoRouteData {
+  const ScanCodeRoute();
+
+  static const path = 'scan-code';
+
+  static final $parentNavigatorKey = rootNavigatorKey;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const ScanCodePage();
+  }
+}

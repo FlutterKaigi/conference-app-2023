@@ -54,6 +54,13 @@ RouteBase get $rootRoute => StatefulShellRouteData.$route(
             GoRouteData.$route(
               path: '/profile',
               factory: $ProfileRouteExtension._fromState,
+              routes: [
+                GoRouteData.$route(
+                  path: 'scan-code',
+                  parentNavigatorKey: ScanCodeRoute.$parentNavigatorKey,
+                  factory: $ScanCodeRouteExtension._fromState,
+                ),
+              ],
             ),
           ],
         ),
@@ -219,6 +226,23 @@ extension $ProfileRouteExtension on ProfileRoute {
 
   String get location => GoRouteData.$location(
         '/profile',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $ScanCodeRouteExtension on ScanCodeRoute {
+  static ScanCodeRoute _fromState(GoRouterState state) => const ScanCodeRoute();
+
+  String get location => GoRouteData.$location(
+        '/profile/scan-code',
       );
 
   void go(BuildContext context) => context.go(location);
