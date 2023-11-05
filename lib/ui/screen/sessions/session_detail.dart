@@ -46,10 +46,12 @@ class SessionDetailPage extends ConsumerWidget {
         (favoriteSessionIds) => favoriteSessionIds.contains(sessionId),
       ),
     );
+    final speakerAndDescription =
+        '${speaker?.name}\n\n${description?.get(locale) ?? ''}';
     Event createIosEvent() {
       return Event(
         title: session.title.get(locale),
-        description: description?.get(locale) ?? '',
+        description: speakerAndDescription,
         location: room.alias,
         startDate: session.start,
         endDate: session.end,
@@ -59,7 +61,7 @@ class SessionDetailPage extends ConsumerWidget {
 
     Uri createGoogleCalendarUrl() {
       final title = Uri.encodeComponent(session.title.get(locale));
-      final details = Uri.encodeComponent(description?.get(locale) ?? '');
+      final details = Uri.encodeComponent(speakerAndDescription);
       final roomAlias = Uri.encodeComponent(room.alias);
       final start = session.start;
       final end = session.end;
