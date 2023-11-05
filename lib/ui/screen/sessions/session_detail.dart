@@ -63,21 +63,24 @@ class SessionDetailPage extends ConsumerWidget {
                       .add(sessionId);
             },
           ),
-          IconButton(
-            icon: Assets.svg.xLogo.svg(
-              width: 18,
-              colorFilter: ColorFilter.mode(
-                Theme.of(context).colorScheme.onSurface,
-                BlendMode.srcIn,
-              ),
-            ),
-            tooltip: localization.tweetTooltip,
-            onPressed: () async {
-              final uri = Uri.parse(
-                'https://twitter.com/share?url=https://flutterkaigi.jp/2023/sessions/$sessionId&hashtags=flutterkaigi&via=FlutterKaigi',
-              );
-              await launchInExternalApp(uri);
+          PopupMenuButton<String>(
+            onSelected: (String value) async {
+              switch (value) {
+                case 'share_x':
+                  final uri = Uri.parse(
+                    'https://twitter.com/share?url=https://flutterkaigi.jp/2023/sessions/$sessionId&hashtags=flutterkaigi&via=FlutterKaigi',
+                  );
+                  await launchInExternalApp(uri);
+                  break;
+              }
             },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+              const PopupMenuItem<String>(
+                value: 'share_x',
+                child: Text('Xで共有'),
+              ),
+            ],
+            icon: const Icon(Icons.share),
           ),
         ],
       ),
