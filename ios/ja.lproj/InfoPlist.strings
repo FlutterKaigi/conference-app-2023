@@ -1,1 +1,2 @@
 "NSPhotoLibraryUsageDescription" = "プロフィールのアイコン画像をアップロードするためにフォトライブラリを使用します。";
+"NSCameraUsageDescription" = "プロフィールのQRコードを読み込むためにカメラを使用します。";

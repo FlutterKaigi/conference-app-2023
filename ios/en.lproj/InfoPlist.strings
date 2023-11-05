@@ -1,1 +1,2 @@
 "NSPhotoLibraryUsageDescription" = "Uses photo library to upload profile icon image.";
+"NSCameraUsageDescription" = "Uses camera to scan profile QR code.";
