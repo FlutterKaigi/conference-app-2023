@@ -4,6 +4,7 @@ import 'package:conference_2023/ui/screen/root_drawer.dart';
 import 'package:conference_2023/ui/screen/root_navigation_bar.dart';
 import 'package:conference_2023/ui/screen/root_navigation_rail.dart';
 import 'package:conference_2023/ui/screen/root_tab.dart';
+import 'package:conference_2023/ui/widget/session_questionnaire_fab.dart';
 import 'package:conference_2023/ui/widget/visible_detect_scroll_controller_notifier.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:conference_2023/util/screen_size.dart';
@@ -129,6 +130,10 @@ class _RootScreenState extends ConsumerState<RootScreen> {
                 navigationShell: widget.navigationShell,
               ),
             _ => null,
+          },
+          floatingActionButton: switch (currentTab) {
+            RootTab.home || RootTab.sessions => const SessionQuestionnaireFab(),
+            _ => const SizedBox.shrink(),
           },
         ),
       ),

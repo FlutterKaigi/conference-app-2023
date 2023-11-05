@@ -54,6 +54,12 @@ final class LocalizationJa extends Localization {
   String get discordTooltip => 'Discordを開く';
 
   @override
+  String get sessionQuestionnaire => 'アンケート';
+
+  @override
+  String get sessionQuestionnaireTooltip => 'セッションアンケートを開く';
+
+  @override
   String get pageTitleHome => 'ホーム';
 
   @override
