@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:intl/intl.dart';
 
 class SessionDetailPage extends ConsumerWidget {
   const SessionDetailPage({
@@ -56,6 +57,23 @@ class SessionDetailPage extends ConsumerWidget {
       );
     }
 
+    Uri createGoogleCalendarUrl() {
+      final title = Uri.encodeComponent(session.title.get(locale));
+      final details = Uri.encodeComponent(description?.get(locale) ?? '');
+      final roomAlias = Uri.encodeComponent(room.alias);
+      final start = session.start;
+      final end = session.end;
+      var urlBuffer = StringBuffer()
+        ..write('https://www.google.com/calendar/render?action=TEMPLATE&')
+        ..write('text=$title&')
+        ..write('details=$details&')
+        ..write('location=$roomAlias&')
+        ..write('dates=')
+        ..write('${DateFormat("yyyyMMdd'T'HHmmss'Z'").format(start.toUtc())}/')
+        ..write(DateFormat("yyyyMMdd'T'HHmmss'Z'").format(end.toUtc()));
+      return Uri.parse(urlBuffer.toString());
+    }
+
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -89,6 +107,8 @@ class SessionDetailPage extends ConsumerWidget {
                 case 'add_calendar':
                   if (!kIsWeb && Platform.isIOS) {
                     await Add2Calendar.addEvent2Cal(createIosEvent());
+                  } else {
+                    await launchInExternalApp(createGoogleCalendarUrl());
                   }
                   break;
               }
