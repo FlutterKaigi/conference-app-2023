@@ -29,6 +29,8 @@ class RootScreen extends ConsumerStatefulWidget {
 class _RootScreenState extends ConsumerState<RootScreen> {
   ScrollController? _primaryScrollController;
 
+  bool _isTopPosition = true;
+
   @override
   Widget build(BuildContext context) {
     final localization = ref.watch(localizationProvider);
@@ -36,16 +38,26 @@ class _RootScreenState extends ConsumerState<RootScreen> {
     final screenSize = context.screenSize;
     final currentTab = RootTab.current(context);
 
+    void scrollOffsetListener() {
+      final offset = _primaryScrollController?.offset ?? 0;
+      setState(() {
+        _isTopPosition = offset < 50.0;
+      });
+    }
+
     // Update the primary scroll controller when the current tab changes.
     return NotificationListener<ScrollControllerNotification>(
       onNotification: (notification) {
         if (_primaryScrollController != notification.controller) {
+          _primaryScrollController?.removeListener(scrollOffsetListener);
           setState(() {
             // Update the primary scroll controller.
             // The given controller is disposed according to the widget on the dispatching side,
             // so it is not disposed here.
             _primaryScrollController = notification.controller;
           });
+          _primaryScrollController?.addListener(scrollOffsetListener);
+          scrollOffsetListener();
         }
 
         return true;
@@ -131,10 +143,15 @@ class _RootScreenState extends ConsumerState<RootScreen> {
               ),
             _ => null,
           },
-          floatingActionButton: switch (currentTab) {
-            RootTab.home || RootTab.sessions => const SessionQuestionnaireFab(),
-            _ => const SizedBox.shrink(),
-          },
+          floatingActionButton: Visibility.maintain(
+            visible: _isTopPosition,
+            child: switch (currentTab) {
+              RootTab.home ||
+              RootTab.sessions =>
+                const SessionQuestionnaireFab(),
+              _ => const SizedBox.shrink(),
+            },
+          ),
         ),
       ),
     );
