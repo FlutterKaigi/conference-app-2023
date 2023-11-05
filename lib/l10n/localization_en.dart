@@ -54,6 +54,12 @@ final class LocalizationEn extends Localization {
   String get discordTooltip => 'Open Discord';
 
   @override
+  String get sessionQuestionnaire => 'Questionnaire';
+
+  @override
+  String get sessionQuestionnaireTooltip => 'Open Session Questionnaire';
+
+  @override
   String get pageTitleHome => 'Home';
 
   @override

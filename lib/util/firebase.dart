@@ -18,6 +18,7 @@ Future<void> initFirebaseRemoteConfig(WidgetRef ref) async {
       'sponsor': '{"platinum": [], "gold": [], "silver": []}',
       'session': '{"items": {"room1": [],"room2": []}}',
       'lunch': '{"items": []}',
+      'questionnaire': '{}',
     },
   );
 

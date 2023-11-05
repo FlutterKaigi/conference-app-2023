@@ -4,6 +4,7 @@ import 'package:conference_2023/ui/screen/root_drawer.dart';
 import 'package:conference_2023/ui/screen/root_navigation_bar.dart';
 import 'package:conference_2023/ui/screen/root_navigation_rail.dart';
 import 'package:conference_2023/ui/screen/root_tab.dart';
+import 'package:conference_2023/ui/widget/session_questionnaire_fab.dart';
 import 'package:conference_2023/ui/widget/visible_detect_scroll_controller_notifier.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:conference_2023/util/screen_size.dart';
@@ -28,6 +29,8 @@ class RootScreen extends ConsumerStatefulWidget {
 class _RootScreenState extends ConsumerState<RootScreen> {
   ScrollController? _primaryScrollController;
 
+  bool _isTopPosition = true;
+
   @override
   Widget build(BuildContext context) {
     final localization = ref.watch(localizationProvider);
@@ -35,16 +38,37 @@ class _RootScreenState extends ConsumerState<RootScreen> {
     final screenSize = context.screenSize;
     final currentTab = RootTab.current(context);
 
+    void scrollOffsetListener() {
+      if (_primaryScrollController == null ||
+          !_primaryScrollController!.hasClients) {
+        setState(() {
+          _isTopPosition = true;
+        });
+        return;
+      }
+
+      final offset = _primaryScrollController?.offset ?? 0;
+      final isTopPosition = offset < 50.0;
+      if (_isTopPosition != isTopPosition) {
+        setState(() {
+          _isTopPosition = isTopPosition;
+        });
+      }
+    }
+
     // Update the primary scroll controller when the current tab changes.
     return NotificationListener<ScrollControllerNotification>(
       onNotification: (notification) {
         if (_primaryScrollController != notification.controller) {
+          _primaryScrollController?.removeListener(scrollOffsetListener);
           setState(() {
             // Update the primary scroll controller.
             // The given controller is disposed according to the widget on the dispatching side,
             // so it is not disposed here.
             _primaryScrollController = notification.controller;
           });
+          _primaryScrollController?.addListener(scrollOffsetListener);
+          scrollOffsetListener();
         }
 
         return true;
@@ -130,6 +154,14 @@ class _RootScreenState extends ConsumerState<RootScreen> {
               ),
             _ => null,
           },
+          floatingActionButton: _isTopPosition
+              ? switch (currentTab) {
+                  RootTab.home ||
+                  RootTab.sessions =>
+                    const SessionQuestionnaireFab(),
+                  _ => const SizedBox.shrink(),
+                }
+              : null,
         ),
       ),
     );
