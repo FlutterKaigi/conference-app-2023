@@ -39,10 +39,21 @@ class _RootScreenState extends ConsumerState<RootScreen> {
     final currentTab = RootTab.current(context);
 
     void scrollOffsetListener() {
+      if (_primaryScrollController == null ||
+          !_primaryScrollController!.hasClients) {
+        setState(() {
+          _isTopPosition = true;
+        });
+        return;
+      }
+
       final offset = _primaryScrollController?.offset ?? 0;
-      setState(() {
-        _isTopPosition = offset < 50.0;
-      });
+      final isTopPosition = offset < 50.0;
+      if (_isTopPosition != isTopPosition) {
+        setState(() {
+          _isTopPosition = isTopPosition;
+        });
+      }
     }
 
     // Update the primary scroll controller when the current tab changes.
@@ -143,15 +154,14 @@ class _RootScreenState extends ConsumerState<RootScreen> {
               ),
             _ => null,
           },
-          floatingActionButton: Visibility.maintain(
-            visible: _isTopPosition,
-            child: switch (currentTab) {
-              RootTab.home ||
-              RootTab.sessions =>
-                const SessionQuestionnaireFab(),
-              _ => const SizedBox.shrink(),
-            },
-          ),
+          floatingActionButton: _isTopPosition
+              ? switch (currentTab) {
+                  RootTab.home ||
+                  RootTab.sessions =>
+                    const SessionQuestionnaireFab(),
+                  _ => const SizedBox.shrink(),
+                }
+              : null,
         ),
       ),
     );
