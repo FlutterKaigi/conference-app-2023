@@ -179,15 +179,15 @@ class _Name extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final name = ref.watch(
-      profileNotifierProvider.select((value) => value.valueOrNull?.name),
-    );
+    final name = ref.watch(userNameProvider);
     final localization = ref.watch(localizationProvider);
-    return _InputArea(
+
+    return _ProfileDisplay(
+      text: name,
+      style: Theme.of(context).textTheme.headlineMedium,
+      tooltip: localization.editName,
       placeholder: localization.userName,
-      initialValue: name,
-      onCompleted: (value) =>
-          ref.read(profileNotifierProvider.notifier).updateName(value),
+      onEditCompleted: ref.read(userNameProvider.notifier).update,
     );
   }
 }
@@ -197,16 +197,80 @@ class _Website extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final websiteUrl = ref.watch(
-      profileNotifierProvider.select((value) => value.valueOrNull?.websiteUrl),
-    );
+    final websiteUrl = ref.watch(websiteUrlProvider);
     final localization = ref.watch(localizationProvider);
-    return _InputArea(
-      placeholder: localization.selfIntroductionUrl,
-      initialValue: websiteUrl,
-      onCompleted: (value) =>
-          ref.read(profileNotifierProvider.notifier).updateWebsiteUrl(value),
+
+    return _ProfileDisplay(
+      text: websiteUrl,
       style: Theme.of(context).textTheme.bodyLarge,
+      tooltip: localization.editUrl,
+      placeholder: localization.selfIntroductionUrl,
+      onEditCompleted: ref.read(websiteUrlProvider.notifier).update,
+    );
+  }
+}
+
+class _ProfileDisplay extends StatefulWidget {
+  const _ProfileDisplay({
+    required this.text,
+    required this.style,
+    required this.tooltip,
+    required this.placeholder,
+    required this.onEditCompleted,
+  });
+
+  final String text;
+  final TextStyle? style;
+  final String tooltip;
+  final String placeholder;
+  final void Function(String) onEditCompleted;
+
+  @override
+  State<_ProfileDisplay> createState() => __ProfileDisplayState();
+}
+
+class __ProfileDisplayState extends State<_ProfileDisplay> {
+  bool _isEditing = false;
+
+  @override
+  Widget build(BuildContext context) {
+    if (_isEditing || widget.text.isEmpty) {
+      return _InputArea(
+        placeholder: widget.placeholder,
+        initialValue: widget.text,
+        style: widget.style,
+        initialFocus: _isEditing,
+        onCompleted: (value) {
+          setState(() {
+            _isEditing = false;
+          });
+          widget.onEditCompleted(value);
+        },
+      );
+    }
+
+    return Tooltip(
+      message: widget.tooltip,
+      child: InkWell(
+        onTap: () => setState(() {
+          _isEditing = true;
+        }),
+        borderRadius: BorderRadius.circular(40),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 8,
+          ),
+          child: SizedBox(
+            width: double.infinity,
+            child: Text(
+              widget.text,
+              textAlign: TextAlign.center,
+              style: widget.style,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
@@ -216,12 +280,14 @@ class _InputArea extends StatefulWidget {
     required this.placeholder,
     required this.initialValue,
     required this.onCompleted,
+    required this.initialFocus,
     this.style,
   });
 
   final String placeholder;
   final String? initialValue;
   final void Function(String) onCompleted;
+  final bool initialFocus;
   final TextStyle? style;
 
   @override
@@ -229,23 +295,23 @@ class _InputArea extends StatefulWidget {
 }
 
 class __InputAreaState extends State<_InputArea> {
-  late TextEditingController _controller = TextEditingController(
+  final _controller = TextEditingController(
     text: widget.initialValue,
   );
+  final _focusNode = FocusNode();
 
   @override
-  void didUpdateWidget(covariant _InputArea oldWidget) {
-    if (oldWidget.initialValue != widget.initialValue) {
-      _controller = TextEditingController(
-        text: widget.initialValue,
-      );
+  void initState() {
+    if (widget.initialFocus) {
+      _focusNode.requestFocus();
     }
-    super.didUpdateWidget(oldWidget);
+    super.initState();
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    _focusNode.dispose();
     super.dispose();
   }
 
@@ -253,7 +319,8 @@ class __InputAreaState extends State<_InputArea> {
   Widget build(BuildContext context) {
     return TextField(
       controller: _controller,
-      style: widget.style ?? Theme.of(context).textTheme.headlineMedium,
+      focusNode: _focusNode,
+      style: widget.style,
       maxLines: 1,
       textAlign: TextAlign.center,
       decoration: InputDecoration(

@@ -217,6 +217,10 @@ abstract base class Localization {
   String get uploadingImage;
 
   String get uploadedImage;
+
+  String get editName;
+
+  String get editUrl;
 }
 
 /// A wrapper class of [DateFormat] for localization.
