@@ -304,4 +304,10 @@ final class LocalizationJa extends Localization {
 
   @override
   String get editUrl => 'URLを編集する';
+
+  @override
+  String get meetUpWithOthers => '他の人と交流する';
+
+  @override
+  String get scanProfileCode => 'プロフィールのQRコードを読み取る';
 }

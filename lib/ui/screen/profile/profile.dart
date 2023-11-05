@@ -10,27 +10,31 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends ConsumerWidget {
   const ProfilePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final localization = ref.watch(localizationProvider);
     return VisibleDetectScrollControllerNotifier(
       visibleDetectorKey: const Key('ProfilePage'),
       child: SingleChildScrollView(
         primary: true,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Gap(32),
-            ConstrainedBox(
-              constraints: const BoxConstraints(
-                maxWidth: 600,
-              ),
-              child: const FractionallySizedBox(
-                widthFactor: 0.5,
-                child: AspectRatio(
-                  aspectRatio: 1,
-                  child: _Icon(),
+            Center(
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  maxWidth: 600,
+                ),
+                child: const FractionallySizedBox(
+                  widthFactor: 0.5,
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: _Icon(),
+                  ),
                 ),
               ),
             ),
@@ -47,6 +51,24 @@ class ProfilePage extends StatelessWidget {
                 horizontal: context.spacing,
               ),
               child: const _Website(),
+            ),
+            const Gap(60),
+            const Divider(),
+            const Gap(16),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: context.spacing,
+              ),
+              child: Text(
+                localization.meetUpWithOthers,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            ),
+            const Gap(16),
+            ListTile(
+              leading: const Icon(Icons.camera_alt_outlined),
+              title: Text(localization.scanProfileCode),
+              onTap: () {},
             ),
           ],
         ),

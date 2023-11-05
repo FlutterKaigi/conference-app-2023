@@ -223,6 +223,10 @@ abstract base class Localization {
   String get editName;
 
   String get editUrl;
+
+  String get meetUpWithOthers;
+
+  String get scanProfileCode;
 }
 
 /// A wrapper class of [DateFormat] for localization.

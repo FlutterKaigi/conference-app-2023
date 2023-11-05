@@ -309,4 +309,10 @@ final class LocalizationEn extends Localization {
 
   @override
   String get editUrl => 'Edit URL';
+
+  @override
+  String get meetUpWithOthers => 'Meet up with others';
+
+  @override
+  String get scanProfileCode => 'Scan profile QR code';
 }
