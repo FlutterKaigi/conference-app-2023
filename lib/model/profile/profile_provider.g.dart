@@ -37,21 +37,34 @@ final profileImageUrlProvider = AutoDisposeFutureProvider<String>.internal(
 );
 
 typedef ProfileImageUrlRef = AutoDisposeFutureProviderRef<String>;
-String _$profileNotifierHash() => r'de9bb8958c5039950831aafcb142ddffc400b3a6';
+String _$userNameHash() => r'4378d6fab50d642b3988b2e61a46b0447cd61cbb';
 
-/// See also [ProfileNotifier].
-@ProviderFor(ProfileNotifier)
-final profileNotifierProvider =
-    AutoDisposeAsyncNotifierProvider<ProfileNotifier, Profile>.internal(
-  ProfileNotifier.new,
-  name: r'profileNotifierProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$profileNotifierHash,
+/// See also [UserName].
+@ProviderFor(UserName)
+final userNameProvider = AutoDisposeNotifierProvider<UserName, String>.internal(
+  UserName.new,
+  name: r'userNameProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$userNameHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$ProfileNotifier = AutoDisposeAsyncNotifier<Profile>;
+typedef _$UserName = AutoDisposeNotifier<String>;
+String _$websiteUrlHash() => r'66ffd84462813fb9f8841f88da0594d961d11158';
+
+/// See also [WebsiteUrl].
+@ProviderFor(WebsiteUrl)
+final websiteUrlProvider =
+    AutoDisposeNotifierProvider<WebsiteUrl, String>.internal(
+  WebsiteUrl.new,
+  name: r'websiteUrlProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$websiteUrlHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$WebsiteUrl = AutoDisposeNotifier<String>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

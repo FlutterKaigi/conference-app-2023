@@ -292,4 +292,10 @@ final class LocalizationJa extends Localization {
 
   @override
   String get uploadedImage => '画像をアップロードしました';
+
+  @override
+  String get editName => '名前を編集する';
+
+  @override
+  String get editUrl => 'URLを編集する';
 }

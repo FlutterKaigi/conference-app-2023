@@ -297,4 +297,10 @@ final class LocalizationEn extends Localization {
 
   @override
   String get uploadedImage => 'Image uploaded';
+
+  @override
+  String get editName => 'Edit name';
+
+  @override
+  String get editUrl => 'Edit URL';
 }
