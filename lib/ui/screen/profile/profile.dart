@@ -3,7 +3,7 @@ import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/model/firebase_auth.dart';
 import 'package:conference_2023/model/firebase_storage.dart';
 import 'package:conference_2023/model/profile/profile_provider.dart';
-import 'package:conference_2023/ui/widget/scroll_controller_notification.dart';
+import 'package:conference_2023/ui/widget/visible_detect_scroll_controller_notifier.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

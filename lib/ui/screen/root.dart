@@ -4,7 +4,7 @@ import 'package:conference_2023/ui/screen/root_drawer.dart';
 import 'package:conference_2023/ui/screen/root_navigation_bar.dart';
 import 'package:conference_2023/ui/screen/root_navigation_rail.dart';
 import 'package:conference_2023/ui/screen/root_tab.dart';
-import 'package:conference_2023/ui/widget/scroll_controller_notification.dart';
+import 'package:conference_2023/ui/widget/visible_detect_scroll_controller_notifier.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:conference_2023/util/screen_size.dart';
 import 'package:flutter/material.dart';
