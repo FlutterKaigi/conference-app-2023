@@ -4,6 +4,7 @@ import 'package:conference_2023/model/profile/profile.dart';
 import 'package:conference_2023/model/profile/profile_provider.dart';
 import 'package:conference_2023/ui/widget/icon_image.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
+import 'package:conference_2023/util/launch_in_external_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
@@ -159,9 +160,26 @@ class _WebsiteUrl extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Text(
-      url,
-      style: Theme.of(context).textTheme.bodyLarge,
+    return InkWell(
+      onTap: () {
+        final uri = Uri.tryParse(url);
+        if (uri == null) {
+          return;
+        }
+        launchInExternalApp(uri);
+      },
+      borderRadius: BorderRadius.circular(40),
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          vertical: context.spacing,
+        ),
+        width: double.infinity,
+        child: Text(
+          url,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+      ),
     );
   }
 }
