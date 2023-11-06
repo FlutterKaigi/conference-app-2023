@@ -55,7 +55,9 @@ class SessionDetailPage extends ConsumerWidget {
         location: room.alias,
         startDate: session.start,
         endDate: session.end,
-        iosParams: const IOSParams(reminder: Duration(minutes: 10)),
+        iosParams: const IOSParams(
+          reminder: Duration(minutes: 10),
+        ),
       );
     }
 
