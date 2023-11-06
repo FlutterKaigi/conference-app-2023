@@ -36,10 +36,6 @@ class RootNavigationBar extends ConsumerWidget {
           icon: RootTab.venue.icon,
           label: RootTab.venue.title(localization),
         ),
-        NavigationDestination(
-          icon: RootTab.profile.icon,
-          label: RootTab.profile.title(localization),
-        ),
       ],
       onDestinationSelected: (index) => navigationShell.goBranch(
         index,

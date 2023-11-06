@@ -11,7 +11,6 @@ enum RootTab {
   favorites(FavoritesRoute.path),
   contributors(ContributorsRoute.path),
   settings(SettingsRoute.path),
-  profile(ProfileRoute.path),
   license(LicensesRoute.path),
   ;
 
@@ -40,7 +39,6 @@ extension RootTabExt on RootTab {
         RootTab.contributors => Icons.engineering,
         RootTab.settings => Icons.settings,
         RootTab.license => Icons.description,
-        RootTab.profile => Icons.person,
       };
 
   String title(Localization localization) => switch (this) {
@@ -52,19 +50,17 @@ extension RootTabExt on RootTab {
         RootTab.contributors => localization.pageTitleContributors,
         RootTab.settings => localization.pageTitleSettings,
         RootTab.license => localization.pageTitleLicense,
-        RootTab.profile => localization.pageTitleProfile,
       };
 
   /// These values are prescribed by sort order defined in [RootRoute]
   int get branchIndex => switch (this) {
         RootTab.home => 0,
         RootTab.sessions => 1,
-        RootTab.sponsors => 4,
+        RootTab.sponsors => 3,
         RootTab.venue => 2,
-        RootTab.favorites => 5,
-        RootTab.contributors => 6,
-        RootTab.settings => 7,
-        RootTab.license => 8,
-        RootTab.profile => 3,
+        RootTab.favorites => 4,
+        RootTab.contributors => 5,
+        RootTab.settings => 6,
+        RootTab.license => 7,
       };
 }

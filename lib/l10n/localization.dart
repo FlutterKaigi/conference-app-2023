@@ -80,8 +80,6 @@ abstract base class Localization {
 
   String get pageTitleLicense;
 
-  String get pageTitleProfile;
-
   String get venueLocationMap;
 
   String get venueLocationMapTooltip;
@@ -209,20 +207,6 @@ abstract base class Localization {
   String get lunchMapSortAsc;
 
   String get lunchMapSortDesc;
-
-  String get userName;
-
-  String get selfIntroductionUrl;
-
-  String get uploadImage;
-
-  String get uploadingImage;
-
-  String get uploadedImage;
-
-  String get editName;
-
-  String get editUrl;
 }
 
 /// A wrapper class of [DateFormat] for localization.
