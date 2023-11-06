@@ -98,10 +98,10 @@ class SessionDetailPage extends ConsumerWidget {
                       .add(sessionId);
             },
           ),
-          PopupMenuButton<String>(
-            onSelected: (String value) async {
-              switch (value) {
-                case 'share_x':
+          PopupMenuButton<PopupMenu>(
+            onSelected: (PopupMenu menu) async {
+              switch (menu) {
+                case PopupMenu.shareX:
                   final uri = Uri.https(
                     'twitter.com',
                     'intent/tweet',
@@ -112,23 +112,21 @@ class SessionDetailPage extends ConsumerWidget {
                     },
                   );
                   await launchInExternalApp(uri);
-                  break;
-                case 'add_calendar':
+                case PopupMenu.addCalendar:
                   if (!kIsWeb && Platform.isIOS) {
                     await Add2Calendar.addEvent2Cal(createIosEvent());
                   } else {
                     await launchInExternalApp(createGoogleCalendarUrl());
                   }
-                  break;
               }
             },
-            itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-              PopupMenuItem<String>(
-                value: 'share_x',
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<PopupMenu>>[
+              PopupMenuItem<PopupMenu>(
+                value: PopupMenu.shareX,
                 child: Text(localization.shareX),
               ),
-              PopupMenuItem<String>(
-                value: 'add_calendar',
+              PopupMenuItem<PopupMenu>(
+                value: PopupMenu.addCalendar,
                 child: Text(localization.shareCalendar),
               ),
             ],
@@ -217,3 +215,5 @@ class SessionDetailPage extends ConsumerWidget {
     );
   }
 }
+
+enum PopupMenu { shareX, addCalendar }
