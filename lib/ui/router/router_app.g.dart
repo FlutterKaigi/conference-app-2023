@@ -49,15 +49,6 @@ RouteBase get $rootRoute => StatefulShellRouteData.$route(
           ],
         ),
         StatefulShellBranchData.$branch(
-          navigatorKey: ProfileBranch.$navigatorKey,
-          routes: [
-            GoRouteData.$route(
-              path: '/profile',
-              factory: $ProfileRouteExtension._fromState,
-            ),
-          ],
-        ),
-        StatefulShellBranchData.$branch(
           navigatorKey: SponsorsBranch.$navigatorKey,
           routes: [
             GoRouteData.$route(
@@ -213,23 +204,6 @@ const _$VenueTabEnumMap = {
   VenueTab.location: 'location',
   VenueTab.lunch: 'lunch',
 };
-
-extension $ProfileRouteExtension on ProfileRoute {
-  static ProfileRoute _fromState(GoRouterState state) => const ProfileRoute();
-
-  String get location => GoRouteData.$location(
-        '/profile',
-      );
-
-  void go(BuildContext context) => context.go(location);
-
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  void replace(BuildContext context) => context.replace(location);
-}
 
 extension $SponsorsRouteExtension on SponsorsRoute {
   static SponsorsRoute _fromState(GoRouterState state) => const SponsorsRoute();
