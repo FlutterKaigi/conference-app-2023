@@ -23,42 +23,36 @@ class ProfilePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final localization = ref.watch(localizationProvider);
-    final canShowQrCode = switch (defaultTargetPlatform) {
+    final id = ref.watch(currentUserIdProvider).valueOrNull;
+    final name = ref.watch(userNameProvider);
+    final isAndroidOrIOS = switch (defaultTargetPlatform) {
       TargetPlatform.android || TargetPlatform.iOS => true,
       _ => false,
     };
+    final canReadQrCode = id != null && name.isNotEmpty;
     return VisibleDetectScrollControllerNotifier(
       visibleDetectorKey: const Key('ProfilePage'),
       child: SingleChildScrollView(
         primary: true,
+        padding: EdgeInsets.symmetric(
+          vertical: context.spacing,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Gap(32),
+            const Gap(16),
             Center(
-              child: Stack(
-                children: [
-                  ConstrainedBox(
-                    constraints: const BoxConstraints(
-                      maxWidth: 600,
-                    ),
-                    child: const FractionallySizedBox(
-                      widthFactor: 0.5,
-                      child: AspectRatio(
-                        aspectRatio: 1,
-                        child: _Icon(),
-                      ),
-                    ),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(
+                  maxWidth: 600,
+                ),
+                child: const FractionallySizedBox(
+                  widthFactor: 0.5,
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: _Icon(),
                   ),
-                  if (canShowQrCode)
-                    const Positioned(
-                      bottom: 0,
-                      right: 0,
-                      width: 80,
-                      height: 80,
-                      child: _QrCode(),
-                    ),
-                ],
+                ),
               ),
             ),
             const Gap(32),
@@ -75,7 +69,7 @@ class ProfilePage extends ConsumerWidget {
               ),
               child: const _Website(),
             ),
-            if (canShowQrCode) ...[
+            if (isAndroidOrIOS) ...[
               const Gap(60),
               const Divider(),
               const Gap(16),
@@ -89,21 +83,35 @@ class ProfilePage extends ConsumerWidget {
                 ),
               ),
               const Gap(16),
-              ListTile(
-                leading: const Icon(Icons.camera_alt_outlined),
-                title: Text(localization.scanProfileCode),
-                onTap: () async {
-                  final result =
-                      await const ScanCodeRoute().push<Profile>(context);
-                  if (result == null || !context.mounted) {
-                    return;
-                  }
-                  showReadProfileSheet(
-                    context,
-                    profile: result,
-                  );
-                },
-              ),
+              if (canReadQrCode) ...[
+                ListTile(
+                  leading: const Icon(Icons.camera_alt_outlined),
+                  title: Text(localization.scanProfileCode),
+                  onTap: () async {
+                    final result =
+                        await const ScanCodeRoute().push<Profile>(context);
+                    if (result == null || !context.mounted) {
+                      return;
+                    }
+                    showReadProfileSheet(
+                      context,
+                      profile: result,
+                    );
+                  },
+                ),
+                const Gap(24),
+                Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      maxWidth: 600,
+                    ),
+                    child: const FractionallySizedBox(
+                      widthFactor: 0.5,
+                      child: _QrCode(),
+                    ),
+                  ),
+                ),
+              ],
             ],
           ],
         ),
@@ -231,14 +239,10 @@ class _QrCode extends ConsumerWidget {
     );
     return Container(
       padding: const EdgeInsets.all(4),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.outlineVariant,
-        borderRadius: BorderRadius.circular(4),
-      ),
       child: PrettyQrView.data(
         data: jsonEncode(profile.toJson()),
         decoration: PrettyQrDecoration(
-          shape: PrettyQrRoundedSymbol(
+          shape: PrettyQrSmoothSymbol(
             color: Theme.of(context).colorScheme.onSurface,
           ),
         ),
