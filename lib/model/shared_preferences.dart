@@ -15,8 +15,7 @@ enum SharedPreferenceKey {
   fontFamily('font_family'),
   favoriteSessionIds('favorite_session_ids'),
   userName('user_name'),
-  profileWebsiteUrl('profile_website_url'),
-  ;
+  profileWebsiteUrl('profile_website_url');
 
   const SharedPreferenceKey(this.value);
 
