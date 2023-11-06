@@ -5,12 +5,13 @@ import 'package:conference_2023/model/messaging.dart';
 import 'package:conference_2023/model/permission.dart';
 import 'package:conference_2023/model/remote_config.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-Future<void> initFirebaseRemoteConfig(WidgetRef ref) async {
-  final remoteConfig = ref.read(remoteConfigProvider);
+Future<void> initFirebaseRemoteConfig() async {
+  final remoteConfig = FirebaseRemoteConfig.instance;
   await remoteConfig.setDefaults(
     const {
       'staff': '{"items": []}',
@@ -22,11 +23,13 @@ Future<void> initFirebaseRemoteConfig(WidgetRef ref) async {
     },
   );
 
+  await remoteConfig.fetchAndActivate();
+}
+
+Future<void> listenFirebaseRemoteConfig(WidgetRef ref) async {
+  final remoteConfig = ref.read(remoteConfigProvider);
+
   if (kIsWeb) {
-    /// [onConfigUpdated] is not supported on web.
-    /// see [https://github.com/firebase/flutterfire/pull/10647]
-    await remoteConfig.fetchAndActivate();
-  } else {
     /// Support realtime update on mobile.
     remoteConfig.onConfigUpdated.listen((event) async {
       await remoteConfig.activate();

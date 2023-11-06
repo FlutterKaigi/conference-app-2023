@@ -1,5 +1,6 @@
 import 'package:conference_2023/app.dart';
 import 'package:conference_2023/model/shared_preferences.dart';
+import 'package:conference_2023/util/firebase.dart';
 import 'package:conference_2023/util/font_license.dart';
 import 'package:conference_2023/util/provider_state_logger.dart';
 import 'package:conference_2023/util/web/firebase_options_web.dart';
@@ -21,6 +22,9 @@ void main() async {
   await Firebase.initializeApp(
     options: firebaseOptionsWeb,
   );
+
+  /// init firebase remote config
+  await initFirebaseRemoteConfig();
 
   // Non-async exceptions
   FlutterError.onError = (errorDetails) {
