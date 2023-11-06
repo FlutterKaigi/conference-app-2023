@@ -1,1 +1,3 @@
 "NSPhotoLibraryUsageDescription" = "プロフィールのアイコン画像をアップロードするためにフォトライブラリを使用します。";
+"NSCalendarsUsageDescription" = "セッション詳細を予定として登録するためカレンダーを使用します。";
+"NSContactsUsageDescription" = "予定の場所を編集する際の入力の候補として使用します。";
