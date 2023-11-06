@@ -102,8 +102,14 @@ class SessionDetailPage extends ConsumerWidget {
             onSelected: (String value) async {
               switch (value) {
                 case 'share_x':
-                  final uri = Uri.parse(
-                    'https://twitter.com/share?url=https://flutterkaigi.jp/2023/sessions/$sessionId&hashtags=flutterkaigi&via=FlutterKaigi',
+                  final uri = Uri.https(
+                    'twitter.com',
+                    'intent/tweet',
+                    {
+                      'url': 'https://flutterkaigi.jp/2023/sessions/$sessionId',
+                      'hashtags': 'flutterkaigi',
+                      'via': 'FlutterKaigi',
+                    },
                   );
                   await launchInExternalApp(uri);
                   break;
