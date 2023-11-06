@@ -33,9 +33,6 @@ final class LocalizationEn extends Localization {
   String get twitterTooltip => 'Open Twitter';
 
   @override
-  String get tweetTooltip => 'Tweet';
-
-  @override
   String get github => 'GitHub';
 
   @override
