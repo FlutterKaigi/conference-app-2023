@@ -15,6 +15,7 @@ enum RemoteConfigKey {
   sponsor('sponsor'),
   session('session'),
   lunch('lunch'),
+  questionnaire('questionnaire'),
   ;
 
   const RemoteConfigKey(this.key);

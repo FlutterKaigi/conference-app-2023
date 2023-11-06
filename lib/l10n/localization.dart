@@ -3,9 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'localization.g.dart';
-
 part 'localization_en.dart';
-
 part 'localization_ja.dart';
 
 /// A provider that returns the current [Localization].
@@ -61,6 +59,10 @@ abstract base class Localization {
   String get discord;
 
   String get discordTooltip;
+
+  String get sessionQuestionnaire;
+
+  String get sessionQuestionnaireTooltip;
 
   String get pageTitleHome;
 

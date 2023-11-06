@@ -20,7 +20,7 @@ class _AppState extends ConsumerState<App> {
   @override
   void initState() {
     Future(() async {
-      await initFirebaseRemoteConfig(ref);
+      await listenFirebaseRemoteConfig(ref);
       await initFirebaseMessaging(ref);
     });
 
