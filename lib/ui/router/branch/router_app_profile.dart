@@ -26,4 +26,13 @@ class ScanCodeRoute extends GoRouteData {
   Widget build(BuildContext context, GoRouterState state) {
     return const ScanCodePage();
   }
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return MaterialPage(
+      key: state.pageKey,
+      fullscreenDialog: true,
+      child: const ScanCodePage(),
+    );
+  }
 }

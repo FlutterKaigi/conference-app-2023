@@ -105,11 +105,11 @@ class _Icon extends ConsumerWidget {
     } else {
       final imageUrl = ref.watch(imageDownloadUrlProvider(url));
       image = switch (imageUrl) {
-        AsyncData(value: final value) => value.isEmpty
-            ? null
-            : IconImage(
+        AsyncData(value: final value) => value.isNotEmpty
+            ? IconImage(
                 url: value,
-              ),
+              )
+            : null,
         AsyncError() => const Icon(Icons.error),
         _ => const Center(
             child: CircularProgressIndicator.adaptive(),
