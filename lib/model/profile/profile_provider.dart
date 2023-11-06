@@ -42,8 +42,10 @@ class WebsiteUrl extends _$WebsiteUrl {
 }
 
 @riverpod
-Future<String> storageUidIconPath(StorageUidIconPathRef ref) async {
-  final id = await ref.watch(currentUserIdProvider.future);
+Future<String> storageUidIconPath(
+  StorageUidIconPathRef ref,
+  String? id,
+) async {
   if (id == null || id.isEmpty) {
     return '';
   }
@@ -53,7 +55,8 @@ Future<String> storageUidIconPath(StorageUidIconPathRef ref) async {
 
 @riverpod
 Future<String> profileImageUrl(ProfileImageUrlRef ref) async {
-  final path = await ref.watch(storageUidIconPathProvider.future);
+  final id = await ref.watch(currentUserIdProvider.future);
+  final path = await ref.watch(storageUidIconPathProvider(id).future);
   final url = await ref.watch(imageDownloadUrlProvider(path).future);
   return url;
 }

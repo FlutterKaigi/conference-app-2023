@@ -1,12 +1,13 @@
 import 'dart:convert';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/model/firebase_auth.dart';
 import 'package:conference_2023/model/firebase_storage.dart';
 import 'package:conference_2023/model/profile/profile.dart';
 import 'package:conference_2023/model/profile/profile_provider.dart';
 import 'package:conference_2023/ui/router/router_app.dart';
+import 'package:conference_2023/ui/screen/profile/read_profile.dart';
+import 'package:conference_2023/ui/widget/icon_image.dart';
 import 'package:conference_2023/ui/widget/visible_detect_scroll_controller_notifier.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:flutter/foundation.dart';
@@ -53,8 +54,8 @@ class ProfilePage extends ConsumerWidget {
                     const Positioned(
                       bottom: 0,
                       right: 0,
-                      width: 72,
-                      height: 72,
+                      width: 80,
+                      height: 80,
                       child: _QrCode(),
                     ),
                 ],
@@ -94,9 +95,13 @@ class ProfilePage extends ConsumerWidget {
                 onTap: () async {
                   final result =
                       await const ScanCodeRoute().push<Profile>(context);
-                  if (result == null) {
+                  if (result == null || !context.mounted) {
                     return;
                   }
+                  showReadProfileSheet(
+                    context,
+                    profile: result,
+                  );
                 },
               ),
             ],
@@ -124,7 +129,7 @@ class _IconState extends ConsumerState<_Icon> {
     final image = switch (imageUrl) {
       AsyncData(value: final value) => value.isEmpty
           ? const Icon(Icons.upload)
-          : _IconImage(
+          : IconImage(
               url: value,
             ),
       AsyncError() => const Icon(Icons.error),
@@ -147,10 +152,14 @@ class _IconState extends ConsumerState<_Icon> {
           if (file == null) {
             return;
           }
-          var path = await ref.read(storageUidIconPathProvider.future);
+          final id = await ref.read(currentUserIdProvider.future);
+          var path = await ref.read(storageUidIconPathProvider(id).future);
           if (path.isEmpty) {
-            await ref.read(firebaseAuthProvider).signInAnonymously();
-            path = await ref.read(storageUidIconPathProvider.future);
+            final result =
+                await ref.read(firebaseAuthProvider).signInAnonymously();
+            path = await ref.read(
+              storageUidIconPathProvider(result.user?.uid).future,
+            );
           }
           if (path.isEmpty) {
             return;
@@ -202,30 +211,6 @@ class _IconState extends ConsumerState<_Icon> {
   }
 }
 
-class _IconImage extends StatelessWidget {
-  const _IconImage({
-    required this.url,
-  });
-
-  final String url;
-
-  @override
-  Widget build(BuildContext context) {
-    final uri = Uri.parse(url);
-    final cacheKey = uri.origin + uri.path;
-
-    return CachedNetworkImage(
-      imageUrl: url,
-      cacheKey: cacheKey,
-      fit: BoxFit.cover,
-      placeholder: (context, _) => const Center(
-        child: CircularProgressIndicator.adaptive(),
-      ),
-      errorWidget: (context, _, __) => const Icon(Icons.error),
-    );
-  }
-}
-
 class _QrCode extends ConsumerWidget {
   const _QrCode();
 
@@ -235,7 +220,7 @@ class _QrCode extends ConsumerWidget {
     final name = ref.watch(userNameProvider);
     final url = ref.watch(websiteUrlProvider);
 
-    if (id == null) {
+    if (id == null || name.isEmpty) {
       return const SizedBox.shrink();
     }
 
@@ -247,18 +232,14 @@ class _QrCode extends ConsumerWidget {
     return Container(
       padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.outline,
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(
-          color: Theme.of(context).colorScheme.outline,
-          width: 4,
-        ),
+        color: Theme.of(context).colorScheme.outlineVariant,
+        borderRadius: BorderRadius.circular(4),
       ),
       child: PrettyQrView.data(
         data: jsonEncode(profile.toJson()),
         decoration: PrettyQrDecoration(
           shape: PrettyQrRoundedSymbol(
-            color: Theme.of(context).colorScheme.onSecondary,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
         ),
       ),
