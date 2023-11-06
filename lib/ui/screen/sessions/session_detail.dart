@@ -62,20 +62,19 @@ class SessionDetailPage extends ConsumerWidget {
     }
 
     Uri createGoogleCalendarUrl() {
-      final title = Uri.encodeComponent(session.title.get(locale));
-      final details = Uri.encodeComponent(speakerAndDescription);
-      final roomAlias = Uri.encodeComponent(room.alias);
-      final start = session.start;
-      final end = session.end;
-      var urlBuffer = StringBuffer()
-        ..write('https://www.google.com/calendar/render?action=TEMPLATE&')
-        ..write('text=$title&')
-        ..write('details=$details&')
-        ..write('location=$roomAlias&')
-        ..write('dates=')
-        ..write('${DateFormat("yyyyMMdd'T'HHmmss'Z'").format(start.toUtc())}/')
-        ..write(DateFormat("yyyyMMdd'T'HHmmss'Z'").format(end.toUtc()));
-      return Uri.parse(urlBuffer.toString());
+      final dateFormatter = DateFormat("yyyyMMdd'T'HHmmss'Z'");
+      return Uri.https(
+        'www.google.com',
+        'calendar/render',
+        {
+          'action': 'TEMPLATE',
+          'text': session.title.get(locale),
+          'details': speakerAndDescription,
+          'location': room.alias,
+          'dates':
+              '${dateFormatter.format(session.start.toUtc())}/${dateFormatter.format(session.end.toUtc())}',
+        },
+      );
     }
 
     return Scaffold(
