@@ -33,10 +33,6 @@
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSCalendarsUsageDescription</key>
-    <string>Use the calendar to register session details as an appointment.</string>
-    <key>NSContactsUsageDescription</key>
-    <string>Used as a candidate for input when editing the location of an appointment.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UIBackgroundModes</key>
