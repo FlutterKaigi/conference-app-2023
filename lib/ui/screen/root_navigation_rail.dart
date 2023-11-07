@@ -56,10 +56,6 @@ class RootNavigationRail extends ConsumerWidget {
           label: Text(RootTab.settings.title(localization)),
         ),
         NavigationRailDestination(
-          icon: RootTab.profile.icon,
-          label: Text(RootTab.profile.title(localization)),
-        ),
-        NavigationRailDestination(
           icon: RootTab.license.icon,
           label: Text(RootTab.license.title(localization)),
         ),

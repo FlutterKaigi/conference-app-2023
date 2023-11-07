@@ -1,7 +1,7 @@
 name: conference_2023
 description: FlutterKaigi 2023 official application.
 publish_to: 'none'
-version: 1.2.0+16
+version: 1.3.0+18
 
 environment:
   sdk: '>=3.2.0-210.1.beta <4.0.0'
@@ -24,12 +24,10 @@ dependencies:
   riverpod_annotation: ^2.0.0
 
   # firebase
-  firebase_auth: ^4.0.0
   firebase_core: ^2.0.0
   firebase_crashlytics: ^3.0.0
   firebase_messaging: ^14.0.0
   firebase_remote_config: ^4.0.0
-  firebase_storage: ^11.0.0
 
   flutter_riverpod: ^2.0.0
   go_router: ^12.0.0

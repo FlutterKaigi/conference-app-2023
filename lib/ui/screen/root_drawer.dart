@@ -74,10 +74,6 @@ class RootDrawer extends ConsumerWidget {
           label: Text(RootTab.settings.title(localization)),
         ),
         NavigationDrawerDestination(
-          icon: RootTab.profile.icon,
-          label: Text(RootTab.profile.title(localization)),
-        ),
-        NavigationDrawerDestination(
           icon: RootTab.license.icon,
           label: Text(RootTab.license.title(localization)),
         ),
