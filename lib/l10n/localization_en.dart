@@ -33,9 +33,6 @@ final class LocalizationEn extends Localization {
   String get twitterTooltip => 'Open Twitter';
 
   @override
-  String get tweetTooltip => 'Tweet';
-
-  @override
   String get github => 'GitHub';
 
   @override
@@ -128,6 +125,12 @@ final class LocalizationEn extends Localization {
 
   @override
   String get favoritesRemoveTooltip => 'Remove from favorites';
+
+  @override
+  String get shareX => 'Share with X';
+
+  @override
+  String get shareCalendar => 'Add to Calendar';
 
   @override
   String get contributorsDeveloper => 'Developer';

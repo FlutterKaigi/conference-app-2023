@@ -49,6 +49,7 @@ dependencies:
   two_dimensional_scrollables: ^0.0.1
   url_launcher: ^6.0.0
   visibility_detector: ^0.4.0
+  add_2_calendar: ^3.0.1
 
   accessibility_tools: ^1.0.0
 

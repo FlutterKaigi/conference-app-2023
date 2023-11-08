@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:conference_2023/gen/assets.gen.dart';
 import 'package:conference_2023/l10n/localization.dart';
 import 'package:conference_2023/model/app_locale.dart';
@@ -6,10 +9,12 @@ import 'package:conference_2023/model/sessions/session.dart';
 import 'package:conference_2023/model/sessions/session_provider.dart';
 import 'package:conference_2023/util/extension/build_context_ext.dart';
 import 'package:conference_2023/util/launch_in_external_app.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:intl/intl.dart';
 
 class SessionDetailPage extends ConsumerWidget {
   const SessionDetailPage({
@@ -41,6 +46,36 @@ class SessionDetailPage extends ConsumerWidget {
         (favoriteSessionIds) => favoriteSessionIds.contains(sessionId),
       ),
     );
+    final speakerAndDescription =
+        '${speaker?.name}\n\n${description?.get(locale) ?? ''}';
+    Event createIosEvent() {
+      return Event(
+        title: session.title.get(locale),
+        description: speakerAndDescription,
+        location: room.alias,
+        startDate: session.start,
+        endDate: session.end,
+        iosParams: const IOSParams(
+          reminder: Duration(minutes: 10),
+        ),
+      );
+    }
+
+    Uri createGoogleCalendarUrl() {
+      final dateFormatter = DateFormat("yyyyMMdd'T'HHmmss'Z'");
+      return Uri.https(
+        'www.google.com',
+        'calendar/render',
+        {
+          'action': 'TEMPLATE',
+          'text': session.title.get(locale),
+          'details': speakerAndDescription,
+          'location': room.alias,
+          'dates':
+              '${dateFormatter.format(session.start.toUtc())}/${dateFormatter.format(session.end.toUtc())}',
+        },
+      );
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -63,21 +98,39 @@ class SessionDetailPage extends ConsumerWidget {
                       .add(sessionId);
             },
           ),
-          IconButton(
-            icon: Assets.svg.xLogo.svg(
-              width: 18,
-              colorFilter: ColorFilter.mode(
-                Theme.of(context).colorScheme.onSurface,
-                BlendMode.srcIn,
-              ),
-            ),
-            tooltip: localization.tweetTooltip,
-            onPressed: () async {
-              final uri = Uri.parse(
-                'https://twitter.com/share?url=https://flutterkaigi.jp/2023/sessions/$sessionId&hashtags=flutterkaigi&via=FlutterKaigi',
-              );
-              await launchInExternalApp(uri);
+          PopupMenuButton<PopupMenu>(
+            onSelected: (PopupMenu menu) async {
+              switch (menu) {
+                case PopupMenu.shareX:
+                  final uri = Uri.https(
+                    'twitter.com',
+                    'intent/tweet',
+                    {
+                      'url': 'https://flutterkaigi.jp/2023/sessions/$sessionId',
+                      'hashtags': 'flutterkaigi',
+                      'via': 'FlutterKaigi',
+                    },
+                  );
+                  await launchInExternalApp(uri);
+                case PopupMenu.addCalendar:
+                  if (!kIsWeb && Platform.isIOS) {
+                    await Add2Calendar.addEvent2Cal(createIosEvent());
+                  } else {
+                    await launchInExternalApp(createGoogleCalendarUrl());
+                  }
+              }
             },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<PopupMenu>>[
+              PopupMenuItem<PopupMenu>(
+                value: PopupMenu.shareX,
+                child: Text(localization.shareX),
+              ),
+              PopupMenuItem<PopupMenu>(
+                value: PopupMenu.addCalendar,
+                child: Text(localization.shareCalendar),
+              ),
+            ],
+            icon: const Icon(Icons.share),
           ),
         ],
       ),
@@ -162,3 +215,5 @@ class SessionDetailPage extends ConsumerWidget {
     );
   }
 }
+
+enum PopupMenu { shareX, addCalendar }

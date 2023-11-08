@@ -46,8 +46,6 @@ abstract base class Localization {
 
   String get twitterTooltip;
 
-  String get tweetTooltip;
-
   String get github;
 
   String get githubTooltip;
@@ -109,6 +107,10 @@ abstract base class Localization {
   String get favoritesAddTooltip;
 
   String get favoritesRemoveTooltip;
+
+  String get shareX;
+
+  String get shareCalendar;
 
   String get contributorsDeveloper;
 
