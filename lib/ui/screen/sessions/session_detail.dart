@@ -47,7 +47,7 @@ class SessionDetailPage extends ConsumerWidget {
       ),
     );
     final speakerAndDescription =
-        '${speaker?.name}\n\n${description?.get(locale) ?? ''}';
+        '${speaker?.name ?? ''}\n\n${description?.get(locale) ?? ''}';
     Event createIosEvent() {
       return Event(
         title: session.title.get(locale),
@@ -98,8 +98,8 @@ class SessionDetailPage extends ConsumerWidget {
                       .add(sessionId);
             },
           ),
-          PopupMenuButton<PopupMenu>(
-            onSelected: (PopupMenu menu) async {
+          PopupMenuButton(
+            onSelected: (menu) async {
               switch (menu) {
                 case PopupMenu.shareX:
                   final uri = Uri.https(
@@ -120,12 +120,12 @@ class SessionDetailPage extends ConsumerWidget {
                   }
               }
             },
-            itemBuilder: (BuildContext context) => <PopupMenuEntry<PopupMenu>>[
-              PopupMenuItem<PopupMenu>(
+            itemBuilder: (context) => [
+              PopupMenuItem(
                 value: PopupMenu.shareX,
                 child: Text(localization.shareX),
               ),
-              PopupMenuItem<PopupMenu>(
+              PopupMenuItem(
                 value: PopupMenu.addCalendar,
                 child: Text(localization.shareCalendar),
               ),
@@ -216,4 +216,7 @@ class SessionDetailPage extends ConsumerWidget {
   }
 }
 
-enum PopupMenu { shareX, addCalendar }
+enum PopupMenu {
+  shareX,
+  addCalendar,
+}
