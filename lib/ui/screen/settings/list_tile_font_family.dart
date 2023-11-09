@@ -20,6 +20,7 @@ class ListTileFontFamily extends ConsumerWidget {
           context: context,
           title: localization.settingsFontFamily,
           initialSelectedActionKey: fontFamily,
+          toggleable: false,
           actions: [
             ...FontFamily.values.map(
               (family) => AlertDialogAction(
