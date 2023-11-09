@@ -20,6 +20,7 @@ class ListTileThemeMode extends ConsumerWidget {
           context: context,
           title: localization.settingsThemeMode,
           initialSelectedActionKey: currentMode,
+          toggleable: false,
           actions: [
             ...ThemeMode.values.map(
               (mode) => AlertDialogAction(

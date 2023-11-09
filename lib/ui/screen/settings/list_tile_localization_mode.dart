@@ -20,6 +20,7 @@ class ListTileLocalizationMode extends ConsumerWidget {
           context: context,
           title: localization.settingsLocalizationMode,
           initialSelectedActionKey: currentMode,
+          toggleable: false,
           actions: [
             ...LocalizationMode.values.map(
               (mode) => AlertDialogAction(
