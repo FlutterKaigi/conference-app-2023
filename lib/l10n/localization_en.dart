@@ -130,6 +130,9 @@ final class LocalizationEn extends Localization {
   String get shareX => 'Share with X';
 
   @override
+  String get speakerX => 'Open speaker profile (X)';
+
+  @override
   String get shareCalendar => 'Add to Calendar';
 
   @override

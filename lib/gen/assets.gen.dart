@@ -18,11 +18,8 @@ class $AssetsSvgGen {
   SvgGenImage get flutterkaigiLogo =>
       const SvgGenImage('assets/svg/flutterkaigi_logo.svg');
 
-  /// File path: assets/svg/x_logo.svg
-  SvgGenImage get xLogo => const SvgGenImage('assets/svg/x_logo.svg');
-
   /// List of all assets
-  List<SvgGenImage> get values => [flutterkaigiLogo, xLogo];
+  List<SvgGenImage> get values => [flutterkaigiLogo];
 }
 
 class Assets {

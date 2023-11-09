@@ -110,6 +110,8 @@ abstract base class Localization {
 
   String get shareX;
 
+  String get speakerX;
+
   String get shareCalendar;
 
   String get contributorsDeveloper;
