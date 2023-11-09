@@ -59,5 +59,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSCalendarsUsageDescription</key>
+	<string>セッション詳細を予定として登録するためカレンダーを使用します。</string>
+	<key>NSContactsUsageDescription</key>
+	<string>予定の場所を編集する際の入力の候補として使用します。</string>
 </dict>
 </plist>
