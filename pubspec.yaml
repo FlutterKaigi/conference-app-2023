@@ -1,7 +1,7 @@
 name: conference_2023
 description: FlutterKaigi 2023 official application.
 publish_to: 'none'
-version: 1.4.0+20
+version: 1.4.0+21
 
 environment:
   sdk: '>=3.2.0-210.4.beta <4.0.0'
