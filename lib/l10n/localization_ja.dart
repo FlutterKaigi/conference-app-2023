@@ -129,7 +129,7 @@ final class LocalizationJa extends Localization {
   String get shareX => 'Xで共有';
 
   @override
-  String get speakerX => 'スピーカー (X)';
+  String get speakerX => '登壇者の情報を表示（X）';
 
   @override
   String get shareCalendar => 'カレンダーへ登録';
