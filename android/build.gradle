@@ -6,12 +6,12 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.3.0'
+        // AGP version is set in settings.gradle.
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // START: FlutterFire Configuration
         classpath 'com.google.gms:google-services:4.3.10'
         classpath 'com.google.firebase:firebase-crashlytics-gradle:2.8.1'
         // END: FlutterFire Configuration
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 

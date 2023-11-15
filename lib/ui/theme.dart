@@ -9,7 +9,6 @@ part 'theme.g.dart';
 ThemeData theme(ThemeRef ref, ColorScheme? colorScheme) {
   final baseTheme = ThemeData(
     colorScheme: colorScheme ?? lightDefaultColorScheme,
-    useMaterial3: true,
   );
 
   final fontFamily = ref.watch(fontFamilyNotifierProvider);
@@ -28,7 +27,6 @@ ThemeData theme(ThemeRef ref, ColorScheme? colorScheme) {
 ThemeData darkTheme(DarkThemeRef ref, ColorScheme? colorScheme) {
   final baseTheme = ThemeData(
     colorScheme: colorScheme ?? darkDefaultColorScheme,
-    useMaterial3: true,
   );
 
   final fontFamily = ref.watch(fontFamilyNotifierProvider);
