@@ -7,7 +7,8 @@
       "type": "dart",
       "flutterMode": "debug",
       "args": [
-        "--dart-define-from-file=dart_defines/dev.json"
+        "--dart-define-from-file=dart_defines/dev.json",
+        "--flavor dev"
       ]
     },
     {
@@ -16,7 +17,8 @@
       "type": "dart",
       "flutterMode": "profile",
       "args": [
-        "--dart-define-from-file=dart_defines/dev.json"
+        "--dart-define-from-file=dart_defines/dev.json",
+        "--flavor dev"
       ]
     },
     {
@@ -25,7 +27,8 @@
       "type": "dart",
       "flutterMode": "release",
       "args": [
-        "--dart-define-from-file=dart_defines/pro.json"
+        "--dart-define-from-file=dart_defines/pro.json",
+        "--flavor pro"
       ]
     }
   ]

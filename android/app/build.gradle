@@ -26,7 +26,6 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties["storePassword"] = "android"
 }
 
-
 def flutterVersionCode = localProperties.getProperty("flutter.versionCode")
 if (flutterVersionCode == null) {
     flutterVersionCode = "1"
@@ -35,29 +34,6 @@ if (flutterVersionCode == null) {
 def flutterVersionName = localProperties.getProperty("flutter.versionName")
 if (flutterVersionName == null) {
     flutterVersionName = "1.0"
-}
-
-task selectGoogleServicesJson(type: Copy) {
-    from "src/$flavor/google-services.json"
-    into "./"
-}
-
-task copyMipmaps(type: Copy) {
-    from "src/$flavor/res"
-    include "mipmap-*/"
-    into "src/main/res"
-}
-
-task copyDrawables(type: Copy) {
-    from "src/$flavor/res"
-    include "drawable-*/"
-    into "src/main/res"
-}
-
-tasks.whenTaskAdded { task ->
-    task.dependsOn selectGoogleServicesJson
-    task.dependsOn copyMipmaps
-    task.dependsOn copyDrawables
 }
 
 android {
@@ -78,14 +54,26 @@ android {
         main.java.srcDirs += "src/main/kotlin"
     }
 
+    flavorDimensions "default"
+    productFlavors {
+        dev {
+            dimension "default"
+            resValue "string", "app_name", "(dev)FlutterKaigi 2023"
+            applicationIdSuffix ".dev"
+        }
+        pro {
+            dimension "default"
+            resValue "string", "app_name", "FlutterKaigi 2023"
+            applicationIdSuffix ""
+        }
+    }
+
     defaultConfig {
         applicationId "jp.flutterkaigi.conf2023"
         minSdkVersion 30
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        applicationIdSuffix app_id_suffix
-        resValue "string", "app_name", app_name
     }
 
     signingConfigs {
