@@ -1,6 +1,3 @@
 {
-  "flavor": "dev",
-  "app_name": "(dev)FlutterKaigi 2023",
-  "app_icon_suffix": "-dev",
-  "ios_code_sign_entitlements": "Runner/Runner-dev.entitlements"
+  "flavor": "dev"
 }
