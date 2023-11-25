@@ -18,7 +18,7 @@ platform :android do
   lane :build_dev do
     sh("fvm flutter clean")
     sh("fvm flutter pub get")
-    sh("fvm flutter build apk --dart-define-from-file=dart_defines/dev.json")
+    sh("fvm flutter build apk --flavor dev --dart-define-from-file=dart_defines/dev.json")
   end
 
   desc "Build and deploy apk (development build)"
@@ -40,7 +40,8 @@ platform :android do
   lane :build_pro do
     sh("fvm flutter clean")
     sh("fvm flutter pub get")
-    sh("fvm flutter build appbundle --dart-define-from-file=dart_defines/pro_android.json")
+    sh("fvm flutter build appbundle --flavor pro --dart-define-from-file=dart_defines/pro_android.json --obfuscate --split-debug-info=build/app/outputs/symbols")
+    sh("firebase crashlytics:symbols:upload --app=#{ENV["FIREBASE_APP_ID_2023"]} build/app/outputs/symbols")
   end
 
   desc "Build aab (production build)"
@@ -66,7 +67,7 @@ platform :ios do
     Dir.chdir("..") do
       sh("fvm flutter clean")
       sh("fvm flutter pub get")
-      sh("fvm flutter build ipa --export-options-plist=ios/ExportOptions/dev.plist --dart-define-from-file=dart_defines/dev.json")
+      sh("fvm flutter build ipa --flavor dev --export-options-plist=ios/ExportOptions/dev.plist --dart-define-from-file=dart_defines/dev.json")
     end
   end
 
@@ -89,7 +90,7 @@ platform :ios do
     Dir.chdir("..") do
       sh("fvm flutter clean")
       sh("fvm flutter pub get")
-      sh("fvm flutter build ipa --export-options-plist=ios/ExportOptions/pro.plist --dart-define-from-file=dart_defines/pro_ios.json")
+      sh("fvm flutter build ipa --flavor pro --export-options-plist=ios/ExportOptions/pro.plist --dart-define-from-file=dart_defines/pro_ios.json")
     end
   end
 

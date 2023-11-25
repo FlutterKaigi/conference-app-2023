@@ -56,3 +56,5 @@ app.*.map.json
 /dart_defines/pro_web.json
 
 /ios/Config/pro
+
+.crashlytics
