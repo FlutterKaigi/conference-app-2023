@@ -80,7 +80,7 @@ platform :ios do
     commitMessage = commit[:message]
     firebase_app_distribution(
       app: "1:1034811787358:ios:b25f1bbb882b34f887cccf",
-      ipa_path: "build/ios/ipa/(dev)FlutterKaigi 2023.ipa",
+      ipa_path: "build/ios/ipa/dev.ipa",
       release_notes: "Commit: #{hash}\n#{commitMessage}",
     )
   end
@@ -100,7 +100,7 @@ platform :ios do
 
     upload_to_app_store(
       app_identifier: "jp.flutterkaigi.conf2023",
-      ipa: "build/ios/ipa/FlutterKaigi 2023.ipa",
+      ipa: "build/ios/ipa/pro.ipa",
       force: true,
       skip_metadata: true,
       overwrite_screenshots: true,
