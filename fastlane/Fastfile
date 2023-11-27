@@ -41,7 +41,7 @@ platform :android do
     sh("fvm flutter clean")
     sh("fvm flutter pub get")
     sh("fvm flutter build appbundle --flavor pro --dart-define-from-file=dart_defines/pro_android.json --obfuscate --split-debug-info=build/app/outputs/symbols")
-    sh("firebase crashlytics:symbols:upload --app=#{ENV["FIREBASE_APP_ID_2023"]} build/app/outputs/symbols")
+    sh("firebase crashlytics:symbols:upload --app=#{ENV["FIREBASE_APP_ID_2023"]} build/app/outputs/symbols/")
   end
 
   desc "Build aab (production build)"
