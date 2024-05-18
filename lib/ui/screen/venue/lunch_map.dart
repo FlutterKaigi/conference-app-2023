@@ -83,109 +83,113 @@ class LunchMapPage extends ConsumerWidget {
       cellBuilder: (context, vicinity) {
         final store = storeList.items[vicinity.row];
         if (vicinity.row == 0) {
-          return Center(
+          return TableViewCell(
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                ),
+                child: switch (vicinity.column) {
+                  0 => const Text('id'),
+                  1 => Text(store.name),
+                  2 => Row(
+                      children: [
+                        Text(store.routeTime),
+                        Flexible(
+                          child: PopupMenuButton(
+                            child: const Icon(Icons.arrow_drop_down_outlined),
+                            itemBuilder: (context) => [
+                              PopupMenuItem(
+                                child: Text(localization.lunchMapSortReset),
+                                onTap: () => ref
+                                    .read(
+                                      storeSortOptionNotifierProvider.notifier,
+                                    )
+                                    .update(StoreSortOption.byId),
+                              ),
+                              PopupMenuItem(
+                                child: Text(localization.lunchMapSortAsc),
+                                onTap: () => ref
+                                    .read(
+                                      storeSortOptionNotifierProvider.notifier,
+                                    )
+                                    .update(StoreSortOption.asc),
+                              ),
+                              PopupMenuItem(
+                                child: Text(localization.lunchMapSortDesc),
+                                onTap: () => ref
+                                    .read(
+                                      storeSortOptionNotifierProvider.notifier,
+                                    )
+                                    .update(StoreSortOption.desc),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  3 => Text(store.recommendedMenu),
+                  4 => Text(store.comment),
+                  5 => Text(localization.venueMenuOption),
+                  _ => const Text(''),
+                },
+              ),
+            ),
+          );
+        }
+
+        return TableViewCell(
+          child: Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 8,
               ),
               child: switch (vicinity.column) {
-                0 => const Text('id'),
-                1 => Text(store.name),
-                2 => Row(
-                    children: [
-                      Text(store.routeTime),
-                      Flexible(
-                        child: PopupMenuButton(
-                          child: const Icon(Icons.arrow_drop_down_outlined),
-                          itemBuilder: (context) => [
-                            PopupMenuItem(
-                              child: Text(localization.lunchMapSortReset),
-                              onTap: () => ref
-                                  .read(
-                                    storeSortOptionNotifierProvider.notifier,
-                                  )
-                                  .update(StoreSortOption.byId),
-                            ),
-                            PopupMenuItem(
-                              child: Text(localization.lunchMapSortAsc),
-                              onTap: () => ref
-                                  .read(
-                                    storeSortOptionNotifierProvider.notifier,
-                                  )
-                                  .update(StoreSortOption.asc),
-                            ),
-                            PopupMenuItem(
-                              child: Text(localization.lunchMapSortDesc),
-                              onTap: () => ref
-                                  .read(
-                                    storeSortOptionNotifierProvider.notifier,
-                                  )
-                                  .update(StoreSortOption.desc),
-                            ),
-                          ],
-                        ),
+                0 => Text(store.id),
+                1 => AutoSizeText(
+                    store.name,
+                    maxLines: 2,
+                    softWrap: true,
+                  ),
+                2 => Text(localization.venueRouteTime(store.routeTime)),
+                3 => AutoSizeText(
+                    store.recommendedMenu,
+                    maxLines: 5,
+                    softWrap: true,
+                  ),
+                4 => AutoSizeText(
+                    store.comment,
+                    maxLines: 5,
+                    softWrap: true,
+                  ),
+                5 => PopupMenuButton(
+                    itemBuilder: (context) => [
+                      PopupMenuItem(
+                        child: Text(localization.venueMenuLink),
+                        onTap: () async {
+                          final uri = Uri.parse(store.externalLink);
+                          await launchInExternalApp(uri);
+                        },
+                      ),
+                      PopupMenuItem(
+                        child: Text(localization.venueMenuNavitimeMap),
+                        onTap: () async {
+                          final uri = Uri.parse(store.navitimeMapLink);
+                          await launchInExternalApp(uri);
+                        },
+                      ),
+                      PopupMenuItem(
+                        child: Text(localization.venueMenuGoogleMap),
+                        onTap: () async {
+                          final uri = Uri.parse(store.googleMapLink);
+                          await launchInExternalApp(uri);
+                        },
                       ),
                     ],
                   ),
-                3 => Text(store.recommendedMenu),
-                4 => Text(store.comment),
-                5 => Text(localization.venueMenuOption),
-                _ => const Text(''),
+                _ => const SizedBox.shrink(),
               },
             ),
-          );
-        }
-
-        return Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 8,
-            ),
-            child: switch (vicinity.column) {
-              0 => Text(store.id),
-              1 => AutoSizeText(
-                  store.name,
-                  maxLines: 2,
-                  softWrap: true,
-                ),
-              2 => Text(localization.venueRouteTime(store.routeTime)),
-              3 => AutoSizeText(
-                  store.recommendedMenu,
-                  maxLines: 5,
-                  softWrap: true,
-                ),
-              4 => AutoSizeText(
-                  store.comment,
-                  maxLines: 5,
-                  softWrap: true,
-                ),
-              5 => PopupMenuButton(
-                  itemBuilder: (context) => [
-                    PopupMenuItem(
-                      child: Text(localization.venueMenuLink),
-                      onTap: () async {
-                        final uri = Uri.parse(store.externalLink);
-                        await launchInExternalApp(uri);
-                      },
-                    ),
-                    PopupMenuItem(
-                      child: Text(localization.venueMenuNavitimeMap),
-                      onTap: () async {
-                        final uri = Uri.parse(store.navitimeMapLink);
-                        await launchInExternalApp(uri);
-                      },
-                    ),
-                    PopupMenuItem(
-                      child: Text(localization.venueMenuGoogleMap),
-                      onTap: () async {
-                        final uri = Uri.parse(store.googleMapLink);
-                        await launchInExternalApp(uri);
-                      },
-                    ),
-                  ],
-                ),
-              _ => const SizedBox.shrink(),
-            },
           ),
         );
       },
