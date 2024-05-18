@@ -1,7 +1,9 @@
 plugins {
     id "com.android.application"
     id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.firebase.crashlytics"
     id "com.google.gms.google-services"
 }
 
@@ -37,69 +39,57 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "jp.flutterkaigi.conf2023"
-    compileSdkVersion flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-
-    sourceSets {
-        main.java.srcDirs += "src/main/kotlin"
-    }
-
-    flavorDimensions "default"
-    productFlavors {
-        dev {
-            dimension "default"
-            resValue "string", "app_name", "(dev)FlutterKaigi 2023"
-            applicationIdSuffix ".dev"
-        }
-        pro {
-            dimension "default"
-            resValue "string", "app_name", "FlutterKaigi 2023"
-            applicationIdSuffix ""
-        }
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     defaultConfig {
-        applicationId "jp.flutterkaigi.conf2023"
-        minSdkVersion 30
-        targetSdkVersion flutter.targetSdkVersion
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
+        minSdk = 30
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutterVersionCode.toInteger()
+        versionName = flutterVersionName
+    }
+
+    flavorDimensions = ["default"]
+    productFlavors {
+        dev {
+            dimension = "default"
+            applicationId = "jp.flutterkaigi.conf2023.dev"
+            namespace = "jp.flutterkaigi.conf2023.dev"
+        }
+        pro {
+            dimension = "default"
+            applicationId = "jp.flutterkaigi.conf2023"
+            namespace = "jp.flutterkaigi.conf2023"
+        }
     }
 
     signingConfigs {
         debug {
-            keyAlias "androiddebugkey"
-            keyPassword "android"
-            storeFile rootProject.file("debug.keystore")
-            storePassword "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+            storeFile = rootProject.file("debug.keystore")
+            storePassword = "android"
         }
         release {
-            keyAlias keystoreProperties["keyAlias"]
-            keyPassword keystoreProperties["keyPassword"]
-            storeFile keystoreProperties["storeFile"] ? file(keystoreProperties["storeFile"]) : null
-            storePassword keystoreProperties["storePassword"]
+            keyAlias = keystoreProperties["keyAlias"]
+            keyPassword = keystoreProperties["keyPassword"]
+            storeFile = keystoreProperties["storeFile"] ? file(keystoreProperties["storeFile"]) : null
+            storePassword = keystoreProperties["storePassword"]
         }
     }
 
     buildTypes {
         release {
-            signingConfig signingConfigs.release
+            signingConfig = signingConfigs.release
         }
     }
 }
 
 flutter {
-    source '../..'
+    source "../.."
 }
-
-dependencies {}
