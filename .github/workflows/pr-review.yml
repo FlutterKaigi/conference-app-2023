@@ -42,7 +42,7 @@ jobs:
           channel: 'beta'
           cache: true
       - run: flutter pub get
-      - run: flutter build web --dart-define-from-file=dart_defines/dev.json
+      - run: flutter build web --dart-define-from-file=dart_defines/dev.json --wasm
 
       - name: Save PR number
         run: |
