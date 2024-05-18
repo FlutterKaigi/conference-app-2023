@@ -4,6 +4,11 @@
 
 Welcome FlutterKaigi 2023 official application repository!
 
+This repository is no longer accepting contributions. Thank you for your interest!
+If you are interested in contributing, please check the latest FlutterKaigi project.
+
+The following information is for the period when we were accepting contributions. If you would like to check the last released version, please check [tag 1.5.0](https://github.com/FlutterKaigi/conference-app-2023/tree/1.5.0).
+
 ## Development
 
 See [Figma](https://www.figma.com/file/x71sECvdnsw8RTfKG0E4fB/FlutterKaigi-2023-App?type=design&node-id=11%3A1833&t=Dpxy1yUZMefElIjg-1) for the design of the FlutterKaigi 2023 official application.
