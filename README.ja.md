@@ -2,6 +2,11 @@
 
 FlutterKaigi 2023公式アプリケーションリポジトリにようこそ！
 
+このリポジトリでは、コントリビューションを受け付ける期間を終了しました。ご関心をお寄せいただき、ありがとうございました!
+コントリビューションに関心がある場合には、最新のFlutterKaigiプロジェクトをご確認ください。
+
+以下の情報は、コントリビューションを受け付けていた期間のものです。最後のリリースバージョンを確認したい場合には [tag 1.5.0](https://github.com/FlutterKaigi/conference-app-2023/tree/1.5.0) をご確認ください。
+
 ## 開発
 
 FlutterKaigi 2023公式アプリケーションのUI定義は、[Figma](https://www.figma.com/file/x71sECvdnsw8RTfKG0E4fB/FlutterKaigi-2023-App?type=design&node-id=11%3A1833&t=Dpxy1yUZMefElIjg-1)にあります。
